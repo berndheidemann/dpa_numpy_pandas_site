@@ -15,6 +15,21 @@ theme:
     - content.code.copy
     - content.progress   # Fortschrittsbalken beim Scrollen
   language: de
+  palette:
+    # Light Mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Zu Dark Mode wechseln
+    # Dark Mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Zu Light Mode wechseln
 
 nav:
   - Start: index.md
