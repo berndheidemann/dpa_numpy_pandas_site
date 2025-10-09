@@ -1,0 +1,66 @@
+site_name: Weather Dashboard – React Lernsituation
+site_url: https://berndheidemann.github.io/lf10_weather_dashboard/
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    # Navigation und Layout
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    # Suche & UX
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.progress   # Fortschrittsbalken beim Scrollen
+  language: de
+
+nav:
+  - Start: index.md
+  - Allgemeine Umsetzungshilfe: allgemeine-umsetzungshilfe.md
+  - Guideline Chatbots: guideline-chatbots.md
+  - User Stories:
+      - Story 1 – Stadt suchen: stories/story-01-stadt-suchen.md
+      - Story 2 – Stadt auswählen: stories/story-02-stadt-auswaehlen.md
+      - Story 3 – 7-Tage-Vorhersage: stories/story-03-sieben-tage-vorhersage.md
+      - Story 4 – Tagesdetails: stories/story-04-tagesdetails.md
+      - Story 5 – Favorit speichern: stories/story-05-favorit-speichern.md
+      - Story 6 – Favoritenliste: stories/story-06-favoritenliste.md
+      - Story 7 – Navigation: stories/story-07-navigation.md
+      - Story 8 – Info-Seite: stories/story-08-info-seite.md
+  - Umsetzungshilfen:
+      - Story 1 – Stadt suchen: umsetzungshilfen/story-01-stadt-suchen.md
+      - Story 2 – Stadt auswählen: umsetzungshilfen/story-02-stadt-auswaehlen.md
+      - Story 3 – 7-Tage-Vorhersage: umsetzungshilfen/story-03-sieben-tage-vorhersage.md
+      - Story 4 – Tagesdetails: umsetzungshilfen/story-04-tagesdetails.md
+      - Story 5 – Favorit speichern: umsetzungshilfen/story-05-favorit-speichern.md
+      - Story 6 – Favoritenliste: umsetzungshilfen/story-06-favoritenliste.md
+      - Story 7 – Navigation: umsetzungshilfen/story-07-navigation.md
+      - Story 8 – Info-Seite: umsetzungshilfen/story-08-info-seite.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - attr_list
+  - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  generator: false
+
+extra_javascript:
+  - assets/js/progress.js
+  
+plugins:
+  - search
+  - awesome-pages                     # Automatische Navigation nach Ordnerstruktur
+  - minify:
+      minify_html: true               # Schnellere Ladezeiten durch kleinere Seiten
