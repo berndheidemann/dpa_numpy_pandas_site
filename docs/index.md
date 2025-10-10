@@ -31,3 +31,16 @@ Arbeite die User Stories der Reihe nach ab. Jede Story enthält Akzeptanzkriteri
 - [Story 6 – Favoritenliste verwalten](./stories/story-06-favoritenliste.md)
 - [Story 7 – Navigation nutzen](./stories/story-07-navigation.md)
 - [Story 8 – Info-Seite](./stories/story-08-info-seite.md)
+
+---
+
+## Impressum
+
+Diese GitHub Pages-Seite ist Teil einer schulischen Lernsituation  
+im Bildungsgang **Fachinformatiker/in – Anwendungsentwicklung** am  
+**Schulzentrum Utbremen, Bremen**.
+
+Verantwortlich im Sinne des § 5 DDG ist das Schulzentrum Utbremen.  
+Vollständiges Impressum: [https://www.szut.de/impressum.html](https://www.szut.de/impressum.html)
+
+Diese Seite dient ausschließlich der schulischen Ausbildung und verfolgt **keine kommerziellen Zwecke**.
