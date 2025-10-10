@@ -36,9 +36,7 @@ Arbeite die User Stories der Reihe nach ab. Jede Story enthält Akzeptanzkriteri
 
 ## Impressum
 
-Diese GitHub Pages-Seite ist Teil einer schulischen Lernsituation  
-im Bildungsgang **Fachinformatiker/in – Anwendungsentwicklung** am  
-**Schulzentrum Utbremen, Bremen**.
+Diese GitHub Pages-Seite ist Teil einer schulischen Lernsituation im Bildungsgang **Fachinformatiker/in – Anwendungsentwicklung** am **Schulzentrum Utbremen, Bremen**.
 
 Verantwortlich im Sinne des § 5 DDG ist das Schulzentrum Utbremen.  
 Vollständiges Impressum: [https://www.szut.de/impressum.html](https://www.szut.de/impressum.html)
