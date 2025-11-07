@@ -2,6 +2,65 @@
 
 Diese Umsetzungshilfe beschreibt einen Fahrplan, wie du aus einer User Story Schritt für Schritt ein funktionierendes Feature im Weather Dashboard entwickelst.
 
+## 0. Installation und Setup
+
+Bevor du mit der Umsetzung der User Stories beginnst, musst du ein React-Projekt aufsetzen.
+
+### Projekt erstellen
+
+Verwende **Vite** als Build-Tool für schnelle Entwicklung:
+
+```bash
+# Neues React-Projekt mit TypeScript erstellen
+npm create vite@latest weather-dashboard -- --template react-ts
+
+# In das Projektverzeichnis wechseln
+cd weather-dashboard
+```
+
+### Dependencies installieren
+
+Installiere die notwendigen Abhängigkeiten für das Projekt:
+
+```bash
+# Basis-Dependencies installieren
+npm install
+
+```
+
+### Development Server starten
+
+Starte den Entwicklungsserver:
+
+```bash
+npm run dev
+```
+
+Die App läuft dann unter `http://localhost:5173`
+
+### Erstes Cleanup (Optional)
+
+Entferne Beispiel-Code aus dem Template:
+- Lösche `App.css` Inhalte (oder behalte nur Basis-Styles)
+- Bereinige `App.tsx` auf ein minimales Gerüst
+- Entferne nicht benötigte Beispiel-Assets
+
+**Minimales App.tsx Gerüst:**
+```typescript
+function App() {
+  return (
+    <div className="app">
+      <h1>Weather Dashboard</h1>
+      <p>Bereit für Story 1!</p>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Jetzt bist du bereit, mit Story 1 zu beginnen!
+
 ## 1. Von der Story zum Mock
 - Starte jede Story mit einem UI-Mock (Platzhalter oder Dummy-Daten reichen).
 - Ziel: Oberfläche sichtbar machen, bevor Logik, Datenanbindung und Styling folgen.
