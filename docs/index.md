@@ -44,10 +44,15 @@ Begleitende Informationen zu Java-Konzepten:
 
 - [StringBuilder](./infoblaetter/stringbuilder.md)
 - [HashMap](./infoblaetter/hashmap.md)
+- [LinkedList und Stack](./infoblaetter/linkedlist-stack.md)
 - [Exceptions](./infoblaetter/exceptions.md)
 - [Singleton-Muster](./infoblaetter/singleton.md)
 - [Interfaces](./infoblaetter/interfaces.md)
 - [Polymorphismus](./infoblaetter/polymorphismus.md)
+- [Abstrakte Klassen](./infoblaetter/abstrakte-klassen.md)
+- [State-Pattern](./infoblaetter/state-pattern.md)
+- [Command-Pattern](./infoblaetter/command-pattern.md)
+- [JUnit](./infoblaetter/junit.md)
 
 ---
 
