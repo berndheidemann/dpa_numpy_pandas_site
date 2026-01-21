@@ -43,8 +43,7 @@ Eine Figur soll ihren aktuellen Zustand als String zurückgeben können.
 
 ### Aufgabe 1 – Klassendiagramm erstellen
 
-- [ ] Zeichne in deiner Gruppe ein Klassendiagramm für das Problem
-- [ ] Bereitet euch auf eine Präsentation eurer Lösung vor
+- [ ] Zeichne ein Klassendiagramm für das Problem
 
 !!! note "Hinweis"
     Das Klassendiagramm soll von den bisher erstellten Klassen lediglich die Klasse `Player` enthalten.
@@ -52,7 +51,7 @@ Eine Figur soll ihren aktuellen Zustand als String zurückgeben können.
 ### Aufgabe 2 – State-Muster anwenden
 
 - [ ] Lies das [Infoblatt State-Pattern](../infoblaetter/state-pattern.md) und mache dich mit dem Muster vertraut
-- [ ] Verbessere in deiner Gruppe das Klassendiagramm aus Aufgabe 1
+- [ ] Verbessere das Klassendiagramm aus Aufgabe 1
 
 ### Aufgabe 3 – Implementierung
 
