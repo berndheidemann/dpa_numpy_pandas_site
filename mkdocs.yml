@@ -1,0 +1,82 @@
+site_name: "Die Welt von Zuul – Lernsituation"
+site_url: https://berndheidemann.github.io/lf05-worldOfZuul-Site/
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    # Navigation und Layout
+    - navigation.sections
+    - navigation.top
+    # - toc.integrate
+    # Suche & UX
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.progress   # Fortschrittsbalken beim Scrollen
+  language: de
+  palette:
+    # Light Mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Zu Dark Mode wechseln
+    # Dark Mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Zu Light Mode wechseln
+
+nav:
+  - Start: index.md
+  - Arbeitsblätter:
+      - AB 00 – Vorbereitungen: arbeitsblaetter/00-vorbereitungen.md
+      - AB 01 – Codeduplizierung: arbeitsblaetter/01-codeduplizierung.md
+      - AB 02 – Kapselung: arbeitsblaetter/02-kapselung.md
+      - AB 03 – Kapselung 2: arbeitsblaetter/03-kapselung2.md
+      - AB 04 – Entwurf nach Zuständigkeiten: arbeitsblaetter/04-entwurf-nach-zustaendigkeiten.md
+      - AB 05 – Implizite Kopplung: arbeitsblaetter/05-implizite-kopplung.md
+      - AB 06 – Kohäsion von Klassen: arbeitsblaetter/06-kohaesion-von-klassen.md
+      - AB 07 – Refactoring: arbeitsblaetter/07-refactoring.md
+      - AB 08 – Exceptions: arbeitsblaetter/08-exceptions.md
+      - AB 09 – State-Pattern: arbeitsblaetter/09-state-pattern.md
+      - AB 10 – Command-Pattern: arbeitsblaetter/10-command-pattern.md
+      - AB 11 – Einfache Factory: arbeitsblaetter/11-einfache-factory.md
+      - AB 12 – Factory-Method-Pattern: arbeitsblaetter/12-factory-method-pattern.md
+  - Infoblätter:
+      - StringBuilder: infoblaetter/stringbuilder.md
+      - HashMap: infoblaetter/hashmap.md
+      - Exceptions: infoblaetter/exceptions.md
+      - Singleton-Muster: infoblaetter/singleton.md
+      - Interfaces: infoblaetter/interfaces.md
+      - Polymorphismus: infoblaetter/polymorphismus.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - attr_list
+  - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra:
+  generator: false
+
+extra_javascript:
+  - assets/js/progress.js
+  
+plugins:
+  - search
+  - awesome-pages                     # Automatische Navigation nach Ordnerstruktur
+  - minify:
+      minify_html: true               # Schnellere Ladezeiten durch kleinere Seiten
