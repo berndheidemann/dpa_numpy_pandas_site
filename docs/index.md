@@ -52,7 +52,6 @@ Begleitende Informationen zu Java-Konzepten:
 - [Abstrakte Klassen](./infoblaetter/abstrakte-klassen.md)
 - [State-Pattern](./infoblaetter/state-pattern.md)
 - [Command-Pattern](./infoblaetter/command-pattern.md)
-- [JUnit](./infoblaetter/junit.md)
 
 ---
 
