@@ -47,7 +47,6 @@ nav:
       - AB 10 – Command-Pattern: arbeitsblaetter/10-command-pattern.md
       - AB 11 – Einfache Factory: arbeitsblaetter/11-einfache-factory.md
       - AB 12 – Factory-Method-Pattern: arbeitsblaetter/12-factory-method-pattern.md
-      - AB 13 – Unit-Tests mit JUnit: arbeitsblaetter/13-junit-tests.md
   - Infoblätter:
       - StringBuilder: infoblaetter/stringbuilder.md
       - HashMap: infoblaetter/hashmap.md
@@ -59,7 +58,6 @@ nav:
       - Abstrakte Klassen: infoblaetter/abstrakte-klassen.md
       - State-Pattern: infoblaetter/state-pattern.md
       - Command-Pattern: infoblaetter/command-pattern.md
-      - JUnit: infoblaetter/junit.md
 
 markdown_extensions:
   - admonition
