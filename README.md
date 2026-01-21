@@ -106,9 +106,15 @@ Die Seite ist dann unter `http://localhost:8000` erreichbar.
 
 ### 6. GitHub Pages aktivieren
 
+Diese Variante nutzt den `gh-pages` Branch und ist bereits in `.github/workflows/gh-pages.yml` konfiguriert.
+
 1. Im GitHub Repository: **Settings** → **Pages**
-2. Source: **GitHub Actions** auswählen
-3. Workflow-Datei `.github/workflows/deploy.yml` erstellen:
+2. Unter "Build and deployment" → **Source**: **Deploy from a branch**
+3. Branch: **gh-pages** / `/ (root)` auswählen
+4. **Save** klicken
+
+Nach dem ersten Push auf `main` wird automatisch der `gh-pages` Branch erstellt und die Seite deployed. Der Branch ist erst nach dem allersten Deployment sichtbar.
+
 
 ```yaml
 name: Deploy MkDocs to GitHub Pages
