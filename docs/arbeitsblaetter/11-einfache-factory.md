@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Einfache Factory
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Das Factory-Pattern (Simple Factory) erklären und anwenden
+- Abstrakte Klassen verwenden
+- Objekterstellung von der Verwendung trennen
+- Das Open/Closed-Prinzip anwenden
+
+---
+
 ## Erstellung verschiedener Landschaften durch eine Factory
 
 Unser Adventuregame soll dem Benutzer die Möglichkeit geben, in **verschiedenen Welten** zu spielen. Bislang ist es lediglich möglich, sich in dem Urwald einer Mayawelt zu bewegen.
@@ -52,6 +63,9 @@ Die **MapFactory** ist für die Instanziierung der gewünschten Landschaft zust�
 
 Eine Landschaft wird durch die abstrakte Klasse **Map** repräsentiert:
 
+!!! tip "Abstrakte Klassen"
+    Lies das [Infoblatt Abstrakte Klassen](../infoblaetter/abstrakte-klassen.md), um das Konzept zu verstehen.
+
 - Speichert die verschiedenen Räume in einer `HashMap`
 - Besitzt einen Namen
 - Bietet Schnittstellen:
@@ -75,6 +89,37 @@ Der **MapManager** ist für den konstanten Teil der Anwendung zuständig – die
 
 - [ ] Erweitere deine Anwendung um eine Universitätslandschaft
 
+### Aufgabe 3 – Versionierung
+
+- [ ] Versioniere deinen aktuellen Projektstand:
+    ```bash
+    git status
+    git add -A
+    git commit -m "zuul 11"
+    ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Simple Factory**: Zentralisiert die Objekterstellung
+    - **Abstrakte Klassen**: Definieren gemeinsame Struktur für Subklassen
+    - **Open/Closed-Prinzip**: Offen für Erweiterungen, geschlossen für Änderungen
+    - **Trennung**: Veränderliches (Erstellung) von Konstantem (Verarbeitung) trennen
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Vorteil einer Factory gegenüber direkter Objekterstellung?
+    2. Warum ist `Map` eine abstrakte Klasse?
+    3. Was bedeutet das Open/Closed-Prinzip?
+    
+    ??? success "Antworten"
+        1. Die Erstellungslogik ist zentralisiert; neue Typen ohne Änderung des Client-Codes
+        2. Sie definiert gemeinsame Struktur, aber jede Landschaft implementiert Details selbst
+        3. Code ist offen für Erweiterungen (neue Landschaften), aber geschlossen für Änderungen (bestehender Code bleibt)
+
 Die dafür nötigen Codeschnipsel:
 
 #### Räume der Universität
@@ -86,6 +131,12 @@ this.rooms.put("pub", new Room("in the campus pub"));
 this.rooms.put("lab", new Room("in a computing lab"));
 this.rooms.put("office", new Room("in the computing admin office"));
 ```
+
+!!! tip "Diamond Operator"
+    Nutze den Diamond Operator `<>` bei der Initialisierung von Collections:
+    ```java
+    HashMap<String, Room> rooms = new HashMap<>();  // statt new HashMap<String, Room>()
+    ```
 
 #### Ausgänge
 

@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Vorbereitungen
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Ein Java-Projekt aus einem Git-Repository klonen
+- Javadoc-Dokumentation generieren und lesen
+- Git-Grundbefehle anwenden (init, status, add, commit)
+- Versionen mit Git verwalten
+
+---
+
 ## Aufgaben
 
 - [ ] **Klone folgendes Projekt:** [https://bitbucket.org/szut_anwend/worldofzuul.git](https://bitbucket.org/szut_anwend/worldofzuul.git)
@@ -19,7 +30,7 @@
     - Wie viele Räume gibt es in der virtuellen Umgebung und wie sind sie angeordnet? Zeichne die virtuelle Umgebung.
     - Erkunde die einzelnen Klassen und schreibe für jede Klasse ihren Einsatzzweck auf.
 
-- [ ] **Git-Repository initialisieren:** Wie bei deinem Fußballmanager aus der letzten Lernsituation wirst du auch dieses Mal verschiedene Versionen der Anwendung erstellen. Dieses Mal soll allerdings nicht jedes Mal die alte Version in ein neues Package kopiert, sondern die verschiedenen Versionen mit der Versionsverwaltung **Git** verwaltet werden.
+- [ ] **Git-Repository initialisieren:** Du wirst verschiedene Versionen der Anwendung erstellen. Die verschiedenen Versionen sollen mit der Versionsverwaltung **Git** verwaltet werden.
    
     Git verwaltet die verschiedenen Versionen einer Anwendung in einem **Repository**. Das befindet sich im Ordner `.git`, den du über den Explorer im Hauptverzeichnis des Zuul-Projekts sehen kannst.
    
@@ -54,3 +65,26 @@
     ```
    
     Der `commit`-Befehl verpackt die Dateien in ein **Commit** und speichert sie im Repository. Ein Commit ist ein Schnappschuss des aktuellen Dateisystems. Git verpackt den aktuellen Status und versieht ihn mit einem eindeutigen Hashwert und speichert ihn mit verschiedenen Metadaten ab.
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Git clone** lädt ein Projekt aus einem Remote-Repository
+    - **Javadoc** generiert HTML-Dokumentation aus Kommentaren
+    - **git init** erstellt ein neues lokales Repository
+    - **git add** fügt Dateien zur Staging Area hinzu
+    - **git commit** speichert einen Snapshot des Projekts
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Unterschied zwischen `git add` und `git commit`?
+    2. Wofür steht das `-m` bei `git commit -m "Nachricht"`?
+    3. Welche Klasse enthält die `main`-Methode im Zuul-Projekt?
+    
+    ??? success "Antworten"
+        1. `git add` fügt Dateien zur Staging Area hinzu, `git commit` speichert diese als Version im Repository
+        2. `-m` steht für "message" und erlaubt die Commit-Nachricht direkt anzugeben
+        3. Die Klasse `ZuulUI`

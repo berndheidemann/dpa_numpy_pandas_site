@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Refactoring
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Refactoring als Technik zur Verbesserung der Codestruktur anwenden
+- Eine neue Klasse `Player` mit Inventar implementieren
+- Die Unterschiede zwischen `ArrayList` und `LinkedList` erklären
+- Methoden mit IntelliJ-Refactoring auslagern
+
+---
+
 ## Einführung: Klasse Player
 
 Es soll den Spielern die Möglichkeit geboten werden, Gegenstände aufzunehmen und abzulegen. Sinnvoll wäre es, eine Klasse `Player` zu erstellen, die diese Information hält.
@@ -38,7 +49,7 @@ Das Datenfeld `currentRoom` der Klasse `Game` ist ebenfalls eine Eigenschaft des
 !!! warning "LinkedList statt ArrayList"
     Es ist keine gute Idee, dafür die Klasse `ArrayList` zu verwenden. Diese Liste verwaltet ihre Objekte intern in einem Array. Das hat zur Folge, dass beim Entfernen von Objekten die nachfolgenden Objekte im Array nach vorne rücken müssen, was intern Rechenkapazität bindet.
     
-    Erkundige dich über die Funktionsweise der `LinkedList` in Java sowie ihren Vor- bzw. Nachteilen gegenüber einer `ArrayList`. **Verwende eine `LinkedList` für die Gegenstände des Spielers.**
+    Erkundige dich im [Infoblatt LinkedList und Stack](../infoblaetter/linkedlist-stack.md) über die Funktionsweise der `LinkedList` in Java sowie ihren Vor- bzw. Nachteilen gegenüber einer `ArrayList`. **Verwende eine `LinkedList` für die Gegenstände des Spielers.**
 
 ### Methode takeItem()
 
@@ -52,7 +63,9 @@ Das Datenfeld `currentRoom` der Klasse `Game` ist ebenfalls eine Eigenschaft des
 
 ### Kohäsion verbessern
 
-- [ ] Lagere über die Tastenkombination ++alt+shift+m++ folgende Hilfsmethoden aus:
+- [ ] Lagere über die Tastenkombination folgende Hilfsmethoden aus:
+    - **Windows/Linux:** ++alt+shift+m++
+    - **macOS:** ++option+shift+m++
     - `private double calculateWeight()` – Ermittlung des aufgenommenen Gewichts
     - `private boolean isTakePossible(Item item)` – Prüfung, ob der Gegenstand aufgenommen werden kann
 
@@ -102,3 +115,25 @@ Das Datenfeld `currentRoom` der Klasse `Game` ist ebenfalls eine Eigenschaft des
     git add -A
     git commit -m "zuul 7"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Refactoring** verbessert die Struktur ohne Funktionsänderung
+    - **Player-Klasse** kapselt Spielerinformationen (Raum, Inventar, Tragkraft)
+    - **LinkedList** ist effizienter als ArrayList beim Entfernen von Elementen
+    - Hilfsmethoden erhöhen die **Kohäsion** und Lesbarkeit
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum ist `LinkedList` für das Inventar besser als `ArrayList`?
+    2. Was ist der Vorteil, `currentRoom` von `Game` nach `Player` zu verschieben?
+    3. Was macht die Methode `calculateWeight()`?
+    
+    ??? success "Antworten"
+        1. Beim Entfernen von Elementen müssen bei LinkedList keine Elemente verschoben werden (O(1) statt O(n))
+        2. Der Spieler ist für seinen aktuellen Aufenthaltsort verantwortlich (Entwurf nach Zuständigkeiten)
+        3. Sie berechnet das Gesamtgewicht aller aufgenommenen Gegenstände

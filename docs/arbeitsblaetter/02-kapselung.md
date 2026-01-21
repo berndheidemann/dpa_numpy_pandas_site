@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Enge Kopplung wegen fehlender Kapselung
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Erklären, was Kapselung bedeutet und warum sie wichtig ist
+- Attribute mit `private` schützen
+- Getter-Methoden für kontrollierten Zugriff implementieren
+- Die Klasse `StringBuilder` verwenden
+
+---
+
 ## Das Problem
 
 Ich hoffe, dass dich die Erweiterung der Anwendung um die Befehle `up` und `down` vom letzten Arbeitsblatt nicht in den Wahnsinn getrieben hat!
@@ -63,3 +74,25 @@ Ein direkter Zugriff auf die Instanzvariablen der Klasse `Room` ist nun nicht me
     ```bash
     git log --oneline
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Kapselung** verbirgt die Implementierungsdetails einer Klasse
+    - **Private Attribute** schützen Daten vor direktem Zugriff
+    - **Getter-Methoden** ermöglichen kontrollierten Lesezugriff
+    - **StringBuilder** ist effizienter als String-Konkatenation
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Unterschied zwischen WAS und WIE bei Kapselung?
+    2. Warum sollte man `StringBuilder` statt `String` für das Zusammenbauen von Strings verwenden?
+    3. Was passiert, wenn ein Attribut `public` statt `private` ist?
+    
+    ??? success "Antworten"
+        1. WAS = öffentliche Schnittstelle (was die Klasse kann), WIE = interne Implementierung (wie sie es macht)
+        2. `String` ist immutable – bei jeder Änderung wird ein neues Objekt erzeugt, was Speicher und Zeit kostet
+        3. Andere Klassen können direkt darauf zugreifen, was zu enger Kopplung führt

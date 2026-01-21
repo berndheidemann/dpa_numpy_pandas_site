@@ -1,5 +1,15 @@
 # Die Welt von Zuul – Lose Kopplung durch Entwurf nach Zuständigkeiten
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Das Prinzip "Entwurf nach Zuständigkeiten" erklären
+- Zuständigkeiten sinnvoll auf Klassen verteilen
+- Erkennen, welche Klasse für welche Daten verantwortlich ist
+
+---
+
 ## Responsibility-Driven Design
 
 **Entwurf nach Zuständigkeiten** ist ein Entwicklungsprozess, bei dem jeder Klasse eine klare Verantwortung zugewiesen wird. Dieser Prozess basiert auf der Idee, dass jede Klasse **für den Umgang mit ihren Daten verantwortlich** sein sollte.
@@ -47,3 +57,25 @@ Die Klasse `Room` hält aber alle Informationen über einen Raum. Daher ist auch
     git add -A
     git commit -m "zuul 4"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Entwurf nach Zuständigkeiten**: Jede Klasse ist für ihre Daten verantwortlich
+    - Die Klasse `Room` liefert selbst ihre Beschreibung
+    - Änderungen an Rauminformationen betreffen nur noch eine Klasse
+    - **Lose Kopplung** wird durch klare Zuständigkeiten erreicht
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum sollte `Room` seine eigene Beschreibung liefern und nicht `Game`?
+    2. Was ist der Vorteil, wenn nur eine Klasse von Änderungen betroffen ist?
+    3. Was bedeutet "Responsibility-Driven Design"?
+    
+    ??? success "Antworten"
+        1. `Room` kennt alle Details über sich selbst und kann die Beschreibung bei Änderungen anpassen
+        2. Weniger Fehlerquellen, einfachere Wartung, geringere Kopplung
+        3. Klassen werden nach ihren Zuständigkeiten entworfen – wer Daten hat, verarbeitet sie auch

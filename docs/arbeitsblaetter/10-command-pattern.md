@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Command-Pattern
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Das Command-Pattern erklären und anwenden
+- Methodenaufrufe als Objekte kapseln
+- Undo-Funktionalität mit einem Stack implementieren
+- Die Rollen im Command-Pattern identifizieren
+
+---
+
 ## Einkapseln von Methodenaufrufen im Command-Pattern
 
 Die Klasse `Game` weist an einigen Stellen **Code-Smell** auf:
@@ -54,7 +65,7 @@ In einem Refactoring soll dieser Code-Smell durch die Einführung des **Command-
 
 ### Aufgabe 1 – Command-Pattern verstehen
 
-- [ ] Erkundige dich anhand des Informationsblattes „IB Command-Pattern aus Entwurfsmuster von Kopf bis Fuß.pdf" auf der itslearning-Plattform über das Command-Pattern (Seiten 191 – 215)
+- [ ] Lies das [Infoblatt Command-Pattern](../infoblaetter/command-pattern.md) und mache dich mit dem Muster vertraut
 
 ### Aufgabe 2 – Rollen identifizieren
 
@@ -82,7 +93,7 @@ Unsere Anwendung soll um einen Befehl `back` erweitert werden, der zuvor getäti
 
 ### Aufgabe 5 – Stack kennenlernen
 
-- [ ] Informiere dich anhand des Informationsblattes auf den **Seiten 216-223** über den Befehl Rückgängig im Command-Pattern
+- [ ] Lies das [Infoblatt LinkedList und Stack](../infoblaetter/linkedlist-stack.md) und mache dich mit dem Stack-Prinzip vertraut
 
 - [ ] Erkundige dich über die Java-Klasse `Stack` und inwiefern man die Klasse `LinkedList` als Stack verwenden kann
 
@@ -100,3 +111,34 @@ Unsere Anwendung soll um einen Befehl `back` erweitert werden, der zuvor getäti
 - [ ] Passe die Klasse `Parser` geeignet an und fange den Fall ab, dass der Benutzer `back` ausführt, ohne dass er bereits einen Befehl ausgeführt hat
 
 - [ ] Teste die Erweiterung
+
+### Aufgabe 7 – Versionierung
+
+- [ ] Versioniere deinen aktuellen Projektstand:
+    ```bash
+    git status
+    git add -A
+    git commit -m "zuul 10"
+    ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Command-Pattern**: Methodenaufrufe als Objekte kapseln
+    - **Invoker, Command, Receiver**: Die Rollen im Pattern
+    - **Stack (LIFO)**: Für Undo-Funktionalität geeignete Datenstruktur
+    - **Erweiterbarkeit**: Neue Befehle ohne Änderung bestehenden Codes
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Unterschied zwischen Invoker und Receiver?
+    2. Warum ist ein Stack für Undo geeignet?
+    3. Welchen Vorteil bietet das Command-Pattern bei neuen Befehlen?
+    
+    ??? success "Antworten"
+        1. Invoker löst Befehle aus (z.B. Parser), Receiver führt die eigentliche Aktion aus (z.B. Game)
+        2. LIFO-Prinzip – der zuletzt ausgeführte Befehl wird zuerst rückgängig gemacht
+        3. Kein Ändern der if-else-Kette – einfach neuen Command registrieren

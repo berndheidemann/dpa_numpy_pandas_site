@@ -1,5 +1,16 @@
 # Die Welt von Zuul – State-Pattern
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Das State-Pattern erklären und anwenden
+- Zustandsabhängiges Verhalten in separate Klassen auslagern
+- Das Singleton-Pattern zur Optimierung einsetzen
+- Zustandsübergänge modellieren und implementieren
+
+---
+
 ## Zustandswechsel von Spielern
 
 Unser Adventuregame „Die Welt von Zuul" soll um verschiedene **Zustände**, die der Spieler annehmen kann, erweitert werden. Im Hinblick auf zukünftige Erweiterungen, in denen Spieler gegeneinander oder mit anderen Figuren kämpfen können, werden diese Zustände benötigt.
@@ -40,7 +51,7 @@ Eine Figur soll ihren aktuellen Zustand als String zurückgeben können.
 
 ### Aufgabe 2 – State-Muster anwenden
 
-- [ ] Erkundige dich auf der Internetseite [http://www.philipphauer.de/study/se/design-pattern/state.php](http://www.philipphauer.de/study/se/design-pattern/state.php) über das **State-Muster**
+- [ ] Lies das [Infoblatt State-Pattern](../infoblaetter/state-pattern.md) und mache dich mit dem Muster vertraut
 - [ ] Verbessere in deiner Gruppe das Klassendiagramm aus Aufgabe 1
 
 ### Aufgabe 3 – Implementierung
@@ -48,6 +59,9 @@ Eine Figur soll ihren aktuellen Zustand als String zurückgeben können.
 - [ ] Implementiere den im Plenum besprochenen Algorithmus
 - [ ] Lege für die Zustände im Package `model` ein weiteres Package für die Zustände an
 - [ ] Ergänze die Methode `showStatus()` in der Klasse `Player` um die Anzeige des aktuellen Zustands
+
+!!! tip "Interfaces nutzen"
+    Lies das [Infoblatt Interfaces](../infoblaetter/interfaces.md), falls du Hilfe bei der Erstellung des State-Interfaces benötigst.
 
 ### Aufgabe 4 – Test
 
@@ -87,3 +101,25 @@ Die bisherige Variante unseres State-Patterns weist zwei Nachteile auf:
     git add -A
     git commit -m "zuul 9"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **State-Pattern**: Zustände als eigene Klassen kapseln
+    - **Polymorphie**: Unterschiedliches Verhalten je nach Zustand
+    - **Singleton**: Nur eine Instanz pro Zustandsklasse
+    - **Entkopplung**: Zustände geben neuen Zustand zurück
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum ist das State-Pattern besser als if-else-Ketten für Zustände?
+    2. Warum werden Zustände als Singleton implementiert?
+    3. Was bedeutet es, wenn Zustandsmethoden den neuen Zustand zurückgeben?
+    
+    ??? success "Antworten"
+        1. Jeder Zustand hat eine eigene Klasse – übersichtlicher, erweiterbar, keine Fallunterscheidungen
+        2. Es wird nur eine Instanz pro Zustand benötigt – spart Speicher und GC-Overhead
+        3. Der Context (Player) muss keine Referenz an die Zustände übergeben – stärkere Entkopplung

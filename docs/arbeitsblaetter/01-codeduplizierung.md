@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Kohäsionsverletzung durch Codeduplizierung
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Erklären, was Kopplung und Kohäsion bedeuten
+- Code-Duplizierungen erkennen und beseitigen
+- Das DRY-Prinzip anwenden
+- Methoden mithilfe von Refactoring auslagern
+
+---
+
 ## Einführung
 
 Schlechte Klassenentwürfe werden meistens dann offensichtlich, wenn eine Anwendung angepasst oder erweitert werden soll. Unser Programm kann bisher nicht sonderlich viel und ist nicht sonderlich spannend. Wir wollen es daher Schritt für Schritt erweitern.
@@ -69,7 +80,12 @@ Diese Code-Duplizierung liegt daran, dass beide Methoden zwei Dinge erledigen:
 - [ ] Schreibe eine Methode `printRoomInformation()`, die in den Methoden `goRoom()` und `printWelcome()` aufgerufen wird und darüber die Codeduplizierung und die schlechte Kohäsion auflöst
 
 !!! tip "IntelliJ-Shortcut"
-    Benutze für das Auslagern der Methode die Tastenkombination ++ctrl+alt+m++, nachdem du den auszulagernden Quellcode markiert hast.
+    Benutze für das Auslagern der Methode die Tastenkombination:
+    
+    - **Windows/Linux:** ++ctrl+alt+m++
+    - **macOS:** ++cmd+option+m++
+    
+    Markiere vorher den auszulagernden Quellcode.
 
 ### Aufgabe 3 – Erweiterung um neue Richtungen
 
@@ -112,3 +128,25 @@ Wir wollen im nächsten Schritt das Spiel um die Bewegungsrichtungen `up` und `d
     ```bash
     git checkout master
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Kopplung**: Grad der Abhängigkeit zwischen Klassen (lose = gut)
+    - **Kohäsion**: Grad der Zuständigkeit einer Einheit (hoch = gut)
+    - **DRY-Prinzip**: Don't Repeat Yourself – keine Code-Duplizierung
+    - **Refactoring**: Umstrukturierung ohne Funktionsänderung
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was bedeutet "lose Kopplung"?
+    2. Warum ist Code-Duplizierung problematisch?
+    3. Was ist das Ziel von hoher Kohäsion?
+    
+    ??? success "Antworten"
+        1. Klassen sind weitgehend unabhängig und kommunizieren über schmale Schnittstellen
+        2. Änderungen müssen an mehreren Stellen durchgeführt werden, was fehleranfällig ist
+        3. Jede Einheit ist für genau eine Aufgabe zuständig, was Wiederverwendung fördert

@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Factory-Method-Pattern
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Den Unterschied zwischen Simple Factory und Factory-Method-Pattern erklären
+- Objekterstellung und -verarbeitung kontrolliert koppeln
+- Vererbung zur Implementierung von Design Patterns nutzen
+- Das Template-Method-Konzept verstehen
+
+---
+
 ## Erstellung verschiedener Landschaften durch das Factory-Method-Pattern
 
 Eine Factory, die üblicherweise statische Methoden anbietet, ist für sich noch **kein Design Pattern**. Sie ist zwar äußerst nützlich, gilt aber lediglich als **Idiom**.
@@ -28,6 +39,9 @@ Das Factory-Method-Pattern:
 ### Umsetzung mit Vererbung
 
 Die Lösung liegt im Einsatz von **Vererbung** und der Verwendung einer **abstrakten Methode**, die eine Subklasse implementieren muss. Diese abstrakte Methode ist die namensgebende **Factory Method**.
+
+!!! tip "Polymorphie nutzen"
+    Lies das [Infoblatt Polymorphismus](../infoblaetter/polymorphismus.md), um zu verstehen, wie Vererbung und Überschreiben hier zusammenspielen.
 
 ### Neue Struktur
 
@@ -96,3 +110,34 @@ classDiagram
     - Die Objekterstellung ist von der Weiterverarbeitung getrennt, aber beide sind kontrolliert miteinander verbunden
     - Neue Landschaftstypen können leicht hinzugefügt werden
     - Die Klasse `Game` ist von den konkreten Landschaftsklassen entkoppelt
+
+### Aufgabe 2 – Versionierung
+
+- [ ] Versioniere deinen aktuellen Projektstand:
+    ```bash
+    git status
+    git add -A
+    git commit -m "zuul 12"
+    ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Factory-Method-Pattern**: Echtes Design Pattern mit Vererbung
+    - **Template Method**: Algorithmus in Basisklasse, Details in Subklassen
+    - **Protected**: Kontrollierter Zugriff nur für Subklassen
+    - **Kontrollierte Kopplung**: Erstellung und Verarbeitung gehören zusammen
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Unterschied zwischen Simple Factory und Factory-Method-Pattern?
+    2. Warum ist `createMap()` als `protected` deklariert?
+    3. Was garantiert das Factory-Method-Pattern, das die Simple Factory nicht garantiert?
+    
+    ??? success "Antworten"
+        1. Factory-Method nutzt Vererbung und ist ein echtes Pattern; Simple Factory ist nur ein Idiom
+        2. Verhindert unkontrollierten Aufruf von außen; nur Subklassen und `getMap()` können sie nutzen
+        3. Dass jede erstellte Map auch verarbeitet (mit Items bestückt) wird

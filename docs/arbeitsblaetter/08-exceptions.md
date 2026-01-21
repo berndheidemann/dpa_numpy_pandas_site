@@ -1,5 +1,16 @@
 # Die Welt von Zuul – Exceptions
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Eigene Exception-Klassen erstellen
+- Exceptions mit `throw` werfen und mit `try-catch` abfangen
+- Packages zur Strukturierung des Projekts verwenden
+- Den Unterschied zwischen Fehlerbehandlung mit Rückgabewerten und Exceptions erklären
+
+---
+
 ## Das Problem
 
 In der Methode `takeItem(Command command)` der Klasse `Game` muss mit Hilfe einer if-Anweisung geprüft werden, ob der Aufruf der Methode `dropItem(String name)` erfolgreich war und den Gegenstand tatsächlich entfernt oder ob `null` zurückgegeben worden ist.
@@ -61,6 +72,9 @@ In der Methode `takeItem(Command command)` der Klasse `Game` muss mit Hilfe eine
 
 !!! tip "IntelliJ Refactor"
     Nutze die **Refactor-Funktion** der rechten Maustaste, um die Klassen zu verschieben. Das erspart dir eine Menge `import`-Anweisungen.
+    
+    - **Windows/Linux:** Rechtsklick → Refactor → Move oder ++f6++
+    - **macOS:** Rechtsklick → Refactor → Move oder ++f6++
 
 ### Aufgabe 8 – Versionierung
 
@@ -70,3 +84,25 @@ In der Methode `takeItem(Command command)` der Klasse `Game` muss mit Hilfe eine
     git add -A
     git commit -m "zuul 8"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Eigene Exceptions** ermöglichen präzise Fehlermeldungen
+    - **try-catch** trennt Fehlerbehandlung von Logikcode
+    - **throws** deklariert, dass eine Methode Exceptions weitergeben kann
+    - **Packages** strukturieren das Projekt logisch
+
+---
+
+??? question "Selbstkontrolle"
+    1. Was ist der Vorteil von Exceptions gegenüber Rückgabewerten wie `null` oder `-1`?
+    2. Was bedeutet `throws` in einer Methodensignatur?
+    3. Warum sollte man eigene Exception-Klassen erstellen?
+    
+    ??? success "Antworten"
+        1. Code ist lesbarer, Fehlerbehandlung ist getrennt, Compiler kann prüfen
+        2. Die Methode kann diese Exception werfen und der Aufrufer muss sie behandeln
+        3. Präzisere Fehlermeldungen, spezifischere Behandlung möglich

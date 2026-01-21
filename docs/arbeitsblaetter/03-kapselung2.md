@@ -1,5 +1,15 @@
 # Die Welt von Zuul – Kapselung führt zu loser Kopplung
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Die Datenstruktur `HashMap` erklären und anwenden
+- Flexible Datenstrukturen statt fester Attribute verwenden
+- Schnittstellen stabil halten trotz Implementierungsänderungen
+
+---
+
 ## Das Problem
 
 Im letzten Arbeitsblatt waren ja eine ganze Menge if-Anweisungen nötig, um die verschiedenen Richtungen umzusetzen.
@@ -56,3 +66,25 @@ Die Methode `setExits()` funktioniert nun ebenfalls nicht mehr. Hier ist noch Wi
     git add -A
     git commit -m "zuul 3"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **HashMap** speichert Schlüssel-Wert-Paare für flexiblen Zugriff
+    - **Kapselung** ermöglicht interne Änderungen ohne Schnittstellenanpassung
+    - **Lose Kopplung** macht Erweiterungen einfacher
+    - Neue Richtungen können ohne Codeänderung hinzugefügt werden
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum ist eine `HashMap` für die Ausgänge besser als einzelne Attribute?
+    2. Was ist der Vorteil von `setExit(String, Room)` gegenüber `setExits(Room, Room, Room, ...)`?
+    3. Wie greift man auf einen Wert in einer HashMap zu?
+    
+    ??? success "Antworten"
+        1. Beliebig viele Ausgänge möglich, ohne neue Attribute anzulegen
+        2. Die Signatur ändert sich nicht, wenn neue Richtungen hinzukommen
+        3. Mit `map.get(key)` – der Schlüssel liefert den zugehörigen Wert

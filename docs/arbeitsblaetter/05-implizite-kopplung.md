@@ -1,5 +1,15 @@
 # Die Welt von Zuul – Implizite Kopplung
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Implizite Kopplung erkennen und erklären
+- Befehle in getrennten Klassen verwalten (hohe Kohäsion)
+- Abhängigkeiten durch geeignete Methoden auflösen
+
+---
+
 ## Neuer Befehl: look
 
 Es soll der Befehl `look` in den Satz der gültigen Befehle aufgenommen werden. `look` gibt die Beschreibung des Raums und seiner Ausgänge nochmals aus.
@@ -63,3 +73,25 @@ In diesem Fall stützt sich die Methode `printHelp()` in der Klasse `Game` auf i
     git add -A
     git commit -m "zuul 5"
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Implizite Kopplung**: Versteckte Abhängigkeiten ohne Compiler-Warnung
+    - Die Klasse `CommandWords` verwaltet gültige Befehle zentral
+    - **Hohe Kohäsion**: Jede Klasse hat eine klare Aufgabe
+    - Der Parser delegiert Anfragen an die zuständige Klasse
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum ist implizite Kopplung besonders problematisch?
+    2. Warum ist es gut, dass `CommandWords` eine eigene Klasse ist?
+    3. Was bedeutet "Delegation" im Kontext von Parser und CommandWords?
+    
+    ??? success "Antworten"
+        1. Fehler werden nicht vom Compiler erkannt und treten erst zur Laufzeit auf
+        2. Hohe Kohäsion – die Befehlsverwaltung ist getrennt von der Eingabeverarbeitung
+        3. Der Parser ruft Methoden von CommandWords auf, statt die Logik selbst zu implementieren

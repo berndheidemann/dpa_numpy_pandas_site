@@ -1,5 +1,15 @@
 # Die Welt von Zuul – Kohäsion von Klassen
 
+## Lernziele
+
+Nach Bearbeitung dieses Arbeitsblatts kannst du:
+
+- Kohäsion von Klassen erklären und anwenden
+- Neue Klassen für neue Konzepte erstellen
+- Beziehungen zwischen Klassen (Komposition) modellieren
+
+---
+
 ## Wiederholung: Kohäsion von Methoden
 
 Die **Kohäsion von Methoden** war bereits auf dem ersten Arbeitsblatt Thema. Eine Methode weist einen hohen Grad an Kohäsion auf, wenn sie nur für **eine** wohl definierte Aufgabe zuständig ist.
@@ -106,3 +116,25 @@ In der Methode `createRooms()` der Klasse `Game` ist der richtige Platz, bestimm
     git commit -m "zuul 6"
     git log --oneline
     ```
+
+---
+
+## Zusammenfassung
+
+!!! success "Das hast du gelernt"
+    - **Kohäsion von Klassen**: Eine Klasse modelliert genau ein Konzept
+    - **Neue Klasse `Item`**: Gegenstände werden separat modelliert
+    - **Komposition**: Room enthält Items (hat-eine-Beziehung)
+    - **HashMap für Items**: Zugriff über den Namen des Gegenstands
+
+---
+
+??? question "Selbstkontrolle"
+    1. Warum ist eine separate Klasse `Item` besser als Attribute in `Room`?
+    2. Warum wird eine `Map` für die Items verwendet?
+    3. Was bedeutet hohe Kohäsion bei Klassen?
+    
+    ??? success "Antworten"
+        1. Hohe Kohäsion – jede Klasse modelliert ein Konzept; Items können später bewegt werden
+        2. Zugriff über den Namen (Key) statt Index; Items können einfach gefunden werden
+        3. Eine Klasse ist für genau einen Aufgabenbereich zuständig
