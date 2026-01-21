@@ -106,17 +106,6 @@ classDiagram
     UniversityMap --|> Map
 ```
 
-!!! info "Legende"
-    | Symbol | Bedeutung |
-    |--------|-----------|
-    | `<<abstract>>` | Abstrakte Klasse |
-    | `methode()*` | Abstrakte Methode (kursiv dargestellt) |
-    | `──▶` | Vererbung (extends) |
-    | `╌╌▶` | Abhängigkeit (creates/uses) |
-    | `+` | public |
-    | `#` | protected |
-    | `-` | private |
-
 !!! tip "Vorteile des Factory-Method-Patterns"
     - Die Objekterstellung ist von der Weiterverarbeitung getrennt, aber beide sind kontrolliert miteinander verbunden
     - Neue Landschaftstypen können leicht hinzugefügt werden
