@@ -198,20 +198,30 @@ rental.startAllVehicles();
 
 ### Wann was verwenden?
 
-```mermaid
-flowchart TD
-    Start(( )) --> F1[Gemeinsame Funktionalität prüfen]
-    F1 --> D1{ }
-    D1 -->|"[Nein]"| C[Interface verwenden]
-    D1 -->|"[Ja]"| F2[Gemeinsamen Zustand/Attribute prüfen]
-    F2 --> D2{ }
-    D2 -->|"[Ja]"| D[Abstrakte Klasse verwenden]
-    D2 -->|"[Nein]"| F3[Ist-Ein-Beziehung prüfen]
-    F3 --> D3{ }
-    D3 -->|"[Ja]"| D
-    D3 -->|"[Nein]"| C
-    C --> Ende((( )))
-    D --> Ende
+```kroki-plantuml
+@startuml
+skinparam activityShape octagon
+skinparam conditionStyle diamond
+
+start
+:Gemeinsame Funktionalität prüfen;
+if () then ([Ja])
+  :Gemeinsamen Zustand/Attribute prüfen;
+  if () then ([Ja])
+    :Abstrakte Klasse verwenden;
+  else ([Nein])
+    :Ist-Ein-Beziehung prüfen;
+    if () then ([Ja])
+      :Abstrakte Klasse verwenden;
+    else ([Nein])
+      :Interface verwenden;
+    endif
+  endif
+else ([Nein])
+  :Interface verwenden;
+endif
+stop
+@enduml
 ```
 
 !!! tip "Faustregel"

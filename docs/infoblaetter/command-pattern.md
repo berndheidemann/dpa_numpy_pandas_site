@@ -42,37 +42,40 @@ Das **Command-Pattern** kapselt einen Befehl als Objekt. Dadurch können Befehle
 
 ## Struktur des Patterns
 
-```mermaid
-classDiagram
-    class Command {
-        <<interface>>
-        +execute() void
-        +undo() void
-    }
-    
-    class ConcreteCommand {
-        -receiver: Receiver
-        +execute() void
-        +undo() void
-    }
-    
-    class Invoker {
-        -command: Command
-        +setCommand(Command) void
-        +executeCommand() void
-    }
-    
-    class Receiver {
-        +action() void
-    }
-    
-    class Client
-    
-    Command <|.. ConcreteCommand
-    ConcreteCommand --> Receiver : ruft auf
-    Invoker --> Command : hält
-    Client --> ConcreteCommand : erstellt
-    Client --> Receiver : erstellt
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+class Command <<interface>> {
+    +execute(): void
+    +undo(): void
+}
+
+class ConcreteCommand {
+    -receiver: Receiver
+    +execute(): void
+    +undo(): void
+}
+
+class Invoker {
+    -command: Command
+    +setCommand(Command): void
+    +executeCommand(): void
+}
+
+class Receiver {
+    +action(): void
+}
+
+class Client
+
+ConcreteCommand ..|> Command
+ConcreteCommand --> Receiver : ruft auf
+Invoker --> Command : hält
+Client --> ConcreteCommand : erstellt
+Client --> Receiver : erstellt
+@enduml
 ```
 
 ### Rollen im Pattern

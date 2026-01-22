@@ -162,25 +162,32 @@ Gehalt:4300.0
 
 Die Liste fungiert hier als **polymorpher Container**, d.h. er kann Objekte aller Subklassen von `Employee` speichern.
 
-```mermaid
-classDiagram
-    class Employee {
-        <<abstract>>
-        -name: String
-        #salary: double
-        +changeSalary(amount: double)*
-        +toString(): String
-    }
-    class Clerk {
-        +changeSalary(amount: double)
-    }
-    class Trainee {
-        +changeSalary(amount: double)
-    }
-    class Boss {
-        +changeSalary(amount: double)
-    }
-    Clerk --|> Employee
-    Trainee --|> Employee
-    Boss --|> Employee
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+abstract class Employee {
+    -name: String
+    #salary: double
+    +{abstract} changeSalary(amount: double)
+    +toString(): String
+}
+
+class Clerk {
+    +changeSalary(amount: double)
+}
+
+class Trainee {
+    +changeSalary(amount: double)
+}
+
+class Boss {
+    +changeSalary(amount: double)
+}
+
+Clerk --|> Employee
+Trainee --|> Employee
+Boss --|> Employee
+@enduml
 ```

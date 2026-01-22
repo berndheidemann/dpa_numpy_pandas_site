@@ -25,6 +25,7 @@ jobs:
                      mkdocs-git-revision-date-localized-plugin \
                      mkdocs-awesome-pages-plugin \
                      mkdocs-minify-plugin \
+                     mkdocs-kroki-plugin \
                      pymdown-extensions
 
       # Build prüfen (–strict bricht bei Fehlern ab)

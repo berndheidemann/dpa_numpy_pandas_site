@@ -86,3 +86,4 @@ plugins:
   - awesome-pages                     # Automatische Navigation nach Ordnerstruktur
   - minify:
       minify_html: true               # Schnellere Ladezeiten durch kleinere Seiten
+  - kroki                             # PlantUML und andere Diagramme via kroki.io

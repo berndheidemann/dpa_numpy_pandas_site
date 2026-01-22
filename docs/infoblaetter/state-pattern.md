@@ -52,30 +52,33 @@ Das **State-Pattern** kapselt jeden Zustand in einer eigenen Klasse. Das Objekt 
 
 ## Struktur des Patterns
 
-```mermaid
-classDiagram
-    class Context {
-        -state: State
-        +setState(State) void
-        +request() void
-    }
-    
-    class State {
-        <<interface>>
-        +handle(Context) void
-    }
-    
-    class ConcreteStateA {
-        +handle(Context) void
-    }
-    
-    class ConcreteStateB {
-        +handle(Context) void
-    }
-    
-    Context --> State : hält aktuellen
-    State <|.. ConcreteStateA
-    State <|.. ConcreteStateB
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+class Context {
+    -state: State
+    +setState(State): void
+    +request(): void
+}
+
+class State <<interface>> {
+    +handle(Context): void
+}
+
+class ConcreteStateA {
+    +handle(Context): void
+}
+
+class ConcreteStateB {
+    +handle(Context): void
+}
+
+Context --> State : hält aktuellen
+ConcreteStateA ..|> State
+ConcreteStateB ..|> State
+@enduml
 ```
 
 ### Rollen im Pattern
@@ -249,22 +252,25 @@ public class Order {
 
 Die Übergänge zwischen Zuständen lassen sich als **Zustandsdiagramm** darstellen:
 
-```mermaid
-stateDiagram-v2
-    [*] --> Wartend
-    
-    Wartend --> Bezahlt : bezahlen
-    Wartend --> Storniert : stornieren
-    Wartend --> Wartend : versenden (Fehler)
-    
-    Bezahlt --> Versendet : versenden
-    Bezahlt --> Storniert : stornieren
-    
-    Versendet --> Zugestellt : zustellen
-    Versendet --> Versendet : stornieren (Fehler)
-    
-    Zugestellt --> [*]
-    Storniert --> [*]
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+
+[*] --> Wartend
+
+Wartend --> Bezahlt : bezahlen
+Wartend --> Storniert : stornieren
+Wartend --> Wartend : versenden (Fehler)
+
+Bezahlt --> Versendet : versenden
+Bezahlt --> Storniert : stornieren
+
+Versendet --> Zugestellt : zustellen
+Versendet --> Versendet : stornieren (Fehler)
+
+Zugestellt --> [*]
+Storniert --> [*]
+@enduml
 ```
 
 ### Übergangstabelle
