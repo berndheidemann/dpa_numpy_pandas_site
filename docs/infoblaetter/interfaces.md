@@ -111,26 +111,32 @@ public class Klasse extends Basisklasse implements InterfaceA, InterfaceB
 
 Im Klassendiagramm wird ein Interface durch ein Klassensymbol mit dem Stereotypen `<<interface>>` modelliert. Die Implementierung eines Interfaces wird mit einem **gestrichelten Vererbungspfeil** symbolisiert.
 
-```mermaid
-classDiagram
-    class Incrementable {
-        <<interface>>
-        +increment() void
-        +decrement() void
-    }
-    class Counter {
-        -stand: int
-        +reset() void
-        +increment() void
-        +decrement() void
-    }
-    class Grade {
-        -grade: int
-        +increment() void
-        +decrement() void
-    }
-    Counter ..|> Incrementable
-    Grade ..|> Incrementable
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+class Incrementable <<interface>> {
+    +increment(): void
+    +decrement(): void
+}
+
+class Counter {
+    -stand: int
+    +reset(): void
+    +increment(): void
+    +decrement(): void
+}
+
+class Grade {
+    -grade: int
+    +increment(): void
+    +decrement(): void
+}
+
+Incrementable <|.. Counter
+Incrementable <|.. Grade
+@enduml
 ```
 
 ## Nutzen der gemeinsamen öffentlichen Schnittstelle

@@ -65,45 +65,47 @@ Die Lösung liegt im Einsatz von **Vererbung** und der Verwendung einer **abstra
 - [ ] Führe ein Refactoring der Anwendung durch, indem du die Factory durch das **Factory-Method-Pattern** ersetzt
 - [ ] Teste deine Anwendung
 
-```mermaid
-classDiagram
-    class MapManager {
-        <<abstract>>
-        +getMap(String type) Map
-        #createMap(String type)* Map
-    }
-    
-    class MapFactory {
-        #createMap(String type) Map
-    }
-    
-    class Map {
-        <<abstract>>
-        -rooms: HashMap
-        -name: String
-        +getRandomRoom() Room
-        +setItems() void
-        +createRooms()* void
-        +setExits()* void
-        +getBeginningRoom()* Room
-    }
-    
-    class MayaMap {
-        +createRooms() void
-        +setExits() void
-        +getBeginningRoom() Room
-    }
-    
-    class UniversityMap {
-        +createRooms() void
-        +setExits() void
-        +getBeginningRoom() Room
-    }
-    
-    MapFactory --|> MapManager
-    MapFactory ..> Map : creates
-    MayaMap --|> Map
-    UniversityMap --|> Map
+```kroki-plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+abstract class MapManager {
+    +getMap(type: String): Map
+    #{abstract} createMap(type: String): Map
+}
+
+class MapFactory {
+    #createMap(type: String): Map
+}
+
+abstract class Map {
+    -rooms: HashMap
+    -name: String
+    +getRandomRoom(): Room
+    +setItems(): void
+    +{abstract} createRooms(): void
+    +{abstract} setExits(): void
+    +{abstract} getBeginningRoom(): Room
+}
+
+class MayaMap {
+    +createRooms(): void
+    +setExits(): void
+    +getBeginningRoom(): Room
+}
+
+class UniversityMap {
+    +createRooms(): void
+    +setExits(): void
+    +getBeginningRoom(): Room
+}
+
+MapManager <|-- MapFactory
+Map <.. MapFactory : <<creates>>
+Map <|-- MayaMap
+Map <|-- UniversityMap
+@enduml
 ```
 
 !!! tip "Vorteile des Factory-Method-Patterns"

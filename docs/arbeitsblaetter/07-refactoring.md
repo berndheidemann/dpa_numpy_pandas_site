@@ -46,10 +46,12 @@ Das Datenfeld `currentRoom` der Klasse `Game` ist ebenfalls eine Eigenschaft des
 
 - [ ] Erweitere die Klasse `Player` so, dass er beliebig viele Gegenstände aufnehmen und besitzen kann
 
-!!! warning "LinkedList statt ArrayList"
-    Es ist keine gute Idee, dafür die Klasse `ArrayList` zu verwenden. Diese Liste verwaltet ihre Objekte intern in einem Array. Das hat zur Folge, dass beim Entfernen von Objekten die nachfolgenden Objekte im Array nach vorne rücken müssen, was intern Rechenkapazität bindet.
+!!! info "LinkedList kennenlernen"
+    An dieser Stelle verwenden wir bewusst eine `LinkedList`, um diese wichtige Datenstruktur kennenzulernen. 
     
-    Erkundige dich im [Infoblatt LinkedList und Stack](../infoblaetter/linkedlist-stack.md) über die Funktionsweise der `LinkedList` in Java sowie ihren Vor- bzw. Nachteilen gegenüber einer `ArrayList`. **Verwende eine `LinkedList` für die Gegenstände des Spielers.**
+    Für ein kleines Spieler-Inventar wäre eine `ArrayList` oder `HashMap` ebenso geeignet – bei wenigen Elementen sind Performance-Unterschiede vernachlässigbar. Die `LinkedList` eignet sich besonders, wenn häufig am Anfang oder Ende einer Liste eingefügt/entfernt wird (z.B. bei Queues oder Stacks).
+    
+    Erkundige dich im [Infoblatt LinkedList und Stack](../infoblaetter/linkedlist-stack.md) über die Funktionsweise der `LinkedList` in Java sowie ihre Vor- und Nachteile gegenüber einer `ArrayList`. **Verwende eine `LinkedList` für die Gegenstände des Spielers.**
 
 ### Methode takeItem()
 

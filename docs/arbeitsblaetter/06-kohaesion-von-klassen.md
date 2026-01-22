@@ -121,6 +121,31 @@ In der Methode `createRooms()` der Klasse `Game` ist der richtige Platz, bestimm
 
 ## Zusammenfassung
 
+```kroki-plantuml
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+
+class Room {
+    -description: String
+    -exits: Map<String, Room>
+    -items: Map<String, Item>
+    +putItem(newItem: Item): void
+    +getLongDescription(): String
+}
+
+class Item {
+    -name: String
+    -description: String
+    -weight: double
+    +getName(): String
+    +toString(): String
+}
+
+Room "1" o-- "*" Item : enthält
+@enduml
+```
+
 !!! success "Das hast du gelernt"
     - **Kohäsion von Klassen**: Eine Klasse modelliert genau ein Konzept
     - **Neue Klasse `Item`**: Gegenstände werden separat modelliert
