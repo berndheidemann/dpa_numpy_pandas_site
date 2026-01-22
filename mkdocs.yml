@@ -86,3 +86,10 @@ plugins:
   - awesome-pages                     # Automatische Navigation nach Ordnerstruktur
   - minify:
       minify_html: true               # Schnellere Ladezeiten durch kleinere Seiten
+  - kroki:                            # PlantUML und andere Diagramme via kroki.io
+      ServerURL: https://kroki.io
+      EnableBlockDiag: true
+      Enablebpmn: false
+      EnableExcalidraw: false
+      EnableMermaid: false
+      EnableDiagramsnet: false
