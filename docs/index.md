@@ -42,6 +42,7 @@ Arbeite die Arbeitsblätter der Reihe nach ab. Jedes Arbeitsblatt enthält Aufga
 
 Begleitende Informationen zu Java-Konzepten:
 
+- [SOLID-Prinzipien](./infoblaetter/solid-prinzipien.md)
 - [StringBuilder](./infoblaetter/stringbuilder.md)
 - [HashMap](./infoblaetter/hashmap.md)
 - [LinkedList und Stack](./infoblaetter/linkedlist-stack.md)

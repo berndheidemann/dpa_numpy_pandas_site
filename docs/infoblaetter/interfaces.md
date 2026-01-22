@@ -168,3 +168,6 @@ public class Main {
     **Programmiere auf eine Schnittstelle, nicht auf eine Implementierung!**
     
     Die Klasse `Main` muss nichts von der konkreten Implementierung der Klassen `Counter` und `Grade` wissen. Sie stützt sich allein auf das Interface `Incrementable`. Damit ist sie von Änderungen der konkreten Klassen nicht betroffen – diese könnten sogar durch andere Klassen ersetzt werden!
+
+!!! info "SOLID: Dependency Inversion Principle"
+    Dieses Entwurfsprinzip entspricht dem **Dependency Inversion Principle (DIP)** aus den [SOLID-Prinzipien](solid-prinzipien.md): High-Level-Module sollten von Abstraktionen abhängen, nicht von konkreten Klassen.

@@ -108,6 +108,13 @@ Der **MapManager** ist für den konstanten Teil der Anwendung zuständig – die
     - **Open/Closed-Prinzip**: Offen für Erweiterungen, geschlossen für Änderungen
     - **Trennung**: Veränderliches (Erstellung) von Konstantem (Verarbeitung) trennen
 
+!!! info "SOLID-Prinzipien in Aktion"
+    Die Factory wendet gleich mehrere [SOLID-Prinzipien](../infoblaetter/solid-prinzipien.md) an:
+    
+    - **OCP**: Neue Landschaften durch neue Klassen, ohne `Game` zu ändern
+    - **LSP**: `MayaMap` und `UniversityMap` können überall für `Map` eingesetzt werden
+    - **DIP**: `Game` hängt nur von der Abstraktion `Map` ab, nicht von konkreten Klassen
+
 ---
 
 ??? question "Selbstkontrolle"

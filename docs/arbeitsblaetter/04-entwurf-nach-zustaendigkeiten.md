@@ -68,6 +68,9 @@ Die Klasse `Room` hält aber alle Informationen über einen Raum. Daher ist auch
     - Änderungen an Rauminformationen betreffen nur noch eine Klasse
     - **Lose Kopplung** wird durch klare Zuständigkeiten erreicht
 
+!!! info "SOLID: Single Responsibility Principle"
+    Das Prinzip "Entwurf nach Zuständigkeiten" entspricht dem **Single Responsibility Principle (SRP)** aus den [SOLID-Prinzipien](../infoblaetter/solid-prinzipien.md): Eine Klasse sollte nur einen Grund haben, sich zu ändern.
+
 ---
 
 ??? question "Selbstkontrolle"

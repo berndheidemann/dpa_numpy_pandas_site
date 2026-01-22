@@ -99,6 +99,8 @@ Wir wollen im nächsten Schritt das Spiel um die Bewegungsrichtungen `up` und `d
 - Die Tempelpyramide hat nun einen **ersten Stock**, in dem der Zauberer untergebracht ist.
 - Außerdem hat die Tempelpyramide einen **Keller**, von dem ein Geheimgang zu einer alten **Piratenhöhle** unter der Opferstätte führt.
 
+![Karte der Maya-Welt](../assets/images/zuul_map.png)
+
 - [ ] Erweitere das Programm um die neuen Räume und Richtungen `up` und `down`
 - [ ] Teste dein Programm
 

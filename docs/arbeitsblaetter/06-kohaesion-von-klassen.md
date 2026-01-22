@@ -25,6 +25,9 @@ Dies gilt beispielsweise für die Methode `printWelcome()` in der Klasse `Game`,
 
 Das Konzept der Kohäsion gilt ebenso für **Klassen**. Eine Klasse weist einen hohen Grad an Kohäsion auf, wenn sie genau **eine** wohl definierte Einheit aus dem Anwendungsbereich modelliert, also für einen ganz bestimmten Aufgabenbereich zuständig ist.
 
+!!! info "SOLID: Single Responsibility Principle"
+    Das Konzept der **Kohäsion** entspricht dem **Single Responsibility Principle (SRP)** aus den [SOLID-Prinzipien](../infoblaetter/solid-prinzipien.md): Eine Klasse sollte nur eine Verantwortung haben.
+
 Das Beispiel vom letzten Aufgabenblatt war die Klasse `CommandWords`, die man auch hätte weglassen und die entsprechenden Attribute und Methoden in der Klasse `Parser` unterbringen können. Dies hätte jedoch eine schlechte Wiederverwendbarkeit sowie einen deutlich schwierigeren Quellcode zur Folge!
 
 ## Neue Erweiterung: Gegenstände

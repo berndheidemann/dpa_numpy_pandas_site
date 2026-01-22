@@ -15,7 +15,7 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Die Klasse `Game` weist an einigen Stellen **Code-Smell** auf:
 
-### Problem 1: Niedrige Kohäsion
+### Problem 1: Niedrige Kohäsion (Verletzung des SRP)
 
 Die Klasse ist jetzt schon sehr groß und unübersichtlich geworden. Das liegt an niedriger Kohäsion. Sie ist nicht nur für:
 
@@ -24,7 +24,10 @@ Die Klasse ist jetzt schon sehr groß und unübersichtlich geworden. Das liegt a
 
 zuständig, sondern enthält auch die **Logik der einzelnen Befehle**, die der Benutzer in dem Spiel ausführen kann.
 
-### Problem 2: Umfangreiche Fallunterscheidung
+!!! warning "SOLID: Single Responsibility Principle verletzt"
+    Die Klasse `Game` hat **mehrere Gründe sich zu ändern**: Änderungen am Spielablauf, an der Welterstellung oder an einzelnen Befehlen. Das widerspricht dem [Single Responsibility Principle](../infoblaetter/solid-prinzipien.md#s-single-responsibility-principle-srp).
+
+### Problem 2: Umfangreiche Fallunterscheidung (Verletzung des OCP)
 
 Die Methode `processCommand(Command command)` enthält eine umfangreiche Fallunterscheidung in Form einer if-else-Leiter:
 
@@ -58,6 +61,9 @@ private boolean processCommand(Command command) {
 
 !!! warning "Problem"
     Bei Erweiterung des Spiels um einen weiteren Befehl muss jeweils wieder ein neuer Fall und eine neue Hilfsmethode implementiert werden.
+
+!!! danger "SOLID: Open/Closed Principle verletzt"
+    Um einen neuen Befehl hinzuzufügen, muss **bestehender Code geändert** werden (die if-else-Kette). Das widerspricht dem [Open/Closed Principle](../infoblaetter/solid-prinzipien.md#o-openclosed-principle-ocp): Software sollte offen für Erweiterungen, aber geschlossen für Modifikationen sein.
 
 In einem Refactoring soll dieser Code-Smell durch die Einführung des **Command-Patterns** ausgemerzt werden.
 
@@ -130,6 +136,13 @@ Unsere Anwendung soll um einen Befehl `back` erweitert werden, der zuvor getäti
     - **Invoker, Command, Receiver**: Die Rollen im Pattern
     - **Stack (LIFO)**: Für Undo-Funktionalität geeignete Datenstruktur
     - **Erweiterbarkeit**: Neue Befehle ohne Änderung bestehenden Codes
+
+!!! info "SOLID-Prinzipien erfüllt"
+    Das Command-Pattern erfüllt gleich drei [SOLID-Prinzipien](../infoblaetter/solid-prinzipien.md):
+    
+    - **SRP**: Jeder Befehl ist eine eigene Klasse mit einer Verantwortung
+    - **OCP**: Neue Befehle durch neue Klassen, ohne `processCommand()` zu ändern
+    - **DIP**: Der Parser hängt nur vom `Command`-Interface ab, nicht von konkreten Befehlsklassen
 
 ---
 
