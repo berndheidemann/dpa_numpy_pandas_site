@@ -2,12 +2,13 @@
 
 ## Lernziele
 
-Nach Bearbeitung dieses Arbeitsblatts kannst du:
+Nach Bearbeitung dieses Arbeitsblatts:
 
-- Ein Java-Projekt aus einem Git-Repository klonen
-- Javadoc-Dokumentation generieren und lesen
-- Git-Grundbefehle anwenden (init, status, add, commit)
-- Versionen mit Git verwalten
+- kannst du dich in der "Welt von Zuul" bewegen
+- hast du einen Überblick über die Architektur der Anwendung 
+- kannst du eine Javadoc-Dokumentation generieren lassen und lesen
+- kannst du Git-Grundbefehle anwenden (init, status, add, commit)
+- kannst du Versionen mit Git verwalten
 
 ---
 

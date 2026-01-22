@@ -33,15 +33,19 @@ Der Begriff bezieht sich also darauf, wie Klassen miteinander verknüpft sind. J
 
 ## Kohäsion
 
+
 Der Begriff **Kohäsion** beschreibt, wie gut eine Programmeinheit eine logische Aufgabe oder Einheit abbildet. In einem System mit hoher Kohäsion ist jede Programmeinheit (eine Methode, Klasse oder ein Modul) für genau **eine** wohl definierte Aufgabe oder Einheit verantwortlich.
 
 - Eine **Methode** sollte daher immer nur eine logische Operation implementieren.
 - Eine **Klasse** sollte genau einen Typ von Objekt modellieren.
 
+**Das Single Responsibility Prinzip (SRP)** aus den SOLID-Prinzipien konkretisiert diesen Gedanken:
+> Jede Klasse (oder Methode) sollte nur eine einzige Verantwortung haben und nur einen Grund für eine Änderung besitzen.
+
 Hauptanlass für Kohäsion ist die **Wiederverwendung**. Ein hoher Grad an Kohäsion erhöht die Wahrscheinlichkeit, dass eine Klasse oder Methode in einem anderen Zusammenhang eingesetzt werden kann.
 
 !!! tip "DRY-Prinzip"
-    Verstößt man gegen das **DRY-Prinzip** (Don't repeat yourself), liegt häufig eine schlechte Kohäsion vor. **Code-Duplizierung** ist dafür ein Beispiel. Von Code-Duplizierung spricht man dann, wenn ein Quelltextabschnitt mehr als einmal in einer Anwendung erscheint.
+    Verstößt man gegen das **DRY-Prinzip** (Don't repeat yourself), liegt häufig eine schlechte Kohäsion und damit auch ein Verstoß gegen das Single Responsibility Prinzip vor. **Code-Duplizierung** ist dafür ein Beispiel. Von Code-Duplizierung spricht man dann, wenn ein Quelltextabschnitt mehr als einmal in einer Anwendung erscheint.
 
 ## Aufgaben
 
@@ -73,6 +77,7 @@ Diese Code-Duplizierung liegt daran, dass beide Methoden zwei Dinge erledigen:
 - `printWelcome()` gibt einen Willkommenstext aus **und** liefert Informationen über den aktuellen Raum.
 - `goRoom()` wechselt den Raum **und** gibt ebenfalls Informationen über diesen aus.
 
+Beide Methoden geben dieselben Informationen aus, aber keine kann die andere aufrufen, weil sie jeweils noch eine andere Aufgabe ausführt. Ein klarer Verstoß gegen das Prinzip der Kohäsion.
 - [ ] Identifiziere die Code-Duplizierung in den Methoden `goRoom()` und `printWelcome()`
 
 ### Aufgabe 2 – Refactoring durchführen
