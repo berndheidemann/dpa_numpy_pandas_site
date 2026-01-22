@@ -200,12 +200,18 @@ rental.startAllVehicles();
 
 ```mermaid
 flowchart TD
-    A[Gemeinsame Funktionalität?] -->|Ja| B[Gemeinsamer Zustand/Attribute?]
-    A -->|Nein| C[Interface]
-    B -->|Ja| D[Abstrakte Klasse]
-    B -->|Nein| E[Ist-Ein-Beziehung?]
-    E -->|Ja| D
-    E -->|Nein| C
+    Start(( )) --> F1[Gemeinsame Funktionalität prüfen]
+    F1 --> D1{ }
+    D1 -->|"[Nein]"| C[Interface verwenden]
+    D1 -->|"[Ja]"| F2[Gemeinsamen Zustand/Attribute prüfen]
+    F2 --> D2{ }
+    D2 -->|"[Ja]"| D[Abstrakte Klasse verwenden]
+    D2 -->|"[Nein]"| F3[Ist-Ein-Beziehung prüfen]
+    F3 --> D3{ }
+    D3 -->|"[Ja]"| D
+    D3 -->|"[Nein]"| C
+    C --> Ende((( )))
+    D --> Ende
 ```
 
 !!! tip "Faustregel"
