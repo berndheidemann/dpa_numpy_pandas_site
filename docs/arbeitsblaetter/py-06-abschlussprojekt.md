@@ -319,13 +319,11 @@ projekt/
 └── verkaufsdaten.csv   # Datendatei
 ```
 
-Oder alles in einer Datei, wenn dir das lieber ist.
-
 ---
 
 ## Klassendiagramm
 
-```plantuml
+```kroki-plantuml
 @startuml
 skinparam classAttributeIconSize 0
 skinparam style strictuml
