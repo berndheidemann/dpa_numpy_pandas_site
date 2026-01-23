@@ -4,6 +4,27 @@
 
 Dictionaries sind **ungeordnete** Sammlungen von **Schlüssel-Wert-Paaren** (Key-Value-Pairs). Auch bekannt als "Hash Maps" oder "Assoziative Arrays".
 
+```kroki-plantuml
+@startuml
+skinparam defaultFontSize 14
+skinparam map {
+  BackgroundColor #f5f5f5
+  BorderColor #333
+}
+
+map "person" as person {
+  "name" => "Max"
+  "alter" => 30
+  "stadt" => "Berlin"
+}
+
+note right of person
+  Schlüssel (Key) → Wert (Value)
+  Zugriff: person["name"] → "Max"
+end note
+@enduml
+```
+
 ```python
 # Leeres Dictionary
 leer = {}
@@ -211,6 +232,34 @@ personen = {n: a for n, a in zip(namen, alter)}
 
 ## Verschachtelte Dictionaries
 
+```kroki-plantuml
+@startuml
+skinparam defaultFontSize 12
+skinparam object {
+  BackgroundColor #f5f5f5
+  BorderColor #333
+}
+
+object "mitarbeiter" as root {
+}
+
+object "M001" as m1 {
+  name = "Max Mustermann"
+  abteilung = "IT"
+  gehalt = 4500
+}
+
+object "M002" as m2 {
+  name = "Anna Schmidt"
+  abteilung = "HR"
+  gehalt = 4200
+}
+
+root --> m1 : "M001"
+root --> m2 : "M002"
+@enduml
+```
+
 ```python
 mitarbeiter = {
     "M001": {
@@ -336,6 +385,35 @@ timeout = config["api"]["timeout"]
 ---
 
 ## Dictionary vs. Liste
+
+```kroki-plantuml
+@startuml
+skinparam defaultFontSize 12
+left to right direction
+
+map "Liste (Index-Zugriff)" as liste {
+  0 => "Max"
+  1 => "Anna"
+  2 => "Tom"
+}
+
+map "Dictionary (Key-Zugriff)" as dict {
+  "chef" => "Max"
+  "dev" => "Anna"
+  "admin" => "Tom"
+}
+
+note bottom of liste
+  liste[1] → "Anna"
+  Nur Zahlen als Index
+end note
+
+note bottom of dict
+  dict["dev"] → "Anna"
+  Beliebige Schlüssel
+end note
+@enduml
+```
 
 | Eigenschaft | Liste | Dictionary |
 |-------------|-------|------------|
