@@ -37,7 +37,7 @@ end note
 @enduml
 ```
 
-**Bearbeite alle Aufgaben in einem Jupyter Notebook oder einer Python-Datei.**
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
 ---
 
@@ -103,7 +103,7 @@ Vergleiche die Performance von Python-Listen und NumPy-Arrays.
     print(f"NumPy ist {zeit_liste / zeit_numpy:.1f}x schneller!")
     ```
 
-- [ ] **Dokumentiere deine Ergebnisse:** Wie viel schneller ist NumPy?
+- [ ] **Dokumentiere deine Ergebnisse:** Wie viel schneller ist NumPy? Experimentiere mit verschiedenen Array-Größen.
 
 !!! question "Reflexionsfrage"
     Warum ist NumPy so viel schneller als Python-Listen?
@@ -112,47 +112,49 @@ Vergleiche die Performance von Python-Listen und NumPy-Arrays.
 
 ### Aufgabe 3 – Arrays erstellen
 
-Lerne verschiedene Methoden, um NumPy-Arrays zu erstellen.
+Wende verschiedene Methoden an, um NumPy-Arrays zu erstellen.
 
-- [ ] **Aus einer Python-Liste:**
+- [ ] **Erstelle ein Array mit Verkaufszahlen aus einer Liste:**
     ```python
-    temperaturen = np.array([22.5, 24.1, 19.8, 23.2, 25.0])
-    print(temperaturen)
-    print(type(temperaturen))
+    # Verkaufszahlen der letzten 7 Tage
+    verkaeufe = np.array([145, 189, 132, 201, 178, 156, 210])
+    print(f"Verkäufe: {verkaeufe}")
+    print(f"Typ: {type(verkaeufe)}")
     ```
 
-- [ ] **Mit Initialisierungsfunktionen:**
+- [ ] **Erstelle eine Preistabelle (5 Produkte × 4 Filialen) mit Nullen und fülle sie:**
     ```python
-    # Erstelle folgende Arrays und gib sie aus:
-    nullen = np.zeros((3, 4))       # 3x4 Matrix mit Nullen
-    einsen = np.ones((2, 5))        # 2x5 Matrix mit Einsen
-    leer = np.empty((2, 2))         # 2x2 leeres Array
-    fuenfer = np.full((3, 3), 5)    # 3x3 Matrix gefüllt mit 5
-    identitaet = np.eye(4)          # 4x4 Einheitsmatrix
-    ```
-
-- [ ] **Sequenzen erstellen:**
-    ```python
-    # Mit arange (wie range, aber für Arrays)
-    seq1 = np.arange(0, 10, 2)      # Start, Stop, Step
-    print(f"arange: {seq1}")
+    preistabelle = np.zeros((5, 4))
+    print(f"Leere Preistabelle:\n{preistabelle}")
     
-    # Mit linspace (gleichmäßig verteilt)
-    seq2 = np.linspace(0, 1, 5)     # Start, Stop, Anzahl
-    print(f"linspace: {seq2}")
+    # Fülle die erste Zeile mit Preisen für Produkt 1
+    preistabelle[0] = [9.99, 10.49, 9.79, 10.29]
+    print(f"\nMit erster Zeile gefüllt:\n{preistabelle}")
     ```
 
-- [ ] **Zufallszahlen:**
+- [ ] **Erstelle einen Rabattvektor mit `linspace`:**
     ```python
-    # Gleichverteilte Zufallszahlen (0-1)
-    zufaellig = np.random.rand(3, 4)
+    # 5 Rabattstufen von 0% bis 20%
+    rabatte = np.linspace(0, 0.20, 5)
+    print(f"Rabattstufen: {rabatte}")
     
-    # Ganzzahlige Zufallszahlen
-    wuerfel = np.random.randint(1, 7, size=(10,))  # 10 Würfelwürfe
-    
-    print(f"Zufallsmatrix:\n{zufaellig}")
-    print(f"Würfelwürfe: {wuerfel}")
+    # Berechne rabattierte Preise für einen Artikel (50€)
+    preis = 50
+    rabattierte_preise = preis * (1 - rabatte)
+    print(f"Preise mit Rabatt: {rabattierte_preise}")
     ```
+
+- [ ] **Simuliere 100 Würfelwürfe und zähle die Sechsen:**
+    ```python
+    wuerfel = np.random.randint(1, 7, size=100)
+    anzahl_sechsen = (wuerfel == 6).sum()
+    print(f"Würfe: {wuerfel[:20]}...")  # Erste 20 zeigen
+    print(f"Anzahl Sechsen: {anzahl_sechsen} von 100")
+    ```
+
+!!! question "Deine Aufgabe"
+    Erstelle ein Array mit `np.arange`, das alle geraden Zahlen von 2 bis 20 enthält. 
+    Berechne dann die Summe aller Elemente.
 
 ---
 

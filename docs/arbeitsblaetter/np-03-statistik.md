@@ -160,8 +160,6 @@ Berechne Standardabweichung und Varianz.
 
 Summen, Produkte und kumulative Werte.
 
-![Statistik](../assets/images/numpy/stats.png)
-
 - [ ] **Summiere die Gesamtbeträge:**
     ```python
     gesamt_umsatz = np.nansum(gesamt)

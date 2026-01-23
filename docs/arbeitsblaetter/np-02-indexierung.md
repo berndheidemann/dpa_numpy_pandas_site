@@ -18,8 +18,6 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 In dieser Lernsituation arbeitest du mit echten NYC Yellow Taxi Trip-Daten. Du lernst, wie du gezielt auf Teile großer Datensätze zugreifst.
 
-![NYC Taxi](../assets/images/numpy/intro.png)
-
 **Datenfelder im Datensatz:**
 
 | Spalte | Index | Beschreibung |
@@ -183,8 +181,6 @@ end note
 ### Aufgabe 5 – Slicing-Visualisierung
 
 Verstehe das Slicing besser durch Visualisierung.
-
-![Slicing Konzept](../assets/images/numpy/slicing.png)
 
 - [ ] **Erstelle eine kleine Test-Matrix:**
     ```python

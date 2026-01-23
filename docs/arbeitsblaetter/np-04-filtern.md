@@ -66,8 +66,6 @@ loop --> bool : "Viel kürzer\nund schneller!"
 
 Verstehe, wie Boolean Indexing funktioniert.
 
-![Filtering](../assets/images/numpy/filtering.png)
-
 - [ ] **Schritt 1: Bedingung erstellt Boolean-Array:**
     ```python
     # Fahrten mit mehr als 5 Meilen
@@ -200,8 +198,6 @@ Filtere den gesamten Datensatz (alle Spalten).
 
 Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
-![Vektorisierung](../assets/images/numpy/vec1.png)
-
 - [ ] **Berechne Preis pro Meile:**
     ```python
     # Vektorisiert: Alle Werte auf einmal
@@ -245,8 +241,6 @@ Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 ### Aufgabe 7 – np.where() für bedingte Berechnungen
 
 `np.where(bedingung, wenn_true, wenn_false)` ermöglicht bedingte Wertzuweisungen.
-
-![Vektorisierung](../assets/images/numpy/vec2.png)
 
 - [ ] **Kategorisiere Fahrtstrecken:**
     ```python
