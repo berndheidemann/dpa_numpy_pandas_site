@@ -1,5 +1,51 @@
 # Dictionaries
 
+## Warum Dictionaries?
+
+Bei Listen greifst du auf Elemente über einen **numerischen Index** zu: `liste[0]`, `liste[1]`, etc. Das funktioniert gut für geordnete Sammlungen, aber was wenn du einen Wert über einen **aussagekräftigen Namen** finden willst?
+
+```kroki-plantuml
+@startuml
+skinparam defaultFontSize 12
+left to right direction
+
+map "Liste (Index-Zugriff)" as liste {
+  0 => "Max"
+  1 => "Anna"
+  2 => "Tom"
+}
+
+map "Dictionary (Key-Zugriff)" as dict {
+  "chef" => "Max"
+  "dev" => "Anna"
+  "admin" => "Tom"
+}
+
+note bottom of liste
+  liste[1] → "Anna"
+  Nur Zahlen als Index
+end note
+
+note bottom of dict
+  dict["dev"] → "Anna"
+  Beliebige Schlüssel
+end note
+@enduml
+```
+
+| Eigenschaft | Liste | Dictionary |
+|-------------|-------|------------|
+| Zugriff | Index (0, 1, 2, ...) | Schlüssel |
+| Suche | O(n) - langsam | O(1) - schnell |
+| Verwendung | Geordnete Sequenzen | Zuordnungen/Lookup |
+
+**Beispiel:** Du willst die Telefonnummer von "Anna" finden.
+
+- **Liste**: Du musst alle Einträge durchsuchen, bis du "Anna" findest
+- **Dictionary**: Direkter Zugriff mit `telefon["Anna"]` → sofort gefunden!
+
+---
+
 ## Was sind Dictionaries?
 
 Dictionaries sind **ungeordnete** Sammlungen von **Schlüssel-Wert-Paaren** (Key-Value-Pairs). Auch bekannt als "Hash Maps" oder "Assoziative Arrays".
@@ -381,50 +427,6 @@ config = {
 db_host = config["database"]["host"]
 timeout = config["api"]["timeout"]
 ```
-
----
-
-## Dictionary vs. Liste
-
-```kroki-plantuml
-@startuml
-skinparam defaultFontSize 12
-left to right direction
-
-map "Liste (Index-Zugriff)" as liste {
-  0 => "Max"
-  1 => "Anna"
-  2 => "Tom"
-}
-
-map "Dictionary (Key-Zugriff)" as dict {
-  "chef" => "Max"
-  "dev" => "Anna"
-  "admin" => "Tom"
-}
-
-note bottom of liste
-  liste[1] → "Anna"
-  Nur Zahlen als Index
-end note
-
-note bottom of dict
-  dict["dev"] → "Anna"
-  Beliebige Schlüssel
-end note
-@enduml
-```
-
-| Eigenschaft | Liste | Dictionary |
-|-------------|-------|------------|
-| Zugriff | Index (0, 1, 2, ...) | Schlüssel |
-| Reihenfolge | Garantiert | Ab Python 3.7+ garantiert |
-| Suche | O(n) - langsam | O(1) - schnell |
-| Verwendung | Sequenzen | Zuordnungen |
-
-!!! tip "Wann was verwenden?"
-    - **Liste**: Wenn die Reihenfolge wichtig ist oder du über alle Elemente iterieren willst
-    - **Dictionary**: Wenn du Werte über einen Schlüssel nachschlagen willst
 
 ---
 

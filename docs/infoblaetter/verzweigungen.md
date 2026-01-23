@@ -4,13 +4,21 @@
 
 ### Einfache if-Anweisung
 
-```kroki-mermaid
-flowchart LR
-    A[Start] --> B{Bedingung?}
-    B -->|True| C[Block ausführen]
-    B -->|False| D[überspringen]
-    C --> E[Weiter]
-    D --> E
+```kroki-plantuml
+@startuml
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #333
+skinparam DiamondBackgroundColor #ffe6f0
+skinparam DiamondBorderColor #333
+
+start
+if (Bedingung?) then (True)
+  :Block ausführen;
+else (False)
+endif
+:Weiter;
+stop
+@enduml
 ```
 
 ```python
@@ -39,13 +47,22 @@ print("Programm beendet")  # Wird immer ausgeführt
 
 ## if-else
 
-```kroki-mermaid
-flowchart LR
-    A[Start] --> B{Bedingung?}
-    B -->|True| C[if-Block]
-    B -->|False| D[else-Block]
-    C --> E[Weiter]
-    D --> E
+```kroki-plantuml
+@startuml
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #333
+skinparam DiamondBackgroundColor #ffe6f0
+skinparam DiamondBorderColor #333
+
+start
+if (Bedingung?) then (True)
+  #aaffaa:if-Block;
+else (False)
+  #ffaaaa:else-Block;
+endif
+:Weiter;
+stop
+@enduml
 ```
 
 ```python
@@ -70,19 +87,26 @@ else:
 
 ## if-elif-else (Mehrfachverzweigung)
 
-```kroki-mermaid
-flowchart TD
-    A[Start] --> B{Bedingung 1?}
-    B -->|True| C[Block 1]
-    B -->|False| D{Bedingung 2?}
-    D -->|True| E[Block 2]
-    D -->|False| F{Bedingung 3?}
-    F -->|True| G[Block 3]
-    F -->|False| H[else-Block]
-    C --> I[Weiter]
-    E --> I
-    G --> I
-    H --> I
+```kroki-plantuml
+@startuml
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #333
+skinparam DiamondBackgroundColor #ffe6f0
+skinparam DiamondBorderColor #333
+
+start
+if (Bedingung 1?) then (True)
+  :Block 1;
+elseif (Bedingung 2?) then (True)
+  :Block 2;
+elseif (Bedingung 3?) then (True)
+  :Block 3;
+else (False)
+  :else-Block;
+endif
+:Weiter;
+stop
+@enduml
 ```
 
 ```python

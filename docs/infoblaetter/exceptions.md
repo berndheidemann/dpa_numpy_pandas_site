@@ -35,23 +35,30 @@ except ZeroDivisionError:
 
 ### Visualisierung: try-except-else-finally Ablauf
 
-```kroki-mermaid
-flowchart TD
-    A[try-Block starten] --> B{Fehler aufgetreten?}
-    B -->|Ja| C{Passendes except?}
-    C -->|Ja| D[except-Block ausführen]
-    C -->|Nein| E[Fehler weiterreichen]
-    B -->|Nein| F[else-Block ausführen]
-    D --> G[finally-Block ausführen]
-    F --> G
-    E --> G
-    G --> H[Ende]
-    
-    style B fill:#f9f,stroke:#333
-    style C fill:#f9f,stroke:#333
-    style D fill:#faa,stroke:#333
-    style F fill:#afa,stroke:#333
-    style G fill:#aaf,stroke:#333
+```kroki-plantuml
+@startuml
+skinparam ActivityBackgroundColor #f5f5f5
+skinparam ActivityBorderColor #333
+skinparam DiamondBackgroundColor #ffe6f0
+skinparam DiamondBorderColor #333
+
+start
+:try-Block ausführen;
+
+if (Fehler aufgetreten?) then (ja)
+  if (Passendes except?) then (ja)
+    #ffaaaa:except-Block ausführen;
+  else (nein)
+    :Fehler weiterreichen;
+    stop
+  endif
+else (nein)
+  #aaffaa:else-Block ausführen;
+endif
+
+#aaaaff:finally-Block ausführen;
+stop
+@enduml
 ```
 
 ```python

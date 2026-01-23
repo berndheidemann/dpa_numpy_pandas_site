@@ -77,9 +77,11 @@ max.vorstellen()  # Ich bin Max
 
 ## Attribute
 
+Attribute speichern die Daten/Eigenschaften eines Objekts. Python unterscheidet zwei Arten:
+
 ### Instanzattribute
 
-Gehören zu einem bestimmten Objekt:
+Gehören zu einem **bestimmten Objekt** und können für jedes Objekt unterschiedlich sein. Sie werden typischerweise im Konstruktor mit `self.attribut` definiert:
 
 ```python
 class Kunde:
@@ -96,7 +98,7 @@ print(kunde2.name)  # Anna
 
 ### Klassenattribute
 
-Gehören zur Klasse und werden von allen Objekten geteilt:
+Gehören zur **Klasse selbst** und werden von allen Objekten geteilt. Sie werden außerhalb des Konstruktors definiert und sind nützlich für Werte, die für alle Instanzen gleich sind (z.B. Zähler, Konstanten):
 
 ```python
 class Kunde:
@@ -176,6 +178,14 @@ print(kunde)  # Kunde K001: Max
 
 ## Kapselung
 
+**Kapselung** (Encapsulation) bedeutet, interne Daten vor direktem Zugriff zu schützen. Stattdessen erfolgt der Zugriff über kontrollierte Methoden. So kannst du:
+
+- Ungültige Werte verhindern (Validierung)
+- Interne Implementierung ändern, ohne externen Code zu brechen
+- Den Zustand des Objekts konsistent halten
+
+Python erzwingt Kapselung nicht streng, nutzt aber Konventionen:
+
 ### Private Attribute (Konvention)
 
 Ein Unterstrich signalisiert "privat" (nur Konvention, nicht erzwungen):
@@ -205,7 +215,7 @@ print(konto._Konto__pin)  # 1234 (umgehbar, aber unschön)
 
 ### Properties (Getter/Setter)
 
-```python
+Properties bieten eine elegante Möglichkeit, den Zugriff auf Attribute zu kontrollieren, ohne die Syntax zu ändern. Von außen sieht es aus wie ein normales Attribut, aber intern können Validierung oder Berechnungen stattfinden:
 class Temperatur:
     def __init__(self, celsius):
         self._celsius = celsius
@@ -236,6 +246,14 @@ temp.celsius = 25       # Setter
 ---
 
 ## Vererbung
+
+**Vererbung** ermöglicht es, eine neue Klasse auf Basis einer bestehenden zu erstellen. Die neue Klasse (Kindklasse) **erbt** alle Attribute und Methoden der Basisklasse (Elternklasse) und kann diese erweitern oder überschreiben.
+
+**Vorteile:**
+
+- Code-Wiederverwendung (DRY-Prinzip)
+- Gemeinsame Logik in der Basisklasse
+- Spezialisierung in Kindklassen
 
 ### Klassendiagramm: Vererbung
 
@@ -329,7 +347,9 @@ obj.methode()
 
 ## Polymorphismus
 
-Verschiedene Klassen können dieselbe Methode unterschiedlich implementieren:
+**Polymorphismus** (griech. "Vielgestaltigkeit") bedeutet, dass verschiedene Klassen dieselbe Methode unterschiedlich implementieren können. Der aufrufende Code muss nicht wissen, welche konkrete Klasse er verwendet – er ruft einfach die Methode auf und jedes Objekt reagiert auf seine Weise.
+
+Das ist besonders nützlich, wenn du mit einer Sammlung unterschiedlicher Objekte arbeiten willst:
 
 ```python
 class Datenquelle:
@@ -358,6 +378,8 @@ for quelle in quellen:
 ---
 
 ## Komposition
+
+Neben Vererbung ("ist ein") gibt es eine weitere wichtige Beziehung zwischen Klassen: **Komposition** ("hat ein"). Ein Objekt enthält andere Objekte als Attribute und delegiert Aufgaben an sie.
 
 ### Klassendiagramm: Komposition
 
