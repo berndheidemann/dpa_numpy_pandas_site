@@ -2,6 +2,27 @@
 
 ## Grundstruktur
 
+### Visualisierung: if-elif-else Ablauf
+
+```kroki-mermaid
+flowchart TD
+    A[Start] --> B{Bedingung 1?}
+    B -->|True| C[Block 1 ausführen]
+    B -->|False| D{Bedingung 2?}
+    D -->|True| E[Block 2 ausführen]
+    D -->|False| F{Bedingung 3?}
+    F -->|True| G[Block 3 ausführen]
+    F -->|False| H[else-Block ausführen]
+    C --> I[Ende]
+    E --> I
+    G --> I
+    H --> I
+    
+    style B fill:#f9f,stroke:#333
+    style D fill:#f9f,stroke:#333
+    style F fill:#f9f,stroke:#333
+```
+
 ### Einfache if-Anweisung
 
 ```python

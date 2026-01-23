@@ -22,6 +22,51 @@ gemischt = [1, "Text", 3.14, True]
 
 ## Zugriff auf Elemente
 
+### Visualisierung: Indizierung
+
+```kroki-mermaid
+block-beta
+    columns 6
+    
+    block:header:6
+        columns 6
+        h1["Index"]
+        h2["0"]
+        h3["1"]
+        h4["2"]
+        h5["3"]
+        h6[""]
+    end
+    
+    block:data:6
+        columns 6
+        d1["Element"]
+        d2["Laptop"]
+        d3["Mouse"]
+        d4["Keyboard"]
+        d5["Monitor"]
+        d6[""]
+    end
+    
+    block:neg:6
+        columns 6
+        n1["Neg. Index"]
+        n2["-4"]
+        n3["-3"]
+        n4["-2"]
+        n5["-1"]
+        n6[""]
+    end
+    
+    style h2 fill:#afa
+    style h5 fill:#faa
+    style n2 fill:#afa
+    style n5 fill:#faa
+```
+
+- **Grün (Index 0 / -4)**: Erstes Element
+- **Rot (Index 3 / -1)**: Letztes Element
+
 ### Indizierung
 
 Listen sind **0-indiziert** (erstes Element hat Index 0).

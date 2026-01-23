@@ -1,5 +1,19 @@
 # Funktionen
 
+## Visualisierung: Funktionsaufruf
+
+```kroki-mermaid
+sequenceDiagram
+    participant H as Hauptprogramm
+    participant F as Funktion
+    
+    H->>F: Aufruf mit Argumenten
+    Note right of F: Parameter empfangen
+    F->>F: Code ausführen
+    F-->>H: return Ergebnis
+    Note left of H: Rückgabewert verwenden
+```
+
 ## Was sind Funktionen?
 
 Funktionen sind **wiederverwendbare Codeblöcke**, die eine bestimmte Aufgabe erledigen. Sie helfen dabei:

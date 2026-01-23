@@ -33,6 +33,27 @@ except ZeroDivisionError:
 
 ## Grundstruktur
 
+### Visualisierung: try-except-else-finally Ablauf
+
+```kroki-mermaid
+flowchart TD
+    A[try-Block starten] --> B{Fehler aufgetreten?}
+    B -->|Ja| C{Passendes except?}
+    C -->|Ja| D[except-Block ausführen]
+    C -->|Nein| E[Fehler weiterreichen]
+    B -->|Nein| F[else-Block ausführen]
+    D --> G[finally-Block ausführen]
+    F --> G
+    E --> G
+    G --> H[Ende]
+    
+    style B fill:#f9f,stroke:#333
+    style C fill:#f9f,stroke:#333
+    style D fill:#faa,stroke:#333
+    style F fill:#afa,stroke:#333
+    style G fill:#aaf,stroke:#333
+```
+
 ```python
 try:
     # Code, der einen Fehler verursachen könnte

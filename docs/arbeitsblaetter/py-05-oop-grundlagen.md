@@ -212,6 +212,33 @@ Ein Sensor sammelt mehrere Messwerte über die Zeit. Die Klasse soll Statistiken
 
 Eine Messstation enthält mehrere Sensoren. Das nennt man **Komposition** – ein Objekt enthält andere Objekte.
 
+```kroki-plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+class Messstation {
+  - standort: str
+  - sensoren: list
+  + add_sensor(sensor)
+  + get_sensor(name): Sensor
+  + uebersicht()
+}
+
+class Sensor {
+  - name: str
+  - einheit: str
+  - messwerte: list
+  + add_messwert(wert)
+  + durchschnitt(): float
+  + minimum(): float
+  + maximum(): float
+}
+
+Messstation o-- "*" Sensor : enthält >
+@enduml
+```
+
 - [ ] **Erstelle `messstation.py` mit der Klasse `Messstation`:**
 
     **Attribute:**
@@ -269,6 +296,33 @@ Eine Messstation enthält mehrere Sensoren. Das nennt man **Komposition** – ei
 ### Aufgabe 6 – Einfache Vererbung
 
 Eine Klasse kann von einer anderen **erben** und deren Eigenschaften übernehmen.
+
+```kroki-plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+class Sensor {
+  - name: str
+  - messwerte: list
+  + add_messwert(wert)
+  + durchschnitt(): float
+}
+
+class TemperaturSensor {
+  - einheit: str = "°C"
+  + ist_frost(): bool
+}
+
+class DruckSensor {
+  - einheit: str = "hPa"
+  + tendenz(): str
+}
+
+Sensor <|-- TemperaturSensor
+Sensor <|-- DruckSensor
+@enduml
+```
 
 - [ ] **Erstelle `sensoren_erweitert.py`:**
 

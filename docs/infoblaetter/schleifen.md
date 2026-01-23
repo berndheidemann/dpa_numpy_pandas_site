@@ -1,5 +1,29 @@
 # Schleifen
 
+## Visualisierung: while vs. for
+
+```kroki-mermaid
+flowchart LR
+    subgraph while ["while-Schleife"]
+        W1[Start] --> W2{Bedingung?}
+        W2 -->|True| W3[Code ausführen]
+        W3 --> W4[Variable ändern]
+        W4 --> W2
+        W2 -->|False| W5[Ende]
+    end
+    
+    subgraph for ["for-Schleife"]
+        F1[Start] --> F2[Nächstes Element holen]
+        F2 --> F3{Elemente übrig?}
+        F3 -->|Ja| F4[Code ausführen]
+        F4 --> F2
+        F3 -->|Nein| F5[Ende]
+    end
+    
+    style W2 fill:#f9f,stroke:#333
+    style F3 fill:#f9f,stroke:#333
+```
+
 ## while-Schleife
 
 Die `while`-Schleife wiederholt einen Codeblock, **solange** eine Bedingung wahr ist.

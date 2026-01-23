@@ -325,30 +325,41 @@ Oder alles in einer Datei, wenn dir das lieber ist.
 
 ## Klassendiagramm
 
-```
-┌─────────────────────────┐       ┌─────────────────────┐
-│   VerkaufsAnalyse       │       │      Verkauf        │
-├─────────────────────────┤       ├─────────────────────┤
-│ - verkaeufe: list       │──────>│ - datum: str        │
-├─────────────────────────┤   *   │ - produkt: str      │
-│ + hinzufuegen(verkauf)  │       │ - kategorie: str    │
-│ + anzahl(): int         │       │ - menge: int        │
-│ + gesamtumsatz(): float │       │ - preis: float      │
-│ + umsatz_nach_kategorie │       ├─────────────────────┤
-│ + top_verkauf(): Verkauf│       │ + umsatz(): float   │
-│ + lade_csv(pfad)        │       │ + __str__(): str    │
-└─────────────────────────┘       └──────────▲──────────┘
-                                         │
-                                         │ erbt von
-                                         │
-                          ┌─────────────────────┐
-                          │   RabattVerkauf     │
-                          ├─────────────────────┤
-                          │ - rabatt: float     │
-                          ├─────────────────────┤
-                          │ + umsatz(): float   │ «überschreibt»
-                          │ + __str__(): str    │ «überschreibt»
-                          └─────────────────────┘
+```plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+class Verkauf {
+  - datum: str
+  - produkt: str
+  - kategorie: str
+  - menge: int
+  - preis: float
+  + umsatz(): float
+  + __str__(): str
+}
+
+class RabattVerkauf {
+  - rabatt: float
+  + umsatz(): float
+  + __str__(): str
+}
+
+class VerkaufsAnalyse {
+  - verkaeufe: list
+  + hinzufuegen(verkauf)
+  + anzahl(): int
+  + gesamtumsatz(): float
+  + umsatz_nach_kategorie(): dict
+  + top_verkauf(): Verkauf
+  + lade_csv(pfad)
+}
+
+Verkauf <|-- RabattVerkauf
+VerkaufsAnalyse o-- "*" Verkauf
+
+@enduml
 ```
 
 ---

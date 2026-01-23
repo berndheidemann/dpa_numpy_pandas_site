@@ -237,6 +237,35 @@ temp.celsius = 25       # Setter
 
 ## Vererbung
 
+### Klassendiagramm: Vererbung
+
+```kroki-plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+class Fahrzeug {
+  - marke: str
+  - baujahr: int
+  + info(): str
+}
+
+class Auto {
+  - tueren: int
+  + info(): str
+}
+
+class Motorrad {
+  - hubraum: int
+}
+
+Fahrzeug <|-- Auto
+Fahrzeug <|-- Motorrad
+
+note right of Auto : überschreibt info()
+@enduml
+```
+
 Eine Klasse kann von einer anderen erben:
 
 ```python
@@ -329,6 +358,30 @@ for quelle in quellen:
 ---
 
 ## Komposition
+
+### Klassendiagramm: Komposition
+
+```kroki-plantuml
+@startuml
+skinparam classAttributeIconSize 0
+skinparam style strictuml
+
+class Motor {
+  - ps: int
+  + starten()
+}
+
+class Auto {
+  - marke: str
+  - motor: Motor
+  + starten()
+}
+
+Auto *-- Motor : hat einen >
+
+note bottom of Auto : Auto HAT einen Motor\n(Komposition)
+@enduml
+```
 
 "Has-a"-Beziehung: Ein Objekt **enthält** andere Objekte:
 
