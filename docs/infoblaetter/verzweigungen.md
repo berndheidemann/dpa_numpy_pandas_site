@@ -2,28 +2,16 @@
 
 ## Grundstruktur
 
-### Visualisierung: if-elif-else Ablauf
+### Einfache if-Anweisung
 
 ```kroki-mermaid
-flowchart TD
-    A[Start] --> B{Bedingung 1?}
-    B -->|True| C[Block 1 ausführen]
-    B -->|False| D{Bedingung 2?}
-    D -->|True| E[Block 2 ausführen]
-    D -->|False| F{Bedingung 3?}
-    F -->|True| G[Block 3 ausführen]
-    F -->|False| H[else-Block ausführen]
-    C --> I[Ende]
-    E --> I
-    G --> I
-    H --> I
-    
-    style B fill:#f9f,stroke:#333
-    style D fill:#f9f,stroke:#333
-    style F fill:#f9f,stroke:#333
+flowchart LR
+    A[Start] --> B{Bedingung?}
+    B -->|True| C[Block ausführen]
+    B -->|False| D[überspringen]
+    C --> E[Weiter]
+    D --> E
 ```
-
-### Einfache if-Anweisung
 
 ```python
 if bedingung:
@@ -51,6 +39,15 @@ print("Programm beendet")  # Wird immer ausgeführt
 
 ## if-else
 
+```kroki-mermaid
+flowchart LR
+    A[Start] --> B{Bedingung?}
+    B -->|True| C[if-Block]
+    B -->|False| D[else-Block]
+    C --> E[Weiter]
+    D --> E
+```
+
 ```python
 if bedingung:
     # Code wenn True
@@ -72,6 +69,21 @@ else:
 ---
 
 ## if-elif-else (Mehrfachverzweigung)
+
+```kroki-mermaid
+flowchart TD
+    A[Start] --> B{Bedingung 1?}
+    B -->|True| C[Block 1]
+    B -->|False| D{Bedingung 2?}
+    D -->|True| E[Block 2]
+    D -->|False| F{Bedingung 3?}
+    F -->|True| G[Block 3]
+    F -->|False| H[else-Block]
+    C --> I[Weiter]
+    E --> I
+    G --> I
+    H --> I
+```
 
 ```python
 if bedingung1:
