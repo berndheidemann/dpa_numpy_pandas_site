@@ -97,7 +97,24 @@ end note
 
 `iloc` nutzt **numerische Positionen** (0-basiert), wie bei Listen.
 
-![Positions-basiert](../assets/images/pandas/pd-datenzugriff-01.png)
+```kroki-plantuml
+@startuml
+!theme plain
+skinparam backgroundColor transparent
+
+rectangle "iloc - Positions-basiert" #lightyellow {
+    rectangle "df.iloc[0]" as r1
+    rectangle "df.iloc[0:3]" as r2
+    rectangle "df.iloc[0, 2]" as r3
+    rectangle "df.iloc[[0,2], [1,3]]" as r4
+}
+
+note right of r1 : Erste Zeile
+note right of r2 : Zeilen 0, 1, 2
+note right of r3 : Zeile 0, Spalte 2
+note right of r4 : Zeilen 0+2, Spalten 1+3
+@enduml
+```
 
 - [ ] **Einzelne Zeile auswählen:**
     ```python
@@ -150,7 +167,27 @@ end note
 
 `loc` nutzt **Labels** (Spaltennamen und Index-Werte).
 
-![Label-basiert](../assets/images/pandas/pd-datenzugriff-02.png)
+```kroki-plantuml
+@startuml
+!theme plain
+skinparam backgroundColor transparent
+
+rectangle "loc - Label-basiert" #lightblue {
+    rectangle "df.loc[:, 'GPA']" as r1
+    rectangle "df.loc[0:4, 'Name':'GPA']" as r2
+    rectangle "df.loc[[0,5], ['A', 'B']]" as r3
+}
+
+note right of r1 : Alle Zeilen, Spalte 'GPA'
+note right of r2 : Zeilen 0-4, Spalten Name bis GPA
+note right of r3 : Bestimmte Zeilen & Spalten
+
+note bottom
+  **Wichtig:** Bei loc ist das Ende **inklusiv**!
+  loc[0:3] → 4 Zeilen (0, 1, 2, 3)
+end note
+@enduml
+```
 
 - [ ] **Spalten mit Namen auswählen:**
     ```python
@@ -190,7 +227,27 @@ end note
 
 Filtere Daten mit Bedingungen – der mächtigste Zugriffsmodus!
 
-![Boolean Indexing](../assets/images/pandas/pd-boolean-indexing-01.png)
+```kroki-plantuml
+@startuml
+!theme plain
+skinparam backgroundColor transparent
+
+rectangle "Boolean Indexing" #lightgreen {
+    rectangle "1. Bedingung" as step1 {
+        rectangle "df['GPA'] > 3.5" as cond
+    }
+    rectangle "2. Boolean Series" as step2 {
+        rectangle "[True, False, True, ...]" as bool
+    }
+    rectangle "3. Gefilterte Daten" as step3 {
+        rectangle "df[bedingung]" as result
+    }
+}
+
+step1 --> step2 : "ergibt"
+step2 --> step3 : "filtert"
+@enduml
+```
 
 - [ ] **Einfache Bedingung:**
     ```python

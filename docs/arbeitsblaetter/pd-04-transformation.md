@@ -166,7 +166,33 @@ trans --> final
 
 ### Aufgabe 4 – Neue Spalten berechnen
 
-![Transformation](../assets/images/pandas/pd-transform.png)
+```kroki-plantuml
+@startuml
+!theme plain
+skinparam backgroundColor transparent
+
+rectangle "Neue Spalten erstellen" {
+    rectangle "Methoden" as methods {
+        rectangle "Direkte Berechnung" as m1 #lightblue
+        rectangle "np.where()" as m2 #lightgreen
+        rectangle "np.select()" as m3 #lightyellow
+        rectangle "apply()" as m4 #plum
+    }
+    
+    rectangle "Beispiele" as examples {
+        rectangle "df['neu'] = df['a'] + df['b']" as e1
+        rectangle "df['kat'] = np.where(df['x']>5, 'hoch', 'niedrig')" as e2
+        rectangle "df['rating'] = np.select([bed1, bed2], ['A', 'B'], 'C')" as e3
+        rectangle "df['result'] = df.apply(func, axis=1)" as e4
+    }
+}
+
+m1 --> e1
+m2 --> e2
+m3 --> e3
+m4 --> e4
+@enduml
+```
 
 - [ ] **Direkte Berechnung:**
     ```python

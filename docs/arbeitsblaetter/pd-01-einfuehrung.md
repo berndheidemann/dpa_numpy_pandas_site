@@ -156,7 +156,29 @@ df --> series : "enthält"
 
 ### Aufgabe 4 – Spalten auswählen
 
-![Spaltenauswahl](../assets/images/pandas/pd-spaltenauswahl.png)
+```kroki-plantuml
+@startuml
+!theme plain
+skinparam backgroundColor transparent
+
+rectangle "DataFrame" as df {
+    rectangle "Name" as c1 #lightblue
+    rectangle "Alter" as c2 #white
+    rectangle "Stadt" as c3 #white
+    rectangle "Gehalt" as c4 #white
+}
+
+rectangle "df['Name']" as result #lightblue {
+    rectangle "Series" as s
+}
+
+df --> result : "Eine Spalte\n→ Series"
+
+note bottom of result
+  Typ: pandas.Series
+end note
+@enduml
+```
 
 - [ ] **Eine Spalte auswählen (Series):**
     ```python
