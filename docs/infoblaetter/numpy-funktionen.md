@@ -4,23 +4,20 @@
 
 NumPy bietet eine umfangreiche Sammlung von mathematischen und statistischen Funktionen, die auf Arrays angewendet werden können.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-package "NumPy Funktionen" {
-    [Mathematische\nOperationen] as math #lightblue
-    [Statistische\nFunktionen] as stat #lightgreen
-    [Aggregations-\nfunktionen] as agg #lightyellow
-    [Universal\nFunctions] as ufunc #lightpink
-}
-
-note bottom of math : +, -, *, /, sqrt, exp, log
-note bottom of stat : mean, median, std, var
-note bottom of agg : sum, min, max, argmax
-note bottom of ufunc : Vektorisiert, schnell
-@enduml
+```mermaid
+flowchart TB
+    subgraph np["NumPy Funktionen"]
+        direction LR
+        math["<b>Mathematische<br>Operationen</b><br><small>+, -, *, /, sqrt, exp, log</small>"]
+        stat["<b>Statistische<br>Funktionen</b><br><small>mean, median, std, var</small>"]
+        agg["<b>Aggregations-<br>funktionen</b><br><small>sum, min, max, argmax</small>"]
+        ufunc["<b>Universal<br>Functions</b><br><small>Vektorisiert, schnell</small>"]
+    end
+    
+    style math fill:#87CEEB
+    style stat fill:#90EE90
+    style agg fill:#FFFACD
+    style ufunc fill:#FFB6C1
 ```
 
 ---

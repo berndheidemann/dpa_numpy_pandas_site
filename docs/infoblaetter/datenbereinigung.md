@@ -4,26 +4,15 @@
 
 Rohdaten sind selten perfekt. Vor jeder Analyse müssen Daten bereinigt werden:
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Typische Datenprobleme:**
 
-rectangle "Typische Datenprobleme" as title #white
-
-rectangle "Fehlende Werte\n(NaN, None)" as missing #lightcoral
-rectangle "Duplikate\n(doppelte Zeilen)" as dup #lightyellow
-rectangle "Inkonsistente\nDatentypen" as types #lightblue
-rectangle "Ausreißer\n(unplausible Werte)" as outliers #lightpink
-rectangle "Inkonsistente\nSchreibweisen" as format #lightgreen
-
-title --> missing
-title --> dup
-title --> types
-title --> outliers
-title --> format
-@enduml
-```
+| Problem | Beschreibung | Lösung |
+|---------|--------------|--------|
+| Fehlende Werte (NaN, None) | Leere Zellen, keine Eingabe | `dropna()`, `fillna()` |
+| Duplikate | Doppelte Zeilen | `drop_duplicates()` |
+| Inkonsistente Datentypen | Text statt Zahlen | `astype()`, `pd.to_numeric()` |
+| Ausreißer | Unplausible Werte | IQR-Methode, Z-Score |
+| Inkonsistente Schreibweisen | "Berlin" vs "BERLIN" | `.str.strip()`, `.str.lower()` |
 
 ---
 
@@ -112,26 +101,15 @@ df['Wert'] = df['Wert'].bfill()  # Backward fill
 df['Wert'] = df['Wert'].interpolate()
 ```
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Strategien für fehlende Werte:**
 
-rectangle "Strategien für fehlende Werte" as title #white
-
-rectangle "dropna()\nEntfernen" as drop #lightcoral
-rectangle "fillna(wert)\nFester Wert" as fixed #lightblue
-rectangle "fillna(mean())\nStatistik" as stat #lightgreen
-rectangle "ffill()/bfill()\nVor-/Rückwärts" as fill #lightyellow
-rectangle "interpolate()\nInterpolation" as interp #lightpink
-
-title --> drop : "Bei wenigen Fehlern"
-title --> fixed : "Bei kategorisch"
-title --> stat : "Bei numerisch"
-title --> fill : "Bei Zeitreihen"
-title --> interp : "Bei kontinuierlich"
-@enduml
-```
+| Methode | Code | Wann verwenden? |
+|---------|------|----------------|
+| Entfernen | `dropna()` | Bei wenigen Fehlern |
+| Fester Wert | `fillna('Unbekannt')` | Bei kategorialen Daten |
+| Statistik | `fillna(df.mean())` | Bei numerischen Daten |
+| Vorwärts/Rückwärts | `ffill()`, `bfill()` | Bei Zeitreihen |
+| Interpolation | `interpolate()` | Bei kontinuierlichen Daten |
 
 ---
 
@@ -226,24 +204,13 @@ df['Datum'] = pd.to_datetime(df['Datum'], errors='coerce')  # Fehler → NaT
 
 ### Erkennen
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Methoden zur Ausreißererkennung:**
 
-rectangle "Methoden zur Ausreißererkennung" as title #white
-
-rectangle "IQR-Methode\nQ1 - 1.5*IQR\nQ3 + 1.5*IQR" as iqr #lightblue
-
-rectangle "Z-Score\n|z| > 2-3\n(Standardabw.)" as zscore #lightgreen
-
-rectangle "Domain-Wissen\nz.B. Alter 0-120" as domain #lightyellow
-
-title --> iqr : "Robust gegen Ausreißer"
-title --> zscore : "Bei Normalverteilung"
-title --> domain : "Fachspezifisch"
-@enduml
-```
+| Methode | Formel/Grenze | Wann verwenden? |
+|---------|---------------|----------------|
+| IQR-Methode | Q1 - 1.5×IQR bis Q3 + 1.5×IQR | Robust, bei beliebiger Verteilung |
+| Z-Score | \|z\| > 2-3 Standardabweichungen | Bei Normalverteilung |
+| Domain-Wissen | z.B. Alter: 0-120 Jahre | Fachspezifische Grenzen |
 
 #### IQR-Methode (Interquartilsabstand)
 

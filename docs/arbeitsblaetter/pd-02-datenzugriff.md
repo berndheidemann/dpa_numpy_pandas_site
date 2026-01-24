@@ -21,40 +21,18 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Pandas bietet verschiedene Wege, auf Daten zuzugreifen. Die wichtigsten sind `loc` (label-basiert) und `iloc` (positions-basiert).
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Datenzugriff" as main {
-    rectangle "iloc" as iloc #lightcoral {
-        rectangle "Positions-basiert\n[0, 1, 2, ...]" as iloc_desc
-    }
+```mermaid
+flowchart TB
+    subgraph main["Datenzugriff"]
+        direction LR
+        iloc["<b>iloc</b><br>Positions-basiert<br>[0, 1, 2, ...]<br><small>Wie bei NumPy/Listen:<br>numerische Indizes</small>"]
+        loc["<b>loc</b><br>Label-basiert<br>['Name', 'Alter']<br><small>Mit Spaltennamen<br>und Index-Labels</small>"]
+        bool["<b>Boolean</b><br>Bedingungs-basiert<br>[True, False, ...]<br><small>Filtert mit<br>Bedingungen</small>"]
+    end
     
-    rectangle "loc" as loc #lightblue {
-        rectangle "Label-basiert\n['Name', 'Alter']" as loc_desc
-    }
-    
-    rectangle "Boolean" as bool #lightgreen {
-        rectangle "Bedingungs-basiert\n[True, False, ...]" as bool_desc
-    }
-}
-
-note bottom of iloc
-  Wie bei NumPy/Listen:
-  numerische Indizes
-end note
-
-note bottom of loc
-  Mit Spaltennamen
-  und Index-Labels
-end note
-
-note bottom of bool
-  Filtert mit
-  Bedingungen
-end note
-@enduml
+    style iloc fill:#F08080
+    style loc fill:#87CEEB
+    style bool fill:#90EE90
 ```
 
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
@@ -99,25 +77,6 @@ Lade den MBA-Decisions Datensatz und verschaffe dir einen Überblick.
 
 `iloc` nutzt **numerische Positionen** (0-basiert), wie bei Listen.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "iloc - Positions-basiert" #lightyellow {
-    rectangle "df.iloc[0]" as r1
-    rectangle "df.iloc[0:3]" as r2
-    rectangle "df.iloc[0, 2]" as r3
-    rectangle "df.iloc[[0,2], [1,3]]" as r4
-}
-
-note right of r1 : Erste Zeile
-note right of r2 : Zeilen 0, 1, 2
-note right of r3 : Zeile 0, Spalte 2
-note right of r4 : Zeilen 0+2, Spalten 1+3
-@enduml
-```
-
 - [ ] Wähle die **erste Zeile** des DataFrames aus (als Series)
 - [ ] Wähle die erste Zeile als **DataFrame** aus (Tipp: doppelte Klammern)
 - [ ] Wähle die **ersten 3 Zeilen** mit Slicing aus
@@ -142,28 +101,6 @@ note right of r4 : Zeilen 0+2, Spalten 1+3
 ### Aufgabe 3 – loc: Label-basierter Zugriff
 
 `loc` nutzt **Labels** (Spaltennamen und Index-Werte).
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "loc - Label-basiert" #lightblue {
-    rectangle "df.loc[:, 'GPA']" as r1
-    rectangle "df.loc[0:4, 'Name':'GPA']" as r2
-    rectangle "df.loc[[0,5], ['A', 'B']]" as r3
-}
-
-note right of r1 : Alle Zeilen, Spalte 'GPA'
-note right of r2 : Zeilen 0-4, Spalten Name bis GPA
-note right of r3 : Bestimmte Zeilen & Spalten
-
-note bottom
-  **Wichtig:** Bei loc ist das Ende **inklusiv**!
-  loc[0:3] → 4 Zeilen (0, 1, 2, 3)
-end note
-@enduml
-```
 
 - [ ] Wähle die Spalte `GPA` für **alle Zeilen** aus und zeige die ersten 5 Werte
 - [ ] Wähle die Spalten `Gender`, `GPA` und `Decision` für alle Zeilen aus

@@ -9,27 +9,25 @@
 - Werkzeuge für lineare Algebra
 - Zufallszahlengeneratoren
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-package "Data Science Stack" {
-    [NumPy] as numpy #lightblue
-    [Pandas] as pandas #lightgreen
-    [Matplotlib] as plt #lightyellow
-    [Scikit-learn] as sklearn #lightpink
-}
-
-numpy <-- pandas : basiert auf
-numpy <-- plt : nutzt
-numpy <-- sklearn : nutzt
-
-note bottom of numpy
-  Grundlage für alle
-  Data-Science-Bibliotheken
-end note
-@enduml
+```mermaid
+flowchart BT
+    numpy["<b>NumPy</b><br><small>Grundlage für alle<br>Data-Science-Bibliotheken</small>"]
+    pandas["<b>Pandas</b>"]
+    plt["<b>Matplotlib</b>"]
+    sklearn["<b>Scikit-learn</b>"]
+    
+    numpy --> pandas
+    numpy --> plt
+    numpy --> sklearn
+    
+    pandas -.- |basiert auf| numpy
+    plt -.- |nutzt| numpy
+    sklearn -.- |nutzt| numpy
+    
+    style numpy fill:#87CEEB
+    style pandas fill:#90EE90
+    style plt fill:#FFFACD
+    style sklearn fill:#FFB6C1
 ```
 
 ---
@@ -121,30 +119,14 @@ np.random.seed(42)
 
 ## Array-Eigenschaften
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-class "ndarray" {
-  shape : (3, 4)
-  dtype : int64
-  ndim : 2
-  size : 12
-  itemsize : 8
-  nbytes : 96
-}
-
-note right of "ndarray"
-  shape: Dimensionen
-  dtype: Datentyp
-  ndim: Anzahl Achsen
-  size: Gesamtzahl Elemente
-  itemsize: Bytes pro Element
-  nbytes: Gesamtspeicher
-end note
-@enduml
-```
+| Eigenschaft | Beispielwert | Beschreibung |
+|-------------|--------------|---------------|
+| `shape` | `(3, 4)` | Dimensionen (Zeilen, Spalten) |
+| `dtype` | `int64` | Datentyp der Elemente |
+| `ndim` | `2` | Anzahl Achsen/Dimensionen |
+| `size` | `12` | Gesamtzahl Elemente |
+| `itemsize` | `8` | Bytes pro Element |
+| `nbytes` | `96` | Gesamtspeicher in Bytes |
 
 ```python
 arr = np.array([[1, 2, 3, 4],
@@ -189,30 +171,6 @@ print(arr_int)  # [1 2 3]
 ---
 
 ## Reshaping (Form ändern)
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Original\n[1, 2, 3, 4, 5, 6]\nshape: (6,)" as orig #lightblue
-
-rectangle "reshape(2, 3)\n[[1, 2, 3],\n [4, 5, 6]]\nshape: (2, 3)" as r1 #lightgreen
-
-rectangle "reshape(3, 2)\n[[1, 2],\n [3, 4],\n [5, 6]]\nshape: (3, 2)" as r2 #lightyellow
-
-rectangle "reshape(6, 1)\n[[1], [2], [3],\n [4], [5], [6]]\nshape: (6, 1)" as r3 #lightpink
-
-orig --> r1
-orig --> r2
-orig --> r3
-
-note bottom
-  Die Gesamtzahl der
-  Elemente bleibt gleich!
-end note
-@enduml
-```
 
 ```python
 arr = np.arange(1, 13)  # [1, 2, 3, ..., 12]

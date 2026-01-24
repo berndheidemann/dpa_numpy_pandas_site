@@ -25,27 +25,8 @@ Echte Daten sind selten perfekt. Transformation und Bereinigung sind oft die zei
 
 **Für dieses Arbeitsblatt verwendest du den MBA-Datensatz (`mba_decisions.csv`).**
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Daten-Pipeline" {
-    rectangle "Rohdaten" as raw #lightcoral
-    rectangle "Bereinigung" as clean #lightyellow {
-        rectangle "• NaN behandeln\n• Duplikate entfernen\n• Ausreißer prüfen" as c
-    }
-    rectangle "Transformation" as trans #lightblue {
-        rectangle "• Spalten berechnen\n• Werte umkodieren\n• Typen konvertieren" as t
-    }
-    rectangle "Saubere Daten" as final #lightgreen
-}
-
-raw --> clean
-clean --> trans
-trans --> final
-@enduml
-```
+!!! info "Daten-Pipeline"
+    **Rohdaten** → **Bereinigung** (NaN, Duplikate, Ausreißer) → **Transformation** (berechnen, umkodieren, konvertieren) → **Saubere Daten**
 
 ---
 

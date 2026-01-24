@@ -18,9 +18,18 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 ## Präsentation
 
-<div class="pdf-container" style="width: 100%; aspect-ratio: 16/9; margin-bottom: 1rem;">
-    <iframe src="../assets/files/NumPy_Einfuehrung.pdf" style="width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px;"></iframe>
+<div class="pdf-container" style="width: 100%; margin-bottom: 1rem;">
+    <object data="../assets/files/NumPy_Einfuehrung.pdf" type="application/pdf" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 4px;">
+        <p style="padding: 2rem; text-align: center; background: #f5f5f5; border-radius: 4px;">
+            PDF kann nicht im Browser angezeigt werden.<br><br>
+            <a href="../assets/files/NumPy_Einfuehrung.pdf" class="md-button md-button--primary" download>
+                📥 PDF herunterladen
+            </a>
+        </p>
+    </object>
 </div>
+
+[:material-download: PDF herunterladen](../assets/files/NumPy_Einfuehrung.pdf){ .md-button .md-button--primary download }
 
 ---
 

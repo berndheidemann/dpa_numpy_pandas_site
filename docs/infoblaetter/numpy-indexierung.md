@@ -4,25 +4,6 @@
 
 Indexierung und Slicing sind fundamentale Techniken, um auf Teile von Arrays zuzugreifen. NumPy erweitert die Python-Konzepte um mächtige Funktionen für mehrdimensionale Arrays.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Zugriffsmethoden" as title #white
-
-rectangle "Einfache\nIndexierung\narr[2]" as idx #lightblue
-rectangle "Slicing\narr[1:4]" as slice #lightgreen
-rectangle "Fancy\nIndexing\narr[[0,2,4]]" as fancy #lightyellow
-rectangle "Boolean\nIndexing\narr[arr > 5]" as bool #lightpink
-
-title --> idx
-title --> slice
-title --> fancy
-title --> bool
-@enduml
-```
-
 ---
 
 ## 1D-Indexierung
@@ -70,22 +51,15 @@ print(arr[::-1])    # [90 80 70 60 50 40 30 20 10] - Umgekehrt
 print(arr[-3:])     # [70 80 90] - Letzte 3 Elemente
 ```
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Slicing-Beispiele visualisiert:**
 
-rectangle "arr = [10, 20, 30, 40, 50, 60, 70, 80, 90]" as orig #lightgray
-
-rectangle "arr[2:6]\n[30, 40, 50, 60]" as s1 #lightblue
-rectangle "arr[::2]\n[10, 30, 50, 70, 90]" as s2 #lightgreen
-rectangle "arr[::-1]\n[90, 80, ..., 10]" as s3 #lightyellow
-
-orig --> s1 : "Index 2 bis 5"
-orig --> s2 : "Jedes 2. Element"
-orig --> s3 : "Umgekehrt"
-@enduml
-```
+| Operation | Bedeutung | Ergebnis |
+|-----------|-----------|----------|
+| `a[1]` | Element an Index 1 | `2` |
+| `a[2:4]` | Index 2 bis 3 (Stop exklusiv!) | `[3, 4]` |
+| `a[-2:]` | Letzte 2 Elemente | `[4, 5]` |
+| `a[::2]` | Jedes 2. Element | `[1, 3, 5]` |
+| `a[[1,3,4]]` | Fancy Indexing | `[2, 4, 5]` |
 
 ---
 
@@ -139,33 +113,14 @@ print(matrix[::2, :])
 #  [ 9 10 11 12]]
 ```
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**2D-Slicing Kurzreferenz:**
 
-rectangle "matrix[0:2, 1:3]" as title #white
-
-map "Original Matrix" as orig {
-  [0,0] => 1
-  [0,1] => **2**
-  [0,2] => **3**
-  [0,3] => 4
-  [1,0] => 5
-  [1,1] => **6**
-  [1,2] => **7**
-  [1,3] => 8
-  [2,0] => 9
-  [2,1] => 10
-  [2,2] => 11
-  [2,3] => 12
-}
-
-rectangle "Ergebnis:\n[[2, 3],\n [6, 7]]" as result #lightgreen
-
-orig --> result : "Zeilen 0-1\nSpalten 1-2"
-@enduml
-```
+| Operation | Beschreibung | Ergebnis-Shape |
+|-----------|--------------|----------------|
+| `matrix[0]` | Erste Zeile | (4,) |
+| `matrix[:, 0]` | Erste Spalte | (3,) |
+| `matrix[0:2, 1:3]` | Zeilen 0-1, Spalten 1-2 | (2, 2) |
+| `matrix[::2, :]` | Jede 2. Zeile | (2, 4) |
 
 ---
 
@@ -211,25 +166,6 @@ print(matrix[zeilen, spalten])  # Diagonale: [1 5 9]
 Die mächtigste Indexierungsmethode: Auswahl basierend auf Bedingungen.
 
 ### Grundprinzip
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "1. Bedingung erstellen" as step1 #lightblue
-rectangle "2. Boolean-Maske erhalten" as step2 #lightgreen
-rectangle "3. Mit Maske filtern" as step3 #lightyellow
-
-step1 --> step2 : "arr > 50"
-step2 --> step3 : "[F, F, F, F, F, T, T, T, T]"
-
-note bottom of step3
-  Nur True-Positionen
-  werden zurückgegeben
-end note
-@enduml
-```
 
 ```python
 arr = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
@@ -313,30 +249,13 @@ print(original)  # [1 2 3 4 5] - Original unverändert!
 print(kopie)     # [99  3  4]
 ```
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "original = [1, 2, 3, 4, 5]" as orig #lightblue
-
-rectangle "view = original[1:4]\n(Zeigt auf gleiche Daten)" as view #lightyellow
-rectangle "kopie = original[1:4].copy()\n(Eigene Daten)" as copy #lightgreen
-
-orig --> view : "View (keine Kopie)"
-orig --> copy : "Echte Kopie"
-
-note bottom of view
-  Änderungen an view
-  ändern auch original!
-end note
-
-note bottom of copy
-  Änderungen an kopie
-  lassen original unverändert
-end note
-@enduml
-```
+!!! danger "Merke: Slicing erstellt einen View!"
+    ```python
+    a = np.array([1, 2, 3, 4, 5])
+    view = a[2:4]      # view zeigt auf a[2] und a[3]
+    view[:] = 0        # Ändert auch a!
+    print(a)           # [1, 2, 0, 0, 5] ← Original geändert!
+    ```
 
 ### Wann View, wann Copy?
 

@@ -4,27 +4,10 @@
 
 Broadcasting ist ein mächtiges Konzept, das es ermöglicht, arithmetische Operationen auf Arrays **unterschiedlicher Größe** durchzuführen. NumPy "erweitert" dabei automatisch das kleinere Array, um es kompatibel zu machen.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Ohne Broadcasting" as without #lightcoral
-rectangle "Mit Broadcasting" as with #lightgreen
-
-note bottom of without
-  Normalerweise müssen Arrays
-  die gleiche Form haben
-  für arithmetische Operationen
-end note
-
-note bottom of with
-  Broadcasting "dehnt" kleinere
-  Arrays virtuell aus, ohne
-  Speicher zu kopieren
-end note
-@enduml
-```
+!!! info "Broadcasting vs. Normale Operationen"
+    **Ohne Broadcasting:** Arrays müssen die gleiche Form haben für arithmetische Operationen.
+    
+    **Mit Broadcasting:** NumPy "dehnt" kleinere Arrays virtuell aus – ohne zusätzlichen Speicher zu verbrauchen!
 
 ---
 
@@ -77,22 +60,13 @@ Zwei Dimensionen sind kompatibel, wenn sie:
 
 Wenn ein Array weniger Dimensionen hat, wird es links mit 1en aufgefüllt.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Broadcasting-Regeln:**
 
-rectangle "Broadcasting-Regeln" as title #white
-
-rectangle "Form-Vergleich\n(von rechts nach links)" as rule1 #lightblue
-rectangle "Kompatibel wenn:\n• Dimensionen gleich\n• Eine Dimension ist 1" as rule2 #lightgreen
-rectangle "Fehlende Dimensionen\nwerden mit 1 aufgefüllt" as rule3 #lightyellow
-
-title --> rule1
-title --> rule2
-title --> rule3
-@enduml
-```
+| Regel | Beschreibung |
+|-------|-------------|
+| 1. Form-Vergleich | Dimensionen werden von **rechts nach links** verglichen |
+| 2. Kompatibilität | Zwei Dimensionen sind kompatibel, wenn sie **gleich** sind oder eine davon **1** ist |
+| 3. Fehlende Dimensionen | Werden links mit **1** aufgefüllt |
 
 ### Beispiele für kompatible Formen
 
@@ -196,28 +170,47 @@ print(ergebnis)
 #  [13 23 33]]
 ```
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+```mermaid
+flowchart TB
+    subgraph input[" "]
+        direction LR
+        col["<b>Spalte (3,1)</b><br>[[1]<br> [2]<br> [3]]"]
+        row["<b>Zeile (1,3)</b><br>[10, 20, 30]"]
+    end
+    
+    subgraph broadcast["Broadcasting zu (3,3)"]
+        direction LR
+        col_exp["[[1,1,1]<br> [2,2,2]<br> [3,3,3]]"]
+        plus["+"]
+        row_exp["[[10,20,30]<br> [10,20,30]<br> [10,20,30]]"]
+    end
+    
+    result["<b>Ergebnis (3,3)</b><br>[[11,21,31]<br> [12,22,32]<br> [13,23,33]]"]
+    
+    col --> col_exp
+    row --> row_exp
+    col_exp --> plus
+    row_exp --> plus
+    plus --> result
+    
+    style col fill:#87CEEB
+    style row fill:#90EE90
+    style col_exp fill:#87CEEB
+    style row_exp fill:#90EE90
+    style result fill:#FFB6C1
+    style plus fill:#FFFACD
+```
 
-rectangle "Spalte (3,1)" as col #lightblue
-rectangle "[[1],\n [2],\n [3]]" as col_val #lightblue
+```python
+# Code-Beispiel
+spalte = np.array([[1], [2], [3]])   # Shape: (3,1)
+zeile = np.array([10, 20, 30])        # Shape: (3,) → wird zu (1,3)
 
-rectangle "Zeile (1,3)" as row #lightgreen  
-rectangle "[10, 20, 30]" as row_val #lightgreen
-
-rectangle "Broadcast\nzu (3,3)" as broadcast #lightyellow
-
-rectangle "[[1,1,1],   +  [[10,20,30],\n [2,2,2],      [10,20,30],\n [3,3,3]]      [10,20,30]]" as expanded #white
-
-rectangle "Ergebnis (3,3)\n[[11,21,31],\n [12,22,32],\n [13,23,33]]" as result #lightpink
-
-col --> broadcast
-row --> broadcast
-broadcast --> expanded
-expanded --> result
-@enduml
+ergebnis = spalte + zeile             # Broadcasting: (3,1) + (1,3) → (3,3)
+print(ergebnis)
+# [[11 21 31]
+#  [12 22 32]
+#  [13 23 33]]
 ```
 
 ---

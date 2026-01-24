@@ -121,32 +121,6 @@ Die folgenden Datensätze werden in den Übungen verwendet:
 
 ## 🚀 Empfohlener Lernpfad
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-|NumPy|
-start
-:NP-01 Einführung;
-:NP-02 Indexierung;
-:NP-03 Statistik;
-:NP-04 Filtern;
-:NP-05 Fallstudie;
-
-|Pandas|
-:PD-01 Einführung;
-:PD-02 Datenzugriff;
-:PD-03 Aggregation;
-:PD-04 Transformation;
-:PD-05 Fallstudie;
-
-|Projekt|
-:Abschlussprojekt;
-stop
-@enduml
-```
-
 1. **Woche 1-2**: NumPy Grundlagen (NP-01 bis NP-03)
 2. **Woche 3**: NumPy Vertiefung (NP-04, NP-05)
 3. **Woche 4-5**: Pandas Grundlagen (PD-01 bis PD-03)

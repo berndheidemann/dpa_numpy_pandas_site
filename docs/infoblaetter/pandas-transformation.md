@@ -385,24 +385,14 @@ df['Alter_2024'] = 2024 - df['Geburtsjahr']
 
 ## Performance-Tipps
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Performance-Ranking (schnell → langsam):**
 
-rectangle "Performance (schnell → langsam)" as title #white
-
-rectangle "1. Vektorisiert\ndf['a'] + df['b']" as vec #lightgreen
-rectangle "2. map()\nmit Dictionary" as map #lightblue
-rectangle "3. apply()\nmit Lambda" as apply #lightyellow
-rectangle "4. for-Schleife\n(VERMEIDEN!)" as loop #lightcoral
-
-title --> vec
-vec --> map
-map --> apply
-apply --> loop
-@enduml
-```
+| Rang | Methode | Beispiel | Geschwindigkeit |
+|------|---------|----------|----------------|
+| 1 | Vektorisiert | `df['a'] + df['b']` | ⚡ Sehr schnell |
+| 2 | `map()` | `df['col'].map(dict)` | 🚀 Schnell |
+| 3 | `apply()` | `df.apply(lambda x: ...)` | 🐢 Langsam |
+| 4 | for-Schleife | `for i in range(len(df))` | 🐌 **VERMEIDEN!** |
 
 !!! tip "Performance-Regeln"
     1. **Vektorisierte Operationen** bevorzugen

@@ -23,28 +23,20 @@ Pandas ist **die** Python-Bibliothek für Datenanalyse. Sie baut auf NumPy auf u
 
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+**Pandas Datenstrukturen:**
 
-package "Pandas Datenstrukturen" {
-    rectangle "DataFrame" as df #lightblue {
-        rectangle "Zeilen × Spalten\n(wie Excel-Tabelle)" as df_desc
-    }
-    
-    rectangle "Series" as series #lightgreen {
-        rectangle "Eine Spalte\n(wie Liste mit Index)" as series_desc
-    }
-}
+| Struktur | Beschreibung | Analogie |
+|----------|--------------|----------|
+| **DataFrame** | Tabelle mit Zeilen × Spalten | Excel-Tabelle |
+| **Series** | Eine einzelne Spalte mit Index | Liste mit Beschriftung |
 
-note right of df
-  Hauptstruktur für 
-  Datenanalyse
-end note
-
-df --> series : "enthält"
-@enduml
+```python
+# Ein DataFrame enthält mehrere Series (Spalten)
+df = pd.DataFrame({
+    'Name': ['Max', 'Anna'],      # ← Series
+    'Alter': [25, 30],            # ← Series
+    'Stadt': ['Berlin', 'München'] # ← Series
+})
 ```
 
 ---
@@ -113,28 +105,22 @@ Untersuche die Struktur und den Inhalt des DataFrames im Detail.
 
 Lerne den Unterschied zwischen Series und DataFrame bei der Spaltenauswahl.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "DataFrame" as df {
-    rectangle "Name" as c1 #lightblue
-    rectangle "Alter" as c2 #white
-    rectangle "Stadt" as c3 #white
-    rectangle "Gehalt" as c4 #white
-}
-
-rectangle "df['Name']" as result #lightblue {
-    rectangle "Series" as s
-}
-
-df --> result : "Eine Spalte\n→ Series"
-
-note bottom of result
-  Typ: pandas.Series
-end note
-@enduml
+```mermaid
+flowchart LR
+    subgraph df["DataFrame"]
+        direction LR
+        c1["Name"]
+        c2["Alter"]
+        c3["Stadt"]
+        c4["Gehalt"]
+    end
+    
+    result["<b>df['Name']</b><br>Typ: pandas.Series"]
+    
+    c1 --> |"Eine Spalte → Series"| result
+    
+    style c1 fill:#87CEEB
+    style result fill:#87CEEB
 ```
 
 - [ ] Wähle die Spalte `Name` aus und gib den Datentyp (`type()`) des Ergebnisses aus

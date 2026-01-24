@@ -4,28 +4,11 @@
 
 Aggregation und Gruppierung sind Kernfunktionen für Datenanalyse: Daten zusammenfassen, Muster erkennen und Kennzahlen berechnen.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+Das zentrale Prinzip ist **Split-Apply-Combine**:
 
-rectangle "Rohdaten" as raw #lightgray
-rectangle "groupby()" as gb #lightblue
-rectangle "Gruppierte\nDaten" as grouped #lightgreen
-rectangle "Aggregation\n(sum, mean, ...)" as agg #lightyellow
-rectangle "Ergebnis" as result #lightpink
-
-raw --> gb : "Spalte(n) wählen"
-gb --> grouped : "Split"
-grouped --> agg : "Apply"
-agg --> result : "Combine"
-
-note bottom of grouped
-  Split-Apply-Combine
-  Prinzip
-end note
-@enduml
-```
+1. **Split**: Daten nach Spalte(n) gruppieren
+2. **Apply**: Funktion auf jede Gruppe anwenden (sum, mean, count, ...)
+3. **Combine**: Ergebnisse zu neuem DataFrame zusammenführen
 
 ---
 

@@ -21,29 +21,9 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Gruppieren und Aggregieren folgt dem **Split-Apply-Combine** Paradigma:
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Split-Apply-Combine" {
-    rectangle "1. Split" as split #lightcoral {
-        rectangle "Teile Daten\nnach Gruppen" as s
-    }
-    
-    rectangle "2. Apply" as apply #lightyellow {
-        rectangle "Wende Funktion\nauf jede Gruppe an" as a
-    }
-    
-    rectangle "3. Combine" as combine #lightgreen {
-        rectangle "Füge Ergebnisse\nzusammen" as c
-    }
-}
-
-split --> apply
-apply --> combine
-@enduml
-```
+1. **Split** – Teile Daten nach Gruppen auf
+2. **Apply** – Wende eine Funktion auf jede Gruppe an
+3. **Combine** – Füge die Ergebnisse zusammen
 
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
