@@ -49,432 +49,235 @@ step3 --> step4
 @enduml
 ```
 
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
+
 ---
 
 ## Aufgaben
 
 ### Aufgabe 1 – Daten laden und ersten Überblick gewinnen
 
-- [ ] **Lade den Datensatz:**
-    ```python
-    import pandas as pd
-    import numpy as np
-    
-    # Datensatz laden
-    sharks = pd.read_csv('../assets/files/global_shark_attacks.csv',
-                         encoding='latin-1')  # Encoding für Sonderzeichen
-    
-    print(f"Shape: {sharks.shape}")
-    print(f"Spalten: {sharks.columns.tolist()}")
-    ```
+Lade den Shark-Attacks-Datensatz und verschaffe dir einen Überblick.
 
-- [ ] **Erste Zeilen anschauen:**
-    ```python
-    print("\nErste 3 Zeilen:")
-    print(sharks.head(3).T)  # Transponiert für bessere Lesbarkeit
-    ```
+- [ ] Lade den Datensatz `global_shark_attacks.csv` – beachte das Encoding für Sonderzeichen
+- [ ] Gib Shape und Spaltennamen aus
+- [ ] Zeige die ersten Zeilen an (transponiert für bessere Lesbarkeit)
+- [ ] Analysiere Datentypen und fehlende Werte – wie viele NaN-Werte hat jede Spalte?
 
-- [ ] **Datentypen und fehlende Werte:**
-    ```python
-    print("\n=== Datensatz-Info ===")
-    sharks.info()
-    
-    print("\n=== Fehlende Werte (Top 10) ===")
-    missing = sharks.isnull().sum().sort_values(ascending=False)
-    print(missing.head(10))
-    print(f"\nGesamt fehlende Werte: {missing.sum()}")
-    ```
+!!! tip "Hilfe"
+    - Laden mit Encoding: `pd.read_csv(pfad, encoding='latin-1')`
+    - Transponierte Ansicht: `df.head().T`
+    - Fehlende Werte: `df.isnull().sum().sort_values(ascending=False)`
+    - Überblick: `df.info()`
+
+!!! question "Reflexionsfrage"
+    Welche Spalten haben besonders viele fehlende Werte? Woran könnte das liegen?
 
 ---
 
 ### Aufgabe 2 – Relevante Spalten auswählen
 
-Der Datensatz hat viele Spalten. Wähle die wichtigsten aus.
+Der Datensatz hat viele Spalten. Wähle die wichtigsten für die Analyse aus.
 
-- [ ] **Spalten identifizieren:**
-    ```python
-    # Typische wichtige Spalten
-    # (Namen können je nach Datensatz-Version variieren!)
-    print("Alle Spaltennamen:")
-    for i, col in enumerate(sharks.columns):
-        print(f"  {i}: {col}")
-    ```
+- [ ] Liste alle Spaltennamen nummeriert auf
+- [ ] Identifiziere relevante Spalten wie: Year, Country, Area, Location, Activity, Name, Sex, Age, Injury, Fatal (Y/N), Time, Species
+- [ ] Erstelle einen Arbeits-DataFrame, der nur diese Spalten enthält (verwende `.copy()`)
+- [ ] Prüfe, welche Spalten tatsächlich im Datensatz vorhanden sind
 
-- [ ] **Arbeits-DataFrame erstellen:**
-    ```python
-    # Relevante Spalten auswählen (Namen anpassen falls nötig!)
-    # Typische Spalten: Year, Country, Area, Activity, Name, Sex, Age, Injury, Fatal
-    
-    # Versuche gängige Spaltennamen
-    possible_cols = ['Year', 'Country', 'Area', 'Location', 'Activity', 
-                     'Name', 'Sex', 'Age', 'Injury', 'Fatal (Y/N)', 
-                     'Time', 'Species']
-    
-    # Nur vorhandene Spalten auswählen
-    use_cols = [c for c in possible_cols if c in sharks.columns]
-    print(f"Gefundene Spalten: {use_cols}")
-    
-    df = sharks[use_cols].copy()
-    print(f"\nArbeits-DataFrame Shape: {df.shape}")
-    ```
+!!! tip "Hilfe"
+    - Spalten auflisten: `df.columns.tolist()` oder mit enumerate durchlaufen
+    - Spalten filtern: `df[liste_der_spalten].copy()`
+    - Spalte prüfen: `'Spaltenname' in df.columns`
 
 ---
 
 ### Aufgabe 3 – Daten bereinigen
 
-- [ ] **Jahr bereinigen:**
-    ```python
-    # Jahr sollte numerisch sein
-    print("=== Jahr bereinigen ===")
-    print(f"Datentyp vorher: {df['Year'].dtype}")
-    print(f"Beispielwerte: {df['Year'].head(10).tolist()}")
-    
-    # Zu numerisch konvertieren (Fehler werden NaN)
-    df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
-    
-    # Unrealistische Jahre entfernen (vor 1800, nach aktuellem Jahr)
-    import datetime
-    current_year = datetime.datetime.now().year
-    df = df[(df['Year'] >= 1800) & (df['Year'] <= current_year)]
-    
-    print(f"Nach Bereinigung: {df['Year'].min():.0f} - {df['Year'].max():.0f}")
-    print(f"Anzahl nach Filter: {len(df)}")
-    ```
+Reale Daten sind "messy" – standardisiere und bereinige die wichtigsten Spalten.
 
-- [ ] **Fatal (tödlich) bereinigen:**
-    ```python
-    print("\n=== Fatal bereinigen ===")
-    if 'Fatal (Y/N)' in df.columns:
-        print("Werte vorher:")
-        print(df['Fatal (Y/N)'].value_counts(dropna=False))
-        
-        # Standardisieren
-        df['Fatal'] = df['Fatal (Y/N)'].str.upper().str.strip()
-        df['Fatal'] = df['Fatal'].map({'Y': True, 'N': False})
-        
-        print("\nWerte nachher:")
-        print(df['Fatal'].value_counts(dropna=False))
-    ```
+**Jahr bereinigen:**
 
-- [ ] **Alter bereinigen:**
-    ```python
-    print("\n=== Alter bereinigen ===")
-    print(f"Datentyp: {df['Age'].dtype}")
-    print(f"Beispiele: {df['Age'].dropna().head(10).tolist()}")
-    
-    # Zu numerisch konvertieren
-    df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
-    
-    # Unrealistische Alter entfernen
-    df.loc[(df['Age'] < 0) | (df['Age'] > 100), 'Age'] = np.nan
-    
-    print(f"\nAlter-Statistik:")
-    print(df['Age'].describe())
-    ```
+- [ ] Prüfe den Datentyp der Jahr-Spalte
+- [ ] Konvertiere zu numerisch – ungültige Werte sollen NaN werden
+- [ ] Entferne unrealistische Jahre (vor 1800 oder in der Zukunft)
+- [ ] Gib den gültigen Zeitraum und die Anzahl nach Filterung aus
 
-- [ ] **Geschlecht standardisieren:**
-    ```python
-    print("\n=== Geschlecht bereinigen ===")
-    print("Werte vorher:")
-    print(df['Sex'].value_counts(dropna=False))
-    
-    df['Sex'] = df['Sex'].str.upper().str.strip()
-    df['Sex'] = df['Sex'].map({'M': 'Male', 'F': 'Female'})
-    
-    print("\nWerte nachher:")
-    print(df['Sex'].value_counts(dropna=False))
-    ```
+!!! tip "Hilfe"
+    - Numerisch konvertieren: `pd.to_numeric(df['Year'], errors='coerce')`
+    - Aktuelles Jahr: `datetime.datetime.now().year`
+    - Filter: `df[(df['Year'] >= 1800) & (df['Year'] <= aktuelles_jahr)]`
+
+**Fatal (tödlich) bereinigen:**
+
+- [ ] Zeige die vorhandenen Werte in der Fatal-Spalte mit `value_counts(dropna=False)`
+- [ ] Standardisiere auf Großbuchstaben und entferne Leerzeichen
+- [ ] Mappe 'Y' → True und 'N' → False
+- [ ] Prüfe das Ergebnis
+
+!!! tip "Hilfe"
+    - Standardisieren: `df['Spalte'].str.upper().str.strip()`
+    - Mapping: `df['Spalte'].map({'Y': True, 'N': False})`
+
+**Alter bereinigen:**
+
+- [ ] Konvertiere das Alter zu numerisch
+- [ ] Setze unrealistische Werte (< 0 oder > 100) auf NaN
+- [ ] Berechne deskriptive Statistiken für das bereinigte Alter
+
+!!! tip "Hilfe"
+    - Bedingte Zuweisung: `df.loc[bedingung, 'Spalte'] = np.nan`
+
+**Geschlecht standardisieren:**
+
+- [ ] Zeige die vorhandenen Geschlechts-Werte
+- [ ] Standardisiere auf 'Male' und 'Female'
+- [ ] Prüfe das Ergebnis
 
 ---
 
 ### Aufgabe 4 – Deskriptive Statistik
 
-- [ ] **Grundstatistiken:**
-    ```python
-    print("=== Grundstatistiken ===")
-    print(f"Anzahl Angriffe: {len(df)}")
-    print(f"Zeitraum: {df['Year'].min():.0f} - {df['Year'].max():.0f}")
-    print(f"Anzahl Länder: {df['Country'].nunique()}")
-    ```
+Berechne grundlegende Statistiken zum Datensatz.
 
-- [ ] **Top Länder:**
-    ```python
-    print("\n=== Top 10 Länder ===")
-    top_countries = df['Country'].value_counts().head(10)
-    print(top_countries)
-    
-    # Prozentsatz
-    print(f"\nAnteil Top 10: {top_countries.sum() / len(df) * 100:.1f}%")
-    ```
+- [ ] Ermittle: Gesamtanzahl Angriffe, Zeitraum (frühestes und spätestes Jahr), Anzahl verschiedener Länder
+- [ ] Erstelle eine Top-10-Liste der Länder nach Anzahl der Angriffe
+- [ ] Berechne, welchen Anteil die Top-10-Länder am Gesamtdatensatz haben
+- [ ] Analysiere die häufigsten Aktivitäten (Top 10)
+- [ ] Erstelle Altersgruppen (0-10, 11-20, 21-30, usw.) und zähle die Angriffe pro Gruppe
 
-- [ ] **Häufigste Aktivitäten:**
-    ```python
-    print("\n=== Top 10 Aktivitäten ===")
-    activities = df['Activity'].value_counts().head(10)
-    print(activities)
-    ```
-
-- [ ] **Altersverteilung:**
-    ```python
-    print("\n=== Altersverteilung ===")
-    print(df['Age'].describe())
-    
-    # Altersgruppen
-    df['Age_Group'] = pd.cut(
-        df['Age'],
-        bins=[0, 10, 20, 30, 40, 50, 60, 100],
-        labels=['0-10', '11-20', '21-30', '31-40', '41-50', '51-60', '60+']
-    )
-    
-    print("\nNach Altersgruppe:")
-    print(df['Age_Group'].value_counts().sort_index())
-    ```
+!!! tip "Hilfe"
+    - Eindeutige Werte: `df['Spalte'].nunique()`
+    - Häufigkeiten: `df['Spalte'].value_counts().head(10)`
+    - Kategorien erstellen: `pd.cut(df['Age'], bins=[0, 10, 20, 30, 40, 50, 60, 100], labels=[...])`
 
 ---
 
 ### Aufgabe 5 – Zeitliche Trends
 
-- [ ] **Angriffe pro Jahr:**
-    ```python
-    print("=== Zeitlicher Trend ===")
-    
-    # Angriffe pro Jahr
-    yearly = df.groupby('Year').size()
-    
-    print("Letzte 10 Jahre:")
-    print(yearly.tail(10))
-    
-    # Trend berechnen
-    recent = yearly[yearly.index >= 2000]
-    print(f"\nDurchschnitt 2000-heute: {recent.mean():.1f} Angriffe/Jahr")
-    print(f"Max: {recent.max()} ({recent.idxmax():.0f})")
-    print(f"Min: {recent.min()} ({recent.idxmin():.0f})")
-    ```
+Analysiere, wie sich Haiangriffe über die Zeit entwickelt haben.
 
-- [ ] **Dekaden-Analyse:**
-    ```python
-    # Dekade erstellen
-    df['Decade'] = (df['Year'] // 10) * 10
-    
-    decade_stats = df.groupby('Decade').agg(
-        Angriffe=('Year', 'count'),
-        Fatal_Prozent=('Fatal', lambda x: x.mean() * 100 if x.notna().any() else np.nan)
-    ).round(1)
-    
-    print("\nAngriffe pro Dekade:")
-    print(decade_stats[decade_stats.index >= 1900])
-    ```
+- [ ] Zähle Angriffe pro Jahr mit `groupby`
+- [ ] Zeige die letzten 10 Jahre
+- [ ] Berechne den Durchschnitt, das Maximum und Minimum für die Jahre ab 2000 – in welchem Jahr gab es die meisten Angriffe?
+- [ ] Erstelle eine Dekaden-Spalte (1900, 1910, 1920, ...) 
+- [ ] Berechne pro Dekade: Anzahl Angriffe und Tödlichkeitsrate in Prozent
 
-- [ ] **Saisonale Muster (falls Time vorhanden):**
-    ```python
-    # Monat extrahieren (falls Date-Spalte vorhanden)
-    # Oder aus 'Date' String parsen
-    
-    # Beispiel-Ansatz:
-    # df['Month'] = pd.to_datetime(df['Date'], errors='coerce').dt.month
-    
-    print("\nSaisonale Analyse erfordert Datums-Parsing")
-    print("(Datensatz-spezifisch)")
-    ```
+!!! tip "Hilfe"
+    - Gruppieren: `df.groupby('Year').size()`
+    - Dekade berechnen: `(df['Year'] // 10) * 10`
+    - Index des Maximums: `series.idxmax()`
+    - Lambda für Prozentwerte: `lambda x: x.mean() * 100`
+
+!!! question "Reflexionsfrage"
+    Steigt die Anzahl der Angriffe über die Jahrzehnte? Bedeutet das, dass Haie gefährlicher werden, oder gibt es andere Erklärungen?
 
 ---
 
 ### Aufgabe 6 – Tödliche Angriffe analysieren
 
-- [ ] **Tödlichkeitsrate:**
-    ```python
-    print("=== Tödlichkeit ===")
-    
-    # Gesamtrate
-    fatal_rate = df['Fatal'].mean() * 100
-    print(f"Gesamt-Tödlichkeitsrate: {fatal_rate:.1f}%")
-    
-    # Nach Dekade
-    print("\nTödlichkeit nach Dekade:")
-    fatal_by_decade = df.groupby('Decade')['Fatal'].mean() * 100
-    print(fatal_by_decade[fatal_by_decade.index >= 1950].round(1))
-    ```
+Untersuche die Tödlichkeit von Haiangriffen genauer.
 
-- [ ] **Tödlichkeit nach Land:**
-    ```python
-    print("\n=== Tödlichkeit nach Land (Top 10 nach Anzahl) ===")
-    
-    # Nur Länder mit mindestens 50 Angriffen
-    country_stats = df.groupby('Country').agg(
-        Angriffe=('Year', 'count'),
-        Tödlich=('Fatal', 'sum'),
-        Rate=('Fatal', lambda x: x.mean() * 100)
-    ).round(1)
-    
-    country_stats = country_stats[country_stats['Angriffe'] >= 50]
-    country_stats = country_stats.sort_values('Angriffe', ascending=False)
-    
-    print(country_stats.head(10))
-    ```
+- [ ] Berechne die Gesamt-Tödlichkeitsrate
+- [ ] Berechne die Tödlichkeitsrate pro Dekade (ab 1950) – gibt es einen Trend?
+- [ ] Erstelle eine Länder-Statistik (mind. 50 Angriffe): Anzahl Angriffe, Anzahl tödlich, Tödlichkeitsrate
+- [ ] Sortiere nach Anzahl Angriffe und zeige die Top 10
+- [ ] Erstelle eine Aktivitäts-Statistik (mind. 20 Fälle): Welche Aktivitäten sind am gefährlichsten?
 
-- [ ] **Tödlichkeit nach Aktivität:**
-    ```python
-    print("\n=== Tödlichkeit nach Aktivität (mind. 20 Fälle) ===")
-    
-    activity_stats = df.groupby('Activity').agg(
-        Angriffe=('Year', 'count'),
-        Rate=('Fatal', lambda x: x.mean() * 100)
-    ).round(1)
-    
-    activity_stats = activity_stats[activity_stats['Angriffe'] >= 20]
-    activity_stats = activity_stats.sort_values('Rate', ascending=False)
-    
-    print(activity_stats.head(10))
-    ```
+!!! tip "Hilfe"
+    - Rate bei boolean: `df['Fatal'].mean() * 100` (mean auf True/False gibt Anteil True)
+    - Mehrere Aggregationen: `df.groupby('Spalte').agg(Name1=('Spalte1', 'count'), Name2=('Spalte2', 'mean'))`
+    - Filtern nach Mindestanzahl: `stats[stats['Anzahl'] >= 50]`
 
 ---
 
 ### Aufgabe 7 – Tiefere Analysen
 
-- [ ] **Geschlechtervergleich:**
-    ```python
-    print("=== Geschlechtervergleich ===")
-    
-    gender_stats = df.groupby('Sex').agg(
-        Anzahl=('Year', 'count'),
-        Durchschnittsalter=('Age', 'mean'),
-        Tödlichkeit=('Fatal', lambda x: x.mean() * 100)
-    ).round(1)
-    
-    # Anteil berechnen
-    gender_stats['Anteil_%'] = (gender_stats['Anzahl'] / gender_stats['Anzahl'].sum() * 100).round(1)
-    
-    print(gender_stats)
-    ```
+Führe detailliertere Untersuchungen durch.
 
-- [ ] **Altersanalyse:**
-    ```python
-    print("\n=== Alter und Tödlichkeit ===")
-    
-    # Tödlichkeit nach Altersgruppe
-    age_fatal = df.groupby('Age_Group').agg(
-        Anzahl=('Year', 'count'),
-        Tödlichkeit=('Fatal', lambda x: x.mean() * 100)
-    ).round(1)
-    
-    print(age_fatal)
-    
-    # Durchschnittsalter bei tödlichen vs. nicht-tödlichen
-    print(f"\nDurchschnittsalter:")
-    print(f"  Tödliche Angriffe: {df[df['Fatal'] == True]['Age'].mean():.1f}")
-    print(f"  Nicht-tödliche: {df[df['Fatal'] == False]['Age'].mean():.1f}")
-    ```
+**Geschlechtervergleich:**
 
-- [ ] **Länderprofile erstellen:**
-    ```python
-    print("\n=== Länderprofile (Top 5) ===")
-    
-    top5_countries = df['Country'].value_counts().head(5).index.tolist()
-    
-    for country in top5_countries:
-        subset = df[df['Country'] == country]
-        print(f"\n{country}:")
-        print(f"  Angriffe: {len(subset)}")
-        print(f"  Zeitraum: {subset['Year'].min():.0f}-{subset['Year'].max():.0f}")
-        print(f"  Tödlichkeit: {subset['Fatal'].mean() * 100:.1f}%")
-        print(f"  Top-Aktivität: {subset['Activity'].mode().iloc[0] if len(subset['Activity'].mode()) > 0 else 'N/A'}")
-        print(f"  Durchschnittsalter: {subset['Age'].mean():.1f}")
-    ```
+- [ ] Gruppiere nach Geschlecht und berechne: Anzahl, Durchschnittsalter, Tödlichkeitsrate
+- [ ] Berechne den prozentualen Anteil jedes Geschlechts
+
+**Altersanalyse:**
+
+- [ ] Berechne Anzahl und Tödlichkeitsrate pro Altersgruppe
+- [ ] Vergleiche das Durchschnittsalter bei tödlichen vs. nicht-tödlichen Angriffen
+
+**Länderprofile:**
+
+- [ ] Erstelle für die Top-5-Länder jeweils ein Profil mit:
+    - Anzahl Angriffe
+    - Zeitraum (frühester bis spätester Angriff)
+    - Tödlichkeitsrate
+    - Häufigste Aktivität (Modus)
+    - Durchschnittsalter
+
+!!! tip "Hilfe"
+    - Modus (häufigster Wert): `df['Spalte'].mode().iloc[0]`
+    - Subset erstellen: `df[df['Country'] == land]`
 
 ---
 
 ### Aufgabe 8 – Pivot-Tabellen erstellen
 
-- [ ] **Kreuztabelle Land × Dekade:**
-    ```python
-    print("=== Angriffe: Land × Dekade ===")
-    
-    # Top 5 Länder, ab 1950
-    df_recent = df[(df['Decade'] >= 1950) & (df['Country'].isin(top5_countries))]
-    
-    pivot = pd.pivot_table(
-        df_recent,
-        values='Year',
-        index='Country',
-        columns='Decade',
-        aggfunc='count',
-        fill_value=0
-    )
-    
-    print(pivot)
-    ```
+Nutze Pivot-Tabellen für komplexere Kreuztabellen.
 
-- [ ] **Tödlichkeit: Land × Aktivität:**
-    ```python
-    print("\n=== Tödlichkeit: Land × Aktivität (Top) ===")
-    
-    top_activities = df['Activity'].value_counts().head(5).index.tolist()
-    df_filtered = df[df['Country'].isin(top5_countries) & df['Activity'].isin(top_activities)]
-    
-    pivot_fatal = pd.pivot_table(
-        df_filtered,
-        values='Fatal',
-        index='Country',
-        columns='Activity',
-        aggfunc='mean'
-    ) * 100
-    
-    print(pivot_fatal.round(1))
-    ```
+- [ ] Erstelle eine Pivot-Tabelle: Zeilen = Top-5-Länder, Spalten = Dekaden (ab 1950), Werte = Anzahl Angriffe
+- [ ] Erstelle eine Pivot-Tabelle: Zeilen = Top-5-Länder, Spalten = Top-5-Aktivitäten, Werte = Tödlichkeitsrate in Prozent
+
+!!! tip "Hilfe"
+    - Pivot-Tabelle: `pd.pivot_table(df, values='Spalte', index='Zeilen', columns='Spalten', aggfunc='count', fill_value=0)`
+    - Für Prozentwerte: `aggfunc='mean'` und dann `* 100`
 
 ---
 
 ### Aufgabe 9 – Erkenntnisse dokumentieren
 
-- [ ] **Zusammenfassung erstellen:**
-    
-    Fasse deine wichtigsten Erkenntnisse zusammen:
+Erstelle eine professionelle Zusammenfassung deiner Analyse.
 
-    ```python
-    print("=" * 50)
-    print("ZUSAMMENFASSUNG: Global Shark Attacks")
-    print("=" * 50)
-    
-    print(f"\n📊 DATENSATZ")
-    print(f"   • {len(df):,} dokumentierte Angriffe")
-    print(f"   • Zeitraum: {df['Year'].min():.0f} - {df['Year'].max():.0f}")
-    print(f"   • {df['Country'].nunique()} Länder")
-    
-    print(f"\n🦈 RISIKO")
-    print(f"   • Gesamt-Tödlichkeitsrate: {df['Fatal'].mean() * 100:.1f}%")
-    print(f"   • Gefährlichstes Land: {country_stats['Rate'].idxmax()}")
-    print(f"   • Sicherste Aktivität: {activity_stats['Rate'].idxmin()}")
-    
-    print(f"\n👤 DEMOGRAFIE")
-    print(f"   • Durchschnittsalter: {df['Age'].mean():.1f} Jahre")
-    print(f"   • Männeranteil: {(df['Sex'] == 'Male').sum() / df['Sex'].notna().sum() * 100:.1f}%")
-    
-    print(f"\n📈 TRENDS")
-    recent_decade = df[df['Year'] >= 2010]
-    older_decade = df[(df['Year'] >= 1990) & (df['Year'] < 2000)]
-    print(f"   • Angriffe 1990er: {len(older_decade)} / Dekade")
-    print(f"   • Angriffe 2010er+: {len(recent_decade)} / Dekade")
-    ```
+- [ ] Erstelle einen formatierten Ergebnis-Report mit folgenden Abschnitten:
+    - **Datensatz**: Anzahl Angriffe, Zeitraum, Anzahl Länder
+    - **Risiko**: Gesamt-Tödlichkeitsrate, gefährlichstes Land, sicherste Aktivität
+    - **Demografie**: Durchschnittsalter, Geschlechterverteilung
+    - **Trends**: Vergleich der Angriffszahlen zwischen Dekaden
+- [ ] Nutze f-Strings für formatierte Ausgaben mit Tausendertrennzeichen und Nachkommastellen
+
+!!! tip "Hilfe"
+    - Tausendertrennzeichen: `f"{zahl:,}"`
+    - Eine Nachkommastelle: `f"{wert:.1f}"`
+    - Prozent: `f"{rate:.1f}%"`
 
 ---
 
 ## Bonus-Aufgaben
 
-??? tip "Für Fortgeschrittene"
-    **A) Hai-Arten analysieren:**
-    - Extrahiere Hai-Arten aus der Species-Spalte
-    - Welche Art ist am gefährlichsten?
-    
-    **B) Text Mining:**
-    - Analysiere die Injury-Beschreibungen
-    - Welche Körperteile werden am häufigsten verletzt?
-    
-    **C) Geographische Analyse:**
-    - Gruppiere nach Regionen (Area/Location)
-    - Gibt es Hotspots innerhalb der Top-Länder?
-    
-    **D) Vorhersage-Modell:**
-    - Können wir basierend auf Aktivität, Ort, Alter vorhersagen ob ein Angriff tödlich ist?
+!!! warning "Ohne Hilfe lösen"
+    Bearbeite diese Erweiterungen selbstständig.
+
+**A) Hai-Arten analysieren:**
+
+- Extrahiere Hai-Arten aus der Species-Spalte (Textverarbeitung nötig)
+- Welche Hai-Art ist am häufigsten dokumentiert?
+- Welche Art hat die höchste Tödlichkeitsrate?
+
+**B) Text Mining auf Verletzungen:**
+
+- Analysiere die Injury-Beschreibungen
+- Welche Körperteile werden am häufigsten verletzt?
+- Nutze String-Methoden wie `str.contains()` um nach Schlüsselwörtern zu suchen
+
+**C) Geographische Hotspots:**
+
+- Gruppiere nach Area/Location innerhalb der Top-Länder
+- Gibt es regionale Hotspots?
+- Welche Regionen in den USA/Australien sind besonders betroffen?
+
+**D) Korrelationsanalyse:**
+
+- Gibt es einen Zusammenhang zwischen Alter und Tödlichkeit?
+- Unterscheidet sich die Tödlichkeitsrate nach Geschlecht signifikant?
+- Analysiere, ob bestimmte Aktivitäten bei bestimmten Altersgruppen häufiger vorkommen
 
 ---
 

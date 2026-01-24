@@ -47,6 +47,7 @@ nav:
           - NumPy Indexierung: infoblaetter/numpy-indexierung.md
           - NumPy Funktionen: infoblaetter/numpy-funktionen.md
           - NumPy Broadcasting: infoblaetter/numpy-broadcasting.md
+          - Statistik Grundlagen: infoblaetter/statistik-grundlagen.md
   - Pandas:
       - Arbeitsblätter:
           - PD-01 Einführung: arbeitsblaetter/pd-01-einfuehrung.md

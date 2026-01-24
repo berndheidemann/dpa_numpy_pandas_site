@@ -12,6 +12,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 !!! note "Begleitende Infoblätter"
     - [:material-book-open-variant: Pandas Datenzugriff](../infoblaetter/pandas-datenzugriff.md) – loc, iloc, Boolean Indexing
     - [:material-book-open-variant: Pandas Grundlagen](../infoblaetter/pandas-grundlagen.md)
+    
+    Lies die Infoblätter **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen.
 
 ---
 
@@ -55,41 +57,41 @@ end note
 @enduml
 ```
 
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
+
+**Spaltenübersicht für den MBA-Datensatz:**
+
+| Spalte | Beschreibung |
+|--------|--------------|
+| Application_ID | Eindeutige ID der Bewerbung |
+| Gender | Geschlecht |
+| International | Internationaler Bewerber? (Yes/No) |
+| GPA | Grade Point Average (Notenschnitt) |
+| Major | Studienfach |
+| Work_Experience | Berufserfahrung in Jahren |
+| Decision | Entscheidung (Admit/Waitlist/Deny) |
+
 ---
 
 ## Aufgaben
 
-### Aufgabe 1 – Datensatz laden
+### Aufgabe 1 – Datensatz laden und erkunden
 
-- [ ] **Lade den MBA-Decisions Datensatz:**
-    ```python
-    import pandas as pd
-    import numpy as np
-    
-    # MBA Entscheidungen laden
-    mba = pd.read_csv('../assets/files/mba_decisions.csv')
-    
-    print("Shape:", mba.shape)
-    print("\nSpalten:")
-    print(mba.columns.tolist())
-    print("\nErste Zeilen:")
-    print(mba.head())
-    ```
+Lade den MBA-Decisions Datensatz und verschaffe dir einen Überblick.
 
-- [ ] **Spalten verstehen:**
-    ```python
-    # Übersicht
-    mba.info()
-    
-    # Was bedeuten die Spalten?
-    # - Application_ID: Eindeutige ID der Bewerbung
-    # - Gender: Geschlecht
-    # - International: Internationaler Bewerber?
-    # - GPA: Grade Point Average (Notenschnitt)
-    # - Major: Studienfach
-    # - Work_Experience: Berufserfahrung in Jahren
-    # - Decision: Entscheidung (Admit/Waitlist/Deny)
-    ```
+- [ ] Importiere Pandas und NumPy
+- [ ] Lade die Datei `mba_decisions.csv` aus dem `assets/files`-Ordner
+- [ ] Gib die Shape des Datensatzes aus
+- [ ] Zeige alle Spaltennamen an
+- [ ] Zeige die ersten 5 Zeilen an
+- [ ] Nutze `info()` um einen Überblick über Datentypen und fehlende Werte zu bekommen
+
+!!! tip "Hilfe"
+    - Datei laden: `pd.read_csv(pfad)`
+    - Shape: `df.shape`
+    - Spaltennamen: `df.columns.tolist()`
+    - Erste Zeilen: `df.head()`
+    - Infos: `df.info()`
 
 ---
 
@@ -116,50 +118,24 @@ note right of r4 : Zeilen 0+2, Spalten 1+3
 @enduml
 ```
 
-- [ ] **Einzelne Zeile auswählen:**
-    ```python
-    # Erste Zeile (Index 0)
-    print("Erste Zeile:")
-    print(mba.iloc[0])
-    
-    print("\n--- Als DataFrame (mit doppelten Klammern) ---")
-    print(mba.iloc[[0]])
-    ```
+- [ ] Wähle die **erste Zeile** des DataFrames aus (als Series)
+- [ ] Wähle die erste Zeile als **DataFrame** aus (Tipp: doppelte Klammern)
+- [ ] Wähle die **ersten 3 Zeilen** mit Slicing aus
+- [ ] Wähle die Zeilen mit Index **0, 5 und 10** gleichzeitig aus
+- [ ] Greife auf den Wert in **Zeile 0, Spalte 3** zu (einzelner Wert)
+- [ ] Wähle einen **Bereich**: Zeilen 0-2 und Spalten 0-3
+- [ ] Wähle bestimmte Zeilen **[0, 5, 10]** und bestimmte Spalten **[1, 3, 5]** aus
+- [ ] Wähle die **letzten 3 Zeilen** mit negativen Indizes aus
+- [ ] Wähle die **vorletzte Zeile** aus
 
-- [ ] **Mehrere Zeilen auswählen:**
-    ```python
-    # Zeilen 0, 1, 2
-    print("Erste drei Zeilen:")
-    print(mba.iloc[0:3])  # Slicing (Ende exklusiv!)
-    
-    print("\n--- Bestimmte Zeilen ---")
-    print(mba.iloc[[0, 5, 10]])  # Zeilen 0, 5, 10
-    ```
-
-- [ ] **Zeilen und Spalten auswählen:**
-    ```python
-    # Zeile 0, Spalte 3 (einzelner Wert)
-    print(f"Wert [0, 3]: {mba.iloc[0, 3]}")
-    
-    # Zeilen 0-2, Spalten 0-3
-    print("\nBereich [0:3, 0:4]:")
-    print(mba.iloc[0:3, 0:4])
-    
-    # Bestimmte Zeilen, bestimmte Spalten
-    print("\nZeilen [0,5,10], Spalten [1,3,5]:")
-    print(mba.iloc[[0, 5, 10], [1, 3, 5]])
-    ```
-
-- [ ] **Letzte Zeilen:**
-    ```python
-    # Letzte 3 Zeilen (negative Indizes!)
-    print("Letzte 3 Zeilen:")
-    print(mba.iloc[-3:])
-    
-    # Vorletzte Zeile
-    print("\nVorletzte Zeile:")
-    print(mba.iloc[-2])
-    ```
+!!! tip "Hilfe"
+    - Einzelne Zeile als Series: `df.iloc[index]`
+    - Einzelne Zeile als DataFrame: `df.iloc[[index]]`
+    - Slicing: `df.iloc[start:ende]` (Ende exklusiv!)
+    - Bestimmte Zeilen: `df.iloc[[0, 5, 10]]`
+    - Zeile und Spalte: `df.iloc[zeile, spalte]`
+    - Bereich: `df.iloc[z_start:z_ende, s_start:s_ende]`
+    - Negative Indizes: `df.iloc[-3:]` für letzte 3 Zeilen
 
 ---
 
@@ -189,33 +165,16 @@ end note
 @enduml
 ```
 
-- [ ] **Spalten mit Namen auswählen:**
-    ```python
-    # Eine Spalte
-    print("GPA Spalte (erste 5):")
-    print(mba.loc[:, 'GPA'].head())  # : = alle Zeilen
-    
-    # Mehrere Spalten
-    print("\nMehrere Spalten:")
-    print(mba.loc[:, ['Gender', 'GPA', 'Decision']].head())
-    ```
+- [ ] Wähle die Spalte `GPA` für **alle Zeilen** aus und zeige die ersten 5 Werte
+- [ ] Wähle die Spalten `Gender`, `GPA` und `Decision` für alle Zeilen aus
+- [ ] Wähle die **Zeilen 0-4** (inklusiv!) und die **Spalten von Gender bis GPA** aus
+- [ ] Vergleiche das Slicing-Verhalten: Erstelle eine Ausgabe für `iloc[0:3]` und `loc[0:3]` – wie viele Zeilen erhältst du jeweils?
 
-- [ ] **Zeilen und Spalten kombinieren:**
-    ```python
-    # Zeilen 0-4, bestimmte Spalten
-    # ACHTUNG: bei loc ist das Ende INKLUSIV!
-    print("Zeilen 0-4 (inklusiv), Spalten Gender bis GPA:")
-    print(mba.loc[0:4, 'Gender':'GPA'])
-    ```
-
-- [ ] **Wichtiger Unterschied iloc vs loc bei Slicing:**
-    ```python
-    print("iloc[0:3] -> Zeilen 0, 1, 2 (Ende exklusiv)")
-    print(mba.iloc[0:3])
-    
-    print("\nloc[0:3] -> Zeilen 0, 1, 2, 3 (Ende inklusiv!)")
-    print(mba.loc[0:3])
-    ```
+!!! tip "Hilfe"
+    - Alle Zeilen, eine Spalte: `df.loc[:, 'Spaltenname']`
+    - Mehrere Spalten: `df.loc[:, ['Spalte1', 'Spalte2']]`
+    - Zeilen und Spalten: `df.loc[z_start:z_ende, 's_start':'s_ende']`
+    - **Wichtig:** Bei `loc` ist das Ende inklusiv, bei `iloc` exklusiv!
 
 !!! warning "Vorsicht bei loc-Slicing"
     Bei `loc` ist das Ende **inklusiv**: `loc[0:3]` gibt 4 Zeilen zurück!
@@ -223,7 +182,7 @@ end note
 
 ---
 
-### Aufgabe 4 – Boolean Indexing
+### Aufgabe 4 – Boolean Indexing Grundlagen
 
 Filtere Daten mit Bedingungen – der mächtigste Zugriffsmodus!
 
@@ -249,160 +208,94 @@ step2 --> step3 : "filtert"
 @enduml
 ```
 
-- [ ] **Einfache Bedingung:**
-    ```python
-    # Alle mit GPA > 3.5
-    hoher_gpa = mba[mba['GPA'] > 3.5]
-    
-    print(f"Bewerber mit GPA > 3.5: {len(hoher_gpa)}")
-    print(hoher_gpa.head())
-    ```
+- [ ] Filtere alle Bewerber mit **GPA > 3.5** und gib die Anzahl aus
+- [ ] Speichere die Bedingung `mba['GPA'] > 3.5` in einer Variable und zeige die ersten 10 Werte der Boolean-Series
+- [ ] Zähle, wie viele `True`-Werte die Bedingung enthält (Tipp: `.sum()`)
+- [ ] Filtere mit der gespeicherten Bedingung und vergleiche die Anzahl mit dem sum()-Ergebnis
 
-- [ ] **Verstehe, was passiert:**
-    ```python
-    # Schritt 1: Bedingung erstellt Boolean-Series
-    bedingung = mba['GPA'] > 3.5
-    print("Boolean Series (erste 10):")
-    print(bedingung.head(10))
-    print(f"\nAnzahl True: {bedingung.sum()}")
-    
-    # Schritt 2: Boolean-Series filtert DataFrame
-    gefiltert = mba[bedingung]
-    print(f"\nGefilterte Zeilen: {len(gefiltert)}")
-    ```
-
-- [ ] **Mehrere Bedingungen kombinieren:**
-    ```python
-    # UND: & mit Klammern!
-    elite = mba[(mba['GPA'] > 3.5) & (mba['Work_Experience'] > 5)]
-    print(f"Elite-Bewerber (GPA>3.5 & Erfahrung>5): {len(elite)}")
-    print(elite.head())
-    
-    # ODER: |
-    interessant = mba[(mba['GPA'] > 3.8) | (mba['Work_Experience'] > 10)]
-    print(f"\nSehr hoher GPA ODER viel Erfahrung: {len(interessant)}")
-    
-    # NICHT: ~
-    nicht_international = mba[~(mba['International'] == 'Yes')]
-    # oder einfacher:
-    nicht_international = mba[mba['International'] != 'Yes']
-    print(f"\nNicht-internationale Bewerber: {len(nicht_international)}")
-    ```
+!!! tip "Hilfe"
+    - Einfacher Filter: `df[df['Spalte'] > wert]`
+    - Bedingung speichern: `bedingung = df['Spalte'] > wert`
+    - True-Werte zählen: `bedingung.sum()`
+    - Mit Bedingung filtern: `df[bedingung]`
 
 ---
 
-### Aufgabe 5 – Filtern mit Textbedingungen
+### Aufgabe 5 – Mehrere Bedingungen kombinieren
 
-- [ ] **Gleichheit bei Text:**
-    ```python
-    # Nur Aufnahmen (Admit)
-    aufgenommen = mba[mba['Decision'] == 'Admit']
-    print(f"Aufgenommene: {len(aufgenommen)}")
-    
-    # Abgelehnte
-    abgelehnt = mba[mba['Decision'] == 'Deny']
-    print(f"Abgelehnte: {len(abgelehnt)}")
-    ```
+Kombiniere mehrere Filterbedingungen mit logischen Operatoren.
 
-- [ ] **Mehrere Werte mit isin():**
-    ```python
-    # STEM-Fächer
-    stem_faecher = ['Science', 'Engineering', 'Technology']
-    
-    # Prüfe welche Majors es gibt
-    print("Verfügbare Majors:")
-    print(mba['Major'].unique())
-    
-    # Filter mit isin
-    stem = mba[mba['Major'].isin(['STEM', 'Science & Technology'])]
-    print(f"\nSTEM-Bewerber: {len(stem)}")
-    ```
+- [ ] Finde alle **"Elite-Bewerber"**: GPA > 3.5 **UND** Work_Experience > 5
+- [ ] Finde alle **interessanten Bewerber**: GPA > 3.8 **ODER** Work_Experience > 10
+- [ ] Finde alle **nicht-internationalen Bewerber** (International != 'Yes')
+- [ ] Finde alle Bewerber mit GPA **zwischen 3.2 und 3.7** (inklusive)
+- [ ] Finde alle **internationalen Bewerber, die abgelehnt wurden**
 
-- [ ] **Textsuche mit str-Methoden:**
-    ```python
-    # Falls Spalte 'Major' Textsuche erlaubt
-    # Enthält "Business"
-    # business = mba[mba['Major'].str.contains('Business', case=False, na=False)]
-    
-    # Beginnt mit
-    # starts_with_s = mba[mba['Major'].str.startswith('S')]
-    
-    print("Verfügbare str-Methoden:")
-    print([m for m in dir(mba['Major'].str) if not m.startswith('_')][:10])
-    ```
+!!! tip "Hilfe"
+    - UND-Verknüpfung: `(bedingung1) & (bedingung2)` – Klammern wichtig!
+    - ODER-Verknüpfung: `(bedingung1) | (bedingung2)`
+    - NICHT: `~(bedingung)` oder `!=`
+    - Bereich: `(df['Spalte'] >= min) & (df['Spalte'] <= max)`
+
+!!! warning "Klammern nicht vergessen!"
+    Bei mehreren Bedingungen **müssen** die einzelnen Bedingungen in Klammern stehen:
+    `df[(bed1) & (bed2)]` ✓
+    `df[bed1 & bed2]` ✗
 
 ---
 
-### Aufgabe 6 – loc mit Bedingungen kombinieren
+### Aufgabe 6 – Filtern mit Textbedingungen
+
+Filtere nach Textwerten und nutze spezielle String-Methoden.
+
+- [ ] Filtere alle **aufgenommenen Bewerber** (Decision == 'Admit') und zähle sie
+- [ ] Filtere alle **abgelehnten Bewerber** (Decision == 'Deny') und zähle sie
+- [ ] Zeige alle **einzigartigen Werte** der Spalte `Major` an
+- [ ] Filtere alle Bewerber, deren Major in einer Liste von Werten vorkommt (z.B. `['STEM', 'Business']`)
+- [ ] Erkunde die String-Methoden: Lass dir die ersten 10 verfügbaren `str`-Methoden anzeigen
+
+!!! tip "Hilfe"
+    - Gleichheit bei Text: `df['Spalte'] == 'Wert'`
+    - Einzigartige Werte: `df['Spalte'].unique()`
+    - Prüfen ob in Liste: `df['Spalte'].isin(['Wert1', 'Wert2'])`
+    - String-Methoden: `df['Spalte'].str.contains()`, `.str.startswith()`, etc.
+    - Methoden auflisten: `dir(df['Spalte'].str)`
+
+---
+
+### Aufgabe 7 – loc mit Bedingungen kombinieren
 
 `loc` erlaubt Bedingungen UND Spaltenauswahl in einem Schritt.
 
-- [ ] **Filtern und Spalten auswählen:**
-    ```python
-    # Aufgenommene mit hohem GPA, nur bestimmte Spalten
-    ergebnis = mba.loc[
-        (mba['Decision'] == 'Admit') & (mba['GPA'] > 3.5),
-        ['Gender', 'GPA', 'Work_Experience', 'Major']
-    ]
-    
-    print("Aufgenommene mit GPA > 3.5:")
-    print(ergebnis.head(10))
-    print(f"\nAnzahl: {len(ergebnis)}")
-    ```
+- [ ] Filtere alle aufgenommenen Bewerber mit GPA > 3.5 und zeige nur die Spalten `Gender`, `GPA`, `Work_Experience` und `Major`
+- [ ] Erstelle eine **Kopie** des DataFrames (wichtig für Änderungen!)
+- [ ] Erhöhe in der Kopie den GPA aller internationalen Bewerber um 0.1
+- [ ] Vergleiche den durchschnittlichen GPA der internationalen Bewerber vor und nach der Änderung
 
-- [ ] **Werte ändern mit loc:**
-    ```python
-    # Kopie erstellen (Original nicht ändern!)
-    mba_copy = mba.copy()
-    
-    # Erhöhe GPA aller Internationalen um 0.1 (Beispiel)
-    mba_copy.loc[mba_copy['International'] == 'Yes', 'GPA'] += 0.1
-    
-    # Vergleiche
-    print("Durchschnitt GPA vorher:")
-    print(f"  International: {mba[mba['International'] == 'Yes']['GPA'].mean():.2f}")
-    print(f"  Nicht-Int.: {mba[mba['International'] != 'Yes']['GPA'].mean():.2f}")
-    
-    print("\nDurchschnitt GPA nachher:")
-    print(f"  International: {mba_copy[mba_copy['International'] == 'Yes']['GPA'].mean():.2f}")
-    print(f"  Nicht-Int.: {mba_copy[mba_copy['International'] != 'Yes']['GPA'].mean():.2f}")
-    ```
+!!! tip "Hilfe"
+    - Filter + Spaltenauswahl: `df.loc[bedingung, ['Spalte1', 'Spalte2']]`
+    - Kopie erstellen: `df_kopie = df.copy()`
+    - Werte ändern: `df.loc[bedingung, 'Spalte'] = neuer_wert`
+    - Werte erhöhen: `df.loc[bedingung, 'Spalte'] += wert`
 
 ---
 
-### Aufgabe 7 – Query-Methode als Alternative
+### Aufgabe 8 – Query-Methode als Alternative
 
 Die `query()`-Methode ermöglicht SQL-ähnliche Filterung.
 
-- [ ] **Einfache Queries:**
-    ```python
-    # Statt: mba[mba['GPA'] > 3.5]
-    ergebnis = mba.query('GPA > 3.5')
-    print(f"GPA > 3.5: {len(ergebnis)}")
-    
-    # Mit Strings (Anführungszeichen beachten!)
-    ergebnis = mba.query('Decision == "Admit"')
-    print(f"Admit: {len(ergebnis)}")
-    ```
+- [ ] Filtere alle Bewerber mit GPA > 3.5 mit der `query()`-Methode
+- [ ] Filtere alle aufgenommenen Bewerber (Achtung: Anführungszeichen bei Strings!)
+- [ ] Kombiniere mehrere Bedingungen: GPA > 3.5 **und** Work_Experience > 3
+- [ ] Nutze eine **Variable** in der Query: Speichere einen Mindestwert und referenziere ihn mit `@`
 
-- [ ] **Komplexe Queries:**
-    ```python
-    # Kombinierte Bedingungen
-    ergebnis = mba.query('GPA > 3.5 and Work_Experience > 3')
-    print(f"GPA>3.5 und Erfahrung>3: {len(ergebnis)}")
-    
-    # Mit or
-    ergebnis = mba.query('GPA > 3.8 or Work_Experience > 8')
-    print(f"GPA>3.8 oder Erfahrung>8: {len(ergebnis)}")
-    
-    # Mit Variablen (@ Präfix)
-    min_gpa = 3.5
-    min_exp = 5
-    ergebnis = mba.query('GPA > @min_gpa and Work_Experience > @min_exp')
-    print(f"Variablen-Query: {len(ergebnis)}")
-    ```
+!!! tip "Hilfe"
+    - Einfache Query: `df.query('Spalte > wert')`
+    - String-Vergleich: `df.query('Spalte == "Wert"')` (verschiedene Anführungszeichen!)
+    - AND/OR: `df.query('bed1 and bed2')` oder `df.query('bed1 or bed2')`
+    - Variable nutzen: `min_wert = 3.5` → `df.query('GPA > @min_wert')`
 
-!!! tip "query() Vorteile"
+!!! info "query() Vorteile"
     - Lesbarere Syntax bei komplexen Bedingungen
     - Keine Klammern und & nötig
     - Variablen mit `@` einbinden
@@ -410,62 +303,65 @@ Die `query()`-Methode ermöglicht SQL-ähnliche Filterung.
 
 ---
 
-### Aufgabe 8 – Praktische Analysen
+### Aufgabe 9 – Praktische Analysen
 
-- [ ] **Analyse: Aufnahmekriterien erkunden:**
-    ```python
-    print("=== Aufnahme-Analyse ===")
-    
-    # Durchschnitte nach Entscheidung
-    for decision in mba['Decision'].unique():
-        subset = mba[mba['Decision'] == decision]
-        print(f"\n{decision}:")
-        print(f"  Anzahl: {len(subset)}")
-        print(f"  Ø GPA: {subset['GPA'].mean():.2f}")
-        print(f"  Ø Erfahrung: {subset['Work_Experience'].mean():.1f} Jahre")
-    ```
+Wende dein Wissen in realistischen Analyseszenarien an.
 
-- [ ] **Vergleich International vs. Nicht-International:**
-    ```python
-    print("\n=== International vs. Nicht-International ===")
-    
-    for intl in mba['International'].unique():
-        subset = mba[mba['International'] == intl]
-        admitted = subset[subset['Decision'] == 'Admit']
-        
-        print(f"\n{intl}:")
-        print(f"  Bewerber: {len(subset)}")
-        print(f"  Aufgenommen: {len(admitted)} ({len(admitted)/len(subset)*100:.1f}%)")
-        print(f"  Ø GPA: {subset['GPA'].mean():.2f}")
-    ```
+- [ ] **Aufnahme-Analyse**: Berechne für jede Entscheidungskategorie (Admit/Waitlist/Deny) die Anzahl, den durchschnittlichen GPA und die durchschnittliche Berufserfahrung
+- [ ] **International vs. Nicht-International**: Berechne für beide Gruppen die Anzahl Bewerber, die Anzahl Aufgenommener und die Aufnahmequote in Prozent
+- [ ] **Top-Bewerber**: Finde die 10 Bewerber mit dem höchsten GPA und zeige Gender, GPA, Work_Experience und Decision
+- [ ] **Überraschende Ablehnungen**: Finde Bewerber mit GPA > 3.7, die dennoch abgelehnt wurden
+- [ ] **Überraschende Aufnahmen**: Finde Bewerber mit GPA < 3.0, die dennoch aufgenommen wurden
 
-- [ ] **Top-Bewerber finden:**
-    ```python
-    print("\n=== Top 10 nach GPA ===")
-    top_gpa = mba.nlargest(10, 'GPA')[['Gender', 'GPA', 'Work_Experience', 'Decision']]
-    print(top_gpa)
-    
-    print("\n=== Meiste Erfahrung ===")
-    top_exp = mba.nlargest(5, 'Work_Experience')[['Gender', 'GPA', 'Work_Experience', 'Decision']]
-    print(top_exp)
-    ```
+!!! tip "Hilfe"
+    - Für jede Kategorie: Schleife über `.unique()` oder benutze `.groupby()` (später)
+    - Top N Werte: `df.nlargest(n, 'Spalte')`
+    - Bottom N Werte: `df.nsmallest(n, 'Spalte')`
+    - Prozent berechnen: `(teil / gesamt) * 100`
 
-- [ ] **Kritische Fälle analysieren:**
-    ```python
-    print("\n=== Überraschende Ablehnungen ===")
-    # Hoher GPA aber abgelehnt
-    surprise_deny = mba[(mba['GPA'] > 3.7) & (mba['Decision'] == 'Deny')]
-    print(f"Abgelehnt trotz GPA > 3.7: {len(surprise_deny)}")
-    if len(surprise_deny) > 0:
-        print(surprise_deny[['Gender', 'GPA', 'Work_Experience', 'International', 'Major']])
-    
-    print("\n=== Überraschende Aufnahmen ===")
-    # Niedriger GPA aber aufgenommen
-    surprise_admit = mba[(mba['GPA'] < 3.0) & (mba['Decision'] == 'Admit')]
-    print(f"Aufgenommen trotz GPA < 3.0: {len(surprise_admit)}")
-    if len(surprise_admit) > 0:
-        print(surprise_admit[['Gender', 'GPA', 'Work_Experience', 'International', 'Major']])
-    ```
+---
+
+### Aufgabe 10 – Komplexe Analyseaufgaben
+
+!!! warning "Ohne Hilfe lösen"
+    Bearbeite diese Aufgaben selbstständig.
+
+**Aufgabe A: Aufnahmekriterien erforschen**
+
+- Was ist der minimale GPA, mit dem jemand aufgenommen wurde?
+- Was ist der maximale GPA, mit dem jemand abgelehnt wurde?
+- Gibt es Bewerber, die trotz niedrigem GPA (<3.0) aufgenommen wurden? Was haben diese gemeinsam?
+
+**Aufgabe B: Fairness-Analyse**
+
+- Berechne die Aufnahmequote (Anteil Admit) für:
+    - Männer vs. Frauen
+    - International vs. Nicht-International
+    - Jeden Major separat
+- Gibt es auffällige Unterschiede?
+
+**Aufgabe C: Grenzfälle identifizieren**
+
+- Finde "knapp Abgelehnte": GPA > 3.5, Erfahrung > 5, aber Decision = Deny
+- Finde "Glücksfälle": GPA < 3.2, Erfahrung < 3, aber Decision = Admit
+- Analysiere diese Gruppen: Gibt es weitere Merkmale, die sie verbinden?
+
+**Aufgabe D: Eigene Query-Formulierung**
+
+Formuliere 5 komplexe Queries mit der `query()`-Methode:
+
+1. Eine Kombination aus 3 Bedingungen mit AND und OR
+2. Eine Query mit einer Variablen (@variable)
+3. Eine Query mit Vergleich zwischen zwei Spalten
+4. ...
+5. ...
+
+**Aufgabe E: Datenmanipulation**
+
+- Erstelle eine Kopie des DataFrames
+- Setze alle GPA-Werte von abgelehnten Bewerbern auf NaN
+- Zähle, wie viele Werte du geändert hast
+- Berechne den neuen Durchschnitts-GPA (ohne die NaN-Werte)
 
 ---
 

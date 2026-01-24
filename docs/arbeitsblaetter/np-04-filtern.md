@@ -12,6 +12,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 !!! note "Begleitende Infoblätter"
     - [:material-book-open-variant: NumPy Indexierung](../infoblaetter/numpy-indexierung.md) – Boolean Indexing
     - [:material-book-open-variant: NumPy Broadcasting](../infoblaetter/numpy-broadcasting.md) – Vektorisierung
+    
+    Lies die Infoblätter **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen.
 
 ---
 
@@ -36,29 +38,35 @@ loop --> bool : "Viel kürzer\nund schneller!"
 @enduml
 ```
 
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
+
+**Spaltenübersicht für den Taxi-Datensatz:**
+
+| Spalte | Index | Beschreibung |
+|--------|-------|--------------|
+| passenger_count | 7 | Anzahl Passagiere |
+| trip_distance | 8 | Strecke (Meilen) |
+| fare_amount | 9 | Fahrpreis ($) |
+| tip_amount | 12 | Trinkgeld ($) |
+| total_amount | 16 | Gesamtbetrag ($) |
+| payment_type | 17 | Zahlungsart (1=Kreditkarte, 2=Bar) |
+
 ---
 
 ## Aufgaben
 
 ### Aufgabe 1 – Daten vorbereiten
 
-- [ ] **Lade die Taxi-Daten:**
-    ```python
-    import numpy as np
-    
-    daten = np.genfromtxt('../assets/files/taxi_tripdata.csv',
-                          delimiter=',',
-                          skip_header=1)
-    
-    # Relevante Spalten extrahieren
-    passagiere = daten[:, 7]
-    strecke = daten[:, 8]
-    fahrpreis = daten[:, 9]
-    trinkgeld = daten[:, 12]
-    gesamt = daten[:, 16]
-    
-    print(f"Anzahl Fahrten: {len(strecke)}")
-    ```
+Lade die Taxi-Daten und extrahiere die relevanten Spalten für die Analyse.
+
+- [ ] Lade die Datei `taxi_tripdata.csv` mit `np.genfromtxt()` und nutze `skip_header=1`
+- [ ] Extrahiere die Spalten `passagiere`, `strecke`, `fahrpreis`, `trinkgeld` und `gesamt` in separate Variablen
+- [ ] Gib die Anzahl der Fahrten aus
+
+!!! tip "Hilfe"
+    - Datei laden: `np.genfromtxt(pfad, delimiter=',', skip_header=1)`
+    - Spalte extrahieren: `array[:, spalten_index]`
+    - Länge eines Arrays: `len(array)`
 
 ---
 
@@ -66,54 +74,33 @@ loop --> bool : "Viel kürzer\nund schneller!"
 
 Verstehe, wie Boolean Indexing funktioniert.
 
-- [ ] **Schritt 1: Bedingung erstellt Boolean-Array:**
-    ```python
-    # Fahrten mit mehr als 5 Meilen
-    bedingung = strecke > 5
-    
-    print(f"Bedingung (erste 10): {bedingung[:10]}")
-    print(f"Datentyp: {bedingung.dtype}")
-    print(f"Anzahl True: {bedingung.sum()}")
-    ```
+- [ ] Erstelle eine Bedingung für Fahrten mit mehr als 5 Meilen und speichere sie in einer Variable `bedingung`
+- [ ] Gib die ersten 10 Werte der Bedingung aus – was siehst du?
+- [ ] Zähle, wie viele `True`-Werte die Bedingung enthält
+- [ ] Verwende die Bedingung als Index, um alle langen Fahrten zu filtern
+- [ ] Berechne die Durchschnittsstrecke der gefilterten Fahrten
 
-- [ ] **Schritt 2: Boolean-Array als Index verwenden:**
-    ```python
-    # Filtere mit der Bedingung
-    lange_fahrten = strecke[bedingung]
-    
-    print(f"\nAnzahl Fahrten > 5 Meilen: {len(lange_fahrten)}")
-    print(f"Kürzeste 'lange' Fahrt: {lange_fahrten.min():.2f} Meilen")
-    print(f"Durchschnitt: {np.nanmean(lange_fahrten):.2f} Meilen")
-    ```
-
-- [ ] **Kombiniert in einer Zeile:**
-    ```python
-    # Üblicher Stil: Bedingung direkt in Klammern
-    kurze_fahrten = strecke[strecke < 1]
-    print(f"Fahrten unter 1 Meile: {len(kurze_fahrten)}")
-    ```
+!!! tip "Hilfe"
+    - Bedingung erstellen: `bedingung = array > 5` → erzeugt Boolean-Array
+    - True-Werte zählen: `bedingung.sum()`
+    - Filtern: `array[bedingung]` oder direkt `array[array > 5]`
 
 ---
 
 ### Aufgabe 3 – Verschiedene Vergleichsoperatoren
 
-- [ ] **Teste alle Vergleichsoperatoren:**
-    ```python
-    print("Vergleichsoperatoren auf Strecke:")
-    print(f"  > 10 Meilen:  {(strecke > 10).sum()} Fahrten")
-    print(f"  >= 10 Meilen: {(strecke >= 10).sum()} Fahrten")
-    print(f"  < 1 Meile:    {(strecke < 1).sum()} Fahrten")
-    print(f"  <= 1 Meile:   {(strecke <= 1).sum()} Fahrten")
-    print(f"  == 0 Meilen:  {(strecke == 0).sum()} Fahrten")
-    print(f"  != 0 Meilen:  {(strecke != 0).sum()} Fahrten")
-    ```
+Teste alle Vergleichsoperatoren auf den Taxi-Daten.
 
-- [ ] **Finde Fahrten mit genau 1 Passagier:**
-    ```python
-    einzelfahrten = passagiere[passagiere == 1]
-    print(f"\nFahrten mit 1 Passagier: {len(einzelfahrten)}")
-    print(f"Anteil: {len(einzelfahrten) / len(passagiere) * 100:.1f}%")
-    ```
+- [ ] Zähle Fahrten mit mehr als 10 Meilen Strecke
+- [ ] Zähle Fahrten mit mindestens 10 Meilen Strecke
+- [ ] Zähle Fahrten unter 1 Meile
+- [ ] Zähle Fahrten mit exakt 0 Meilen
+- [ ] Zähle Fahrten mit genau 1 Passagier und berechne deren Anteil an allen Fahrten
+
+!!! tip "Hilfe"
+    - Vergleichsoperatoren: `>`, `>=`, `<`, `<=`, `==`, `!=`
+    - Zählen: `(array > 5).sum()`
+    - Anteil berechnen: `anzahl / gesamt * 100`
 
 ---
 
@@ -124,73 +111,47 @@ Verstehe, wie Boolean Indexing funktioniert.
     - **Nicht** `and`, `or`, `not`
     - Jede Bedingung muss in Klammern stehen!
 
-- [ ] **UND-Verknüpfung (&):**
-    ```python
-    # Fahrten mit mehr als 2 Passagieren UND Strecke unter 2 Meilen
-    bed1 = passagiere > 2
-    bed2 = strecke < 2
+Kombiniere mehrere Bedingungen für komplexe Filter.
+
+- [ ] Finde Fahrten mit mehr als 2 Passagieren **UND** Strecke unter 2 Meilen
+- [ ] Finde sehr kurze (< 0.5 Meilen) **ODER** sehr lange Fahrten (> 20 Meilen)
+- [ ] Finde Fahrten mit Fahrpreis zwischen $10 und $20 (Bereichsfilter)
+- [ ] Finde alle Fahrten **AUSSER** solchen mit 0 Passagieren (Negation)
+
+!!! tip "Hilfe"
+    - UND-Verknüpfung: `(bed1) & (bed2)`
+    - ODER-Verknüpfung: `(bed1) | (bed2)`
+    - Negation: `~(bedingung)`
+    - Bereich: `(arr >= 10) & (arr <= 20)`
+
+!!! question "Eigenständige Filteraufgaben"
+    Löse diese Aufgaben ohne Musterlösung:
     
-    kombiniert = daten[(bed1) & (bed2)]
-    print(f"Fahrten mit >2 Passagiere UND <2 Meilen: {len(kombiniert)}")
-    ```
-
-- [ ] **ODER-Verknüpfung (|):**
-    ```python
-    # Sehr kurze ODER sehr lange Fahrten
-    extrem = strecke[(strecke < 0.5) | (strecke > 20)]
-    print(f"Extreme Fahrten: {len(extrem)}")
-    ```
-
-- [ ] **Bereichsfilter (zwischen zwei Werten):**
-    ```python
-    # Fahrpreise zwischen 10 und 20 Dollar
-    mittel_preis = fahrpreis[(fahrpreis >= 10) & (fahrpreis <= 20)]
-    print(f"Fahrten mit Preis $10-$20: {len(mittel_preis)}")
-    print(f"Durchschnitt: ${np.nanmean(mittel_preis):.2f}")
-    ```
-
-- [ ] **Negation (~):**
-    ```python
-    # Alle Fahrten AUSSER 0 Passagiere
-    mit_passagieren = passagiere[~(passagiere == 0)]
-    print(f"Fahrten mit mindestens 1 Passagier: {len(mit_passagieren)}")
-    ```
+    1. **Preiskategorien**: Finde alle Fahrten mit einem Preis zwischen $20 und $50
+    2. **Mehrfachbedingung**: Fahrten mit >3 Passagieren UND Strecke >5 Meilen UND Preis <$30
+    3. **Ausschluss**: Alle Fahrten AUßER solchen mit 0 oder NaN Passagieren
+    4. **Extreme kombinieren**: Sehr kurze (<0.5 Meilen) ODER sehr teure (>$100) Fahrten
+    5. **Dreier-Kombination**: Fahrten mit (Trinkgeld >$5) ODER (Strecke >10 Meilen UND Preis <$30)
+    
+    Zähle jeweils die Anzahl und berechne den Durchschnittspreis der gefilterten Fahrten.
 
 ---
 
-### Aufgabe 5 – Komplexe Filter auf Datensätze
+### Aufgabe 5 – Filter auf Datensätze anwenden
 
-Filtere den gesamten Datensatz (alle Spalten).
+Filtere den gesamten Datensatz (alle Spalten) basierend auf einer Bedingung.
 
-- [ ] **Filtere Zeilen basierend auf einer Bedingung:**
-    ```python
-    # Alle Spalten für Fahrten > 5 Meilen
-    maske = strecke > 5
-    lange_fahrten_komplett = daten[maske]
-    
-    print(f"Original Shape: {daten.shape}")
-    print(f"Gefiltert Shape: {lange_fahrten_komplett.shape}")
-    ```
+- [ ] Erstelle eine Maske für Fahrten über 5 Meilen
+- [ ] Wende die Maske auf den gesamten Datensatz an (nicht nur eine Spalte)
+- [ ] Gib die Shape vor und nach dem Filtern aus
+- [ ] Berechne für die gefilterten langen Fahrten: Durchschnittspreis und Durchschnitt-Trinkgeld
+- [ ] Vergleiche diese Werte mit dem Durchschnitt aller Fahrten
+- [ ] Zähle Fahrten mit genau 0 Passagieren – was könnten das für Daten sein?
 
-- [ ] **Analysiere gefilterte Daten:**
-    ```python
-    # Durchschnittlicher Preis für lange Fahrten
-    print(f"\nLange Fahrten (>5 Meilen):")
-    print(f"  Durchschnittspreis: ${np.nanmean(lange_fahrten_komplett[:, 9]):.2f}")
-    print(f"  Durchschnitt Trinkgeld: ${np.nanmean(lange_fahrten_komplett[:, 12]):.2f}")
-    
-    # Vergleich mit allen Fahrten
-    print(f"\nAlle Fahrten:")
-    print(f"  Durchschnittspreis: ${np.nanmean(fahrpreis):.2f}")
-    print(f"  Durchschnitt Trinkgeld: ${np.nanmean(trinkgeld):.2f}")
-    ```
-
-- [ ] **Zähle Fahrten mit genau 0 Passagieren:**
-    ```python
-    null_passagiere = daten[passagiere == 0]
-    print(f"\nFahrten mit 0 Passagieren: {len(null_passagiere)}")
-    # Das könnten Datenfehler sein!
-    ```
+!!! tip "Hilfe"
+    - Maske auf Datensatz anwenden: `daten[maske]` filtert Zeilen
+    - Spalte aus gefiltertem Datensatz: `gefilterter_datensatz[:, spalten_index]`
+    - Shape prüfen: `array.shape`
 
 ---
 
@@ -198,43 +159,18 @@ Filtere den gesamten Datensatz (alle Spalten).
 
 Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
-- [ ] **Berechne Preis pro Meile:**
-    ```python
-    # Vektorisiert: Alle Werte auf einmal
-    preis_pro_meile = fahrpreis / strecke
-    
-    # NaN entfernen (Division durch 0)
-    preis_pro_meile_sauber = preis_pro_meile[~np.isnan(preis_pro_meile) & 
-                                              ~np.isinf(preis_pro_meile)]
-    
-    print(f"Durchschnittlicher Preis pro Meile: ${np.mean(preis_pro_meile_sauber):.2f}")
-    print(f"Median Preis pro Meile: ${np.median(preis_pro_meile_sauber):.2f}")
-    ```
+- [ ] Berechne für jede Fahrt den **Preis pro Meile** (Division zweier Spalten)
+- [ ] Entferne ungültige Werte (NaN und Infinity) aus dem Ergebnis
+- [ ] Berechne Durchschnitt und Median des Preises pro Meile
+- [ ] Erstelle eine Kopie der Fahrpreise und erhöhe alle Preise um 10%
+- [ ] Berechne den **Trinkgeld-Anteil** in Prozent (Trinkgeld / Fahrpreis * 100)
 
-- [ ] **Preiskorrektur: Erhöhe alle Fahrpreise um 10%:**
-    ```python
-    # Kopie erstellen (Original nicht verändern!)
-    fahrpreis_neu = fahrpreis.copy()
-    
-    # Vektorisierte Erhöhung
-    fahrpreis_neu = fahrpreis_neu * 1.10
-    
-    print(f"Alter Durchschnitt: ${np.nanmean(fahrpreis):.2f}")
-    print(f"Neuer Durchschnitt: ${np.nanmean(fahrpreis_neu):.2f}")
-    ```
-
-- [ ] **Trinkgeld-Anteil berechnen:**
-    ```python
-    # Trinkgeld als Prozent vom Fahrpreis
-    trinkgeld_prozent = (trinkgeld / fahrpreis) * 100
-    
-    # Nur gültige Werte
-    gueltig = ~np.isnan(trinkgeld_prozent) & ~np.isinf(trinkgeld_prozent)
-    trinkgeld_prozent_sauber = trinkgeld_prozent[gueltig]
-    
-    print(f"Durchschnittliches Trinkgeld: {np.mean(trinkgeld_prozent_sauber):.1f}%")
-    print(f"Median Trinkgeld: {np.median(trinkgeld_prozent_sauber):.1f}%")
-    ```
+!!! tip "Hilfe"
+    - Vektorisierte Division: `spalte1 / spalte2`
+    - Kopie erstellen: `array.copy()`
+    - NaN prüfen: `np.isnan(arr)`
+    - Infinity prüfen: `np.isinf(arr)`
+    - Kombinierte Prüfung: `gueltig = ~np.isnan(arr) & ~np.isinf(arr)`
 
 ---
 
@@ -242,34 +178,16 @@ Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
 `np.where(bedingung, wenn_true, wenn_false)` ermöglicht bedingte Wertzuweisungen.
 
-- [ ] **Kategorisiere Fahrtstrecken:**
-    ```python
-    # Kurz, Mittel, Lang
-    kategorie = np.where(strecke < 2, 'kurz',
-                 np.where(strecke < 10, 'mittel', 'lang'))
-    
-    print("Strecken-Kategorien:")
-    print(f"  Kurz (<2 Meilen): {(kategorie == 'kurz').sum()}")
-    print(f"  Mittel (2-10 Meilen): {(kategorie == 'mittel').sum()}")
-    print(f"  Lang (>10 Meilen): {(kategorie == 'lang').sum()}")
-    ```
+- [ ] Kategorisiere alle Fahrten nach Strecke: "kurz" (< 2), "mittel" (2-10), "lang" (> 10)
+- [ ] Zähle, wie viele Fahrten in jeder Kategorie sind
+- [ ] Berechne einen Rabatt: 10% bei Preisen über $30, sonst 5%
+- [ ] Korrigiere Datenfehler: Ersetze alle negativen Fahrpreise durch 0
 
-- [ ] **Bedingte Berechnung:**
-    ```python
-    # Rabatt: 10% wenn Preis > $30, sonst 5%
-    rabatt = np.where(fahrpreis > 30, fahrpreis * 0.10, fahrpreis * 0.05)
-    
-    print(f"Durchschnittlicher Rabatt: ${np.nanmean(rabatt):.2f}")
-    ```
-
-- [ ] **Werte ersetzen:**
-    ```python
-    # Negative Preise durch 0 ersetzen (Datenfehler)
-    preis_korrigiert = np.where(fahrpreis < 0, 0, fahrpreis)
-    
-    neg_count = (fahrpreis < 0).sum()
-    print(f"Negative Preise gefunden und korrigiert: {neg_count}")
-    ```
+!!! tip "Hilfe"
+    - Einfache Kategorisierung: `np.where(bed, 'ja', 'nein')`
+    - Verschachtelt: `np.where(bed1, 'A', np.where(bed2, 'B', 'C'))`
+    - Zählen einer Kategorie: `(kategorie == 'kurz').sum()`
+    - Werte ersetzen: `np.where(arr < 0, 0, arr)`
 
 ---
 
@@ -277,54 +195,69 @@ Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
 Wende alles Gelernte für echte Analysen an.
 
-- [ ] **Analyse: Vergleich Zahlungsarten:**
-    ```python
-    # Zahlungsart ist Spalte 17 (1=Kreditkarte, 2=Bar, etc.)
-    zahlungsart = daten[:, 17]
-    
-    # Kreditkarten-Zahlungen
-    kreditkarte = zahlungsart == 1
-    bar = zahlungsart == 2
-    
-    print("Zahlungsarten-Vergleich:")
-    print(f"  Kreditkarte: {kreditkarte.sum()} Fahrten")
-    print(f"    Durchschnitt Trinkgeld: ${np.nanmean(trinkgeld[kreditkarte]):.2f}")
-    print(f"  Bar: {bar.sum()} Fahrten")
-    print(f"    Durchschnitt Trinkgeld: ${np.nanmean(trinkgeld[bar]):.2f}")
-    ```
+- [ ] **Zahlungsarten-Vergleich**: Vergleiche Kreditkarten-Zahlungen (Spalte 17 == 1) mit Bar-Zahlungen (== 2) – wie unterscheidet sich das durchschnittliche Trinkgeld?
+- [ ] **Ausreißer finden**: Finde Fahrpreise, die mehr als 3 Standardabweichungen vom Mittelwert entfernt sind (nach oben und unten)
+- [ ] **Effizienzanalyse**: Berechne für jede Fahrt den "Umsatz pro Meile" und finde die Top 10% effizientesten Fahrten (nutze `np.nanpercentile()`)
 
-- [ ] **Finde Anomalien:**
-    ```python
-    # Ausreißer: Mehr als 3 Standardabweichungen vom Mittelwert
-    mean_preis = np.nanmean(fahrpreis)
-    std_preis = np.nanstd(fahrpreis)
-    
-    ausreisser_hoch = fahrpreis > (mean_preis + 3 * std_preis)
-    ausreisser_niedrig = fahrpreis < (mean_preis - 3 * std_preis)
-    
-    print(f"\nAusreißer bei Fahrpreis:")
-    print(f"  Ungewöhnlich hoch: {ausreisser_hoch.sum()}")
-    print(f"  Ungewöhnlich niedrig: {ausreisser_niedrig.sum()}")
-    
-    # Details der höchsten Ausreißer
-    if ausreisser_hoch.any():
-        print(f"\n  Höchste Preise: {fahrpreis[ausreisser_hoch][:5]}")
-    ```
+!!! tip "Hilfe"
+    - Ausreißer-Grenze: `mean + 3 * std` bzw. `mean - 3 * std`
+    - Standardabweichung: `np.nanstd(arr)`
+    - Perzentil berechnen: `np.nanpercentile(arr, 90)` für das 90. Perzentil
+    - Infinity-Werte bei Perzentil ausschließen: erst filtern, dann Perzentil berechnen
 
-- [ ] **Effizienzanalyse:**
-    ```python
-    # Fahrten mit guter Effizienz: Viel Umsatz pro Meile
-    effizienz = gesamt / strecke
-    
-    # Top 10% effizienteste Fahrten
-    threshold = np.nanpercentile(effizienz[~np.isinf(effizienz)], 90)
-    top_effizient = effizienz > threshold
-    
-    print(f"\nTop 10% effizienteste Fahrten:")
-    print(f"  Anzahl: {top_effizient.sum()}")
-    print(f"  Durchschnitt Strecke: {np.nanmean(strecke[top_effizient]):.2f} Meilen")
-    print(f"  Durchschnitt Umsatz: ${np.nanmean(gesamt[top_effizient]):.2f}")
-    ```
+---
+
+### Aufgabe 9 – Komplexe Praxisaufgaben
+
+!!! warning "Ohne Musterlösung"
+    Diese Aufgaben erfordern Kombination mehrerer Techniken.
+
+**Aufgabe A: Datenqualitätsprüfung**
+
+Identifiziere "verdächtige" Fahrten und zähle sie:
+
+- Strecke = 0 aber Preis > $5
+- Strecke > 0 aber Preis = 0
+- Trinkgeld > Fahrpreis
+- Gesamtbetrag < Fahrpreis
+- Negative Werte in irgendeiner Preisspalte
+
+Wie viel Prozent der Daten sind "verdächtig"?
+
+**Aufgabe B: Kundensegmentierung**
+
+Kategorisiere Fahrten in 4 Segmente und berechne für jedes Segment die Durchschnittswerte:
+
+- **Basic**: Kurze Strecke (<2 Meilen), niedriger Preis (<$15)
+- **Standard**: Mittlere Strecke (2-5 Meilen), mittlerer Preis ($15-$30)
+- **Premium**: Lange Strecke (>5 Meilen) ODER hoher Preis (>$30)
+- **VIP**: Lange Strecke (>5 Meilen) UND hoher Preis (>$30)
+
+Hinweis: Nutze `np.where()` für die Kategorisierung.
+
+**Aufgabe C: Zeitabhängige Analyse**
+
+- Teile die Daten in 4 gleich große Teile (entspricht grob Tagesquartalen)
+- Vergleiche für jeden Teil:
+    - Durchschnittlicher Fahrpreis
+    - Durchschnittliches Trinkgeld
+    - Anteil der Fahrten mit Trinkgeld
+- Gibt es Muster?
+
+**Aufgabe D: Effizienzranking**
+
+- Berechne für jede Fahrt den "Umsatz pro Meile"
+- Filtere nur gültige Werte (keine NaN, keine Infinity, keine negativen Werte)
+- Finde die Top-100 und Bottom-100 Fahrten
+- Was unterscheidet diese Gruppen? (Analysiere Passagierzahl, Strecke, etc.)
+
+**Aufgabe E: Anomalie-Erkennung**
+
+Implementiere einen Anomalie-Detektor:
+
+- Ein Datenpunkt ist eine Anomalie, wenn mindestens 2 seiner Werte (Strecke, Preis, Gesamt) mehr als 3 Standardabweichungen vom Mittelwert entfernt sind
+- Zähle und analysiere diese Anomalien
+- Sollten sie entfernt werden? Begründe!
 
 ---
 

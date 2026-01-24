@@ -12,12 +12,18 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 !!! note "Begleitende Infoblätter"
     - [:material-book-open-variant: Pandas Transformation](../infoblaetter/pandas-transformation.md) – map, apply, applymap
     - [:material-book-open-variant: Datenbereinigung](../infoblaetter/datenbereinigung.md) – Cleaning Pipeline
+    
+    Lies die Infoblätter **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen.
 
 ---
 
 ## Einführung
 
 Echte Daten sind selten perfekt. Transformation und Bereinigung sind oft die zeitaufwändigsten Schritte der Datenanalyse.
+
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
+
+**Für dieses Arbeitsblatt verwendest du den MBA-Datensatz (`mba_decisions.csv`).**
 
 ```kroki-plantuml
 @startuml
@@ -47,471 +53,258 @@ trans --> final
 
 ### Aufgabe 1 – Datensatz laden und Probleme identifizieren
 
-- [ ] **Lade den MBA-Datensatz:**
-    ```python
-    import pandas as pd
-    import numpy as np
-    
-    mba = pd.read_csv('../assets/files/mba_decisions.csv')
-    
-    print("Shape:", mba.shape)
-    print("\nInfo:")
-    mba.info()
-    ```
+Lade den MBA-Datensatz und verschaffe dir einen Überblick über Datenqualitätsprobleme.
 
-- [ ] **Fehlende Werte finden:**
-    ```python
-    print("\n=== Fehlende Werte ===")
-    missing = mba.isnull().sum()
-    missing_pct = (mba.isnull().sum() / len(mba) * 100).round(2)
-    
-    missing_df = pd.DataFrame({
-        'Fehlend': missing,
-        'Prozent': missing_pct
-    })
-    
-    print(missing_df[missing_df['Fehlend'] > 0])
-    ```
+- [ ] Lade den MBA-Datensatz (`mba_decisions.csv`) und gib die Shape aus
+- [ ] Zeige die Datentypen aller Spalten an
+- [ ] Finde heraus, welche Spalten **fehlende Werte** haben und wie viele (absolut und in Prozent)
+- [ ] Prüfe, ob der Datensatz **Duplikate** enthält und zeige diese an
 
-- [ ] **Duplikate prüfen:**
-    ```python
-    print("\n=== Duplikate ===")
-    print(f"Anzahl Duplikate: {mba.duplicated().sum()}")
-    
-    # Duplikate anzeigen
-    if mba.duplicated().sum() > 0:
-        print("\nDuplizierte Zeilen:")
-        print(mba[mba.duplicated(keep=False)])
-    ```
+!!! tip "Hilfe"
+    - Datensatz laden: `pd.read_csv(pfad)`
+    - Datentypen und Info: `df.info()`, `df.dtypes`
+    - Fehlende Werte: `df.isnull().sum()` für absolute Anzahl
+    - Prozent berechnen: `(df.isnull().sum() / len(df) * 100)`
+    - Duplikate zählen: `df.duplicated().sum()`
+    - Duplikate anzeigen: `df[df.duplicated(keep=False)]`
 
 ---
 
 ### Aufgabe 2 – Fehlende Werte behandeln
 
-- [ ] **Verschiedene Strategien:**
-    ```python
-    # Kopie erstellen
-    df = mba.copy()
-    
-    # Strategie 1: Zeilen mit NaN entfernen
-    df_dropped = df.dropna()
-    print(f"Nach dropna: {len(df_dropped)} von {len(df)} Zeilen")
-    
-    # Strategie 2: Nur bestimmte Spalten prüfen
-    df_subset = df.dropna(subset=['GPA', 'Work_Experience'])
-    print(f"Nach dropna(subset): {len(df_subset)} Zeilen")
-    ```
+Lerne verschiedene Strategien kennen, um mit fehlenden Werten umzugehen.
 
-- [ ] **Werte ersetzen (fillna):**
-    ```python
-    df = mba.copy()
-    
-    # Mit Mittelwert füllen
-    gpa_mean = df['GPA'].mean()
-    df['GPA_filled'] = df['GPA'].fillna(gpa_mean)
-    print(f"GPA NaN gefüllt mit Mittelwert: {gpa_mean:.2f}")
-    
-    # Mit Median füllen (robuster)
-    exp_median = df['Work_Experience'].median()
-    df['Exp_filled'] = df['Work_Experience'].fillna(exp_median)
-    print(f"Experience NaN gefüllt mit Median: {exp_median}")
-    
-    # Mit festen Werten füllen
-    # df['Spalte'] = df['Spalte'].fillna(0)
-    # df['Spalte'] = df['Spalte'].fillna('Unknown')
-    ```
+- [ ] Erstelle eine Kopie des DataFrames mit `df.copy()`
+- [ ] **Strategie 1**: Entferne alle Zeilen mit fehlenden Werten – wie viele Zeilen bleiben übrig?
+- [ ] **Strategie 2**: Entferne nur Zeilen, bei denen `GPA` oder `Work_Experience` fehlt
+- [ ] **Strategie 3**: Fülle fehlende GPA-Werte mit dem **Mittelwert** der Spalte
+- [ ] **Strategie 4**: Fülle fehlende `Work_Experience`-Werte mit dem **Median** (robuster gegen Ausreißer)
 
-- [ ] **Forward/Backward Fill:**
-    ```python
-    # Bei Zeitreihen: vorherigen/nächsten Wert verwenden
-    # df['Spalte'] = df['Spalte'].ffill()  # Forward fill
-    # df['Spalte'] = df['Spalte'].bfill()  # Backward fill
-    
-    print("Forward/Backward Fill - nützlich bei Zeitreihen")
-    ```
+!!! tip "Hilfe"
+    - Zeilen entfernen: `df.dropna()` oder `df.dropna(subset=['Spalte1', 'Spalte2'])`
+    - Mit Mittelwert füllen: `df['Spalte'].fillna(df['Spalte'].mean())`
+    - Mit Median füllen: `df['Spalte'].fillna(df['Spalte'].median())`
+    - Mit festem Wert füllen: `df['Spalte'].fillna(0)` oder `df['Spalte'].fillna('Unbekannt')`
+
+!!! question "Reflexionsfrage"
+    Wann ist der Median besser geeignet als der Mittelwert zum Füllen von Lücken?
 
 ---
 
 ### Aufgabe 3 – Duplikate entfernen
 
-- [ ] **Duplikate finden und entfernen:**
-    ```python
-    df = mba.copy()
-    
-    # Anzahl vor Entfernung
-    print(f"Zeilen vorher: {len(df)}")
-    
-    # Entferne Duplikate (alle Spalten)
-    df_unique = df.drop_duplicates()
-    print(f"Zeilen nachher: {len(df_unique)}")
-    
-    # Nur bestimmte Spalten prüfen
-    df_subset_unique = df.drop_duplicates(subset=['Gender', 'GPA', 'Work_Experience'])
-    print(f"Nach Subset-Dedup: {len(df_subset_unique)}")
-    ```
+Lerne, wie du Duplikate erkennst und kontrolliert entfernst.
 
-- [ ] **keep-Parameter:**
-    ```python
-    # keep='first' (Standard): Behalte erste Vorkommen
-    # keep='last': Behalte letzte Vorkommen
-    # keep=False: Entferne alle Duplikate
-    
-    print("\nDuplikat-Optionen:")
-    print(f"  keep='first': {len(df.drop_duplicates(keep='first'))}")
-    print(f"  keep='last': {len(df.drop_duplicates(keep='last'))}")
-    print(f"  keep=False: {len(df.drop_duplicates(keep=False))}")
-    ```
+- [ ] Erstelle eine Kopie des DataFrames
+- [ ] Ermittle die Anzahl der Zeilen **vor** dem Entfernen von Duplikaten
+- [ ] Entferne alle **vollständigen Duplikate** (alle Spalten identisch)
+- [ ] Entferne Duplikate basierend nur auf den Spalten `Gender`, `GPA` und `Work_Experience`
+- [ ] Experimentiere mit dem `keep`-Parameter: Was passiert bei `keep='first'`, `keep='last'` und `keep=False`?
+
+!!! tip "Hilfe"
+    - Duplikate entfernen: `df.drop_duplicates()`
+    - Nur bestimmte Spalten prüfen: `df.drop_duplicates(subset=['Spalte1', 'Spalte2'])`
+    - Parameter `keep='first'` behält erstes Vorkommen, `keep='last'` das letzte, `keep=False` entfernt alle
 
 ---
 
 ### Aufgabe 4 – Neue Spalten berechnen
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+Erstelle neue Spalten durch Berechnungen und bedingte Logik.
 
-rectangle "Neue Spalten erstellen" {
-    rectangle "Methoden" as methods {
-        rectangle "Direkte Berechnung" as m1 #lightblue
-        rectangle "np.where()" as m2 #lightgreen
-        rectangle "np.select()" as m3 #lightyellow
-        rectangle "apply()" as m4 #plum
-    }
-    
-    rectangle "Beispiele" as examples {
-        rectangle "df['neu'] = df['a'] + df['b']" as e1
-        rectangle "df['kat'] = np.where(df['x']>5, 'hoch', 'niedrig')" as e2
-        rectangle "df['rating'] = np.select([bed1, bed2], ['A', 'B'], 'C')" as e3
-        rectangle "df['result'] = df.apply(func, axis=1)" as e4
-    }
-}
+- [ ] Erstelle eine Spalte `GPA_Prozent`, die den GPA als Prozent von 4.0 ausdrückt (gerundet auf 1 Dezimalstelle)
+- [ ] Erstelle eine Spalte `High_GPA`, die "Ja" enthält wenn GPA ≥ 3.5, sonst "Nein"
+- [ ] Erstelle eine Spalte `GPA_Rating` mit den Kategorien:
+    - "Excellent" für GPA ≥ 3.8
+    - "Good" für GPA ≥ 3.5
+    - "Average" für GPA ≥ 3.0
+    - "Below Average" sonst
+- [ ] Erstelle eine Spalte `Exp_Kategorie` mit `pd.cut()`, die Work_Experience in die Gruppen "Junior" (0-2), "Mid" (2-5), "Senior" (5-10) und "Expert" (>10) einteilt
+- [ ] Erstelle einen gewichteten `Score` aus GPA (60%) und Work_Experience (10%)
 
-m1 --> e1
-m2 --> e2
-m3 --> e3
-m4 --> e4
-@enduml
-```
-
-- [ ] **Direkte Berechnung:**
-    ```python
-    df = mba.copy()
-    
-    # GPA als Prozent (von 4.0)
-    df['GPA_Prozent'] = (df['GPA'] / 4.0 * 100).round(1)
-    
-    # Erfahrungskategorien
-    df['Exp_Jahre_Group'] = pd.cut(
-        df['Work_Experience'],
-        bins=[0, 2, 5, 10, np.inf],
-        labels=['Junior', 'Mid', 'Senior', 'Expert']
-    )
-    
-    print("Neue Spalten:")
-    print(df[['GPA', 'GPA_Prozent', 'Work_Experience', 'Exp_Jahre_Group']].head(10))
-    ```
-
-- [ ] **Bedingte Spalten:**
-    ```python
-    # Mit np.where
-    df['High_GPA'] = np.where(df['GPA'] >= 3.5, 'Ja', 'Nein')
-    
-    # Mit np.select für mehrere Bedingungen
-    conditions = [
-        df['GPA'] >= 3.8,
-        df['GPA'] >= 3.5,
-        df['GPA'] >= 3.0,
-    ]
-    choices = ['Excellent', 'Good', 'Average']
-    df['GPA_Rating'] = np.select(conditions, choices, default='Below Average')
-    
-    print("\nBedingte Spalten:")
-    print(df['GPA_Rating'].value_counts())
-    ```
-
-- [ ] **Kombinierte Metriken:**
-    ```python
-    # Scoring: GPA + Erfahrung gewichtet
-    df['Score'] = (df['GPA'] * 0.6 + df['Work_Experience'] * 0.1).round(2)
-    
-    print("\nScore-Statistik nach Decision:")
-    print(df.groupby('Decision')['Score'].agg(['mean', 'std', 'min', 'max']).round(2))
-    ```
+!!! tip "Hilfe"
+    - Direkte Berechnung: `df['neu'] = df['alt'] * 2`
+    - Bedingt (2 Werte): `np.where(df['x'] >= 3.5, 'Ja', 'Nein')`
+    - Bedingt (mehrere): `np.select([bed1, bed2, bed3], ['A', 'B', 'C'], default='D')`
+    - Kategorien mit Grenzen: `pd.cut(df['Spalte'], bins=[0, 2, 5, 10, np.inf], labels=['A', 'B', 'C', 'D'])`
 
 ---
 
 ### Aufgabe 5 – map() für Wertersetzung
 
-`map()` ersetzt Werte basierend auf einem Dictionary oder einer Funktion.
+Verwende `map()` um Werte systematisch zu ersetzen oder umzukodieren.
 
-- [ ] **Dictionary-Mapping:**
-    ```python
-    df = mba.copy()
-    
-    # Decision übersetzen
-    decision_de = {
-        'Admit': 'Aufgenommen',
-        'Deny': 'Abgelehnt',
-        'Waitlist': 'Warteliste'
-    }
-    df['Decision_DE'] = df['Decision'].map(decision_de)
-    
-    print("Decision-Übersetzung:")
-    print(df[['Decision', 'Decision_DE']].head())
-    ```
+- [ ] Erstelle ein Dictionary, das die Decision-Werte ins Deutsche übersetzt: Admit→"Aufgenommen", Deny→"Abgelehnt", Waitlist→"Warteliste"
+- [ ] Wende das Dictionary mit `map()` an und speichere das Ergebnis in `Decision_DE`
+- [ ] Schreibe eine Funktion `gpa_to_grade()`, die einen GPA-Wert in eine Buchstabennote umwandelt (A, B, C, D)
+- [ ] Wende diese Funktion mit `map()` auf die GPA-Spalte an
+- [ ] Achte darauf, dass die Funktion mit NaN-Werten umgehen kann
 
-- [ ] **Funktion-Mapping:**
-    ```python
-    # GPA Buchstabennoten
-    def gpa_to_grade(gpa):
-        if pd.isna(gpa):
-            return None
-        elif gpa >= 3.7:
-            return 'A'
-        elif gpa >= 3.0:
-            return 'B'
-        elif gpa >= 2.0:
-            return 'C'
-        else:
-            return 'D'
+!!! tip "Hilfe"
+    - Dictionary-Mapping: `df['neu'] = df['alt'].map({'wert1': 'ersatz1', 'wert2': 'ersatz2'})`
+    - Funktion-Mapping: `df['neu'] = df['alt'].map(meine_funktion)`
+    - NaN prüfen: `if pd.isna(wert): return None`
+
+!!! question "Eigenständige Transformationsübungen"
+    Löse ohne Musterlösung:
     
-    df['Grade'] = df['GPA'].map(gpa_to_grade)
-    print("\nGPA zu Buchstabennoten:")
-    print(df['Grade'].value_counts())
-    ```
+    1. **Mapping**: Erstelle eine Spalte `Decision_Code` die Admit=1, Waitlist=0, Deny=-1 zuordnet
+    2. **Berechnung**: Erstelle einen "Composite Score" = (GPA * 10) + (Work_Experience * 2)
+    3. **Kategorisierung**: Teile GPA in Quartile ein (Q1, Q2, Q3, Q4) mit `pd.qcut()`
+    4. **String-Transformation**: Erstelle eine Spalte mit dem Format "[Gender] Bewerber mit [GPA] GPA"
+    5. **Mehrfach-Bedingung**: Erstelle eine "Risk Score" Spalte:
+        - 3 wenn GPA < 3.0 UND Experience < 2
+        - 2 wenn GPA < 3.2 ODER Experience < 3
+        - 1 wenn GPA < 3.5
+        - 0 sonst
 
 ---
 
 ### Aufgabe 6 – apply() für komplexe Transformationen
 
-`apply()` wendet eine Funktion auf Zeilen oder Spalten an.
+Verwende `apply()` für Transformationen, die mehrere Spalten oder komplexe Logik erfordern.
 
-- [ ] **apply auf Spalte (Series):**
-    ```python
-    df = mba.copy()
-    
-    # Lambda für einfache Transformationen
-    df['GPA_rounded'] = df['GPA'].apply(lambda x: round(x, 1) if pd.notna(x) else x)
-    
-    print("GPA gerundet:")
-    print(df[['GPA', 'GPA_rounded']].head())
-    ```
+- [ ] Verwende `apply()` mit einer Lambda-Funktion, um alle GPA-Werte auf eine Dezimalstelle zu runden
+- [ ] Schreibe eine Funktion `create_profile(row)`, die einen Profil-String erzeugt im Format: "Gender, GPA=X.X, Exp=Xy"
+- [ ] Wende diese Funktion zeilenweise an (axis=1) und speichere das Ergebnis in einer neuen Spalte `Profile`
+- [ ] Schreibe eine Funktion `predict_admission(row)`, die basierend auf GPA, Work_Experience und International einen Score berechnet und "Likely Admit", "Uncertain" oder "Unlikely" zurückgibt
+- [ ] Vergleiche deine Vorhersagen mit der tatsächlichen Decision-Spalte (z.B. mit einer Kreuztabelle)
 
-- [ ] **apply auf Zeilen (axis=1):**
-    ```python
-    # Berechne Profil-String aus mehreren Spalten
-    def create_profile(row):
-        return f"{row['Gender']}, GPA={row['GPA']:.1f}, Exp={row['Work_Experience']}y"
-    
-    df['Profile'] = df.apply(create_profile, axis=1)
-    print("\nProfilstring:")
-    print(df['Profile'].head())
-    ```
-
-- [ ] **Komplexe Logik:**
-    ```python
-    # Vorhersage-Funktion
-    def predict_admission(row):
-        score = 0
-        score += row['GPA'] * 10
-        score += row['Work_Experience'] * 2
-        if row['International'] == 'Yes':
-            score += 5
-        
-        if score >= 45:
-            return 'Likely Admit'
-        elif score >= 35:
-            return 'Uncertain'
-        else:
-            return 'Unlikely'
-    
-    df['Prediction'] = df.apply(predict_admission, axis=1)
-    
-    # Vergleiche mit tatsächlicher Entscheidung
-    print("\nVorhersage vs. Realität:")
-    print(pd.crosstab(df['Prediction'], df['Decision']))
-    ```
+!!! tip "Hilfe"
+    - apply auf Spalte: `df['Spalte'].apply(lambda x: x * 2)`
+    - apply auf Zeilen: `df.apply(meine_funktion, axis=1)`
+    - Auf Zeilenwerte zugreifen: `row['Spaltenname']`
+    - Kreuztabelle: `pd.crosstab(df['Spalte1'], df['Spalte2'])`
 
 ---
 
 ### Aufgabe 7 – Datentypen konvertieren
 
-- [ ] **Strings zu numerisch:**
-    ```python
-    df = mba.copy()
-    
-    # Falls GPA als String geladen wurde
-    # df['GPA'] = pd.to_numeric(df['GPA'], errors='coerce')
-    
-    print("Aktuelle Datentypen:")
-    print(df.dtypes)
-    ```
+Konvertiere Datentypen für effizientere Speicherung und korrekte Analysen.
 
-- [ ] **Kategorische Daten:**
-    ```python
-    # Konvertiere zu Category (speichereffizient)
-    df['Decision_cat'] = df['Decision'].astype('category')
-    
-    print(f"\nSpeichervergleich Decision:")
-    print(f"  Object: {df['Decision'].memory_usage()} Bytes")
-    print(f"  Category: {df['Decision_cat'].memory_usage()} Bytes")
-    
-    # Ordinale Kategorie (mit Reihenfolge)
-    df['Exp_cat'] = pd.Categorical(
-        df['Work_Experience'].apply(
-            lambda x: 'Low' if x < 3 else 'Medium' if x < 7 else 'High'
-        ),
-        categories=['Low', 'Medium', 'High'],
-        ordered=True
-    )
-    
-    print(f"\nOrdinale Kategorien:")
-    print(df['Exp_cat'].cat.categories)
-    print(f"Ist geordnet: {df['Exp_cat'].cat.ordered}")
-    ```
+- [ ] Zeige die aktuellen Datentypen aller Spalten an
+- [ ] Konvertiere die Spalte `Decision` in den Typ `category`
+- [ ] Vergleiche den Speicherverbrauch vor und nach der Konvertierung
+- [ ] Erstelle eine **ordinale Kategorie** für Work_Experience mit den Stufen "Low", "Medium", "High" (geordnet!)
+- [ ] Überprüfe, ob die Kategorie tatsächlich geordnet ist
+
+!!! tip "Hilfe"
+    - Zu Kategorie: `df['Spalte'].astype('category')`
+    - Speicherverbrauch: `df['Spalte'].memory_usage()`
+    - Ordinale Kategorie: `pd.Categorical(werte, categories=['A', 'B', 'C'], ordered=True)`
+    - Ist geordnet? `df['Spalte'].cat.ordered`
 
 ---
 
 ### Aufgabe 8 – Strings bereinigen
 
-- [ ] **Whitespace entfernen:**
-    ```python
-    df = mba.copy()
-    
-    # Alle String-Spalten trimmen
-    for col in df.select_dtypes(include=['object']).columns:
-        df[col] = df[col].str.strip()
-    
-    print("Strings getrimmt")
-    ```
+Bereinige Text-Daten für konsistente Analysen.
 
-- [ ] **Groß-/Kleinschreibung:**
-    ```python
-    # Einheitliche Schreibweise
-    df['Gender_lower'] = df['Gender'].str.lower()
-    df['Gender_upper'] = df['Gender'].str.upper()
-    df['Gender_title'] = df['Gender'].str.title()
-    
-    print("\nGender-Varianten:")
-    print(df[['Gender', 'Gender_lower', 'Gender_upper', 'Gender_title']].head())
-    ```
+- [ ] Entferne führende und nachfolgende Leerzeichen aus allen String-Spalten
+- [ ] Erstelle Varianten der `Gender`-Spalte: Kleinbuchstaben, Großbuchstaben, Title Case
+- [ ] Ersetze in der `Major`-Spalte das Zeichen "&" durch "and"
+- [ ] Überlege: Welche weiteren String-Bereinigungen könnten bei echten Daten nötig sein?
 
-- [ ] **Suchen und Ersetzen:**
-    ```python
-    # Replace in Strings
-    df['Major_clean'] = df['Major'].str.replace('&', 'and', regex=False)
-    
-    # Mit Regex
-    # df['col'] = df['col'].str.replace(r'\d+', '', regex=True)  # Zahlen entfernen
-    
-    print("\nMajor bereinigt:")
-    print(df[['Major', 'Major_clean']].drop_duplicates())
-    ```
+!!! tip "Hilfe"
+    - String-Spalten finden: `df.select_dtypes(include=['object']).columns`
+    - Whitespace entfernen: `df['Spalte'].str.strip()`
+    - Kleinbuchstaben: `df['Spalte'].str.lower()`
+    - Ersetzen: `df['Spalte'].str.replace('alt', 'neu', regex=False)`
 
 ---
 
 ### Aufgabe 9 – Ausreißer behandeln
 
-- [ ] **Ausreißer identifizieren:**
-    ```python
-    df = mba.copy()
-    
-    # IQR-Methode
-    Q1 = df['GPA'].quantile(0.25)
-    Q3 = df['GPA'].quantile(0.75)
-    IQR = Q3 - Q1
-    
-    lower_bound = Q1 - 1.5 * IQR
-    upper_bound = Q3 + 1.5 * IQR
-    
-    outliers = df[(df['GPA'] < lower_bound) | (df['GPA'] > upper_bound)]
-    
-    print(f"GPA Ausreißer (IQR-Methode):")
-    print(f"  Grenzen: [{lower_bound:.2f}, {upper_bound:.2f}]")
-    print(f"  Anzahl Ausreißer: {len(outliers)}")
-    
-    if len(outliers) > 0:
-        print(f"  Werte: {outliers['GPA'].tolist()}")
-    ```
+Identifiziere und behandle Ausreißer mit verschiedenen Methoden.
 
-- [ ] **Ausreißer begrenzen (Capping):**
-    ```python
-    # Clip auf Grenzen
-    df['GPA_clipped'] = df['GPA'].clip(lower=lower_bound, upper=upper_bound)
-    
-    print("\nNach Capping:")
-    print(f"  Original-Bereich: [{df['GPA'].min():.2f}, {df['GPA'].max():.2f}]")
-    print(f"  Geclipped-Bereich: [{df['GPA_clipped'].min():.2f}, {df['GPA_clipped'].max():.2f}]")
-    ```
+- [ ] Berechne für die Spalte `GPA` die Quartile Q1 und Q3 sowie den Interquartilsabstand (IQR)
+- [ ] Bestimme die Ausreißer-Grenzen nach der IQR-Methode (Q1 - 1.5×IQR und Q3 + 1.5×IQR)
+- [ ] Finde alle Ausreißer und gib deren Anzahl und Werte aus
+- [ ] Erstelle eine neue Spalte `GPA_clipped`, in der Ausreißer auf die Grenzen begrenzt werden (Capping)
+- [ ] **Bonus**: Berechne für `Work_Experience` den Z-Score und finde Werte mit |Z| > 3
 
-- [ ] **Z-Score Methode:**
-    ```python
-    # Z-Score für Ausreißererkennung
-    from scipy import stats
-    
-    # Manuell berechnen
-    mean = df['Work_Experience'].mean()
-    std = df['Work_Experience'].std()
-    df['Exp_zscore'] = (df['Work_Experience'] - mean) / std
-    
-    # Ausreißer: |z| > 3
-    exp_outliers = df[abs(df['Exp_zscore']) > 3]
-    print(f"\nWork_Experience Ausreißer (Z-Score > 3): {len(exp_outliers)}")
-    ```
+!!! tip "Hilfe"
+    - Quartile: `df['Spalte'].quantile(0.25)` für Q1
+    - Filter für Ausreißer: `df[(df['Spalte'] < lower) | (df['Spalte'] > upper)]`
+    - Capping/Clipping: `df['Spalte'].clip(lower=grenze_unten, upper=grenze_oben)`
+    - Z-Score: `(df['Spalte'] - df['Spalte'].mean()) / df['Spalte'].std()`
 
 ---
 
 ### Aufgabe 10 – Komplette Bereinigungspipeline
 
-- [ ] **Pipeline zusammenfügen:**
-    ```python
-    def clean_mba_data(df):
-        """Komplette Datenbereinigung für MBA-Datensatz"""
-        
-        # 1. Kopie erstellen
-        df = df.copy()
-        
-        # 2. Strings bereinigen
-        for col in df.select_dtypes(include=['object']).columns:
-            df[col] = df[col].str.strip()
-        
-        # 3. Fehlende Werte
-        df['GPA'] = df['GPA'].fillna(df['GPA'].median())
-        df['Work_Experience'] = df['Work_Experience'].fillna(df['Work_Experience'].median())
-        
-        # 4. Duplikate entfernen
-        df = df.drop_duplicates()
-        
-        # 5. Ausreißer cappen (GPA)
-        Q1, Q3 = df['GPA'].quantile([0.25, 0.75])
-        IQR = Q3 - Q1
-        df['GPA'] = df['GPA'].clip(Q1 - 1.5*IQR, Q3 + 1.5*IQR)
-        
-        # 6. Neue Features
-        df['GPA_Category'] = pd.cut(
-            df['GPA'],
-            bins=[0, 3.0, 3.5, 4.0],
-            labels=['Low', 'Medium', 'High']
-        )
-        
-        # 7. Kategorische Typen
-        for col in ['Gender', 'International', 'Major', 'Decision']:
-            if col in df.columns:
-                df[col] = df[col].astype('category')
-        
-        return df
-    
-    # Pipeline anwenden
-    mba_clean = clean_mba_data(mba)
-    
-    print("=== Bereinigte Daten ===")
-    print(f"Shape: {mba_clean.shape}")
-    print(f"\nDatentypen:")
-    print(mba_clean.dtypes)
-    print(f"\nFehlende Werte:")
-    print(mba_clean.isnull().sum())
-    ```
+Kombiniere alle gelernten Techniken zu einer wiederverwendbaren Bereinigungsfunktion.
+
+- [ ] Schreibe eine Funktion `clean_mba_data(df)`, die folgende Schritte durchführt:
+    1. Kopie des DataFrames erstellen
+    2. Strings in allen Textspalten trimmen
+    3. Fehlende Werte in `GPA` und `Work_Experience` mit dem Median füllen
+    4. Duplikate entfernen
+    5. GPA-Ausreißer mit Capping behandeln
+    6. Eine neue Spalte `GPA_Category` mit den Stufen "Low", "Medium", "High" hinzufügen
+    7. Kategorische Spalten (`Gender`, `International`, `Major`, `Decision`) in den Typ `category` konvertieren
+- [ ] Wende die Funktion auf den Original-Datensatz an
+- [ ] Validiere das Ergebnis: Shape, Datentypen, fehlende Werte
+
+!!! tip "Hilfe"
+    - Funktion definieren: `def clean_mba_data(df): ...`
+    - Am Ende: `return df`
+    - Validierung: `df.info()`, `df.isnull().sum()`, `df.dtypes`
+
+---
+
+### Aufgabe 11 – Komplexe Transformationsaufgaben
+
+!!! warning "Ohne Musterlösung"
+    Diese Aufgaben erfordern Kombination mehrerer Transformationstechniken.
+
+**Aufgabe A: Feature Engineering**
+
+Erstelle mindestens 5 neue, sinnvolle Features aus den bestehenden Daten:
+
+- Ein binäres Feature (ja/nein)
+- Ein numerisches abgeleitetes Feature
+- Ein kategorisches Feature mit mehr als 2 Kategorien
+- Ein Interaktions-Feature (Kombination aus 2 Spalten)
+- Ein Ranking-Feature (z.B. GPA-Rang in Prozent)
+
+**Aufgabe B: Datenbereinigung ohne Vorgabe**
+
+Implementiere eine vollständige Bereinigungsfunktion für den MBA-Datensatz:
+
+1. Identifiziere alle Probleme (NaN, Duplikate, Inkonsistenzen)
+2. Dokumentiere, wie viele Datensätze jedes Problem haben
+3. Behebe die Probleme mit geeigneten Strategien
+4. Validiere, dass die Bereinigung erfolgreich war
+
+**Aufgabe C: Transformation mit apply()**
+
+Schreibe eine `apply()`-Funktion, die für jeden Bewerber eine "Prediction" macht:
+
+- Analysiere erst: Was unterscheidet Aufgenommene von Abgelehnten?
+- Entwickle eine Logik mit mindestens 4 Kriterien
+- Wende sie auf alle Zeilen an
+- Berechne die Genauigkeit (% korrekte Vorhersagen)
+
+**Aufgabe D: String-Manipulation**
+
+Wenn der Datensatz Text-Spalten enthält:
+
+- Bereinige alle Strings (Leerzeichen, Groß-/Kleinschreibung)
+- Extrahiere relevante Informationen aus Text
+- Erstelle Dummy-Variablen aus kategorischen Text-Spalten
+
+**Aufgabe E: Pipeline erstellen**
+
+Erstelle eine wiederverwendbare Funktion `prepare_mba_data(filepath)`:
+
+- Lädt die Daten
+- Bereinigt sie
+- Fügt alle neuen Features hinzu
+- Konvertiert Datentypen
+- Gibt einen sauberen DataFrame zurück
+
+Dokumentiere jeden Schritt mit Kommentaren.
 
 ---
 

@@ -11,6 +11,16 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 !!! note "Begleitendes Infoblatt"
     [:material-book-open-variant: NumPy Grundlagen](../infoblaetter/numpy-grundlagen.md) – Installation, Arrays, Datentypen, Dimensionen
+    
+    Lies das Infoblatt **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen.
+
+---
+
+## Präsentation
+
+<div class="pdf-container" style="width: 100%; aspect-ratio: 16/9; margin-bottom: 1rem;">
+    <iframe src="../assets/files/NumPy_Einfuehrung.pdf" style="width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px;"></iframe>
+</div>
 
 ---
 
@@ -18,320 +28,154 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Als Data Analyst arbeitest du ständig mit großen Datenmengen. NumPy ist die Grundlage für effiziente numerische Berechnungen in Python.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-package "Warum NumPy?" {
-    [Schnelle Berechnungen] as speed #lightgreen
-    [Speichereffizient] as mem #lightblue
-    [Vektorisierte Operationen] as vec #lightyellow
-    [Basis für Pandas, Scikit-learn] as basis #lightpink
-}
-
-note bottom
-  NumPy-Arrays sind bis zu
-  100x schneller als Python-Listen!
-end note
-@enduml
-```
-
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
 ---
 
 ## Aufgaben
 
-### Aufgabe 1 – NumPy installieren und importieren
+### Aufgabe 1 – NumPy einrichten
 
-Bevor du mit NumPy arbeiten kannst, muss die Bibliothek installiert und importiert werden.
-
-- [ ] **Installiere NumPy** (falls noch nicht geschehen):
-    ```bash
-    pip install numpy
-    ```
-
-- [ ] **Importiere NumPy** mit der üblichen Konvention:
-    ```python
-    import numpy as np
-    ```
-
-- [ ] **Prüfe die installierte Version:**
-    ```python
-    print(np.__version__)
-    ```
+- [ ] Installiere NumPy mit `pip` (falls noch nicht geschehen)
+- [ ] Importiere NumPy mit der üblichen Konvention `np`
+- [ ] Gib die installierte Version aus
 
 ---
 
-### Aufgabe 2 – Python-Listen vs. NumPy-Arrays
+### Aufgabe 2 – Performance-Vergleich
 
-Vergleiche die Performance von Python-Listen und NumPy-Arrays.
+Vergleiche die Geschwindigkeit von Python-Listen und NumPy-Arrays.
 
-- [ ] **Erstelle `performance_vergleich.py`:**
-    
-    ```python
-    import numpy as np
-    import time
-    
-    # 1 Million Werte
-    n = 1_000_000
-    
-    # Python-Liste
-    python_liste = list(range(n))
-    
-    # NumPy-Array
-    numpy_array = np.arange(n)
-    ```
-
-- [ ] **Messe die Zeit für das Verdoppeln aller Werte:**
-    
-    ```python
-    # Python-Liste (mit List Comprehension)
-    start = time.time()
-    ergebnis_liste = [x * 2 for x in python_liste]
-    zeit_liste = time.time() - start
-    print(f"Python-Liste: {zeit_liste:.4f} Sekunden")
-    
-    # NumPy-Array (vektorisiert)
-    start = time.time()
-    ergebnis_numpy = numpy_array * 2
-    zeit_numpy = time.time() - start
-    print(f"NumPy-Array: {zeit_numpy:.4f} Sekunden")
-    
-    # Speedup berechnen
-    print(f"NumPy ist {zeit_liste / zeit_numpy:.1f}x schneller!")
-    ```
-
-- [ ] **Dokumentiere deine Ergebnisse:** Wie viel schneller ist NumPy? Experimentiere mit verschiedenen Array-Größen.
+- [ ] Erstelle eine Python-Liste und ein NumPy-Array mit jeweils **1 Million** Werten (0 bis 999.999)
+- [ ] Messe mit dem `time`-Modul, wie lange das **Verdoppeln aller Werte** dauert:
+    - Bei der Liste: mit List Comprehension `[x * 2 for x in liste]`
+    - Beim Array: vektorisiert mit `array * 2`
+- [ ] Berechne den Speedup-Faktor und dokumentiere dein Ergebnis
+- [ ] Experimentiere: Wie ändert sich der Speedup bei 10 Millionen Werten?
 
 !!! question "Reflexionsfrage"
-    Warum ist NumPy so viel schneller als Python-Listen?
+    Warum ist NumPy so viel schneller als Python-Listen? Recherchiere die Begriffe "vektorisierte Operationen" und "C-Implementierung".
 
 ---
 
 ### Aufgabe 3 – Arrays erstellen
 
-Wende verschiedene Methoden an, um NumPy-Arrays zu erstellen.
+!!! tip "Hilfe"
+    Im Infoblatt findest du Tabellen mit allen Erstellungsfunktionen: `np.array()`, `np.zeros()`, `np.ones()`, `np.arange()`, `np.linspace()`, `np.random.randint()`
 
-- [ ] **Erstelle ein Array mit Verkaufszahlen aus einer Liste:**
-    ```python
-    # Verkaufszahlen der letzten 7 Tage
-    verkaeufe = np.array([145, 189, 132, 201, 178, 156, 210])
-    print(f"Verkäufe: {verkaeufe}")
-    print(f"Typ: {type(verkaeufe)}")
-    ```
+Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
 
-- [ ] **Erstelle eine Preistabelle (5 Produkte × 4 Filialen) mit Nullen und fülle sie:**
-    ```python
-    preistabelle = np.zeros((5, 4))
-    print(f"Leere Preistabelle:\n{preistabelle}")
-    
-    # Fülle die erste Zeile mit Preisen für Produkt 1
-    preistabelle[0] = [9.99, 10.49, 9.79, 10.29]
-    print(f"\nMit erster Zeile gefüllt:\n{preistabelle}")
-    ```
-
-- [ ] **Erstelle einen Rabattvektor mit `linspace`:**
-    ```python
-    # 5 Rabattstufen von 0% bis 20%
-    rabatte = np.linspace(0, 0.20, 5)
-    print(f"Rabattstufen: {rabatte}")
-    
-    # Berechne rabattierte Preise für einen Artikel (50€)
-    preis = 50
-    rabattierte_preise = preis * (1 - rabatte)
-    print(f"Preise mit Rabatt: {rabattierte_preise}")
-    ```
-
-- [ ] **Simuliere 100 Würfelwürfe und zähle die Sechsen:**
-    ```python
-    wuerfel = np.random.randint(1, 7, size=100)
-    anzahl_sechsen = (wuerfel == 6).sum()
-    print(f"Würfe: {wuerfel[:20]}...")  # Erste 20 zeigen
-    print(f"Anzahl Sechsen: {anzahl_sechsen} von 100")
-    ```
-
-!!! question "Deine Aufgabe"
-    Erstelle ein Array mit `np.arange`, das alle geraden Zahlen von 2 bis 20 enthält. 
-    Berechne dann die Summe aller Elemente.
+1. **Verkaufszahlen:** Ein 1D-Array mit den Werten `[145, 189, 132, 201, 178, 156, 210]`
+2. **Preistabelle:** Eine 5×4 Matrix (5 Produkte, 4 Filialen), initial mit Nullen gefüllt
+3. **Rabattstufen:** 5 gleichmäßig verteilte Werte von 0.0 bis 0.20 (nutze `linspace`)
+4. **Würfelwürfe:** 100 Zufallszahlen zwischen 1 und 6
+5. **Gerade Zahlen:** Alle geraden Zahlen von 2 bis 20 (nutze `arange`)
 
 ---
 
-### Aufgabe 4 – Array-Eigenschaften inspizieren
+### Aufgabe 4 – Array-Eigenschaften
 
-Untersuche die Eigenschaften von Arrays.
+!!! tip "Hilfe"
+    Wichtige Eigenschaften: `shape`, `ndim`, `dtype`, `size`, `itemsize`, `nbytes`
 
-- [ ] **Erstelle ein 2D-Array und inspiziere es:**
-    ```python
-    matrix = np.array([[1, 2, 3, 4],
-                       [5, 6, 7, 8],
-                       [9, 10, 11, 12]])
-    
-    print(f"Form (shape): {matrix.shape}")
-    print(f"Dimensionen (ndim): {matrix.ndim}")
-    print(f"Datentyp (dtype): {matrix.dtype}")
-    print(f"Anzahl Elemente (size): {matrix.size}")
-    print(f"Bytes pro Element (itemsize): {matrix.itemsize}")
-    print(f"Gesamtspeicher (nbytes): {matrix.nbytes} Bytes")
-    ```
-
-- [ ] **Erstelle Arrays mit verschiedenen Datentypen und vergleiche:**
-    ```python
-    arr_int = np.array([1, 2, 3], dtype=np.int32)
-    arr_float = np.array([1, 2, 3], dtype=np.float64)
-    arr_bool = np.array([True, False, True])
-    
-    print(f"int32: dtype={arr_int.dtype}, itemsize={arr_int.itemsize}")
-    print(f"float64: dtype={arr_float.dtype}, itemsize={arr_float.itemsize}")
-    print(f"bool: dtype={arr_bool.dtype}, itemsize={arr_bool.itemsize}")
-    ```
+1. Erstelle eine 3×4 Matrix mit den Zahlen 1 bis 12
+2. Gib alle 6 Eigenschaften (`shape`, `ndim`, `dtype`, `size`, `itemsize`, `nbytes`) aus
+3. Erstelle das gleiche Array einmal als `int32` und einmal als `float64`
+4. Vergleiche den Speicherverbrauch (`nbytes`) beider Arrays – um welchen Faktor unterscheiden sie sich?
 
 ---
 
-### Aufgabe 5 – Reshaping (Form ändern)
+### Aufgabe 5 – Reshaping
 
-Arrays können in verschiedene Formen umgewandelt werden.
+!!! tip "Hilfe"
+    `reshape(zeilen, spalten)` – die Gesamtzahl der Elemente muss gleich bleiben!  
+    Mit `-1` wird eine Dimension automatisch berechnet.
 
-- [ ] **Erstelle ein 1D-Array und forme es um:**
-    ```python
-    # 12 Elemente
-    arr = np.arange(1, 13)
-    print(f"Original: {arr}")
-    print(f"Shape: {arr.shape}")
-    
-    # Zu verschiedenen 2D-Formen
-    matrix_3x4 = arr.reshape(3, 4)
-    matrix_4x3 = arr.reshape(4, 3)
-    matrix_2x6 = arr.reshape(2, 6)
-    
-    print(f"\n3x4:\n{matrix_3x4}")
-    print(f"\n4x3:\n{matrix_4x3}")
-    ```
-
-- [ ] **Nutze -1 für automatische Berechnung:**
-    ```python
-    # Eine Dimension automatisch berechnen
-    auto = arr.reshape(3, -1)  # 3 Zeilen, Spalten automatisch
-    print(f"Auto-Shape: {auto.shape}")
-    ```
-
-- [ ] **Zurück zu 1D:**
-    ```python
-    flach1 = matrix_3x4.flatten()   # Erstellt Kopie
-    flach2 = matrix_3x4.ravel()     # Erstellt View
-    print(f"Flatten: {flach1}")
-    ```
-
-!!! tip "Reshape-Regel"
-    Die Gesamtzahl der Elemente muss gleich bleiben! 
-    12 Elemente können zu (3,4), (4,3), (2,6), (6,2), (1,12), (12,1) umgeformt werden.
+1. Erstelle ein 1D-Array mit den Zahlen 1 bis 24
+2. Forme es um zu:
+    - 4×6 Matrix
+    - 6×4 Matrix  
+    - 2×3×4 (3D-Array)
+    - 8 Zeilen, Spalten automatisch
+3. Welche Formen sind **nicht** möglich? Probiere z.B. (5, 5) – was passiert?
+4. Mache aus einer Matrix wieder ein 1D-Array (zwei Methoden: `flatten()` und `ravel()`)
 
 ---
 
-### Aufgabe 6 – Grundlegende Operationen
+### Aufgabe 6 – Arithmetische Operationen
 
-NumPy-Operationen sind element-weise.
+NumPy-Operationen sind **element-weise** – sie werden auf jedes Element einzeln angewendet.
 
-- [ ] **Arithmetische Operationen:**
-    ```python
-    a = np.array([10, 20, 30, 40])
-    b = np.array([1, 2, 3, 4])
-    
-    print(f"Addition: {a + b}")
-    print(f"Subtraktion: {a - b}")
-    print(f"Multiplikation: {a * b}")
-    print(f"Division: {a / b}")
-    print(f"Potenz: {b ** 2}")
-    ```
+**Gegeben:** Ein Online-Shop hat folgende Nettopreise:  
+`[29.99, 49.99, 19.99, 99.99, 14.99]`
 
-- [ ] **Operationen mit Skalaren:**
-    ```python
-    preise = np.array([100, 200, 150, 300])
-    
-    # 10% Rabatt
-    rabatt_preise = preise * 0.9
-    print(f"Mit 10% Rabatt: {rabatt_preise}")
-    
-    # 19% MwSt hinzufügen
-    brutto = preise * 1.19
-    print(f"Mit MwSt: {brutto}")
-    ```
+Berechne **ohne Schleifen**:
 
-- [ ] **Mathematische Funktionen:**
-    ```python
-    werte = np.array([1, 4, 9, 16, 25])
-    
-    print(f"Quadratwurzel: {np.sqrt(werte)}")
-    print(f"Quadrat: {np.square(werte)}")
-    print(f"Exponential: {np.exp([1, 2, 3])}")
-    print(f"Logarithmus: {np.log([1, 10, 100])}")
-    ```
+1. Alle Bruttopreise (19% MwSt hinzufügen)
+2. Alle Preise mit 15% Rabatt
+3. Die Differenz zwischen teuerstem und günstigstem Artikel
+4. Die Summe aller Bruttopreise
+5. Den Durchschnittspreis
+
+**Bonus:** Erstelle ein 3×5 Array (3 Tage × 5 Produkte). Simuliere tägliche Preisänderungen: Tag 1 = -5%, Tag 2 = 0%, Tag 3 = +5%.
 
 ---
 
-### Aufgabe 7 – Praxisbeispiel: Temperatursensor
+### Aufgabe 7 – Temperatursensor
 
-Ein Temperatursensor liefert Messwerte in Fahrenheit. Konvertiere sie zu Celsius.
+Ein Sensor liefert 24 Messwerte (stündlich) in **Fahrenheit**. Simuliere diese Daten und analysiere sie.
 
-- [ ] **Erstelle `temperatur_konverter.py`:**
-    ```python
-    import numpy as np
-    
-    # Messwerte in Fahrenheit (simuliert)
-    np.random.seed(42)  # Reproduzierbare Zufallszahlen
-    fahrenheit = np.random.uniform(60, 100, size=24)  # 24 Stunden
-    
-    print(f"Fahrenheit (erste 5): {fahrenheit[:5].round(1)}")
-    ```
-
-- [ ] **Konvertiere zu Celsius:**
-    Formel: $C = (F - 32) \times \frac{5}{9}$
-    
-    ```python
-    celsius = (fahrenheit - 32) * 5/9
-    print(f"Celsius (erste 5): {celsius[:5].round(1)}")
-    ```
-
-- [ ] **Berechne Statistiken:**
-    ```python
-    print(f"\n=== Tagesstatistik (Celsius) ===")
-    print(f"Minimum: {celsius.min():.1f}°C")
-    print(f"Maximum: {celsius.max():.1f}°C")
-    print(f"Durchschnitt: {celsius.mean():.1f}°C")
-    print(f"Standardabweichung: {celsius.std():.2f}°C")
-    ```
-
-- [ ] **Finde die Stunde mit der höchsten Temperatur:**
-    ```python
-    stunde_max = np.argmax(celsius)
-    print(f"Höchste Temperatur um {stunde_max}:00 Uhr ({celsius[stunde_max]:.1f}°C)")
-    ```
+1. Erzeuge 24 Zufallswerte zwischen 60 und 100 (Fahrenheit)  
+   *Tipp: Nutze `np.random.seed(42)` für reproduzierbare Ergebnisse*
+2. Konvertiere alle Werte zu Celsius: $C = (F - 32) \times \frac{5}{9}$
+3. Berechne: Minimum, Maximum, Durchschnitt, Standardabweichung
+4. Finde heraus, um welche Uhrzeit die höchste Temperatur gemessen wurde  
+   *Tipp: `np.argmax()` gibt den Index des größten Elements*
 
 ---
 
-### Aufgabe 8 – Bonus: Mehrdimensionale Arrays
+### Aufgabe 8 – Notenberechnung
 
-Arbeite mit 3D-Arrays für komplexere Datenstrukturen.
+Ein Kurs hat **8 Schüler**, die **3 Tests** geschrieben haben.
 
-- [ ] **Erstelle ein 3D-Array (z.B. RGB-Bild):**
-    ```python
-    # Kleines 4x4 "Bild" mit 3 Farbkanälen (R, G, B)
-    bild = np.random.randint(0, 256, size=(4, 4, 3), dtype=np.uint8)
-    
-    print(f"Bild-Shape: {bild.shape}")
-    print(f"Dimensionen: {bild.ndim}")
-    print(f"Pixel oben-links: {bild[0, 0]}")  # RGB-Werte
-    ```
+1. Erstelle ein 8×3 Array mit Zufallspunkten (0-100)
+2. Berechne den **Durchschnitt jedes Schülers** (über alle 3 Tests)  
+   *Tipp: `mean(axis=1)` für Zeilenmittelwert*
+3. Berechne den **Durchschnitt jedes Tests** (über alle 8 Schüler)  
+   *Tipp: `mean(axis=0)` für Spaltenmittelwert*
+4. Finde den **besten** und **schlechtesten** Schüler (nach Durchschnitt)
+5. Wie viel **Prozent** der Schüler haben über 60 Punkte im Schnitt?
 
-- [ ] **Greife auf einzelne Farbkanäle zu:**
-    ```python
-    rot_kanal = bild[:, :, 0]    # Nur Rot
-    gruen_kanal = bild[:, :, 1]  # Nur Grün
-    blau_kanal = bild[:, :, 2]   # Nur Blau
-    
-    print(f"Rot-Kanal:\n{rot_kanal}")
-    ```
+---
+
+### Aufgabe 9 – Würfelsimulation
+
+Simuliere **10.000 Würfe** mit zwei Würfeln und analysiere die Ergebnisse.
+
+1. Erstelle zwei Arrays mit je 10.000 Zufallszahlen (1-6) für Würfel 1 und Würfel 2
+2. Berechne die **Summe** beider Würfel für jeden Wurf
+3. Zähle: Wie oft wurde eine **7** gewürfelt? Wie oft eine **12**?
+4. Berechne die **relative Häufigkeit** jeder möglichen Summe (2-12)
+5. Vergleiche mit der **theoretischen Wahrscheinlichkeit**:
+    - P(7) = 6/36 ≈ 16.67%
+    - P(12) = 1/36 ≈ 2.78%
+
+---
+
+### Aufgabe 10 – Körpergrößen-Analyse
+
+Erstelle ein Array mit **1000 simulierten Körpergrößen** (Normalverteilung):
+
+```python
+groessen = np.random.normal(170, 10, 1000)  # Mittelwert 170, Std 10
+```
+
+Beantworte folgende Fragen:
+
+1. Wie viele Personen sind **größer als 180 cm**?
+2. Wie viele sind **zwischen 165 und 175 cm**?
+3. Was ist das **90. Perzentil**? (Nutze `np.percentile()`)
+4. **Bonus:** Teile die Daten in 10 gleichmäßige Bins von 140 bis 200 cm ein und zähle die Häufigkeiten pro Bin (nutze `np.histogram()`)
 
 ---
 
@@ -348,7 +192,7 @@ Arbeite mit 3D-Arrays für komplexere Datenstrukturen.
 ---
 
 ??? question "Selbstkontrolle"
-    1. Wie erstellst du ein 5x5 Array mit Nullen?
+    1. Wie erstellst du ein 5×5 Array mit Nullen?
     2. Was ist der Unterschied zwischen `np.arange(0, 10, 2)` und `np.linspace(0, 10, 5)`?
     3. Kann ein Array mit 15 Elementen zu (3, 4) umgeformt werden?
     4. Was gibt `np.array([1, 2, 3]) * 2` zurück?

@@ -6,11 +6,11 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 - Daten aus spezifischen Positionen eines Arrays extrahieren
 - 1D- und 2D-Slicing sicher anwenden
-- gezielt Teilbereiche großer Datensätze auswählen
+- gezilt Teilbereiche großer Datensätze auswählen
 - den Unterschied zwischen Views und Copies verstehen
 
 !!! note "Begleitendes Infoblatt"
-    [:material-book-open-variant: NumPy Indexierung](../infoblaetter/numpy-indexierung.md) – Slicing, Fancy Indexing, Boolean Indexing
+    Lies **zuerst** das [:material-book-open-variant: Infoblatt NumPy Indexierung](../infoblaetter/numpy-indexierung.md) – dort findest du alle Syntax-Grundlagen zu Slicing, Fancy Indexing und Boolean Indexing.
 
 ---
 
@@ -35,70 +35,41 @@ In dieser Lernsituation arbeitest du mit echten NYC Yellow Taxi Trip-Daten. Du l
 
 ## Aufgaben
 
-### Aufgabe 1 – Daten laden
+### Aufgabe 1 – Daten laden und untersuchen
 
-Lade die Taxi-Daten als NumPy-Array.
+Bereite den Taxi-Datensatz für die Analyse vor.
 
-- [ ] **Lade die CSV-Datei:**
-    ```python
-    import numpy as np
-    
-    # Daten laden (numerische Spalten)
-    daten = np.genfromtxt('../assets/files/taxi_tripdata.csv', 
-                          delimiter=',', 
-                          skip_header=1)
-    
-    print(f"Shape: {daten.shape}")
-    print(f"Erste Zeile: {daten[0]}")
-    ```
+1. Importiere NumPy und lade die Datei `taxi_tripdata.csv` mit `np.genfromtxt()`.
+   *Nutze `skip_header=1` für die Kopfzeile.*
 
-- [ ] **Untersuche das Array:**
-    ```python
-    print(f"Dimensionen: {daten.ndim}")
-    print(f"Datentyp: {daten.dtype}")
-    print(f"Anzahl Fahrten: {daten.shape[0]}")
-    print(f"Anzahl Spalten: {daten.shape[1]}")
-    ```
+2. Lass dir die Shape des Arrays ausgeben – wie viele Zeilen und Spalten hat der Datensatz?
 
-- [ ] **Prüfe auf NaN-Werte:**
-    ```python
-    nan_count = np.isnan(daten).sum()
-    print(f"Anzahl NaN-Werte: {nan_count}")
-    ```
+3. Bestimme den Datentyp (`dtype`) und die Anzahl der Dimensionen (`ndim`).
+
+4. Prüfe, wie viele NaN-Werte das Array enthält.
+   *Tipp: `np.isnan()` und `.sum()` kombinieren.*
 
 !!! question "Reflexionsfrage"
-    Warum enthält das Array NaN-Werte? (Tipp: Was passiert mit Text-Spalten?)
+    Warum enthält das Array NaN-Werte? Was passiert mit Text-Spalten beim Laden?
 
 ---
 
 ### Aufgabe 2 – 1D-Indexierung und Slicing
 
-Arbeite mit einzelnen Spalten.
+Arbeite mit der Spalte `trip_distance` (Index 8).
 
-- [ ] **Extrahiere die Spalte `trip_distance` (Index 8):**
-    ```python
-    trip_distance = daten[:, 8]
-    print(f"Shape: {trip_distance.shape}")
-    print(f"Erste 10 Werte: {trip_distance[:10]}")
-    ```
+1. Extrahiere die komplette Spalte `trip_distance` in eine eigene Variable.
 
-- [ ] **Zeige die ersten 30 Einträge:**
-    ```python
-    print("Erste 30 Fahrstrecken:")
-    print(trip_distance[:30])
-    ```
+2. Gib die ersten 30 Einträge dieser Spalte aus.
 
-- [ ] **Zeige die letzten 10 Einträge:**
-    ```python
-    print("Letzte 10 Fahrstrecken:")
-    print(trip_distance[-10:])
-    ```
+3. Gib die letzten 10 Einträge aus.
 
-- [ ] **Jeder fünfte Wert:**
-    ```python
-    print("Jeder 5. Wert (erste 20):")
-    print(trip_distance[::5][:20])
-    ```
+4. Zeige jeden fünften Wert der ersten 100 Einträge.
+
+!!! tip "Hilfe"
+    - Spalte extrahieren: `array[:, spalten_index]`
+    - Slicing: `array[start:stop:step]`
+    - Negative Indizes: `-10:` für die letzten 10
 
 ---
 
@@ -106,23 +77,14 @@ Arbeite mit einzelnen Spalten.
 
 Extrahiere mehrere Spalten gleichzeitig.
 
-- [ ] **Extrahiere `fare_amount` (9) und `tip_amount` (12):**
-    ```python
-    # Beide Spalten
-    preise = daten[:, [9, 12]]
-    print(f"Shape: {preise.shape}")
-    print(f"Erste 10 Zeilen:\n{preise[:10]}")
-    ```
+1. Extrahiere die Spalten `fare_amount` (9) und `tip_amount` (12) zusammen in ein neues Array.
 
-- [ ] **Erstelle eine Übersicht der ersten 30 Fahrten:**
-    ```python
-    # Spalten: passenger_count(7), trip_distance(8), fare_amount(9), total_amount(16)
-    uebersicht = daten[:30, [7, 8, 9, 16]]
-    print("Passagiere | Strecke | Fahrpreis | Gesamt")
-    print("-" * 45)
-    for zeile in uebersicht:
-        print(f"{zeile[0]:10.0f} | {zeile[1]:7.2f} | {zeile[2]:9.2f} | {zeile[3]:6.2f}")
-    ```
+2. Erstelle eine Übersicht der ersten 30 Fahrten mit den Spalten: `passenger_count` (7), `trip_distance` (8), `fare_amount` (9), `total_amount` (16).
+
+3. Gib die Übersicht formatiert auf der Konsole aus (z.B. als Tabelle mit Spaltenüberschriften).
+
+!!! tip "Hilfe"
+    Mehrere Spalten: `array[:, [index1, index2, index3]]`
 
 ---
 
@@ -130,173 +92,116 @@ Extrahiere mehrere Spalten gleichzeitig.
 
 Wähle gezielte Bereiche aus der Matrix.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
+1. Wähle die Zeilen 1011 bis 1097 und Spalten 6 bis 9 aus. Wie groß ist das Ergebnis-Array?
 
-rectangle "daten[zeilen, spalten]" as title #white
+2. Extrahiere jede zweite Zeile des gesamten Datensatzes. Wie viele Zeilen hat das Ergebnis?
 
-rectangle "Alle Zeilen\ndaten[:, 5]" as r1 #lightblue
-rectangle "Zeilen 10-20\ndaten[10:20, :]" as r2 #lightgreen
-rectangle "Bereich\ndaten[10:20, 5:10]" as r3 #lightyellow
+3. Extrahiere die letzte Spalte des Datensatzes.
 
-note bottom
-  [start:stop] - stop ist exklusiv
-  [:] - alle Elemente
-  [::2] - jedes zweite Element
-end note
-@enduml
-```
+4. Gib die letzten 10 Zeilen in umgekehrter Reihenfolge aus.
 
-- [ ] **Wähle Zeilen 1011 bis 1097 und Spalten 6 bis 9:**
-    ```python
-    ausschnitt = daten[1011:1098, 6:10]
-    print(f"Shape: {ausschnitt.shape}")  # Sollte (87, 4) sein
-    print(f"Erste 5 Zeilen:\n{ausschnitt[:5]}")
-    ```
-
-- [ ] **Extrahiere jede zweite Zeile:**
-    ```python
-    jede_zweite = daten[::2]
-    print(f"Original: {daten.shape[0]} Zeilen")
-    print(f"Jede zweite: {jede_zweite.shape[0]} Zeilen")
-    ```
-
-- [ ] **Extrahiere die letzte Spalte:**
-    ```python
-    letzte_spalte = daten[:, -1]
-    print(f"Letzte Spalte (erste 10): {letzte_spalte[:10]}")
-    ```
-
-- [ ] **Umgekehrte Reihenfolge:**
-    ```python
-    # Letzte 10 Zeilen in umgekehrter Reihenfolge
-    umgekehrt = daten[-1:-11:-1]
-    print(f"Shape: {umgekehrt.shape}")
-    ```
+!!! tip "Hilfe"
+    - Bereich: `array[start:stop, start:stop]`
+    - Jede n-te: `array[::n]`
+    - Rückwärts: `array[::-1]` oder negativer Step
 
 ---
 
-### Aufgabe 5 – Slicing-Visualisierung
+### Aufgabe 5 – Slicing an kleiner Matrix üben
 
-Verstehe das Slicing besser durch Visualisierung.
+Erstelle eine kleine Test-Matrix zum Experimentieren.
 
-- [ ] **Erstelle eine kleine Test-Matrix:**
-    ```python
-    test = np.arange(1, 21).reshape(4, 5)
-    print("Test-Matrix:")
-    print(test)
-    ```
+1. Erstelle mit `np.arange()` und `.reshape()` eine 4×5-Matrix mit den Werten 1-20.
 
-- [ ] **Übe verschiedene Slicing-Operationen:**
-    ```python
-    print(f"Zeile 1: {test[1]}")
-    print(f"Spalte 2: {test[:, 2]}")
-    print(f"Zeilen 1-2, Spalten 2-4:\n{test[1:3, 2:5]}")
-    print(f"Jede 2. Zeile, jede 2. Spalte:\n{test[::2, ::2]}")
-    ```
+2. Extrahiere:
+   - Zeile 1 (zweite Zeile)
+   - Spalte 2 (dritte Spalte)
+   - Den Bereich Zeilen 1-2, Spalten 2-4
+   - Jede zweite Zeile und jede zweite Spalte
+
+3. Erkläre bei jeder Extraktion, was genau ausgewählt wird.
 
 ---
 
 ### Aufgabe 6 – Views vs. Copies
 
-Ein wichtiges Konzept: Slicing erstellt Views, keine Kopien!
+Ein wichtiges Konzept verstehen: Slicing erstellt Views, keine Kopien!
 
-- [ ] **Demonstriere das View-Verhalten:**
-    ```python
-    original = np.array([1, 2, 3, 4, 5])
-    
-    # Slicing erstellt View
-    view = original[1:4]
-    print(f"Original: {original}")
-    print(f"View: {view}")
-    
-    # Ändere den View
-    view[0] = 99
-    
-    print(f"\nNach Änderung:")
-    print(f"Original: {original}")  # Auch geändert!
-    print(f"View: {view}")
-    ```
+1. Erstelle ein Array `original = np.array([1, 2, 3, 4, 5])`.
 
-- [ ] **Erstelle eine echte Kopie:**
-    ```python
-    original = np.array([1, 2, 3, 4, 5])
-    
-    # Explizite Kopie
-    kopie = original[1:4].copy()
-    kopie[0] = 99
-    
-    print(f"Original: {original}")  # Unverändert!
-    print(f"Kopie: {kopie}")
-    ```
+2. Erstelle per Slicing einen Ausschnitt `view = original[1:4]`.
+
+3. Ändere den ersten Wert im View auf 99.
+
+4. Prüfe beide Arrays – was ist passiert? Erkläre das Verhalten.
+
+5. Wiederhole das Experiment, aber erstelle stattdessen eine echte Kopie mit `.copy()`.
 
 !!! warning "Wichtig"
     Bei der Arbeit mit Daten solltest du dir immer bewusst sein, ob du mit einem View oder einer Kopie arbeitest!
 
 ---
 
-### Aufgabe 7 – Praktische Anwendung
+### Aufgabe 7 – Praktische Analysen
 
 Wende dein Wissen auf die Taxi-Daten an.
 
-- [ ] **Analysiere die ersten 100 Fahrten:**
-    ```python
-    erste_100 = daten[:100]
-    
-    # Durchschnittliche Fahrstrecke
-    strecke = erste_100[:, 8]
-    print(f"Durchschnittliche Strecke: {np.nanmean(strecke):.2f} Meilen")
-    
-    # Durchschnittlicher Fahrpreis
-    preis = erste_100[:, 9]
-    print(f"Durchschnittlicher Preis: ${np.nanmean(preis):.2f}")
-    ```
+1. Analysiere die ersten 100 Fahrten:
+   - Berechne die durchschnittliche Fahrstrecke
+   - Berechne den durchschnittlichen Fahrpreis
+   *Tipp: Nutze `np.nanmean()` wegen der NaN-Werte.*
 
-- [ ] **Vergleiche erste und letzte 500 Fahrten:**
-    ```python
-    erste_500 = daten[:500]
-    letzte_500 = daten[-500:]
-    
-    print("Durchschnittliche Strecke:")
-    print(f"  Erste 500: {np.nanmean(erste_500[:, 8]):.2f} Meilen")
-    print(f"  Letzte 500: {np.nanmean(letzte_500[:, 8]):.2f} Meilen")
-    
-    print("\nDurchschnittlicher Gesamtbetrag:")
-    print(f"  Erste 500: ${np.nanmean(erste_500[:, 16]):.2f}")
-    print(f"  Letzte 500: ${np.nanmean(letzte_500[:, 16]):.2f}")
-    ```
+2. Vergleiche die ersten 500 mit den letzten 500 Fahrten:
+   - Durchschnittliche Strecke
+   - Durchschnittlicher Gesamtbetrag
+   - Gibt es Unterschiede?
 
-- [ ] **Erstelle eine Stichprobe:**
-    ```python
-    # Jede 10. Fahrt als Stichprobe
-    stichprobe = daten[::10]
-    print(f"Stichprobengröße: {stichprobe.shape[0]} Fahrten")
-    print(f"Durchschnittliche Strecke: {np.nanmean(stichprobe[:, 8]):.2f} Meilen")
-    ```
+3. Erstelle eine Stichprobe (jede 10. Fahrt) und berechne die durchschnittliche Strecke.
+   Vergleiche mit dem Durchschnitt aller Fahrten.
 
 ---
 
 ### Aufgabe 8 – Bonus: Transponieren und Umformen
 
-- [ ] **Transponiere einen Ausschnitt:**
-    ```python
-    # 5 Fahrten, 4 Merkmale
-    ausschnitt = daten[:5, [7, 8, 9, 16]]
-    print(f"Original Shape: {ausschnitt.shape}")
-    
-    transponiert = ausschnitt.T
-    print(f"Transponiert Shape: {transponiert.shape}")
-    print(f"Transponiert:\n{transponiert}")
-    ```
+1. Wähle 5 Fahrten und 4 Merkmale (z.B. passenger_count, trip_distance, fare_amount, total_amount) aus.
 
-- [ ] **Flache Darstellung:**
-    ```python
-    flach = ausschnitt.flatten()
-    print(f"Flatten Shape: {flach.shape}")
-    print(f"Flatten: {flach}")
-    ```
+2. Transponiere diesen Ausschnitt mit `.T`.
+
+3. Erkläre, was beim Transponieren passiert und wann das nützlich ist.
+
+4. Probiere `.flatten()` auf dem Ausschnitt – was passiert?
+
+---
+
+### Aufgabe 9 – Eigenständige Analyseaufgaben
+
+!!! warning "Ohne Hilfe lösen"
+    Bearbeite diese Aufgaben komplett selbstständig mit den Taxi-Daten.
+
+**Aufgabe A: Datenpartitionierung**
+
+- Teile den Datensatz in 3 gleich große Teile (erstes Drittel, Mitte, letztes Drittel)
+- Berechne den Durchschnitt der `trip_distance` für jeden Teil
+- Gibt es Unterschiede? Was könnte der Grund sein?
+
+**Aufgabe B: Stichprobenanalyse**
+
+- Erstelle 5 verschiedene Stichproben: jede 10., 20., 50., 100. Zeile
+- Vergleiche den Durchschnitt der `total_amount` Spalte jeder Stichprobe mit dem Gesamtdurchschnitt
+- Welche Stichprobengröße ist repräsentativ genug?
+
+**Aufgabe C: Datenextraktion und Neukombination**
+
+- Extrahiere die Spalten `passenger_count`, `trip_distance`, `fare_amount` und `tip_amount`
+- Berechne eine neue Spalte: Trinkgeld pro Meile (tip_amount / trip_distance)
+- Achtung: Wie gehst du mit Division durch 0 um?
+
+**Aufgabe D: View-Problem lösen**
+
+- Erstelle einen View auf die ersten 100 Zeilen
+- Ändere den ersten Wert im View auf 999
+- Prüfe, ob sich das Original geändert hat
+- Wie verhinderst du solche unbeabsichtigten Änderungen in der Praxis?
 
 ---
 

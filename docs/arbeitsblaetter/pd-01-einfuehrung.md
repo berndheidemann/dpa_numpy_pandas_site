@@ -12,12 +12,16 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 !!! note "Begleitende Infoblätter"
     - [:material-book-open-variant: Pandas Grundlagen](../infoblaetter/pandas-grundlagen.md) – DataFrame & Series
     - [:material-book-open-variant: NumPy Grundlagen](../infoblaetter/numpy-grundlagen.md) – Arrays als Basis
+    
+    Lies das Infoblatt **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen zu DataFrames und Series.
 
 ---
 
 ## Einführung
 
 Pandas ist **die** Python-Bibliothek für Datenanalyse. Sie baut auf NumPy auf und bietet mächtige Datenstrukturen für tabellarische Daten.
+
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
 ```kroki-plantuml
 @startuml
@@ -47,114 +51,67 @@ df --> series : "enthält"
 
 ## Aufgaben
 
-### Aufgabe 1 – Pandas importieren und erkunden
+### Aufgabe 1 – Pandas importieren und DataFrame erstellen
 
-- [ ] **Importiere Pandas:**
-    ```python
-    import pandas as pd
-    import numpy as np
-    
-    # Version prüfen
-    print(f"Pandas Version: {pd.__version__}")
-    ```
+Importiere Pandas und erstelle dein erstes DataFrame manuell.
 
-- [ ] **DataFrame manuell erstellen:**
-    ```python
-    # Aus einem Dictionary
-    daten = {
-        'Name': ['Anna', 'Ben', 'Clara', 'David'],
-        'Alter': [22, 25, 28, 24],
-        'Stadt': ['Berlin', 'München', 'Hamburg', 'Köln'],
-        'Gehalt': [45000, 52000, 48000, 51000]
-    }
-    
-    df = pd.DataFrame(daten)
-    print(df)
-    ```
+- [ ] Importiere Pandas mit dem Alias `pd` und NumPy mit dem Alias `np`
+- [ ] Gib die Pandas-Version aus
+- [ ] Erstelle ein Dictionary mit Daten für 4 Personen (Name, Alter, Stadt, Gehalt)
+- [ ] Erstelle daraus ein DataFrame und gib es aus
+- [ ] Gib folgende Eigenschaften des DataFrames aus: Shape, Spaltennamen, Index, Gesamtzahl der Werte
 
-- [ ] **Grundlegende Eigenschaften:**
-    ```python
-    print(f"\nShape (Zeilen, Spalten): {df.shape}")
-    print(f"Spalten: {df.columns.tolist()}")
-    print(f"Index: {df.index.tolist()}")
-    print(f"Anzahl Werte: {df.size}")
-    ```
+!!! tip "Hilfe"
+    - Import: `import pandas as pd`
+    - Version prüfen: `pd.__version__`
+    - DataFrame aus Dictionary: `pd.DataFrame(dict)`
+    - Eigenschaften: `df.shape`, `df.columns`, `df.index`, `df.size`
 
 ---
 
 ### Aufgabe 2 – CSV-Dateien laden
 
-- [ ] **Lade den Games-Datensatz:**
-    ```python
-    # CSV laden
-    games = pd.read_csv('../assets/files/games.csv')
-    
-    print("Datensatz geladen!")
-    print(f"Shape: {games.shape}")
-    ```
+Lade einen echten Datensatz aus einer CSV-Datei und verschaffe dir einen ersten Überblick.
 
-- [ ] **Erste Zeilen anschauen:**
-    ```python
-    # Standard: erste 5 Zeilen
-    print(games.head())
-    
-    # Erste 10 Zeilen
-    print("\n--- Erste 10 Zeilen ---")
-    print(games.head(10))
-    
-    # Letzte 3 Zeilen
-    print("\n--- Letzte 3 Zeilen ---")
-    print(games.tail(3))
-    ```
+- [ ] Lade den Games-Datensatz (`../assets/files/games.csv`) in ein DataFrame
+- [ ] Gib die Shape des Datensatzes aus
+- [ ] Zeige die ersten 5 Zeilen an
+- [ ] Zeige die ersten 10 Zeilen an
+- [ ] Zeige die letzten 3 Zeilen an
+- [ ] Zeige 5 zufällige Zeilen an
 
-- [ ] **Zufällige Stichprobe:**
-    ```python
-    # 5 zufällige Zeilen
-    print("Zufällige Zeilen:")
-    print(games.sample(5))
-    ```
+!!! tip "Hilfe"
+    - CSV laden: `pd.read_csv(pfad)`
+    - Erste/Letzte Zeilen: `df.head(n)`, `df.tail(n)`
+    - Zufällige Stichprobe: `df.sample(n)`
 
 ---
 
 ### Aufgabe 3 – Datensatz erkunden
 
-- [ ] **Allgemeine Info:**
-    ```python
-    # Kompakte Übersicht
-    print("=== Datensatz Info ===")
-    games.info()
-    ```
+Untersuche die Struktur und den Inhalt des DataFrames im Detail.
 
-- [ ] **Datentypen anzeigen:**
-    ```python
-    print("\nDatentypen der Spalten:")
-    print(games.dtypes)
-    ```
+- [ ] Zeige eine kompakte Übersicht mit Datentypen und Nicht-Null-Werten an
+- [ ] Gib die Datentypen aller Spalten aus
+- [ ] Berechne statistische Kennzahlen für alle numerischen Spalten
+- [ ] Berechne statistische Kennzahlen für **alle** Spalten (inkl. kategorische)
+- [ ] Zeige die Anzahl fehlender Werte pro Spalte an
+- [ ] Berechne den Prozentsatz fehlender Werte pro Spalte
 
-- [ ] **Statistische Zusammenfassung:**
-    ```python
-    # Nur numerische Spalten
-    print("\nStatistische Zusammenfassung:")
-    print(games.describe())
-    
-    # Alle Spalten (inkl. kategorische)
-    print("\nAlle Spalten:")
-    print(games.describe(include='all'))
-    ```
+!!! tip "Hilfe"
+    - Struktur-Info: `df.info()`, `df.dtypes`
+    - Statistik: `df.describe()` – mit `include='all'` für alle Spaltentypen
+    - Fehlende Werte: `df.isnull().sum()`
+    - Prozentsatz: `(df.isnull().sum() / len(df) * 100)`
 
-- [ ] **Fehlende Werte prüfen:**
-    ```python
-    print("\nFehlende Werte pro Spalte:")
-    print(games.isnull().sum())
-    
-    # Prozentsatz fehlender Werte
-    print("\nProzent fehlend:")
-    print((games.isnull().sum() / len(games) * 100).round(2))
-    ```
+!!! question "Reflexionsfrage"
+    Welche Spalten enthalten die meisten fehlenden Werte? Was könnte der Grund dafür sein?
 
 ---
 
 ### Aufgabe 4 – Spalten auswählen
+
+Lerne den Unterschied zwischen Series und DataFrame bei der Spaltenauswahl.
 
 ```kroki-plantuml
 @startuml
@@ -180,185 +137,129 @@ end note
 @enduml
 ```
 
-- [ ] **Eine Spalte auswählen (Series):**
-    ```python
-    # Mit Punkt-Notation (wenn Spaltenname einfach)
-    # name_series = games.Name
-    
-    # Mit Bracket-Notation (immer sicher)
-    name_series = games['Name']
-    
-    print(type(name_series))
-    print(name_series.head())
-    ```
+- [ ] Wähle die Spalte `Name` aus und gib den Datentyp (`type()`) des Ergebnisses aus
+- [ ] Zeige die ersten 5 Werte dieser Spalte an
+- [ ] Wähle die Spalten `Name`, `Platform` und `Year_of_Release` gemeinsam aus
+- [ ] Gib den Datentyp des Ergebnisses aus – was ist der Unterschied zur Einzelspalte?
+- [ ] Benenne die Spalten `Name`, `Year_of_Release` und `Platform` in deutsche Namen um
 
-- [ ] **Mehrere Spalten auswählen (DataFrame):**
-    ```python
-    # Liste von Spaltennamen
-    auswahl = games[['Name', 'Platform', 'Year_of_Release']]
-    
-    print(type(auswahl))
-    print(auswahl.head())
-    ```
-
-- [ ] **Spalten umbenennen:**
-    ```python
-    # Kopie mit neuen Spaltennamen
-    games_de = games.rename(columns={
-        'Name': 'Spielname',
-        'Year_of_Release': 'Erscheinungsjahr',
-        'Platform': 'Plattform'
-    })
-    
-    print(games_de.columns[:5].tolist())
-    ```
+!!! tip "Hilfe"
+    - Eine Spalte (Series): `df['spalte']`
+    - Mehrere Spalten (DataFrame): `df[['spalte1', 'spalte2']]`
+    - Umbenennen: `df.rename(columns={'alt': 'neu'})`
 
 ---
 
 ### Aufgabe 5 – Datentypen verstehen und konvertieren
 
-- [ ] **Datentypen überprüfen:**
-    ```python
-    print("Datentypen im Detail:")
-    for col in games.columns:
-        print(f"  {col}: {games[col].dtype}")
-    ```
+Analysiere und ändere die Datentypen im DataFrame.
 
-- [ ] **Typumwandlung:**
-    ```python
-    # Prüfe Year_of_Release
-    print("\nJahr - Ursprünglicher Typ:", games['Year_of_Release'].dtype)
-    
-    # Falls float, in int konvertieren (nur wenn keine NaN!)
-    # Erst NaN entfernen oder ersetzen
-    games_clean = games.copy()
-    games_clean['Year_of_Release'] = games_clean['Year_of_Release'].fillna(0)
-    games_clean['Year_of_Release'] = games_clean['Year_of_Release'].astype(int)
-    
-    print("Nach Konvertierung:", games_clean['Year_of_Release'].dtype)
-    print(games_clean['Year_of_Release'].head())
-    ```
+- [ ] Gib für jede Spalte den Namen und Datentyp aus (nutze eine Schleife)
+- [ ] Prüfe den Datentyp von `Year_of_Release` – ist er sinnvoll?
+- [ ] Erstelle eine Kopie des DataFrames und ersetze fehlende Werte in `Year_of_Release` durch 0
+- [ ] Konvertiere `Year_of_Release` in der Kopie zu Integer
+- [ ] Konvertiere die Spalte `Platform` zu einem kategorischen Datentyp und vergleiche den Speicherverbrauch vorher/nachher
 
-- [ ] **Kategorische Daten:**
-    ```python
-    # Platform als Kategorie (speichereffizienter)
-    print("\nPlattform vor Konvertierung:")
-    print(f"  Typ: {games['Platform'].dtype}")
-    print(f"  Speicher: {games['Platform'].memory_usage()} Bytes")
-    
-    games['Platform_cat'] = games['Platform'].astype('category')
-    
-    print("\nPlattform nach Konvertierung:")
-    print(f"  Typ: {games['Platform_cat'].dtype}")
-    print(f"  Speicher: {games['Platform_cat'].memory_usage()} Bytes")
-    print(f"  Kategorien: {games['Platform_cat'].cat.categories.tolist()[:5]}...")
-    ```
+!!! tip "Hilfe"
+    - Schleife über Spalten: `for col in df.columns:`
+    - Kopie erstellen: `df.copy()`
+    - NaN ersetzen: `df['spalte'].fillna(wert)`
+    - Typ ändern: `df['spalte'].astype(typ)` – z.B. `int`, `'category'`
+    - Speicherverbrauch: `df['spalte'].memory_usage()`
 
 ---
 
 ### Aufgabe 6 – Eindeutige Werte und Häufigkeiten
 
-- [ ] **Eindeutige Werte:**
-    ```python
-    # Wie viele verschiedene Plattformen?
-    print(f"Anzahl Plattformen: {games['Platform'].nunique()}")
-    
-    # Welche Plattformen?
-    print(f"\nPlattformen: {games['Platform'].unique()}")
-    ```
+Analysiere die Verteilung von Werten in kategorialen Spalten.
 
-- [ ] **Häufigkeiten zählen:**
-    ```python
-    # Top 10 Plattformen nach Anzahl Spiele
-    print("Top 10 Plattformen:")
-    print(games['Platform'].value_counts().head(10))
-    
-    # Als Prozentsatz
-    print("\nTop 5 Plattformen (Prozent):")
-    print(games['Platform'].value_counts(normalize=True).head(5) * 100)
-    ```
+- [ ] Finde heraus, wie viele verschiedene Plattformen es gibt
+- [ ] Zeige alle eindeutigen Plattformen an
+- [ ] Erstelle eine Häufigkeitstabelle der Top 10 Plattformen nach Anzahl Spiele
+- [ ] Zeige die Top 5 Plattformen als Prozentsatz an
+- [ ] Finde die 10 Jahre mit den meisten Spiele-Releases
 
-- [ ] **Jahre mit den meisten Releases:**
-    ```python
-    print("\nTop 10 Release-Jahre:")
-    print(games['Year_of_Release'].value_counts().head(10))
-    ```
+!!! tip "Hilfe"
+    - Anzahl eindeutiger Werte: `df['spalte'].nunique()`
+    - Eindeutige Werte: `df['spalte'].unique()`
+    - Häufigkeiten: `df['spalte'].value_counts()`
+    - Als Prozentsatz: `df['spalte'].value_counts(normalize=True)`
 
 ---
 
 ### Aufgabe 7 – Sortieren
 
-- [ ] **Nach einer Spalte sortieren:**
-    ```python
-    # Nach Jahr sortieren (älteste zuerst)
-    games_chronologisch = games.sort_values('Year_of_Release')
-    print("Älteste Spiele:")
-    print(games_chronologisch[['Name', 'Year_of_Release', 'Platform']].head())
-    
-    # Neueste zuerst
-    games_neu = games.sort_values('Year_of_Release', ascending=False)
-    print("\nNeueste Spiele:")
-    print(games_neu[['Name', 'Year_of_Release', 'Platform']].head())
-    ```
+Sortiere DataFrames nach einer oder mehreren Spalten.
 
-- [ ] **Nach mehreren Spalten sortieren:**
-    ```python
-    # Nach Plattform, dann Jahr
-    sortiert = games.sort_values(['Platform', 'Year_of_Release'],
-                                  ascending=[True, False])
-    print("Sortiert nach Plattform, dann Jahr (absteigend):")
-    print(sortiert[['Name', 'Platform', 'Year_of_Release']].head(10))
-    ```
+- [ ] Sortiere das DataFrame nach `Year_of_Release` (aufsteigend) und zeige die ältesten 5 Spiele mit Name, Jahr und Plattform
+- [ ] Sortiere absteigend und zeige die 5 neuesten Spiele
+- [ ] Sortiere nach `Platform` (aufsteigend) und innerhalb jeder Plattform nach `Year_of_Release` (absteigend)
+- [ ] Zeige die ersten 10 Zeilen des Ergebnisses mit Name, Plattform und Jahr
+- [ ] Setze den Index nach einer Sortierung zurück, sodass er wieder bei 0 beginnt
 
-- [ ] **Index zurücksetzen:**
-    ```python
-    # Nach Sortierung Index neu setzen
-    games_sorted = games.sort_values('Year_of_Release').reset_index(drop=True)
-    print(f"Neuer Index: {games_sorted.index[:10].tolist()}")
-    ```
+!!! tip "Hilfe"
+    - Sortieren: `df.sort_values('spalte')` oder `df.sort_values('spalte', ascending=False)`
+    - Mehrere Spalten: `df.sort_values(['spalte1', 'spalte2'], ascending=[True, False])`
+    - Index zurücksetzen: `df.reset_index(drop=True)`
 
 ---
 
 ### Aufgabe 8 – Erste Analysen
 
-- [ ] **Fragen zum Games-Datensatz:**
-    
-    Beantworte folgende Fragen mit Pandas-Code:
+Beantworte Fragen zum Games-Datensatz mit Pandas-Code.
 
-    ```python
-    # 1. Wie viele Spiele sind im Datensatz?
-    print(f"Anzahl Spiele: {len(games)}")
-    
-    # 2. In welchem Jahr wurden die meisten Spiele veröffentlicht?
-    top_jahr = games['Year_of_Release'].value_counts().idxmax()
-    anzahl = games['Year_of_Release'].value_counts().max()
-    print(f"Bestes Jahr: {top_jahr} ({anzahl} Spiele)")
-    
-    # 3. Welches Genre ist am häufigsten?
-    if 'Genre' in games.columns:
-        top_genre = games['Genre'].value_counts().idxmax()
-        print(f"Häufigstes Genre: {top_genre}")
-    
-    # 4. Wie viele verschiedene Publisher gibt es?
-    if 'Publisher' in games.columns:
-        print(f"Anzahl Publisher: {games['Publisher'].nunique()}")
-    
-    # 5. Welche Spalten haben fehlende Werte?
-    missing = games.isnull().sum()
-    spalten_mit_nan = missing[missing > 0].index.tolist()
-    print(f"Spalten mit NaN: {spalten_mit_nan}")
-    ```
+- [ ] Wie viele Spiele sind insgesamt im Datensatz?
+- [ ] In welchem Jahr wurden die meisten Spiele veröffentlicht? Wie viele waren es?
+- [ ] Welches Genre ist am häufigsten vertreten?
+- [ ] Wie viele verschiedene Publisher gibt es?
+- [ ] Welche Spalten haben fehlende Werte? Liste sie auf.
+
+!!! tip "Hilfe"
+    - Anzahl Zeilen: `len(df)` oder `df.shape[0]`
+    - Häufigstes Element finden: `df['spalte'].value_counts().idxmax()` für den Wert, `.max()` für die Anzahl
+    - Bedingte Auswahl: `series[series > 0]` filtert positive Werte
 
 !!! tip "Methoden-Kette"
-    Pandas erlaubt das Verketten von Methoden:
-    ```python
-    # Statt:
-    temp = games.sort_values('Year_of_Release')
-    ergebnis = temp.head(10)
-    
-    # Besser:
-    ergebnis = games.sort_values('Year_of_Release').head(10)
-    ```
+    Pandas erlaubt das Verketten von Methoden – statt Zwischenvariablen kannst du Methoden direkt aneinanderhängen:
+    `df.sort_values('Year_of_Release').head(10)`
+
+---
+
+### Aufgabe 9 – Eigenständige Erkundung
+
+!!! warning "Ohne Hilfe lösen"
+    Bearbeite diese Aufgaben selbstständig mit dem Games-Datensatz.
+
+**Aufgabe A: Datensatz verstehen**
+
+- Welche 5 Spiele haben die höchste Kritikerwertung (`Critic_Score`)?
+- Welcher Publisher hat die meisten Spiele veröffentlicht?
+- In welchem Jahr wurden die meisten Spiele für die Plattform "PS4" veröffentlicht?
+- Wie hoch ist der Anteil an Spielen ohne Altersfreigabe (`Rating` ist NaN)?
+
+**Aufgabe B: Datenqualität prüfen**
+
+- Erstelle eine Übersicht: Für jede Spalte zeige an:
+    - Name
+    - Datentyp
+    - Anzahl fehlender Werte
+    - Prozentsatz fehlender Werte
+    - Anzahl eindeutiger Werte
+- Welche Spalte hat die schlechteste Datenqualität?
+
+**Aufgabe C: Sortierung und Auswahl**
+
+- Sortiere nach Kritikerwertung (absteigend) und zeige die Top 20
+- Finde alle Spiele, die im Jahr 2015 erschienen sind, sortiert nach Plattform
+- Zeige alle Spiele eines bestimmten Publishers deiner Wahl
+
+**Aufgabe D: Eigene Fragen**
+
+Formuliere 3 eigene interessante Fragen an den Datensatz und beantworte sie mit Pandas-Code:
+
+1. Frage: ...
+2. Frage: ...
+3. Frage: ...
 
 ---
 

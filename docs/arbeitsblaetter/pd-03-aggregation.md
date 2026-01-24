@@ -12,6 +12,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 !!! note "Begleitende Infoblätter"
     - [:material-book-open-variant: Pandas Aggregation](../infoblaetter/pandas-aggregation.md) – groupby, agg, pivot_table
     - [:material-book-open-variant: Pandas Datenzugriff](../infoblaetter/pandas-datenzugriff.md)
+    
+    Lies das Infoblatt **zuerst**, bevor du die Aufgaben bearbeitest. Dort findest du alle Syntax-Beispiele und Erklärungen zu Aggregationsfunktionen.
 
 ---
 
@@ -43,34 +45,38 @@ apply --> combine
 @enduml
 ```
 
+**Bearbeite alle Aufgaben in einem Jupyter Notebook.**
+
+**Spaltenübersicht für den MBA-Datensatz:**
+
+| Spalte | Beschreibung |
+|--------|--------------|
+| Application_ID | Eindeutige Bewerber-ID |
+| Gender | Geschlecht (Male/Female) |
+| International | Internationaler Student (True/False) |
+| GPA | Notendurchschnitt (0-4) |
+| Major | Studienfach |
+| Work_Experience | Berufserfahrung in Jahren |
+| Decision | Entscheidung (Admit/Deny/Waitlist) |
+
 ---
 
 ## Aufgaben
 
 ### Aufgabe 1 – Datensatz laden und verstehen
 
-- [ ] **Lade den MBA-Datensatz:**
-    ```python
-    import pandas as pd
-    import numpy as np
-    
-    mba = pd.read_csv('../assets/files/mba_decisions.csv')
-    
-    print("Shape:", mba.shape)
-    print("\nSpalten:", mba.columns.tolist())
-    print("\nErste Zeilen:")
-    print(mba.head())
-    ```
+Lade den MBA-Datensatz und verschaffe dir einen Überblick.
 
-- [ ] **Überblick über kategorische Spalten:**
-    ```python
-    print("=== Kategorische Spalten ===")
-    
-    for col in ['Gender', 'International', 'Major', 'Decision']:
-        if col in mba.columns:
-            print(f"\n{col}:")
-            print(mba[col].value_counts())
-    ```
+- [ ] Lade die Datei `mba_decisions.csv` mit Pandas
+- [ ] Gib die Shape und die Spaltennamen aus
+- [ ] Zeige die ersten Zeilen des DataFrames an
+- [ ] Analysiere die kategorischen Spalten (`Gender`, `International`, `Major`, `Decision`) mit `value_counts()`
+
+!!! tip "Hilfe"
+    - Datei laden: `pd.read_csv('pfad/datei.csv')`
+    - Shape anzeigen: `df.shape`
+    - Spaltennamen: `df.columns.tolist()`
+    - Häufigkeiten: `df['spalte'].value_counts()`
 
 ---
 
@@ -107,69 +113,36 @@ apply --> result
 @enduml
 ```
 
-- [ ] **Nach einer Spalte gruppieren:**
-    ```python
-    # Gruppiere nach Decision
-    grouped = mba.groupby('Decision')
-    
-    # Was ist das für ein Objekt?
-    print(f"Typ: {type(grouped)}")
-    print(f"Anzahl Gruppen: {grouped.ngroups}")
-    print(f"Gruppen-Keys: {list(grouped.groups.keys())}")
-    ```
+Verstehe die Grundlagen der Gruppierung mit `groupby()`.
 
-- [ ] **Einfache Aggregation:**
-    ```python
-    # Durchschnittswerte pro Gruppe
-    print("Durchschnittswerte nach Entscheidung:")
-    print(grouped.mean(numeric_only=True))
-    ```
+- [ ] Gruppiere den DataFrame nach `Decision` und speichere das GroupBy-Objekt
+- [ ] Untersuche das GroupBy-Objekt: Gib Typ, Anzahl der Gruppen und die Gruppen-Keys aus
+- [ ] Berechne die **Durchschnittswerte** aller numerischen Spalten pro Gruppe
+- [ ] Berechne den **Durchschnitts-GPA** und die **durchschnittliche Work_Experience** separat pro `Decision`
 
-- [ ] **Auf eine Spalte anwenden:**
-    ```python
-    # Nur GPA aggregieren
-    print("\nGPA nach Entscheidung:")
-    print(mba.groupby('Decision')['GPA'].mean())
-    
-    print("\nWork_Experience nach Entscheidung:")
-    print(mba.groupby('Decision')['Work_Experience'].mean())
-    ```
+!!! tip "Hilfe"
+    - Gruppieren: `df.groupby('spalte')`
+    - Anzahl Gruppen: `grouped.ngroups`
+    - Gruppen-Keys: `grouped.groups.keys()`
+    - Mittelwert aller Spalten: `grouped.mean(numeric_only=True)`
+    - Einzelne Spalte aggregieren: `df.groupby('spalte')['wert_spalte'].mean()`
 
 ---
 
 ### Aufgabe 3 – Verschiedene Aggregatfunktionen
 
-- [ ] **Standardfunktionen:**
-    ```python
-    print("=== Aggregatfunktionen auf GPA ===")
-    
-    gpa_stats = mba.groupby('Decision')['GPA'].agg([
-        'count',    # Anzahl
-        'mean',     # Mittelwert
-        'std',      # Standardabweichung
-        'min',      # Minimum
-        'max',      # Maximum
-        'median'    # Median
-    ])
-    
-    print(gpa_stats)
-    ```
+Wende verschiedene Aggregatfunktionen auf gruppierte Daten an.
 
-- [ ] **Einzelne Funktionen aufrufen:**
-    ```python
-    print("\n=== Einzelne Funktionen ===")
-    print(f"Summe Erfahrung pro Gruppe:\n{mba.groupby('Decision')['Work_Experience'].sum()}")
-    print(f"\nAnzahl pro Gruppe:\n{mba.groupby('Decision').size()}")
-    print(f"\nErste 2 pro Gruppe:\n{mba.groupby('Decision').head(2)}")
-    ```
+- [ ] Berechne für den GPA pro `Decision`: **Anzahl, Mittelwert, Standardabweichung, Minimum, Maximum und Median**
+- [ ] Berechne die **Summe der Work_Experience** pro Gruppe
+- [ ] Ermittle die **Anzahl der Bewerber** pro Gruppe mit `size()`
+- [ ] Berechne die **Quartile** (25%, 50%, 75%) des GPA pro Decision
 
-- [ ] **Perzentile:**
-    ```python
-    # Quantile
-    print("\n=== Quartile GPA nach Decision ===")
-    quartile = mba.groupby('Decision')['GPA'].quantile([0.25, 0.5, 0.75])
-    print(quartile)
-    ```
+!!! tip "Hilfe"
+    - Mehrere Funktionen: `df.groupby('spalte')['wert'].agg(['count', 'mean', 'std', 'min', 'max', 'median'])`
+    - Summe: `grouped['spalte'].sum()`
+    - Gruppengröße: `grouped.size()`
+    - Quantile/Perzentile: `grouped['spalte'].quantile([0.25, 0.5, 0.75])`
 
 ---
 
@@ -202,98 +175,59 @@ groups --> result
 @enduml
 ```
 
-- [ ] **Gruppierung nach zwei Spalten:**
-    ```python
-    # Nach Gender UND Decision
-    multi_group = mba.groupby(['Gender', 'Decision'])['GPA'].mean()
-    print("GPA nach Gender und Decision:")
-    print(multi_group)
-    ```
+Gruppiere nach mehreren Spalten gleichzeitig.
 
-- [ ] **Ergebnis als DataFrame:**
-    ```python
-    # Mit reset_index() als normaler DataFrame
-    multi_df = mba.groupby(['Gender', 'Decision'])['GPA'].mean().reset_index()
-    multi_df.columns = ['Gender', 'Decision', 'Avg_GPA']
-    print("\nAls DataFrame:")
-    print(multi_df)
-    ```
+- [ ] Berechne den **Durchschnitts-GPA** gruppiert nach `Gender` UND `Decision`
+- [ ] Wandle das Ergebnis mit `reset_index()` in einen normalen DataFrame um und benenne die Spalten sinnvoll
+- [ ] Nutze `unstack()` für eine pivot-artige Darstellung (Gender als Zeilen, Decision als Spalten)
 
-- [ ] **Unstack für bessere Darstellung:**
-    ```python
-    # Pivot-artige Darstellung
-    print("\nUnstacked (Gender als Zeilen, Decision als Spalten):")
-    print(mba.groupby(['Gender', 'Decision'])['GPA'].mean().unstack())
-    ```
+!!! tip "Hilfe"
+    - Mehrere Gruppierungsspalten: `df.groupby(['spalte1', 'spalte2'])`
+    - MultiIndex zu DataFrame: `grouped_result.reset_index()`
+    - Spalten umbenennen: `df.columns = ['name1', 'name2', ...]`
+    - Pivot-artige Darstellung: `series.unstack()`
 
 ---
 
 ### Aufgabe 5 – agg() mit mehreren Funktionen
 
-- [ ] **Verschiedene Funktionen auf eine Spalte:**
-    ```python
-    # Mehrere Aggregationen auf GPA
-    agg_result = mba.groupby('Decision')['GPA'].agg(['mean', 'std', 'count'])
-    print("Mehrere Funktionen auf GPA:")
-    print(agg_result)
-    ```
+Berechne verschiedene Kennzahlen in einem Schritt.
 
-- [ ] **Verschiedene Funktionen auf verschiedene Spalten:**
-    ```python
-    # Dictionary-Syntax
-    agg_dict = mba.groupby('Decision').agg({
-        'GPA': ['mean', 'std'],
-        'Work_Experience': ['mean', 'max'],
-        'Application_ID': 'count'  # Anzahl Bewerber
-    })
-    
-    print("Unterschiedliche Funktionen pro Spalte:")
-    print(agg_dict)
-    ```
+- [ ] Berechne für den GPA pro Decision: Mittelwert, Standardabweichung und Anzahl mit `agg()`
+- [ ] Verwende die **Dictionary-Syntax**, um für GPA Mittelwert und Std zu berechnen, für Work_Experience Mittelwert und Maximum, und für Application_ID die Anzahl
+- [ ] Nutze **Named Aggregations** für übersichtliche Spaltennamen (z.B. `avg_gpa`, `std_gpa`, `max_exp`)
 
-- [ ] **Spalten umbenennen:**
-    ```python
-    # Mit Named Aggregations (moderner Ansatz)
-    agg_named = mba.groupby('Decision').agg(
-        avg_gpa=('GPA', 'mean'),
-        std_gpa=('GPA', 'std'),
-        avg_exp=('Work_Experience', 'mean'),
-        max_exp=('Work_Experience', 'max'),
-        count=('Application_ID', 'count')
-    )
-    
-    print("\nMit benannten Spalten:")
-    print(agg_named)
-    ```
+!!! tip "Hilfe"
+    - Mehrere Funktionen auf eine Spalte: `df.groupby('spalte')['wert'].agg(['mean', 'std', 'count'])`
+    - Dictionary-Syntax: `df.groupby('spalte').agg({'sp1': ['mean', 'std'], 'sp2': 'sum'})`
+    - Named Aggregations: `df.groupby('spalte').agg(neuer_name=('spalte', 'funktion'), ...)`
 
 ---
 
 ### Aufgabe 6 – Eigene Aggregatfunktionen
 
-- [ ] **Lambda-Funktionen:**
-    ```python
-    # Range (Max - Min)
-    print("GPA-Spannweite pro Decision:")
-    print(mba.groupby('Decision')['GPA'].agg(lambda x: x.max() - x.min()))
-    
-    # Anteil über einem Schwellenwert
-    print("\nAnteil GPA > 3.5 pro Decision:")
-    print(mba.groupby('Decision')['GPA'].agg(lambda x: (x > 3.5).mean() * 100))
-    ```
+Erstelle und verwende eigene Aggregatfunktionen.
 
-- [ ] **Eigene Funktion definieren:**
-    ```python
-    def iqr(series):
-        """Interquartilsabstand"""
-        return series.quantile(0.75) - series.quantile(0.25)
+- [ ] Berechne die **GPA-Spannweite** (Maximum - Minimum) pro Decision mit einer Lambda-Funktion
+- [ ] Berechne den **Anteil der Bewerber mit GPA > 3.5** pro Decision (in Prozent)
+- [ ] Schreibe eine eigene Funktion `iqr(series)`, die den Interquartilsabstand (Q3 - Q1) berechnet
+- [ ] Schreibe eine Funktion `coeff_of_variation(series)`, die den Variationskoeffizienten (std/mean * 100) berechnet
+- [ ] Wende beide Funktionen auf den GPA pro Decision an
+
+!!! tip "Hilfe"
+    - Lambda für Spannweite: `lambda x: x.max() - x.min()`
+    - Anteil berechnen: `lambda x: (x > schwelle).mean() * 100`
+    - Quantile in Funktion: `series.quantile(0.75) - series.quantile(0.25)`
+    - Eigene Funktionen mit agg: `grouped.agg([funktion1, funktion2])`
+
+!!! question "Eigenständige Aggregationsübungen"
+    Löse ohne Musterlösung:
     
-    def coeff_of_variation(series):
-        """Variationskoeffizient in Prozent"""
-        return (series.std() / series.mean()) * 100
-    
-    print("IQR und Variationskoeffizient:")
-    print(mba.groupby('Decision')['GPA'].agg([iqr, coeff_of_variation]))
-    ```
+    1. Berechne für jede Kombination von `Gender` und `International` den Durchschnitts-GPA und die Anzahl
+    2. Finde den Major mit der höchsten durchschnittlichen Work_Experience
+    3. Erstelle eine Aggregation, die für jede Decision zeigt: min, max, mean und Spannweite (max-min) des GPA
+    4. Berechne den Anteil der Aufnahmen (Decision=='Admit') pro Gender - nutze eine Lambda-Funktion
+    5. Gruppiere nach Gender und berechne: niedrigster GPA eines Aufgenommenen, höchster GPA eines Abgelehnten
 
 ---
 
@@ -326,67 +260,16 @@ end note
 @enduml
 ```
 
-- [ ] **Einfache Pivot-Tabelle:**
-    ```python
-    # Durchschnittlicher GPA nach Gender und Decision
-    pivot = pd.pivot_table(
-        mba,
-        values='GPA',
-        index='Gender',
-        columns='Decision',
-        aggfunc='mean'
-    )
-    
-    print("Pivot-Tabelle: GPA nach Gender und Decision")
-    print(pivot)
-    ```
+- [ ] Erstelle eine Pivot-Tabelle mit dem **durchschnittlichen GPA** nach Gender (Zeilen) und Decision (Spalten)
+- [ ] Erweitere die Tabelle um eine **Gesamtzeile und -spalte** mit dem Parameter `margins=True`
+- [ ] Erstelle eine Pivot-Tabelle mit **mehreren Aggregatfunktionen** (mean und count) für den GPA
+- [ ] Erstelle eine Pivot-Tabelle mit **mehreren Werte-Spalten** (GPA und Work_Experience)
 
-- [ ] **Mit Summen (margins):**
-    ```python
-    # Mit Gesamtsummen
-    pivot_margins = pd.pivot_table(
-        mba,
-        values='GPA',
-        index='Gender',
-        columns='Decision',
-        aggfunc='mean',
-        margins=True,
-        margins_name='Gesamt'
-    )
-    
-    print("\nMit Gesamtzeile/-spalte:")
-    print(pivot_margins)
-    ```
-
-- [ ] **Mehrere Aggregatfunktionen:**
-    ```python
-    # Mean und Count
-    pivot_multi = pd.pivot_table(
-        mba,
-        values='GPA',
-        index='Gender',
-        columns='Decision',
-        aggfunc=['mean', 'count']
-    )
-    
-    print("\nMehrere Funktionen:")
-    print(pivot_multi)
-    ```
-
-- [ ] **Mehrere Werte:**
-    ```python
-    # GPA und Work_Experience
-    pivot_values = pd.pivot_table(
-        mba,
-        values=['GPA', 'Work_Experience'],
-        index='Gender',
-        columns='Decision',
-        aggfunc='mean'
-    )
-    
-    print("\nMehrere Werte-Spalten:")
-    print(pivot_values)
-    ```
+!!! tip "Hilfe"
+    - Grundstruktur: `pd.pivot_table(df, values='wert', index='zeilen', columns='spalten', aggfunc='mean')`
+    - Gesamtsummen: `margins=True, margins_name='Gesamt'`
+    - Mehrere Funktionen: `aggfunc=['mean', 'count']`
+    - Mehrere Werte: `values=['spalte1', 'spalte2']`
 
 ---
 
@@ -394,125 +277,88 @@ end note
 
 `pd.crosstab()` ist spezialisiert auf Häufigkeitstabellen.
 
-- [ ] **Häufigkeitstabelle:**
-    ```python
-    # Anzahl Bewerber nach Gender und Decision
-    cross = pd.crosstab(mba['Gender'], mba['Decision'])
-    print("Crosstab: Anzahl nach Gender und Decision")
-    print(cross)
-    ```
+- [ ] Erstelle eine **Häufigkeitstabelle** mit der Anzahl der Bewerber nach Gender und Decision
+- [ ] Berechne die **Zeilen-Prozente** (Anteil pro Gender) – nutze `normalize='index'`
+- [ ] Berechne die **Spalten-Prozente** (Anteil pro Decision) – nutze `normalize='columns'`
+- [ ] Füge der Tabelle **Summenzeilen und -spalten** hinzu
 
-- [ ] **Mit Prozenten:**
-    ```python
-    # Zeilen-Prozente (pro Gender)
-    cross_row = pd.crosstab(mba['Gender'], mba['Decision'], normalize='index') * 100
-    print("\nProzent pro Zeile (Gender):")
-    print(cross_row.round(1))
-    
-    # Spalten-Prozente (pro Decision)
-    cross_col = pd.crosstab(mba['Gender'], mba['Decision'], normalize='columns') * 100
-    print("\nProzent pro Spalte (Decision):")
-    print(cross_col.round(1))
-    ```
-
-- [ ] **Mit Margins:**
-    ```python
-    # Mit Summen
-    cross_margins = pd.crosstab(
-        mba['Gender'], 
-        mba['Decision'],
-        margins=True,
-        margins_name='Summe'
-    )
-    print("\nMit Summen:")
-    print(cross_margins)
-    ```
+!!! tip "Hilfe"
+    - Grundstruktur: `pd.crosstab(df['zeilen_spalte'], df['spalten_spalte'])`
+    - Zeilen-Prozente: `normalize='index'` (multipliziere mit 100 für %)
+    - Spalten-Prozente: `normalize='columns'`
+    - Summen: `margins=True, margins_name='Summe'`
 
 ---
 
 ### Aufgabe 9 – Praktische Analysen
 
-- [ ] **Komplette Aufnahmestatistik:**
-    ```python
-    print("=== MBA Aufnahme-Statistik ===")
-    
-    # Aufnahmequoten nach verschiedenen Kriterien
-    stats = mba.groupby('Decision').agg(
-        Anzahl=('Application_ID', 'count'),
-        GPA_mean=('GPA', 'mean'),
-        GPA_median=('GPA', 'median'),
-        GPA_min=('GPA', 'min'),
-        GPA_max=('GPA', 'max'),
-        Exp_mean=('Work_Experience', 'mean')
-    ).round(2)
-    
-    print(stats)
-    ```
+Führe komplexere praktische Analysen durch.
 
-- [ ] **Aufnahmequoten berechnen:**
-    ```python
-    print("\n=== Aufnahmequoten ===")
-    
-    # Gesamtquote
-    total = len(mba)
-    admitted = (mba['Decision'] == 'Admit').sum()
-    print(f"Gesamt-Aufnahmequote: {admitted/total*100:.1f}%")
-    
-    # Nach Gender
-    print("\nNach Gender:")
-    for gender in mba['Gender'].unique():
-        subset = mba[mba['Gender'] == gender]
-        admitted = (subset['Decision'] == 'Admit').sum()
-        print(f"  {gender}: {admitted/len(subset)*100:.1f}%")
-    
-    # Nach International
-    print("\nNach International:")
-    for intl in mba['International'].unique():
-        subset = mba[mba['International'] == intl]
-        admitted = (subset['Decision'] == 'Admit').sum()
-        print(f"  {intl}: {admitted/len(subset)*100:.1f}%")
-    ```
+- [ ] Erstelle eine **komplette Aufnahmestatistik** pro Decision mit: Anzahl, GPA-Statistiken (mean, median, min, max) und durchschnittlicher Experience
+- [ ] Berechne die **Gesamt-Aufnahmequote** (Anteil Admit an allen Bewerbern)
+- [ ] Berechne die **Aufnahmequote pro Gender** und **pro International-Status**
+- [ ] Teile den GPA in **Kategorien** ein (<3.0, 3.0-3.3, 3.3-3.6, 3.6-3.8, 3.8-4.0) mit `pd.cut()` und berechne die Aufnahmequote pro Kategorie
+- [ ] Erstelle eine **Interaktions-Pivot-Tabelle**: Aufnahmequote nach GPA-Kategorie und Gender
 
-- [ ] **GPA-Schwellen analysieren:**
-    ```python
-    print("\n=== GPA-Schwellen und Aufnahmequoten ===")
-    
-    # GPA in Kategorien einteilen
-    mba['GPA_Kategorie'] = pd.cut(
-        mba['GPA'],
-        bins=[0, 3.0, 3.3, 3.6, 3.8, 4.0],
-        labels=['<3.0', '3.0-3.3', '3.3-3.6', '3.6-3.8', '3.8-4.0']
-    )
-    
-    # Aufnahmequote pro Kategorie
-    quote_pro_gpa = mba.groupby('GPA_Kategorie').apply(
-        lambda x: (x['Decision'] == 'Admit').mean() * 100
-    )
-    
-    print("Aufnahmequote nach GPA-Kategorie:")
-    print(quote_pro_gpa.round(1))
-    
-    # Anzahl pro Kategorie
-    print("\nAnzahl pro Kategorie:")
-    print(mba['GPA_Kategorie'].value_counts().sort_index())
-    ```
+!!! tip "Hilfe"
+    - Named Aggregation: `df.groupby('spalte').agg(name=('spalte', 'funktion'), ...)`
+    - Aufnahmequote: `(df['Decision'] == 'Admit').mean() * 100`
+    - Kategorien erstellen: `pd.cut(df['spalte'], bins=[...], labels=[...])`
+    - Lambda in Pivot: `aggfunc=lambda x: (x == 'Wert').mean() * 100`
 
-- [ ] **Interaktionseffekte:**
-    ```python
-    print("\n=== Interaktion: GPA-Kategorie × Gender ===")
-    
-    # Pivot: Aufnahmequote nach GPA und Gender
-    interaction = pd.pivot_table(
-        mba[mba['Decision'].isin(['Admit', 'Deny'])],
-        values='Decision',
-        index='GPA_Kategorie',
-        columns='Gender',
-        aggfunc=lambda x: (x == 'Admit').mean() * 100
-    ).round(1)
-    
-    print("Aufnahmequote (%):")
-    print(interaction)
-    ```
+---
+
+### Aufgabe 10 – Komplexe Analyseaufgaben
+
+!!! warning "Ohne Musterlösung"
+    Bearbeite diese Aufgaben selbstständig.
+
+**Aufgabe A: Vollständige Statistik-Tabelle**
+
+Erstelle eine Übersichtstabelle, die für jede `Decision` folgende Werte zeigt:
+
+- Anzahl Bewerber
+- Durchschnitt, Median, Std von GPA
+- Durchschnitt, Median, Std von Work_Experience
+- Anteil weiblicher Bewerber (%)
+- Anteil internationaler Bewerber (%)
+
+**Aufgabe B: Multi-Level-Gruppierung**
+
+Erstelle eine hierarchische Analyse:
+
+- Gruppiere nach `Gender`, dann nach `International`, dann nach `Decision`
+- Zeige für jede Kombination: Anzahl und durchschnittlichen GPA
+- Welche Kombination hat die höchste Aufnahmequote?
+
+**Aufgabe C: Pivot-Tabellen-Herausforderungen**
+
+Erstelle folgende Pivot-Tabellen:
+
+1. Aufnahmequote (% Admit) nach Gender (Zeilen) und International (Spalten)
+2. Durchschnitts-GPA nach Major (Zeilen) und Decision (Spalten)
+3. Work_Experience-Statistiken (mean, min, max) nach Gender und Decision
+
+**Aufgabe D: Eigene Aggregationsfunktionen**
+
+Schreibe eigene Funktionen für:
+
+1. `above_threshold(series, threshold)`: Anteil der Werte über einem Schwellenwert
+2. `outlier_count(series)`: Anzahl der Ausreißer (außerhalb 1.5*IQR)
+3. `top_n_mean(series, n=3)`: Durchschnitt der Top-n Werte
+
+Wende diese auf die GPA-Werte pro Decision an.
+
+**Aufgabe E: Dashboard-Daten vorbereiten**
+
+Erstelle alle Daten für ein "MBA Admission Dashboard":
+
+1. Gesamtstatistiken (Anzahl, Quoten)
+2. Vergleich nach Demographics (Gender, International)
+3. Vergleich nach Qualifikation (GPA-Bins, Experience-Bins)
+4. Trend-Daten: Aufnahmequote pro GPA-Dezil
+
+Speichere jede Tabelle in einer eigenen Variable.
 
 ---
 
