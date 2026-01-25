@@ -252,7 +252,7 @@ Eine kompakte Beschreibung jeder Verteilung:
 | Q3 (75%) | Oberes Quartil |
 | Maximum | Größter Wert |
 
-![5-Zahlen-Zusammenfassung](../assets/images/5zahlen.png)
+![5-Zahlen-Zusammenfassung](../assets/images/5Zahlen.png)
 
 **Praxisbeispiel – Gehälter in einer Firma:**
 
