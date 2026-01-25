@@ -20,7 +20,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Der Global Shark Attack File (GSAF) ist eine Datenbank aller dokumentierten Haiangriffe weltweit. Der Datensatz enthält viele fehlende Werte und unstrukturierte Textdaten – eine realistische Herausforderung!
 
-![Shark Attack Workflow](../assets/images/pandas/shark_attack_workflow.png)
+!!! abstract "Datensatz herunterladen"
+    [:material-download: global_shark_attacks.csv](../assets/files/global_shark_attacks.csv){ .md-button }
 
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 

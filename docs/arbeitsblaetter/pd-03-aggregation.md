@@ -39,6 +39,9 @@ Gruppieren und Aggregieren folgt dem **Split-Apply-Combine** Paradigma:
 | Work_Experience | Berufserfahrung in Jahren |
 | Decision | Entscheidung (Admit/Deny/Waitlist) |
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: mba_decisions.csv](../assets/files/mba_decisions.csv){ .md-button }
+
 ---
 
 ## Aufgaben

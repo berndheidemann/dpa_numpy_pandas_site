@@ -25,6 +25,9 @@ Echte Daten sind selten perfekt. Transformation und Bereinigung sind oft die zei
 
 **Für dieses Arbeitsblatt verwendest du den MBA-Datensatz (`mba_decisions.csv`).**
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: mba_decisions.csv](../assets/files/mba_decisions.csv){ .md-button }
+
 !!! info "Daten-Pipeline"
     **Rohdaten** → **Bereinigung** (NaN, Duplikate, Ausreißer) → **Transformation** (berechnen, umkodieren, konvertieren) → **Saubere Daten**
 

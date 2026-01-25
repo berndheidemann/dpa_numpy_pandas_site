@@ -39,6 +39,9 @@ df = pd.DataFrame({
 })
 ```
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: games.csv](../assets/files/games.csv){ .md-button }
+
 ---
 
 ## Aufgaben

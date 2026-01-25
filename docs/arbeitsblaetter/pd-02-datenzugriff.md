@@ -49,6 +49,9 @@ flowchart TB
 | Work_Experience | Berufserfahrung in Jahren |
 | Decision | Entscheidung (Admit/Waitlist/Deny) |
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: mba_decisions.csv](../assets/files/mba_decisions.csv){ .md-button }
+
 ---
 
 ## Aufgaben

@@ -61,8 +61,6 @@ nav:
           - Pandas Aggregation: infoblaetter/pandas-aggregation.md
           - Pandas Transformation: infoblaetter/pandas-transformation.md
           - Datenbereinigung: infoblaetter/datenbereinigung.md
-  - Projekt:
-      - Abschlussprojekt: arbeitsblaetter/abschluss-projekt.md
 
 markdown_extensions:
   - admonition

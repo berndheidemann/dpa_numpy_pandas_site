@@ -51,6 +51,9 @@ loop --> bool : "Viel kürzer\nund schneller!"
 | total_amount | 16 | Gesamtbetrag ($) |
 | payment_type | 17 | Zahlungsart (1=Kreditkarte, 2=Bar) |
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: taxi_tripdata.csv](../assets/files/taxi_tripdata.csv){ .md-button }
+
 ---
 
 ## Aufgaben

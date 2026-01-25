@@ -48,6 +48,9 @@ data --> step1
 @enduml
 ```
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: student-mat.csv](../assets/files/student-mat.csv){ .md-button }
+
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
 ---

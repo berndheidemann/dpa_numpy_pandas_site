@@ -31,6 +31,9 @@ In dieser Lernsituation arbeitest du mit echten NYC Yellow Taxi Trip-Daten. Du l
 | tip_amount | 12 | Trinkgeld ($) |
 | total_amount | 16 | Gesamtbetrag ($) |
 
+!!! abstract "Datensatz herunterladen"
+    [:material-download: taxi_tripdata.csv](../assets/files/taxi_tripdata.csv){ .md-button }
+
 ---
 
 ## Aufgaben
