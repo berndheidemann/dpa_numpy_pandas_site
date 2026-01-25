@@ -18,38 +18,12 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 ## Einführung
 
-In dieser Fallstudie analysierst du einen echten Datensatz über Schülerleistungen und deren Zusammenhang mit Alkoholkonsum. Der Datensatz stammt aus einer portugiesischen Studie.
+In dieser Fallstudie analysierst du einen echten Datensatz über Schülerleistungen und deren Zusammenhang mit verschiedenen sozialen Faktoren. Der Datensatz stammt aus einer portugiesischen Studie und enthält Daten aus Mathematik- und Portugiesisch-Kursen.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "📊 Datensatz" as data {
-    rectangle "student-mat.csv" as file
-    rectangle "395 Schüler" as n
-    rectangle "33 Merkmale" as feat
-}
-
-rectangle "🔍 Analyse-Workflow" as workflow {
-    rectangle "1. Laden & Erkunden" as step1
-    rectangle "2. Bereinigen" as step2
-    rectangle "3. Statistiken" as step3
-    rectangle "4. Zusammenhänge" as step4
-    rectangle "5. Erkenntnisse" as step5
-}
-
-step1 --> step2
-step2 --> step3
-step3 --> step4
-step4 --> step5
-
-data --> step1
-@enduml
-```
-
-!!! abstract "Datensatz herunterladen"
-    [:material-download: student-mat.csv](../assets/files/student-mat.csv){ .md-button }
+!!! abstract "Datensätze herunterladen"
+    [:material-download: student-mat.csv](../assets/files/student-mat.csv){ .md-button } (Mathematik-Kurs)
+    
+    [:material-download: student-por.csv](../assets/files/student-por.csv){ .md-button } (Portugiesisch-Kurs)
 
 **Bearbeite alle Aufgaben in einem Jupyter Notebook.**
 
@@ -57,26 +31,65 @@ data --> step1
 
 ## Der Datensatz
 
-Der Datensatz enthält Informationen über Schüler in portugiesischen Schulen.
+Der Datensatz enthält Informationen über Schüler in portugiesischen Sekundarschulen (Gabriel Pereira und Mousinho da Silveira). Er eignet sich für explorative Datenanalyse und die Untersuchung von Einflussfaktoren auf die Abschlussnote.
 
-### Wichtige Spalten
+### Demografische Merkmale
 
-| Spaltenindex | Name | Beschreibung |
-|--------------|------|--------------|
-| 0 | school | Schule (GP oder MS) |
-| 1 | sex | Geschlecht (F/M) |
-| 2 | age | Alter (15-22) |
-| 6 | Medu | Bildung der Mutter (0-4) |
-| 7 | Fedu | Bildung des Vaters (0-4) |
-| 13 | traveltime | Pendelzeit zur Schule (1-4) |
-| 14 | studytime | Wöchentliche Lernzeit (1-4) |
-| 24 | freetime | Freizeit nach der Schule (1-5) |
-| 26 | Dalc | Alkohol an Werktagen (1-5) |
-| 27 | Walc | Alkohol am Wochenende (1-5) |
-| 29 | absences | Fehlstunden |
-| 30 | G1 | Note 1. Periode (0-20) |
-| 31 | G2 | Note 2. Periode (0-20) |
-| 32 | G3 | Abschlussnote (0-20) |
+| Spalte | Beschreibung | Werte |
+|--------|--------------|-------|
+| school | Schule | 'GP' (Gabriel Pereira) oder 'MS' (Mousinho da Silveira) |
+| sex | Geschlecht | 'F' (weiblich) oder 'M' (männlich) |
+| age | Alter | 15-22 Jahre |
+| address | Wohnort | 'U' (städtisch) oder 'R' (ländlich) |
+| famsize | Familiengröße | 'LE3' (≤3) oder 'GT3' (>3) |
+| Pstatus | Eltern-Status | 'T' (zusammenlebend) oder 'A' (getrennt) |
+
+### Bildungshintergrund der Eltern
+
+| Spalte | Beschreibung | Werte |
+|--------|--------------|-------|
+| Medu | Bildung der Mutter | 0=keine, 1=Grundschule, 2=5.-9. Klasse, 3=Sekundarstufe, 4=Hochschule |
+| Fedu | Bildung des Vaters | 0=keine, 1=Grundschule, 2=5.-9. Klasse, 3=Sekundarstufe, 4=Hochschule |
+| Mjob | Beruf der Mutter | 'teacher', 'health', 'services', 'at_home', 'other' |
+| Fjob | Beruf des Vaters | 'teacher', 'health', 'services', 'at_home', 'other' |
+| guardian | Erziehungsberechtigter | 'mother', 'father', 'other' |
+
+### Schulbezogene Merkmale
+
+| Spalte | Beschreibung | Werte |
+|--------|--------------|-------|
+| reason | Grund für Schulwahl | 'home', 'reputation', 'course', 'other' |
+| traveltime | Schulweg | 1=<15min, 2=15-30min, 3=30-60min, 4=>1h |
+| studytime | Wöchentliche Lernzeit | 1=<2h, 2=2-5h, 3=5-10h, 4=>10h |
+| failures | Bisherige Klassenwiederholungen | 0-4 |
+| schoolsup | Schulische Nachhilfe | yes/no |
+| famsup | Familiäre Lernunterstützung | yes/no |
+| paid | Bezahlte Nachhilfe im Fach | yes/no |
+| activities | Außerschulische Aktivitäten | yes/no |
+| nursery | Kindergarten besucht | yes/no |
+| higher | Möchte studieren | yes/no |
+| internet | Internet zu Hause | yes/no |
+
+### Soziale und persönliche Merkmale
+
+| Spalte | Beschreibung | Werte |
+|--------|--------------|-------|
+| romantic | In einer Beziehung | yes/no |
+| famrel | Qualität der Familienbeziehung | 1=sehr schlecht bis 5=ausgezeichnet |
+| freetime | Freizeit nach der Schule | 1=sehr wenig bis 5=sehr viel |
+| goout | Ausgehen mit Freunden | 1=sehr selten bis 5=sehr oft |
+| Dalc | Alkoholkonsum werktags | 1=sehr niedrig bis 5=sehr hoch |
+| Walc | Alkoholkonsum am Wochenende | 1=sehr niedrig bis 5=sehr hoch |
+| health | Aktueller Gesundheitszustand | 1=sehr schlecht bis 5=sehr gut |
+| absences | Fehlstunden | 0-93 |
+
+### Noten (Zielvariablen)
+
+| Spalte | Beschreibung | Werte |
+|--------|--------------|-------|
+| G1 | Note 1. Periode | 0-20 |
+| G2 | Note 2. Periode | 0-20 |
+| G3 | Abschlussnote | 0-20 (Zielvariable) |
 
 ---
 
