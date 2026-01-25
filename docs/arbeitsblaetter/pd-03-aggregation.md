@@ -62,37 +62,6 @@ Lade den MBA-Datensatz und verschaffe dir einen Überblick.
 
 ### Aufgabe 2 – Grundlagen von groupby()
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Split-Apply-Combine" {
-    rectangle "Original DataFrame" as orig #white
-    
-    rectangle "Split" as split {
-        rectangle "Gruppe A" as ga #lightcoral
-        rectangle "Gruppe B" as gb #lightblue
-        rectangle "Gruppe C" as gc #lightgreen
-    }
-    
-    rectangle "Apply (mean)" as apply {
-        rectangle "mean(A)" as ma #lightcoral
-        rectangle "mean(B)" as mb #lightblue
-        rectangle "mean(C)" as mc #lightgreen
-    }
-    
-    rectangle "Combine" as result #lightyellow {
-        rectangle "Ergebnis" as res
-    }
-}
-
-orig --> split
-split --> apply
-apply --> result
-@enduml
-```
-
 Verstehe die Grundlagen der Gruppierung mit `groupby()`.
 
 - [ ] Gruppiere den DataFrame nach `Decision` und speichere das GroupBy-Objekt
@@ -127,33 +96,6 @@ Wende verschiedene Aggregatfunktionen auf gruppierte Daten an.
 ---
 
 ### Aufgabe 4 – Mehrere Spalten gruppieren
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Multi-Level Gruppierung" {
-    rectangle "groupby(['Gender', 'Decision'])" as cmd
-    
-    rectangle "Hierarchische Gruppen" as groups {
-        rectangle "Female" as f {
-            rectangle "F-Admit" as fa #lightgreen
-            rectangle "F-Deny" as fd #lightcoral
-        }
-        rectangle "Male" as m {
-            rectangle "M-Admit" as ma #lightgreen
-            rectangle "M-Deny" as md #lightcoral
-        }
-    }
-    
-    rectangle "Ergebnis: MultiIndex" as result #lightyellow
-}
-
-cmd --> groups
-groups --> result
-@enduml
-```
 
 Gruppiere nach mehreren Spalten gleichzeitig.
 
@@ -214,31 +156,6 @@ Erstelle und verwende eigene Aggregatfunktionen.
 ### Aufgabe 7 – Pivot-Tabellen
 
 Pivot-Tabellen erstellen Kreuztabellen mit Aggregation.
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Pivot-Tabelle" {
-    rectangle "pivot_table(values='GPA',\nindex='Gender',\ncolumns='Decision')" as cmd
-    
-    map "Ergebnis" as result {
-        . => Admit | Deny | Waitlist
-        Female => 3.45 | 3.12 | 3.28
-        Male => 3.52 | 3.08 | 3.31
-    }
-}
-
-cmd --> result
-
-note bottom of result
-  Zeilen: Gender
-  Spalten: Decision
-  Werte: mean(GPA)
-end note
-@enduml
-```
 
 - [ ] Erstelle eine Pivot-Tabelle mit dem **durchschnittlichen GPA** nach Gender (Zeilen) und Decision (Spalten)
 - [ ] Erweitere die Tabelle um eine **Gesamtzeile und -spalte** mit dem Parameter `margins=True`

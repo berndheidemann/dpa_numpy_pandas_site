@@ -123,28 +123,6 @@ Lade den MBA-Decisions Datensatz und verschaffe dir einen Überblick.
 
 Filtere Daten mit Bedingungen – der mächtigste Zugriffsmodus!
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Boolean Indexing" #lightgreen {
-    rectangle "1. Bedingung" as step1 {
-        rectangle "df['GPA'] > 3.5" as cond
-    }
-    rectangle "2. Boolean Series" as step2 {
-        rectangle "[True, False, True, ...]" as bool
-    }
-    rectangle "3. Gefilterte Daten" as step3 {
-        rectangle "df[bedingung]" as result
-    }
-}
-
-step1 --> step2 : "ergibt"
-step2 --> step3 : "filtert"
-@enduml
-```
-
 - [ ] Filtere alle Bewerber mit **GPA > 3.5** und gib die Anzahl aus
 - [ ] Speichere die Bedingung `mba['GPA'] > 3.5` in einer Variable und zeige die ersten 10 Werte der Boolean-Series
 - [ ] Zähle, wie viele `True`-Werte die Bedingung enthält (Tipp: `.sum()`)
