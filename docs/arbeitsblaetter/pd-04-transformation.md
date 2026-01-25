@@ -177,6 +177,17 @@ Konvertiere Datentypen für effizientere Speicherung und korrekte Analysen.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **String-Bereinigung mit str-Methoden (strip, lower, replace)**
+    - **Ausreißer-Behandlung mit der IQR-Methode**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 8 – Strings bereinigen
 
 Bereinige Text-Daten für konsistente Analysen.

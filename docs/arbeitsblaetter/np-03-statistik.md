@@ -143,6 +143,18 @@ Analysiere die Verteilung mit Perzentilen.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Eigene Statistik-Funktionen entwickeln**
+    - **Komplexe Analysen selbstständig durchführen**
+    - **Ausreißer-Erkennung und fortgeschrittene Kennzahlen**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 8 – Statistik-Funktion erstellen
 
 Erstelle eine wiederverwendbare Funktion für statistische Zusammenfassungen.

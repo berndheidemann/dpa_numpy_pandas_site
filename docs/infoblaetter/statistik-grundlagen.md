@@ -1,25 +1,10 @@
 # Statistische Grundbegriffe
 
-## Übersicht
+![Übersicht Statistik](../assets/images/image_statistik:intro.png)
 
-Statistische Kennzahlen helfen uns, große Datenmengen zu verstehen und zu beschreiben. Statt tausende Einzelwerte anzuschauen, fassen wir sie mit wenigen aussagekräftigen Zahlen zusammen.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
 
-rectangle "Beschreibende Statistik" as desc #lightgray {
-    rectangle "**Lagemaße**\nWo liegt das Zentrum?" as lage #lightblue
-    rectangle "**Streuungsmaße**\nWie breit verteilt?" as streu #lightgreen
-    rectangle "**Formmaße**\nWelche Form hat die Verteilung?" as form #lightyellow
-}
-
-rectangle "Rohdaten\n1000+ Werte" as raw #white
-
-raw --> desc : "zusammenfassen"
-@enduml
-```
+![Datenverteilung mit Kennzahlen](../assets/images/warumDatenVerdichten.png)
 
 ---
 
@@ -68,19 +53,13 @@ Der Wert, der die sortierte Datenreihe in zwei gleich große Hälften teilt. 50%
 - Wenn **Ausreißer** vorhanden sind
 - Für "typische" Werte in einer Verteilung
 
-**Robustheit gegen Ausreißer:**
-
-| Gehälter | 30k, 32k, 35k, 38k, 40k |
-|----------|-------------------------|
-| Median | 35.000 € |
-| + CEO-Gehalt 500k | 30k, 32k, 35k, 38k, 40k, 500k |
-| Neuer Median | **36.500 €** |
-
-→ Der Median ändert sich kaum!
+![Median Illustration](../assets/images/median.png)
 
 **Praxisbeispiel:**  
 *"Der Median-Immobilienpreis in München liegt bei 750.000 €."*  
 → Aussagekräftiger als der Mittelwert, da Luxusimmobilien den Durchschnitt stark nach oben ziehen würden.
+
+![Median vs. Mittelwert](../assets/images/median_vs_mean.png)
 
 ---
 
@@ -177,36 +156,7 @@ Die Quadratwurzel der Varianz – gibt die durchschnittliche Abweichung vom Mitt
 
 $$\sigma = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2}$$
 
-**Warum wichtig?**
-
-- **Gleiche Einheit** wie die Originaldaten (€, cm, kg, ...)
-- Intuitive Interpretation möglich
-
-**Die 68-95-99,7-Regel** (bei Normalverteilung):
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Normalverteilung" as norm #lightgray {
-    rectangle "68% der Werte\nMittelwert ± 1σ" as s1 #lightblue
-    rectangle "95% der Werte\nMittelwert ± 2σ" as s2 #lightgreen
-    rectangle "99,7% der Werte\nMittelwert ± 3σ" as s3 #lightyellow
-}
-@enduml
-```
-
-| Bereich | Prozent der Daten |
-|---------|-------------------|
-| μ ± 1σ | ~68% |
-| μ ± 2σ | ~95% |
-| μ ± 3σ | ~99,7% |
-
-**Praxisbeispiel:**  
-*"Die Lieferzeit beträgt im Durchschnitt 5 Tage mit einer Standardabweichung von 1 Tag."*  
-→ ~68% der Lieferungen kommen zwischen Tag 4 und Tag 6 an.  
-→ ~95% kommen zwischen Tag 3 und Tag 7 an.
+![Standardabweichung Illustration](../assets/images/stdev.png)
 
 ---
 
@@ -301,6 +251,8 @@ Eine kompakte Beschreibung jeder Verteilung:
 | Median (50%) | Mittlerer Wert |
 | Q3 (75%) | Oberes Quartil |
 | Maximum | Größter Wert |
+
+![5-Zahlen-Zusammenfassung](../assets/images/5zahlen.png)
 
 **Praxisbeispiel – Gehälter in einer Firma:**
 

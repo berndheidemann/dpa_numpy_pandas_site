@@ -190,6 +190,17 @@ Untersuche die Tödlichkeit von Haiangriffen genauer.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Tiefere Analysen nach Geschlecht, Alter und Ländern**
+    - **Komplexe Pivot-Tabellen erstellen**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 7 – Tiefere Analysen
 
 Führe detailliertere Untersuchungen durch.

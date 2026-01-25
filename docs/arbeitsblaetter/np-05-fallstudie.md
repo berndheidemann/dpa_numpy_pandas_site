@@ -158,6 +158,18 @@ Der Datensatz enthält Informationen über Schüler in portugiesischen Schulen.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Multifaktor-Analysen**
+    - **Dokumentation von Erkenntnissen**
+    - **Bonus: Geschlechtervergleich, Risikoprofile, Vorhersagemodelle**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 6 – Komplexe Analyse
 
 - [ ] **Multifaktor-Analyse:** Finde Schüler mit den besten Voraussetzungen (hohe Lernzeit ≥3 UND niedriger Alkohol) und berechne deren Durchschnittsnote und Durchfallquote

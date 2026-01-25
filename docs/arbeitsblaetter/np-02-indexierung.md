@@ -142,6 +142,18 @@ Ein wichtiges Konzept verstehen: Slicing erstellt Views, keine Kopien!
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Komplexere Datenextraktion** aus dem Taxi-Datensatz
+    - **Transponieren und fortgeschrittenes Reshaping**
+    - **Eigenständige Analyse ohne Hilfestellung**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 7 – Praktische Analysen
 
 Wende dein Wissen auf die Taxi-Daten an.

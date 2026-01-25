@@ -190,6 +190,17 @@ Sortiere DataFrames nach einer oder mehreren Spalten.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Erste eigene Analysen auf dem Games-Datensatz**
+    - **Kombination von Exploration, Filterung und Sortierung**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 8 – Erste Analysen
 
 Beantworte Fragen zum Games-Datensatz mit Pandas-Code.

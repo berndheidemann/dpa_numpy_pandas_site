@@ -174,6 +174,18 @@ Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **np.where() für bedingte Wertzuweisung**
+    - **Kombination von Filtern mit Berechnungen**
+    - **Eigenständige Praxisaufgaben**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 7 – np.where() für bedingte Berechnungen
 
 `np.where(bedingung, wenn_true, wenn_false)` ermöglicht bedingte Wertzuweisungen.

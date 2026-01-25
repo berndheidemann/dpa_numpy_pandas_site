@@ -253,6 +253,17 @@ end note
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Crosstab für Häufigkeitstabellen und Kreuztabellen**
+    - **Fortgeschrittene Pivot-Operationen**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 8 – Crosstab für Häufigkeiten
 
 `pd.crosstab()` ist spezialisiert auf Häufigkeitstabellen.

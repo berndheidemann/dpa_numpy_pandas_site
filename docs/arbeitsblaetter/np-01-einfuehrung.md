@@ -16,23 +16,6 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 ---
 
-## Präsentation
-
-<div class="pdf-container" style="width: 100%; margin-bottom: 1rem;">
-    <object data="../assets/files/NumPy_Einfuehrung.pdf" type="application/pdf" style="width: 100%; height: 600px; border: 1px solid #ddd; border-radius: 4px;">
-        <p style="padding: 2rem; text-align: center; background: #f5f5f5; border-radius: 4px;">
-            PDF kann nicht im Browser angezeigt werden.<br><br>
-            <a href="../assets/files/NumPy_Einfuehrung.pdf" class="md-button md-button--primary" download>
-                📥 PDF herunterladen
-            </a>
-        </p>
-    </object>
-</div>
-
-[:material-download: PDF herunterladen](../assets/files/NumPy_Einfuehrung.pdf){ .md-button .md-button--primary download }
-
----
-
 ## Einführung
 
 Als Data Analyst arbeitest du ständig mit großen Datenmengen. NumPy ist die Grundlage für effiziente numerische Berechnungen in Python.
@@ -127,6 +110,18 @@ Berechne **ohne Schleifen**:
 5. Den Durchschnittspreis
 
 **Bonus:** Erstelle ein 3×5 Array (3 Tage × 5 Produkte). Simuliere tägliche Preisänderungen: Tag 1 = -5%, Tag 2 = 0%, Tag 3 = +5%.
+
+---
+
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Anwendung auf realistische Szenarien** (Temperatursensoren, Noten)
+    - **Kombination mehrerer Konzepte** (Würfelsimulation)
+    - **Arbeit mit Zufallszahlen und Normalverteilung**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
 
 ---
 

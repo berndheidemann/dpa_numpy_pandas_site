@@ -217,6 +217,17 @@ Filtere nach Textwerten und nutze spezielle String-Methoden.
 
 ---
 
+## Vertiefende Aufgaben
+
+!!! tip "Optionale Aufgaben zur Vertiefung"
+    Die folgenden Aufgaben sind **optional** und vertiefen das Gelernte. Sie eignen sich besonders für:
+    
+    - **Query-Methode als elegante SQL-ähnliche Alternative**
+    - **Komplexere Filterszenarien mit mehreren Bedingungen**
+    - **Prüfungsvorbereitung** durch eigenständiges Arbeiten
+
+---
+
 ### Aufgabe 8 – Query-Methode als Alternative
 
 Die `query()`-Methode ermöglicht SQL-ähnliche Filterung.
