@@ -1,6 +1,6 @@
 # Statistische Grundbegriffe
 
-![Übersicht Statistik](../assets/images/image_statistik:intro.png)
+![Übersicht Statistik](../assets/images/statistik-intro.png)
 
 
 
