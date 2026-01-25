@@ -4,37 +4,7 @@
 
 **Pandas** ist die wichtigste Python-Bibliothek für Datenanalyse. Sie bietet leistungsstarke, flexible Datenstrukturen für die Arbeit mit tabellarischen Daten.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-package "Pandas Kernkonzepte" {
-    [Series] as series #lightblue
-    [DataFrame] as df #lightgreen
-    [Index] as idx #lightyellow
-}
-
-series --> idx : "hat"
-df --> series : "besteht aus"
-df --> idx : "hat"
-
-note bottom of series
-  1D-Datenstruktur
-  (wie eine Spalte)
-end note
-
-note bottom of df
-  2D-Datenstruktur
-  (wie eine Tabelle)
-end note
-
-note bottom of idx
-  Beschriftung der
-  Zeilen/Spalten
-end note
-@enduml
-```
+![Pandas Series Dataframe](../assets/images/pandas/series_dataframe.png)
 
 ---
 
@@ -91,26 +61,6 @@ print(umsatz['Jan':'Mär'])  # Slicing mit Labels (inklusiv!)
 ## DataFrame – 2D-Datenstruktur
 
 Ein **DataFrame** ist wie eine Tabelle: Zeilen und Spalten mit Labels.
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-map "DataFrame" as df {
-  Index => Name => Alter => Stadt
-  0 => Max => 25 => Berlin
-  1 => Anna => 30 => München
-  2 => Tom => 28 => Hamburg
-}
-
-note right of df
-  Spalten = Series
-  Zeilen = Index
-  Jede Spalte hat Datentyp
-end note
-@enduml
-```
 
 ### DataFrame erstellen
 
@@ -355,45 +305,6 @@ print(df.head())
 
 ---
 
-## Series vs. DataFrame
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Series" as series #lightblue {
-    rectangle "Index | Werte" as s1
-}
-
-rectangle "DataFrame" as df #lightgreen {
-    rectangle "       | Sp.A | Sp.B | Sp.C" as d1
-    rectangle "Idx 0  |  1   |  2   |  3  " as d2
-    rectangle "Idx 1  |  4   |  5   |  6  " as d3
-}
-
-note bottom of series
-  1-dimensional
-  Ein Datentyp
-  Hat Index
-end note
-
-note bottom of df
-  2-dimensional
-  Jede Spalte = Series
-  Hat Zeilen- und Spaltenindex
-end note
-@enduml
-```
-
-| Eigenschaft | Series | DataFrame |
-|-------------|--------|-----------|
-| Dimensionen | 1D | 2D |
-| Zugriff | `s[index]` | `df[spalte]`, `df.loc[]` |
-| Datentyp | Ein Typ | Pro Spalte |
-| Index | ✅ | ✅ (Zeilen + Spalten) |
-
----
 
 ## Zusammenfassung
 

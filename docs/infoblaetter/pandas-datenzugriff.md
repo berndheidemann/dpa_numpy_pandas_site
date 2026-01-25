@@ -4,25 +4,7 @@
 ## Übersicht der Zugriffsmethoden
 
 Pandas bietet verschiedene Methoden, um auf Daten zuzugreifen:
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Datenzugriff" as title #white
-
-rectangle "df['spalte']\nSpaltenauswahl" as bracket #lightblue
-rectangle "df.loc[]\nLabel-basiert" as loc #lightgreen
-rectangle "df.iloc[]\nPosition-basiert" as iloc #lightyellow
-rectangle "Boolean Indexing\nBedingte Auswahl" as bool #lightpink
-
-title --> bracket
-title --> loc
-title --> iloc
-title --> bool
-@enduml
-```
+![Pandas Datenzugriff Methoden](../assets/images/pandas/loc_vs_iloc.png)
 
 ---
 
@@ -142,64 +124,11 @@ print(df_indexed.loc['Max':'Tom', 'Alter':'Stadt'])
 
 ---
 
-## Vergleich iloc vs. loc
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "iloc" as iloc #lightblue {
-    rectangle "Integer-Position\n(0, 1, 2, ...)" as iloc1
-    rectangle "Stop = exklusiv" as iloc2
-    rectangle "Wie Python-Listen" as iloc3
-}
-
-rectangle "loc" as loc #lightgreen {
-    rectangle "Labels\n(Namen, Index)" as loc1
-    rectangle "Stop = inklusiv" as loc2
-    rectangle "Lesbare Abfragen" as loc3
-}
-
-note bottom of iloc
-  df.iloc[0:3, 0:2]
-  → Zeilen 0,1,2
-  → Spalten 0,1
-end note
-
-note bottom of loc
-  df.loc['a':'c', 'Name':'Alter']
-  → Zeilen a,b,c
-  → Spalten Name bis Alter
-end note
-@enduml
-```
-
-| Eigenschaft | iloc | loc |
-|-------------|------|-----|
-| Zugriff über | Position (Integer) | Label (Namen) |
-| Slicing-Stop | Exklusiv | Inklusiv |
-| Beispiel | `df.iloc[0:3]` → 3 Zeilen | `df.loc['a':'c']` → bis inkl. 'c' |
-
----
-
-## at und iat – Schneller Einzelwert-Zugriff
-
-Für einzelne Werte sind `at` und `iat` schneller:
-
-```python
-# iat: Position-basiert (wie iloc, aber nur für einzelne Werte)
-print(df.iat[0, 1])  # 25
-
-# at: Label-basiert (wie loc, aber nur für einzelne Werte)
-print(df.at[0, 'Alter'])  # 25
-```
-
----
-
 ## Boolean Indexing
 
 Die mächtigste Methode: Auswahl basierend auf **Bedingungen**.
+
+![Boolean Indexing](../assets/images/pandas/boolean_mask.png)
 
 ### Grundprinzip
 

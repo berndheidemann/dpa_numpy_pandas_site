@@ -4,41 +4,6 @@
 
 Transformationen ändern oder erweitern Daten: Werte umwandeln, neue Spalten berechnen, Text verarbeiten.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-package "Transformationsmethoden" {
-    [map()] as map #lightblue
-    [apply()] as apply #lightgreen
-    [applymap()] as applymap #lightyellow
-    [.str Accessor] as str #lightpink
-}
-
-note bottom of map
-  Series → Series
-  Wertemapping
-end note
-
-note bottom of apply
-  Series/DataFrame
-  Flexible Funktionen
-end note
-
-note bottom of applymap
-  DataFrame
-  Element-weise
-  (deprecated → map)
-end note
-
-note bottom of str
-  String-Operationen
-  auf Series
-end note
-@enduml
-```
-
 ---
 
 ## map() – Wertemapping
@@ -143,33 +108,6 @@ print(numerische_spalten.apply(lambda x: x.max() - x.min()))
 ---
 
 ## Vergleich map vs. apply
-
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "map()" as map #lightblue {
-    rectangle "Nur Series" as m1
-    rectangle "Dictionary oder\neinfache Funktion" as m2
-    rectangle "Schneller für\nWertemapping" as m3
-}
-
-rectangle "apply()" as apply #lightgreen {
-    rectangle "Series oder\nDataFrame" as a1
-    rectangle "Beliebige\nFunktionen" as a2
-    rectangle "Flexibler,\naber langsamer" as a3
-}
-
-note bottom of map
-  df['Spalte'].map(dict)
-end note
-
-note bottom of apply
-  df.apply(func, axis=1)
-end note
-@enduml
-```
 
 | Eigenschaft | map() | apply() |
 |-------------|-------|---------|

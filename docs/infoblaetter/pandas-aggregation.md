@@ -55,34 +55,7 @@ print(df['Umsatz'].agg(['sum', 'mean', 'min', 'max']))
 
 ### Grundprinzip: Split-Apply-Combine
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Originaldaten" as orig #lightgray {
-    rectangle "A | 100\nB | 150\nA | 200\nB | 120\nA | 180\nB | 90" as data
-}
-
-rectangle "Split nach Produkt" as split #lightblue {
-    rectangle "Gruppe A:\n100, 200, 180" as ga
-    rectangle "Gruppe B:\n150, 120, 90" as gb
-}
-
-rectangle "Apply: sum()" as apply #lightgreen {
-    rectangle "A → 480" as sa
-    rectangle "B → 360" as sb
-}
-
-rectangle "Combine" as combine #lightyellow {
-    rectangle "A | 480\nB | 360" as result
-}
-
-orig --> split
-split --> apply
-apply --> combine
-@enduml
-```
+![groupby Prinzip](../assets/images/pandas/group_by.png)
 
 ### Einfache Gruppierung
 

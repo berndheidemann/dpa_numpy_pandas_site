@@ -9,26 +9,7 @@
 - Werkzeuge für lineare Algebra
 - Zufallszahlengeneratoren
 
-```mermaid
-flowchart BT
-    numpy["<b>NumPy</b><br><small>Grundlage für alle<br>Data-Science-Bibliotheken</small>"]
-    pandas["<b>Pandas</b>"]
-    plt["<b>Matplotlib</b>"]
-    sklearn["<b>Scikit-learn</b>"]
-    
-    numpy --> pandas
-    numpy --> plt
-    numpy --> sklearn
-    
-    pandas -.- |basiert auf| numpy
-    plt -.- |nutzt| numpy
-    sklearn -.- |nutzt| numpy
-    
-    style numpy fill:#87CEEB
-    style pandas fill:#90EE90
-    style plt fill:#FFFACD
-    style sklearn fill:#FFB6C1
-```
+![Numpy Tech Stack](../assets/images/numpy/numpy_techstack.png)
 
 ---
 
