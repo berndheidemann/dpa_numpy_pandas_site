@@ -33,6 +33,9 @@ In dieser Fallstudie analysierst du einen echten Datensatz über Schülerleistun
 
 Der Datensatz enthält Informationen über Schüler in portugiesischen Sekundarschulen (Gabriel Pereira und Mousinho da Silveira). Er eignet sich für explorative Datenanalyse und die Untersuchung von Einflussfaktoren auf die Abschlussnote.
 
+Quelle: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Student+Performance)
+
+
 ### Demografische Merkmale
 
 | Spalte | Beschreibung | Werte |
