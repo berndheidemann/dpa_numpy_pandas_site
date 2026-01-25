@@ -4,30 +4,6 @@ Willkommen zur Lernsituation **Datenanalyse mit NumPy und Pandas**!
 
 Diese Lernmaterialien richten sich an angehende **Fachinformatiker/innen für Daten- und Prozessanalyse** und vermitteln die grundlegenden Techniken der Datenanalyse mit Python.
 
-```kroki-plantuml
-@startuml
-!theme plain
-skinparam backgroundColor transparent
-
-rectangle "Lernpfad" {
-    rectangle "NumPy" as numpy #lightcoral {
-        rectangle "• Arrays & Datentypen\n• Indexierung & Slicing\n• Statistische Funktionen\n• Filterung & Vektorisierung" as np_topics
-    }
-    
-    rectangle "Pandas" as pandas #lightblue {
-        rectangle "• DataFrames & Series\n• Datenzugriff (loc/iloc)\n• Aggregation & Gruppierung\n• Transformation & Bereinigung" as pd_topics
-    }
-    
-    rectangle "Projekt" as project #lightgreen {
-        rectangle "• Reale Datensätze\n• Vollständige Analyse\n• Dokumentation" as proj_topics
-    }
-}
-
-numpy --> pandas : "baut auf"
-pandas --> project : "anwenden"
-@enduml
-```
-
 ---
 
 ## 📚 Struktur der Materialien
@@ -77,11 +53,6 @@ Die Arbeitsblätter enthalten **praktische Aufgaben** mit steigendem Schwierigke
     | PD-04 | [Transformation](arbeitsblaetter/pd-04-transformation.md) | map, apply, Bereinigung | MBA |
     | PD-05 | [Fallstudie](arbeitsblaetter/pd-05-fallstudie.md) | Komplette Analyse | Shark Attacks |
 
-=== "Abschlussprojekt"
-    | Projekt | Beschreibung |
-    |---------|-------------|
-    | [Abschlussprojekt](arbeitsblaetter/abschluss-projekt.md) | Eigenständige Analyse eines Datensatzes |
-
 ---
 
 ## 🎯 Lernziele
@@ -115,17 +86,15 @@ Die folgenden Datensätze werden in den Übungen verwendet:
 | `games.csv` | Videospiel-Daten | Pandas PD-01 |
 | `mba_decisions.csv` | MBA-Bewerbungen | Pandas PD-02 bis PD-04 |
 | `global_shark_attacks.csv` | Hai-Angriffe weltweit | Pandas PD-05 |
-| `verkaufsdaten.csv` | Verkaufsdaten | Abschlussprojekt |
 
 ---
 
 ## 🚀 Empfohlener Lernpfad
 
-1. **Woche 1-2**: NumPy Grundlagen (NP-01 bis NP-03)
-2. **Woche 3**: NumPy Vertiefung (NP-04, NP-05)
-3. **Woche 4-5**: Pandas Grundlagen (PD-01 bis PD-03)
-4. **Woche 6**: Pandas Vertiefung (PD-04, PD-05)
-5. **Woche 7-8**: Abschlussprojekt
+1. NumPy Grundlagen (NP-01 bis NP-03)
+2. NumPy Vertiefung (NP-04, NP-05)
+3. Pandas Grundlagen (PD-01 bis PD-03)
+4. Pandas Vertiefung (PD-04, PD-05)
 
 ---
 
