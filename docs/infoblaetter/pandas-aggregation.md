@@ -364,6 +364,31 @@ stop
 
 ---
 
+## Gruppen filtern mit filter()
+
+Mit `filter()` kannst du **ganze Gruppen** basierend auf einer Bedingung behalten oder entfernen:
+
+```python
+df = pd.DataFrame({
+    'Kategorie': ['A', 'A', 'B', 'B', 'B', 'C'],
+    'Wert': [10, 20, 30, 40, 50, 60]
+})
+
+# Nur Gruppen mit mindestens 2 Einträgen
+result = df.groupby('Kategorie').filter(lambda x: len(x) >= 2)
+print(result)  # Kategorie C wird entfernt (nur 1 Eintrag)
+
+# Nur Gruppen mit Durchschnitt > 25
+result = df.groupby('Kategorie').filter(lambda x: x['Wert'].mean() > 25)
+print(result)  # Zeigt A nicht (Durchschnitt 15) 
+```
+
+!!! tip "filter() vs. agg()"
+    - `agg()` komprimiert Gruppen zu Einzelwerten
+    - `filter()` behält oder entfernt ganze Gruppen, ohne zu aggregieren
+
+---
+
 ## Zusammenfassung
 
 !!! success "Das Wichtigste"

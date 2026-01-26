@@ -385,6 +385,39 @@ print(f"Neuer Mittelwert: {np.mean(sauber):.2f}")
 
 ---
 
+## Arrays kombinieren
+
+NumPy bietet Funktionen zum Verknüpfen von Arrays:
+
+| Funktion | Beschreibung | Beispiel |
+|----------|--------------|----------|
+| `np.concatenate([a, b])` | Verketten entlang einer Achse | `np.concatenate([arr1, arr2])` → zusammengefügt |
+| `np.vstack([a, b])` | Vertikal stapeln (Zeilen untereinander) | `np.vstack([[1,2], [3,4]])` → 2×2 |
+| `np.hstack([a, b])` | Horizontal stapeln (Spalten nebeneinander) | `np.hstack([[1], [2]])` → [1, 2] |
+| `np.unique(arr)` | Eindeutige Werte (Duplikate entfernen) | `np.unique([1,2,2,3])` → [1, 2, 3] |
+
+```python
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+
+# Verketten
+print(np.concatenate([a, b]))  # [1 2 3 4 5 6]
+
+# 2D Arrays stapeln
+m1 = np.array([[1, 2], [3, 4]])
+m2 = np.array([[5, 6], [7, 8]])
+
+print(np.vstack([m1, m2]))  # 4×2 Matrix (untereinander)
+print(np.hstack([m1, m2]))  # 2×4 Matrix (nebeneinander)
+
+# Eindeutige Werte
+werte = np.array([1, 2, 2, 3, 3, 3])
+print(np.unique(werte))  # [1 2 3]
+print(np.unique(werte, return_counts=True))  # ([1,2,3], [1,2,3])
+```
+
+---
+
 ## Zusammenfassung
 
 !!! success "Das Wichtigste"

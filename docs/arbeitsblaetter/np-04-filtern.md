@@ -44,6 +44,9 @@ loop --> bool : "Viel kürzer\nund schneller!"
 
 | Spalte | Index | Beschreibung |
 |--------|-------|--------------|
+| VendorID | 0 | Anbieter-ID |
+| lpep_pickup_datetime | 1 | Startzeit |
+| lpep_dropoff_datetime | 2 | Endzeit |
 | passenger_count | 7 | Anzahl Passagiere |
 | trip_distance | 8 | Strecke (Meilen) |
 | fare_amount | 9 | Fahrpreis ($) |
@@ -63,7 +66,7 @@ loop --> bool : "Viel kürzer\nund schneller!"
 Lade die Taxi-Daten und extrahiere die relevanten Spalten für die Analyse.
 
 - [ ] Lade die Datei `taxi_tripdata.csv` mit `np.genfromtxt()` und nutze `skip_header=1`
-- [ ] Extrahiere die Spalten `passagiere`, `strecke`, `fahrpreis`, `trinkgeld` und `gesamt` in separate Variablen
+- [ ] Extrahiere die Spalten `passenger_count`, `trip_distance`, `fare_amount`, `tip_amount` und `total_amount` in separate Variablen
 - [ ] Gib die Anzahl der Fahrten aus
 
 !!! tip "Hilfe"
@@ -193,9 +196,19 @@ Führe Berechnungen auf ganzen Arrays durch – ohne Schleifen!
 
 `np.where(bedingung, wenn_true, wenn_false)` ermöglicht bedingte Wertzuweisungen.
 
-- [ ] Kategorisiere alle Fahrten nach Strecke: "kurz" (< 2), "mittel" (2-10), "lang" (> 10)
+**7a) Einfache Kategorisierung (2 Kategorien):**
+
+- [ ] Kategorisiere alle Fahrten nach Strecke: "kurz" (< 5 Meilen), "lang" (≥ 5 Meilen)
 - [ ] Zähle, wie viele Fahrten in jeder Kategorie sind
 - [ ] Berechne einen Rabatt: 10% bei Preisen über $30, sonst 5%
+
+!!! tip "Hilfe für 7a"
+    - Einfache Kategorisierung: `np.where(strecke < 5, 'kurz', 'lang')`
+    - Zählen einer Kategorie: `(kategorie == 'kurz').sum()`
+
+**7b) Erweiterte Kategorisierung (3+ Kategorien):**
+
+- [ ] Kategorisiere Fahrten dreistufig: "kurz" (< 2), "mittel" (2-10), "lang" (> 10)
 - [ ] Korrigiere Datenfehler: Ersetze alle negativen Fahrpreise durch 0
 
 !!! tip "Hilfe"

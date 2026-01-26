@@ -207,6 +207,14 @@ Wende dein Wissen auf die Taxi-Daten an.
 
 **Aufgabe C: Datenextraktion und Neukombination**
 
+!!! tip "Nützlich für diese Aufgabe"
+    Bei Division können `inf` (Infinity) Werte entstehen. 
+    Prüfe mit `np.isinf(arr)` und kombiniere mit `np.isnan(arr)`:
+    ```python
+    gueltig = ~np.isnan(arr) & ~np.isinf(arr)
+    arr_clean = arr[gueltig]
+    ```
+
 - Extrahiere die Spalten `passenger_count`, `trip_distance`, `fare_amount` und `tip_amount`
 - Berechne eine neue Spalte: Trinkgeld pro Meile (tip_amount / trip_distance)
 - Achtung: Wie gehst du mit Division durch 0 um?

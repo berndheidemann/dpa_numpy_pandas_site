@@ -9,6 +9,16 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 - den Unterschied zwischen Python-Listen und NumPy-Arrays verstehen
 - grundlegende Operationen auf Arrays durchführen
 
+!!! info "Voraussetzungen"
+    Für dieses Arbeitsblatt solltest du folgende Python-Grundlagen beherrschen:
+    
+    - **Variablen und Datentypen**: `int`, `float`, `str`, `list`
+    - **Schleifen**: `for`-Schleifen, `range()`
+    - **Bedingungen**: `if`/`else`-Anweisungen
+    - **List Comprehensions**: `[x * 2 for x in liste]`
+    - **Funktionen**: Eigene Funktionen definieren und aufrufen
+    - **Module importieren**: `import modul` bzw. `import modul as alias`
+
 !!! note "Begleitendes Infoblatt"
     [:material-book-open-variant: NumPy Grundlagen](../infoblaetter/numpy-grundlagen.md) – Installation, Arrays, Datentypen, Dimensionen
     

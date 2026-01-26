@@ -86,7 +86,7 @@ Quelle: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/dataset
 | health | Aktueller Gesundheitszustand | 1=sehr schlecht bis 5=sehr gut |
 | absences | Fehlstunden | 0-93 |
 
-### Noten (Zielvariablen)
+### Noten
 
 | Spalte | Beschreibung | Werte |
 |--------|--------------|-------|
@@ -247,6 +247,29 @@ Erstelle eine Zusammenfassung deiner Analyse und beantworte folgende Fragen basi
 - Nutze G1 und G2 um G3 vorherzusagen
 - Wie genau ist die Vorhersage `G3 ≈ (G1 + G2) / 2`?
 - Berechne den mittleren absoluten Fehler dieser Vorhersage
+
+---
+
+## Ausblick: Pandas
+
+NumPy ist ein mächtiges Werkzeug für numerische Daten, hat aber auch Grenzen:
+
+!!! info "Grenzen von NumPy"
+    - **Keine Spaltennamen** – nur numerische Indizes (Spalte 7 statt `passenger_count`)
+    - **Homogener Datentyp** – alle Werte müssen gleichen Typ haben
+    - **Gemischte Daten schwierig** – Text und Zahlen zusammen funktioniert nicht gut
+    - **Keine integrierte CSV-Handhabung** für komplexe Datensätze
+
+**Pandas** löst diese Probleme und baut dabei auf NumPy auf:
+
+| NumPy | Pandas |
+|-------|--------|
+| `array[:, 7]` | `df['passenger_count']` |
+| `np.genfromtxt(...)` | `pd.read_csv(...)` |
+| Nur Zahlen | Text, Zahlen, Datums-Werte gemischt |
+| Index-basiert | Namen-basiert |
+
+In den nächsten Arbeitsblättern lernst du **Pandas** kennen – die NumPy-Kenntnisse sind dafür die perfekte Grundlage!
 
 ---
 

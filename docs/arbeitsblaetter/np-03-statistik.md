@@ -28,11 +28,15 @@ Statistische Analysen sind das Kerngeschäft eines Data Analysts. NumPy bietet o
 
 | Spalte | Index | Beschreibung |
 |--------|-------|--------------|
+| VendorID | 0 | Anbieter-ID |
+| lpep_pickup_datetime | 1 | Startzeit |
+| lpep_dropoff_datetime | 2 | Endzeit |
 | passenger_count | 7 | Anzahl Passagiere |
 | trip_distance | 8 | Strecke (Meilen) |
 | fare_amount | 9 | Fahrpreis ($) |
 | tip_amount | 12 | Trinkgeld ($) |
 | total_amount | 16 | Gesamtbetrag ($) |
+| payment_type | 17 | Zahlungsart (1=Kreditkarte, 2=Bar) |
 
 !!! abstract "Datensatz herunterladen"
     [:material-download: taxi_tripdata.csv](../assets/files/taxi_tripdata.csv){ .md-button }
