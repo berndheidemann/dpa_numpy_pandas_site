@@ -53,9 +53,9 @@ nav:
           - PD-01 Einführung: arbeitsblaetter/pd-01-einfuehrung.md
           - PD-02 Datenzugriff: arbeitsblaetter/pd-02-datenzugriff.md
           - PD-03 Aggregation: arbeitsblaetter/pd-03-aggregation.md
-          - PD-03b Verbinden: arbeitsblaetter/pd-03b-verbinden.md
-          - PD-04 Transformation: arbeitsblaetter/pd-04-transformation.md
-          - PD-05 Fallstudie: arbeitsblaetter/pd-05-fallstudie.md
+          - PD-04 Verbinden: arbeitsblaetter/pd-04-verbinden.md
+          - PD-05 Transformation: arbeitsblaetter/pd-05-transformation.md
+          - PD-06 Fallstudie: arbeitsblaetter/pd-06-fallstudie.md
       - Infoblätter:
           - Pandas Grundlagen: infoblaetter/pandas-grundlagen.md
           - Pandas Datenzugriff: infoblaetter/pandas-datenzugriff.md

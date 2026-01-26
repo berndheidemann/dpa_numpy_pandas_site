@@ -50,8 +50,9 @@ Die Arbeitsblätter enthalten **praktische Aufgaben** mit steigendem Schwierigke
     | PD-01 | [Einführung](arbeitsblaetter/pd-01-einfuehrung.md) | DataFrames, CSV, Exploration | Games |
     | PD-02 | [Datenzugriff](arbeitsblaetter/pd-02-datenzugriff.md) | loc, iloc, Boolean Indexing | MBA |
     | PD-03 | [Aggregation](arbeitsblaetter/pd-03-aggregation.md) | groupby, agg, pivot_table | MBA |
-    | PD-04 | [Transformation](arbeitsblaetter/pd-04-transformation.md) | map, apply, Bereinigung | MBA |
-    | PD-05 | [Fallstudie](arbeitsblaetter/pd-05-fallstudie.md) | Komplette Analyse | Shark Attacks |
+    | PD-04 | [Verbinden](arbeitsblaetter/pd-04-verbinden.md) | merge, concat, Joins | – |
+    | PD-05 | [Transformation](arbeitsblaetter/pd-05-transformation.md) | map, apply, Bereinigung | MBA |
+    | PD-06 | [Fallstudie](arbeitsblaetter/pd-06-fallstudie.md) | Komplette Analyse | Shark Attacks |
 
 ---
 
@@ -93,8 +94,8 @@ Die folgenden Datensätze werden in den Übungen verwendet:
 
 1. NumPy Grundlagen (NP-01 bis NP-03)
 2. NumPy Vertiefung (NP-04, NP-05)
-3. Pandas Grundlagen (PD-01 bis PD-03)
-4. Pandas Vertiefung (PD-04, PD-05)
+3. Pandas Grundlagen (PD-01 bis PD-04)
+4. Pandas Vertiefung (PD-05, PD-06)
 
 ---
 
