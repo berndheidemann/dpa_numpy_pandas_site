@@ -226,50 +226,45 @@ Führe komplexere praktische Analysen durch.
 
 **Aufgabe A: Vollständige Statistik-Tabelle**
 
-Erstelle eine Übersichtstabelle, die für jede `Decision` folgende Werte zeigt:
-
-- Anzahl Bewerber
-- Durchschnitt, Median, Std von GPA
-- Durchschnitt, Median, Std von Work_Experience
-- Anteil weiblicher Bewerber (%)
-- Anteil internationaler Bewerber (%)
+- [ ] Erstelle eine Übersichtstabelle, die für jede `Decision` folgende Werte zeigt:
+    - Anzahl Bewerber
+    - Durchschnitt, Median, Std von GPA
+    - Durchschnitt, Median, Std von Work_Experience
+    - Anteil weiblicher Bewerber (%)
+    - Anteil internationaler Bewerber (%)
 
 **Aufgabe B: Multi-Level-Gruppierung**
 
-Erstelle eine hierarchische Analyse:
-
-- Gruppiere nach `Gender`, dann nach `International`, dann nach `Decision`
-- Zeige für jede Kombination: Anzahl und durchschnittlichen GPA
-- Welche Kombination hat die höchste Aufnahmequote?
+- [ ] Erstelle eine hierarchische Analyse:
+    - Gruppiere nach `Gender`, dann nach `International`, dann nach `Decision`
+    - Zeige für jede Kombination: Anzahl und durchschnittlichen GPA
+    - Welche Kombination hat die höchste Aufnahmequote?
 
 **Aufgabe C: Pivot-Tabellen-Herausforderungen**
 
 Erstelle folgende Pivot-Tabellen:
 
-1. Aufnahmequote (% Admit) nach Gender (Zeilen) und International (Spalten)
-2. Durchschnitts-GPA nach Major (Zeilen) und Decision (Spalten)
-3. Work_Experience-Statistiken (mean, min, max) nach Gender und Decision
+- [ ] Aufnahmequote (% Admit) nach Gender (Zeilen) und International (Spalten)
+- [ ] Durchschnitts-GPA nach Major (Zeilen) und Decision (Spalten)
+- [ ] Work_Experience-Statistiken (mean, min, max) nach Gender und Decision
 
 **Aufgabe D: Eigene Aggregationsfunktionen**
 
 Schreibe eigene Funktionen für:
 
-1. `above_threshold(series, threshold)`: Anteil der Werte über einem Schwellenwert
-2. `outlier_count(series)`: Anzahl der Ausreißer (außerhalb 1.5*IQR)
-3. `top_n_mean(series, n=3)`: Durchschnitt der Top-n Werte
-
-Wende diese auf die GPA-Werte pro Decision an.
+- [ ] `above_threshold(series, threshold)`: Anteil der Werte über einem Schwellenwert
+- [ ] `outlier_count(series)`: Anzahl der Ausreißer (außerhalb 1.5*IQR)
+- [ ] `top_n_mean(series, n=3)`: Durchschnitt der Top-n Werte
+- [ ] Wende diese auf die GPA-Werte pro Decision an.
 
 **Aufgabe E: Dashboard-Daten vorbereiten**
 
-Erstelle alle Daten für ein "MBA Admission Dashboard":
-
-1. Gesamtstatistiken (Anzahl, Quoten)
-2. Vergleich nach Demographics (Gender, International)
-3. Vergleich nach Qualifikation (GPA-Bins, Experience-Bins)
-4. Trend-Daten: Aufnahmequote pro GPA-Dezil
-
-Speichere jede Tabelle in einer eigenen Variable.
+- [ ] Erstelle alle Daten für ein "MBA Admission Dashboard":
+    1. Gesamtstatistiken (Anzahl, Quoten)
+    2. Vergleich nach Demographics (Gender, International)
+    3. Vergleich nach Qualifikation (GPA-Bins, Experience-Bins)
+    4. Trend-Daten: Aufnahmequote pro GPA-Dezil
+- [ ] Speichere jede Tabelle in einer eigenen Variable.
 
 ---
 

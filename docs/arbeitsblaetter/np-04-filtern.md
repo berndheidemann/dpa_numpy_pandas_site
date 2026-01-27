@@ -244,48 +244,47 @@ Wende alles Gelernte für echte Analysen an.
 
 Identifiziere "verdächtige" Fahrten und zähle sie:
 
-- Strecke = 0 aber Preis > $5
-- Strecke > 0 aber Preis = 0
-- Trinkgeld > Fahrpreis
-- Gesamtbetrag < Fahrpreis
-- Negative Werte in irgendeiner Preisspalte
-
-Wie viel Prozent der Daten sind "verdächtig"?
+- [ ] Strecke = 0 aber Preis > $5
+- [ ] Strecke > 0 aber Preis = 0
+- [ ] Trinkgeld > Fahrpreis
+- [ ] Gesamtbetrag < Fahrpreis
+- [ ] Negative Werte in irgendeiner Preisspalte
+- [ ] Wie viel Prozent der Daten sind "verdächtig"?
 
 **Aufgabe B: Kundensegmentierung**
 
 Kategorisiere Fahrten in 4 Segmente und berechne für jedes Segment die Durchschnittswerte:
 
-- **Basic**: Kurze Strecke (<2 Meilen), niedriger Preis (<$15)
-- **Standard**: Mittlere Strecke (2-5 Meilen), mittlerer Preis ($15-$30)
-- **Premium**: Lange Strecke (>5 Meilen) ODER hoher Preis (>$30)
-- **VIP**: Lange Strecke (>5 Meilen) UND hoher Preis (>$30)
+- [ ] **Basic**: Kurze Strecke (<2 Meilen), niedriger Preis (<$15)
+- [ ] **Standard**: Mittlere Strecke (2-5 Meilen), mittlerer Preis ($15-$30)
+- [ ] **Premium**: Lange Strecke (>5 Meilen) ODER hoher Preis (>$30)
+- [ ] **VIP**: Lange Strecke (>5 Meilen) UND hoher Preis (>$30)
 
 Hinweis: Nutze `np.where()` für die Kategorisierung.
 
 **Aufgabe C: Zeitabhängige Analyse**
 
-- Teile die Daten in 4 gleich große Teile (entspricht grob Tagesquartalen)
-- Vergleiche für jeden Teil:
+- [ ] Teile die Daten in 4 gleich große Teile (entspricht grob Tagesquartalen)
+- [ ] Vergleiche für jeden Teil:
     - Durchschnittlicher Fahrpreis
     - Durchschnittliches Trinkgeld
     - Anteil der Fahrten mit Trinkgeld
-- Gibt es Muster?
+- [ ] Gibt es Muster?
 
 **Aufgabe D: Effizienzranking**
 
-- Berechne für jede Fahrt den "Umsatz pro Meile"
-- Filtere nur gültige Werte (keine NaN, keine Infinity, keine negativen Werte)
-- Finde die Top-100 und Bottom-100 Fahrten
-- Was unterscheidet diese Gruppen? (Analysiere Passagierzahl, Strecke, etc.)
+- [ ] Berechne für jede Fahrt den "Umsatz pro Meile"
+- [ ] Filtere nur gültige Werte (keine NaN, keine Infinity, keine negativen Werte)
+- [ ] Finde die Top-100 und Bottom-100 Fahrten
+- [ ] Was unterscheidet diese Gruppen? (Analysiere Passagierzahl, Strecke, etc.)
 
 **Aufgabe E: Anomalie-Erkennung**
 
 Implementiere einen Anomalie-Detektor:
 
-- Ein Datenpunkt ist eine Anomalie, wenn mindestens 2 seiner Werte (Strecke, Preis, Gesamt) mehr als 3 Standardabweichungen vom Mittelwert entfernt sind
-- Zähle und analysiere diese Anomalien
-- Sollten sie entfernt werden? Begründe!
+- [ ] Ein Datenpunkt ist eine Anomalie, wenn mindestens 2 seiner Werte (Strecke, Preis, Gesamt) mehr als 3 Standardabweichungen vom Mittelwert entfernt sind
+- [ ] Zähle und analysiere diese Anomalien
+- [ ] Sollten sie entfernt werden? Begründe!
 
 ---
 

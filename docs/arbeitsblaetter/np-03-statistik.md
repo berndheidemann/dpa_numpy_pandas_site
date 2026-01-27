@@ -186,31 +186,31 @@ Erstelle eine wiederverwendbare Funktion für statistische Zusammenfassungen.
 
 **Aufgabe A: Preisstruktur verstehen**
 
-- Berechne das 10., 25., 50., 75., 90. und 99. Perzentil des Fahrpreises
-- Wie viel Prozent des Gesamtumsatzes machen die teuersten 10% der Fahrten aus?
-- Erstelle eine "5-Zahlen-Zusammenfassung" (Min, Q1, Median, Q3, Max) für Strecke, Preis und Trinkgeld
+- [ ] Berechne das 10., 25., 50., 75., 90. und 99. Perzentil des Fahrpreises
+- [ ] Wie viel Prozent des Gesamtumsatzes machen die teuersten 10% der Fahrten aus?
+- [ ] Erstelle eine "5-Zahlen-Zusammenfassung" (Min, Q1, Median, Q3, Max) für Strecke, Preis und Trinkgeld
 
 **Aufgabe B: Vergleichsanalyse**
 
-- Teile die Fahrten in zwei Gruppen: mit Trinkgeld (>0) und ohne Trinkgeld (=0 oder NaN)
-- Vergleiche für beide Gruppen: Durchschnittliche Fahrstrecke, Fahrpreis und Passagierzahl
-- Stelle eine Hypothese auf: Wann wird eher Trinkgeld gegeben?
+- [ ] Teile die Fahrten in zwei Gruppen: mit Trinkgeld (>0) und ohne Trinkgeld (=0 oder NaN)
+- [ ] Vergleiche für beide Gruppen: Durchschnittliche Fahrstrecke, Fahrpreis und Passagierzahl
+- [ ] Stelle eine Hypothese auf: Wann wird eher Trinkgeld gegeben?
 
 **Aufgabe C: Effizienz-Kennzahlen**
 
-- Berechne für jede Fahrt: "Umsatz pro Meile" (total_amount / trip_distance)
-- Entferne ungültige Werte (NaN, Infinity)
-- Was ist der Durchschnitt und die Standardabweichung dieser Kennzahl?
-- Finde die 10 effizientesten und 10 ineffizientesten Fahrten
+- [ ] Berechne für jede Fahrt: "Umsatz pro Meile" (total_amount / trip_distance)
+- [ ] Entferne ungültige Werte (NaN, Infinity)
+- [ ] Was ist der Durchschnitt und die Standardabweichung dieser Kennzahl?
+- [ ] Finde die 10 effizientesten und 10 ineffizientesten Fahrten
 
 **Aufgabe D: Streuungsanalyse**
 
-- Berechne den Variationskoeffizienten für alle vier Spalten
-- Welche Größe streut relativ am stärksten? Was bedeutet das inhaltlich?
+- [ ] Berechne den Variationskoeffizienten für alle vier Spalten
+- [ ] Welche Größe streut relativ am stärksten? Was bedeutet das inhaltlich?
 
 **Aufgabe E: Eigene Statistik-Funktion**
 
-Erweitere deine Funktion aus Aufgabe 8 um die Anzahl der Ausreißer (Werte außerhalb von Q1-1.5×IQR und Q3+1.5×IQR).
+- [ ] Erweitere deine Funktion aus Aufgabe 8 um die Anzahl der Ausreißer (Werte außerhalb von Q1-1.5×IQR und Q3+1.5×IQR).
 
 ---
 

@@ -255,51 +255,46 @@ Kombiniere alle gelernten Techniken zu einer wiederverwendbaren Bereinigungsfunk
 
 **Aufgabe A: Feature Engineering**
 
-Erstelle mindestens 5 neue, sinnvolle Features aus den bestehenden Daten:
-
-- Ein binäres Feature (ja/nein)
-- Ein numerisches abgeleitetes Feature
-- Ein kategorisches Feature mit mehr als 2 Kategorien
-- Ein Interaktions-Feature (Kombination aus 2 Spalten)
-- Ein Ranking-Feature (z.B. GPA-Rang in Prozent)
+- [ ] Erstelle mindestens 5 neue, sinnvolle Features aus den bestehenden Daten:
+    - Ein binäres Feature (ja/nein)
+    - Ein numerisches abgeleitetes Feature
+    - Ein kategorisches Feature mit mehr als 2 Kategorien
+    - Ein Interaktions-Feature (Kombination aus 2 Spalten)
+    - Ein Ranking-Feature (z.B. GPA-Rang in Prozent)
 
 **Aufgabe B: Datenbereinigung ohne Vorgabe**
 
-Implementiere eine vollständige Bereinigungsfunktion für den MBA-Datensatz:
-
-1. Identifiziere alle Probleme (NaN, Duplikate, Inkonsistenzen)
-2. Dokumentiere, wie viele Datensätze jedes Problem haben
-3. Behebe die Probleme mit geeigneten Strategien
-4. Validiere, dass die Bereinigung erfolgreich war
+- [ ] Implementiere eine vollständige Bereinigungsfunktion für den MBA-Datensatz:
+    1. Identifiziere alle Probleme (NaN, Duplikate, Inkonsistenzen)
+    2. Dokumentiere, wie viele Datensätze jedes Problem haben
+    3. Behebe die Probleme mit geeigneten Strategien
+    4. Validiere, dass die Bereinigung erfolgreich war
 
 **Aufgabe C: Transformation mit apply()**
 
-Schreibe eine `apply()`-Funktion, die für jeden Bewerber eine "Prediction" macht:
-
-- Analysiere erst: Was unterscheidet Aufgenommene von Abgelehnten?
-- Entwickle eine Logik mit mindestens 4 Kriterien
-- Wende sie auf alle Zeilen an
-- Berechne die Genauigkeit (% korrekte Vorhersagen)
+- [ ] Schreibe eine `apply()`-Funktion, die für jeden Bewerber eine "Prediction" macht:
+    - Analysiere erst: Was unterscheidet Aufgenommene von Abgelehnten?
+    - Entwickle eine Logik mit mindestens 4 Kriterien
+    - Wende sie auf alle Zeilen an
+    - Berechne die Genauigkeit (% korrekte Vorhersagen)
 
 **Aufgabe D: String-Manipulation**
 
 Wenn der Datensatz Text-Spalten enthält:
 
-- Bereinige alle Strings (Leerzeichen, Groß-/Kleinschreibung)
-- Extrahiere relevante Informationen aus Text
-- Erstelle Dummy-Variablen aus kategorischen Text-Spalten
+- [ ] Bereinige alle Strings (Leerzeichen, Groß-/Kleinschreibung)
+- [ ] Extrahiere relevante Informationen aus Text
+- [ ] Erstelle Dummy-Variablen aus kategorischen Text-Spalten
 
 **Aufgabe E: Pipeline erstellen**
 
-Erstelle eine wiederverwendbare Funktion `prepare_mba_data(filepath)`:
-
-- Lädt die Daten
-- Bereinigt sie
-- Fügt alle neuen Features hinzu
-- Konvertiert Datentypen
-- Gibt einen sauberen DataFrame zurück
-
-Dokumentiere jeden Schritt mit Kommentaren.
+- [ ] Erstelle eine wiederverwendbare Funktion `prepare_mba_data(filepath)`:
+    - Lädt die Daten
+    - Bereinigt sie
+    - Fügt alle neuen Features hinzu
+    - Konvertiert Datentypen
+    - Gibt einen sauberen DataFrame zurück
+- [ ] Dokumentiere jeden Schritt mit Kommentaren.
 
 ---
 

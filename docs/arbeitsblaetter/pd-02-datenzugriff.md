@@ -257,40 +257,39 @@ Wende dein Wissen in realistischen Analyseszenarien an.
 
 **Aufgabe A: Aufnahmekriterien erforschen**
 
-- Was ist der minimale GPA, mit dem jemand aufgenommen wurde?
-- Was ist der maximale GPA, mit dem jemand abgelehnt wurde?
-- Gibt es Bewerber, die trotz niedrigem GPA (<3.0) aufgenommen wurden? Was haben diese gemeinsam?
+- [ ] Was ist der minimale GPA, mit dem jemand aufgenommen wurde?
+- [ ] Was ist der maximale GPA, mit dem jemand abgelehnt wurde?
+- [ ] Gibt es Bewerber, die trotz niedrigem GPA (<3.0) aufgenommen wurden? Was haben diese gemeinsam?
 
 **Aufgabe B: Fairness-Analyse**
 
-- Berechne die Aufnahmequote (Anteil Admit) für:
+- [ ] Berechne die Aufnahmequote (Anteil Admit) für:
     - Männer vs. Frauen
     - International vs. Nicht-International
     - Jeden Major separat
-- Gibt es auffällige Unterschiede?
+- [ ] Gibt es auffällige Unterschiede?
 
 **Aufgabe C: Grenzfälle identifizieren**
 
-- Finde "knapp Abgelehnte": GPA > 3.5, Erfahrung > 5, aber Decision = Deny
-- Finde "Glücksfälle": GPA < 3.2, Erfahrung < 3, aber Decision = Admit
-- Analysiere diese Gruppen: Gibt es weitere Merkmale, die sie verbinden?
+- [ ] Finde "knapp Abgelehnte": GPA > 3.5, Erfahrung > 5, aber Decision = Deny
+- [ ] Finde "Glücksfälle": GPA < 3.2, Erfahrung < 3, aber Decision = Admit
+- [ ] Analysiere diese Gruppen: Gibt es weitere Merkmale, die sie verbinden?
 
 **Aufgabe D: Eigene Query-Formulierung**
 
-Formuliere 5 komplexe Queries mit der `query()`-Methode:
-
-1. Eine Kombination aus 3 Bedingungen mit AND und OR
-2. Eine Query mit einer Variablen (@variable)
-3. Eine Query mit Vergleich zwischen zwei Spalten
-4. ...
-5. ...
+- [ ] Formuliere 5 komplexe Queries mit der `query()`-Methode:
+    1. Eine Kombination aus 3 Bedingungen mit AND und OR
+    2. Eine Query mit einer Variablen (@variable)
+    3. Eine Query mit Vergleich zwischen zwei Spalten
+    4. ...
+    5. ...
 
 **Aufgabe E: Datenmanipulation**
 
-- Erstelle eine Kopie des DataFrames
-- Setze alle GPA-Werte von abgelehnten Bewerbern auf NaN
-- Zähle, wie viele Werte du geändert hast
-- Berechne den neuen Durchschnitts-GPA (ohne die NaN-Werte)
+- [ ] Erstelle eine Kopie des DataFrames
+- [ ] Setze alle GPA-Werte von abgelehnten Bewerbern auf NaN
+- [ ] Zähle, wie viele Werte du geändert hast
+- [ ] Berechne den neuen Durchschnitts-GPA (ohne die NaN-Werte)
 
 ---
 

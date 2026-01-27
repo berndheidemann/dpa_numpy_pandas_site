@@ -232,34 +232,33 @@ Beantworte Fragen zum Games-Datensatz mit Pandas-Code.
 
 **Aufgabe A: Datensatz verstehen**
 
-- Welche 5 Spiele haben die höchste Kritikerwertung (`Critic_Score`)?
-- Welcher Publisher hat die meisten Spiele veröffentlicht?
-- In welchem Jahr wurden die meisten Spiele für die Plattform "PS4" veröffentlicht?
-- Wie hoch ist der Anteil an Spielen ohne Altersfreigabe (`Rating` ist NaN)?
+- [ ] Welche 5 Spiele haben die höchste Kritikerwertung (`Critic_Score`)?
+- [ ] Welcher Publisher hat die meisten Spiele veröffentlicht?
+- [ ] In welchem Jahr wurden die meisten Spiele für die Plattform "PS4" veröffentlicht?
+- [ ] Wie hoch ist der Anteil an Spielen ohne Altersfreigabe (`Rating` ist NaN)?
 
 **Aufgabe B: Datenqualität prüfen**
 
-- Erstelle eine Übersicht: Für jede Spalte zeige an:
+- [ ] Erstelle eine Übersicht: Für jede Spalte zeige an:
     - Name
     - Datentyp
     - Anzahl fehlender Werte
     - Prozentsatz fehlender Werte
     - Anzahl eindeutiger Werte
-- Welche Spalte hat die schlechteste Datenqualität?
+- [ ] Welche Spalte hat die schlechteste Datenqualität?
 
 **Aufgabe C: Sortierung und Auswahl**
 
-- Sortiere nach Kritikerwertung (absteigend) und zeige die Top 20
-- Finde alle Spiele, die im Jahr 2015 erschienen sind, sortiert nach Plattform
-- Zeige alle Spiele eines bestimmten Publishers deiner Wahl
+- [ ] Sortiere nach Kritikerwertung (absteigend) und zeige die Top 20
+- [ ] Finde alle Spiele, die im Jahr 2015 erschienen sind, sortiert nach Plattform
+- [ ] Zeige alle Spiele eines bestimmten Publishers deiner Wahl
 
 **Aufgabe D: Eigene Fragen**
 
-Formuliere 3 eigene interessante Fragen an den Datensatz und beantworte sie mit Pandas-Code:
-
-1. Frage: ...
-2. Frage: ...
-3. Frage: ...
+- [ ] Formuliere 3 eigene interessante Fragen an den Datensatz und beantworte sie mit Pandas-Code:
+    1. Frage: ...
+    2. Frage: ...
+    3. Frage: ...
 
 ---
 

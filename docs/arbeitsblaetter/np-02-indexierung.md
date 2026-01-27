@@ -173,15 +173,15 @@ Wende dein Wissen auf die Taxi-Daten an.
 
 **Aufgabe A: Datenpartitionierung**
 
-- Teile den Datensatz in 3 gleich große Teile (erstes Drittel, Mitte, letztes Drittel)
-- Berechne den Durchschnitt der `trip_distance` für jeden Teil
-- Gibt es Unterschiede? Was könnte der Grund sein?
+- [ ] Teile den Datensatz in 3 gleich große Teile (erstes Drittel, Mitte, letztes Drittel)
+- [ ] Berechne den Durchschnitt der `trip_distance` für jeden Teil
+- [ ] Gibt es Unterschiede? Was könnte der Grund sein?
 
 **Aufgabe B: Stichprobenanalyse**
 
-- Erstelle 5 verschiedene Stichproben: jede 10., 20., 50., 100. Zeile
-- Vergleiche den Durchschnitt der `total_amount` Spalte jeder Stichprobe mit dem Gesamtdurchschnitt
-- Welche Stichprobengröße ist repräsentativ genug?
+- [ ] Erstelle 5 verschiedene Stichproben: jede 10., 20., 50., 100. Zeile
+- [ ] Vergleiche den Durchschnitt der `total_amount` Spalte jeder Stichprobe mit dem Gesamtdurchschnitt
+- [ ] Welche Stichprobengröße ist repräsentativ genug?
 
 **Aufgabe C: Datenextraktion und Neukombination**
 
@@ -193,16 +193,16 @@ Wende dein Wissen auf die Taxi-Daten an.
     arr_clean = arr[gueltig]
     ```
 
-- Extrahiere die Spalten `passenger_count`, `trip_distance`, `fare_amount` und `tip_amount`
-- Berechne eine neue Spalte: Trinkgeld pro Meile (tip_amount / trip_distance)
-- Achtung: Wie gehst du mit Division durch 0 um?
+- [ ] Extrahiere die Spalten `passenger_count`, `trip_distance`, `fare_amount` und `tip_amount`
+- [ ] Berechne eine neue Spalte: Trinkgeld pro Meile (tip_amount / trip_distance)
+- [ ] Achtung: Wie gehst du mit Division durch 0 um?
 
 **Aufgabe D: View-Problem lösen**
 
-- Erstelle einen View auf die ersten 100 Zeilen
-- Ändere den ersten Wert im View auf 999
-- Prüfe, ob sich das Original geändert hat
-- Wie verhinderst du solche unbeabsichtigten Änderungen in der Praxis?
+- [ ] Erstelle einen View auf die ersten 100 Zeilen
+- [ ] Ändere den ersten Wert im View auf 999
+- [ ] Prüfe, ob sich das Original geändert hat
+- [ ] Wie verhinderst du solche unbeabsichtigten Änderungen in der Praxis?
 
 ---
 
