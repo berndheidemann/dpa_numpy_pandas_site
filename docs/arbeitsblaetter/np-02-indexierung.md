@@ -42,14 +42,11 @@ In dieser Lernsituation arbeitest du mit echten NYC Yellow Taxi Trip-Daten. Du l
 
 Bereite den Taxi-Datensatz für die Analyse vor.
 
-1. Importiere NumPy und lade die Datei `taxi_tripdata.csv` mit `np.genfromtxt()`.
+- [ ] Importiere NumPy und lade die Datei `taxi_tripdata.csv` mit `np.genfromtxt()`.
    *Nutze `skip_header=1` für die Kopfzeile.*
-
-2. Lass dir die Shape des Arrays ausgeben – wie viele Zeilen und Spalten hat der Datensatz?
-
-3. Bestimme den Datentyp (`dtype`) und die Anzahl der Dimensionen (`ndim`).
-
-4. Prüfe, wie viele NaN-Werte das Array enthält.
+- [ ] Lass dir die Shape des Arrays ausgeben – wie viele Zeilen und Spalten hat der Datensatz?
+- [ ] Bestimme den Datentyp (`dtype`) und die Anzahl der Dimensionen (`ndim`).
+- [ ] Prüfe, wie viele NaN-Werte das Array enthält.
    *Tipp: `np.isnan()` und `.sum()` kombinieren.*
 
 !!! question "Reflexionsfrage"
@@ -61,13 +58,10 @@ Bereite den Taxi-Datensatz für die Analyse vor.
 
 Arbeite mit der Spalte `trip_distance` (Index 8).
 
-1. Extrahiere die komplette Spalte `trip_distance` in eine eigene Variable.
-
-2. Gib die ersten 30 Einträge dieser Spalte aus.
-
-3. Gib die letzten 10 Einträge aus.
-
-4. Zeige jeden fünften Wert der ersten 100 Einträge.
+- [ ] Extrahiere die komplette Spalte `trip_distance` in eine eigene Variable.
+- [ ] Gib die ersten 30 Einträge dieser Spalte aus.
+- [ ] Gib die letzten 10 Einträge aus.
+- [ ] Zeige jeden fünften Wert der ersten 100 Einträge.
 
 !!! tip "Hilfe"
     - Spalte extrahieren: `array[:, spalten_index]`
@@ -80,11 +74,9 @@ Arbeite mit der Spalte `trip_distance` (Index 8).
 
 Extrahiere mehrere Spalten gleichzeitig.
 
-1. Extrahiere die Spalten `fare_amount` (9) und `tip_amount` (12) zusammen in ein neues Array.
-
-2. Erstelle eine Übersicht der ersten 30 Fahrten mit den Spalten: `passenger_count` (7), `trip_distance` (8), `fare_amount` (9), `total_amount` (16).
-
-3. Gib die Übersicht formatiert auf der Konsole aus (z.B. als Tabelle mit Spaltenüberschriften).
+- [ ] Extrahiere die Spalten `fare_amount` (9) und `tip_amount` (12) zusammen in ein neues Array.
+- [ ] Erstelle eine Übersicht der ersten 30 Fahrten mit den Spalten: `passenger_count` (7), `trip_distance` (8), `fare_amount` (9), `total_amount` (16).
+- [ ] Gib die Übersicht formatiert auf der Konsole aus (z.B. als Tabelle mit Spaltenüberschriften).
 
 !!! tip "Hilfe"
     Mehrere Spalten: `array[:, [index1, index2, index3]]`
@@ -95,13 +87,10 @@ Extrahiere mehrere Spalten gleichzeitig.
 
 Wähle gezielte Bereiche aus der Matrix.
 
-1. Wähle die Zeilen 1011 bis 1097 und Spalten 6 bis 9 aus. Wie groß ist das Ergebnis-Array?
-
-2. Extrahiere jede zweite Zeile des gesamten Datensatzes. Wie viele Zeilen hat das Ergebnis?
-
-3. Extrahiere die letzte Spalte des Datensatzes.
-
-4. Gib die letzten 10 Zeilen in umgekehrter Reihenfolge aus.
+- [ ] Wähle die Zeilen 1011 bis 1097 und Spalten 6 bis 9 aus. Wie groß ist das Ergebnis-Array?
+- [ ] Extrahiere jede zweite Zeile des gesamten Datensatzes. Wie viele Zeilen hat das Ergebnis?
+- [ ] Extrahiere die letzte Spalte des Datensatzes.
+- [ ] Gib die letzten 10 Zeilen in umgekehrter Reihenfolge aus.
 
 !!! tip "Hilfe"
     - Bereich: `array[start:stop, start:stop]`
@@ -114,15 +103,13 @@ Wähle gezielte Bereiche aus der Matrix.
 
 Erstelle eine kleine Test-Matrix zum Experimentieren.
 
-1. Erstelle mit `np.arange()` und `.reshape()` eine 4×5-Matrix mit den Werten 1-20.
-
-2. Extrahiere:
+- [ ] Erstelle mit `np.arange()` und `.reshape()` eine 4×5-Matrix mit den Werten 1-20.
+- [ ] Extrahiere:
    - Zeile 1 (zweite Zeile)
    - Spalte 2 (dritte Spalte)
    - Den Bereich Zeilen 1-2, Spalten 2-4
    - Jede zweite Zeile und jede zweite Spalte
-
-3. Erkläre bei jeder Extraktion, was genau ausgewählt wird.
+- [ ] Erkläre bei jeder Extraktion, was genau ausgewählt wird.
 
 ---
 
@@ -130,15 +117,11 @@ Erstelle eine kleine Test-Matrix zum Experimentieren.
 
 Ein wichtiges Konzept verstehen: Slicing erstellt Views, keine Kopien!
 
-1. Erstelle ein Array `original = np.array([1, 2, 3, 4, 5])`.
-
-2. Erstelle per Slicing einen Ausschnitt `view = original[1:4]`.
-
-3. Ändere den ersten Wert im View auf 99.
-
-4. Prüfe beide Arrays – was ist passiert? Erkläre das Verhalten.
-
-5. Wiederhole das Experiment, aber erstelle stattdessen eine echte Kopie mit `.copy()`.
+- [ ] Erstelle ein Array `original = np.array([1, 2, 3, 4, 5])`.
+- [ ] Erstelle per Slicing einen Ausschnitt `view = original[1:4]`.
+- [ ] Ändere den ersten Wert im View auf 99.
+- [ ] Prüfe beide Arrays – was ist passiert? Erkläre das Verhalten.
+- [ ] Wiederhole das Experiment, aber erstelle stattdessen eine echte Kopie mit `.copy()`.
 
 !!! warning "Wichtig"
     Bei der Arbeit mit Daten solltest du dir immer bewusst sein, ob du mit einem View oder einer Kopie arbeitest!
@@ -161,30 +144,25 @@ Ein wichtiges Konzept verstehen: Slicing erstellt Views, keine Kopien!
 
 Wende dein Wissen auf die Taxi-Daten an.
 
-1. Analysiere die ersten 100 Fahrten:
+- [ ] Analysiere die ersten 100 Fahrten:
    - Berechne die durchschnittliche Fahrstrecke
    - Berechne den durchschnittlichen Fahrpreis
    *Tipp: Nutze `np.nanmean()` wegen der NaN-Werte.*
-
-2. Vergleiche die ersten 500 mit den letzten 500 Fahrten:
+- [ ] Vergleiche die ersten 500 mit den letzten 500 Fahrten:
    - Durchschnittliche Strecke
    - Durchschnittlicher Gesamtbetrag
    - Gibt es Unterschiede?
-
-3. Erstelle eine Stichprobe (jede 10. Fahrt) und berechne die durchschnittliche Strecke.
+- [ ] Erstelle eine Stichprobe (jede 10. Fahrt) und berechne die durchschnittliche Strecke.
    Vergleiche mit dem Durchschnitt aller Fahrten.
 
 ---
 
 ### Aufgabe 8 – Bonus: Transponieren und Umformen
 
-1. Wähle 5 Fahrten und 4 Merkmale (z.B. passenger_count, trip_distance, fare_amount, total_amount) aus.
-
-2. Transponiere diesen Ausschnitt mit `.T`.
-
-3. Erkläre, was beim Transponieren passiert und wann das nützlich ist.
-
-4. Probiere `.flatten()` auf dem Ausschnitt – was passiert?
+- [ ] Wähle 5 Fahrten und 4 Merkmale (z.B. passenger_count, trip_distance, fare_amount, total_amount) aus.
+- [ ] Transponiere diesen Ausschnitt mit `.T`.
+- [ ] Erkläre, was beim Transponieren passiert und wann das nützlich ist.
+- [ ] Probiere `.flatten()` auf dem Ausschnitt – was passiert?
 
 ---
 

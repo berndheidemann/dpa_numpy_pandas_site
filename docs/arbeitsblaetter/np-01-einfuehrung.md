@@ -67,11 +67,11 @@ Vergleiche die Geschwindigkeit von Python-Listen und NumPy-Arrays.
 
 Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
 
-1. **Verkaufszahlen:** Ein 1D-Array mit den Werten `[145, 189, 132, 201, 178, 156, 210]`
-2. **Preistabelle:** Eine 5×4 Matrix (5 Produkte, 4 Filialen), initial mit Nullen gefüllt
-3. **Rabattstufen:** 5 gleichmäßig verteilte Werte von 0.0 bis 0.20 (nutze `linspace`)
-4. **Würfelwürfe:** 100 Zufallszahlen zwischen 1 und 6
-5. **Gerade Zahlen:** Alle geraden Zahlen von 2 bis 20 (nutze `arange`)
+- [ ] **Verkaufszahlen:** Ein 1D-Array mit den Werten `[145, 189, 132, 201, 178, 156, 210]`
+- [ ] **Preistabelle:** Eine 5×4 Matrix (5 Produkte, 4 Filialen), initial mit Nullen gefüllt
+- [ ] **Rabattstufen:** 5 gleichmäßig verteilte Werte von 0.0 bis 0.20 (nutze `linspace`)
+- [ ] **Würfelwürfe:** 100 Zufallszahlen zwischen 1 und 6
+- [ ] **Gerade Zahlen:** Alle geraden Zahlen von 2 bis 20 (nutze `arange`)
 
 ---
 
@@ -80,10 +80,10 @@ Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
 !!! tip "Hilfe"
     Wichtige Eigenschaften: `shape`, `ndim`, `dtype`, `size`, `itemsize`, `nbytes`
 
-1. Erstelle eine 3×4 Matrix mit den Zahlen 1 bis 12
-2. Gib alle 6 Eigenschaften (`shape`, `ndim`, `dtype`, `size`, `itemsize`, `nbytes`) aus
-3. Erstelle das gleiche Array einmal als `int32` und einmal als `float64`
-4. Vergleiche den Speicherverbrauch (`nbytes`) beider Arrays – um welchen Faktor unterscheiden sie sich?
+- [ ] Erstelle eine 3×4 Matrix mit den Zahlen 1 bis 12
+- [ ] Gib alle 6 Eigenschaften (`shape`, `ndim`, `dtype`, `size`, `itemsize`, `nbytes`) aus
+- [ ] Erstelle das gleiche Array einmal als `int32` und einmal als `float64`
+- [ ] Vergleiche den Speicherverbrauch (`nbytes`) beider Arrays – um welchen Faktor unterscheiden sie sich?
 
 ---
 
@@ -93,14 +93,14 @@ Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
     `reshape(zeilen, spalten)` – die Gesamtzahl der Elemente muss gleich bleiben!  
     Mit `-1` wird eine Dimension automatisch berechnet.
 
-1. Erstelle ein 1D-Array mit den Zahlen 1 bis 24
-2. Forme es um zu:
+- [ ] Erstelle ein 1D-Array mit den Zahlen 1 bis 24
+- [ ] Forme es um zu:
     - 4×6 Matrix
     - 6×4 Matrix  
     - 2×3×4 (3D-Array)
     - 8 Zeilen, Spalten automatisch
-3. Welche Formen sind **nicht** möglich? Probiere z.B. (5, 5) – was passiert?
-4. Mache aus einer Matrix wieder ein 1D-Array (zwei Methoden: `flatten()` und `ravel()`)
+- [ ] Welche Formen sind **nicht** möglich? Probiere z.B. (5, 5) – was passiert?
+- [ ] Mache aus einer Matrix wieder ein 1D-Array (zwei Methoden: `flatten()` und `ravel()`)
 
 ---
 
@@ -113,13 +113,12 @@ NumPy-Operationen sind **element-weise** – sie werden auf jedes Element einzel
 
 Berechne **ohne Schleifen**:
 
-1. Alle Bruttopreise (19% MwSt hinzufügen)
-2. Alle Preise mit 15% Rabatt
-3. Die Differenz zwischen teuerstem und günstigstem Artikel
-4. Die Summe aller Bruttopreise
-5. Den Durchschnittspreis
-
-**Bonus:** Erstelle ein 3×5 Array (3 Tage × 5 Produkte). Simuliere tägliche Preisänderungen: Tag 1 = -5%, Tag 2 = 0%, Tag 3 = +5%.
+- [ ] Alle Bruttopreise (19% MwSt hinzufügen)
+- [ ] Alle Preise mit 15% Rabatt
+- [ ] Die Differenz zwischen teuerstem und günstigstem Artikel
+- [ ] Die Summe aller Bruttopreise
+- [ ] Den Durchschnittspreis
+- [ ] **Bonus:** Erstelle ein 3×5 Array (3 Tage × 5 Produkte). Simuliere tägliche Preisänderungen: Tag 1 = -5%, Tag 2 = 0%, Tag 3 = +5%.
 
 ---
 
@@ -139,11 +138,11 @@ Berechne **ohne Schleifen**:
 
 Ein Sensor liefert 24 Messwerte (stündlich) in **Fahrenheit**. Simuliere diese Daten und analysiere sie.
 
-1. Erzeuge 24 Zufallswerte zwischen 60 und 100 (Fahrenheit)  
+- [ ] Erzeuge 24 Zufallswerte zwischen 60 und 100 (Fahrenheit)  
    *Tipp: Nutze `np.random.seed(42)` für reproduzierbare Ergebnisse*
-2. Konvertiere alle Werte zu Celsius: $C = (F - 32) \times \frac{5}{9}$
-3. Berechne: Minimum, Maximum, Durchschnitt, Standardabweichung
-4. Finde heraus, um welche Uhrzeit die höchste Temperatur gemessen wurde  
+- [ ] Konvertiere alle Werte zu Celsius: $C = (F - 32) \times \frac{5}{9}$
+- [ ] Berechne: Minimum, Maximum, Durchschnitt, Standardabweichung
+- [ ] Finde heraus, um welche Uhrzeit die höchste Temperatur gemessen wurde  
    *Tipp: `np.argmax()` gibt den Index des größten Elements*
 
 ---
@@ -152,13 +151,13 @@ Ein Sensor liefert 24 Messwerte (stündlich) in **Fahrenheit**. Simuliere diese 
 
 Ein Kurs hat **8 Schüler**, die **3 Tests** geschrieben haben.
 
-1. Erstelle ein 8×3 Array mit Zufallspunkten (0-100)
-2. Berechne den **Durchschnitt jedes Schülers** (über alle 3 Tests)  
+- [ ] Erstelle ein 8×3 Array mit Zufallspunkten (0-100)
+- [ ] Berechne den **Durchschnitt jedes Schülers** (über alle 3 Tests)  
    *Tipp: `mean(axis=1)` für Zeilenmittelwert*
-3. Berechne den **Durchschnitt jedes Tests** (über alle 8 Schüler)  
+- [ ] Berechne den **Durchschnitt jedes Tests** (über alle 8 Schüler)  
    *Tipp: `mean(axis=0)` für Spaltenmittelwert*
-4. Finde den **besten** und **schlechtesten** Schüler (nach Durchschnitt)
-5. Wie viel **Prozent** der Schüler haben über 60 Punkte im Schnitt?
+- [ ] Finde den **besten** und **schlechtesten** Schüler (nach Durchschnitt)
+- [ ] Wie viel **Prozent** der Schüler haben über 60 Punkte im Schnitt?
 
 ---
 
@@ -166,11 +165,11 @@ Ein Kurs hat **8 Schüler**, die **3 Tests** geschrieben haben.
 
 Simuliere **10.000 Würfe** mit zwei Würfeln und analysiere die Ergebnisse.
 
-1. Erstelle zwei Arrays mit je 10.000 Zufallszahlen (1-6) für Würfel 1 und Würfel 2
-2. Berechne die **Summe** beider Würfel für jeden Wurf
-3. Zähle: Wie oft wurde eine **7** gewürfelt? Wie oft eine **12**?
-4. Berechne die **relative Häufigkeit** jeder möglichen Summe (2-12)
-5. Vergleiche mit der **theoretischen Wahrscheinlichkeit**:
+- [ ] Erstelle zwei Arrays mit je 10.000 Zufallszahlen (1-6) für Würfel 1 und Würfel 2
+- [ ] Berechne die **Summe** beider Würfel für jeden Wurf
+- [ ] Zähle: Wie oft wurde eine **7** gewürfelt? Wie oft eine **12**?
+- [ ] Berechne die **relative Häufigkeit** jeder möglichen Summe (2-12)
+- [ ] Vergleiche mit der **theoretischen Wahrscheinlichkeit**:
     - P(7) = 6/36 ≈ 16.67%
     - P(12) = 1/36 ≈ 2.78%
 
@@ -186,10 +185,10 @@ groessen = np.random.normal(170, 10, 1000)  # Mittelwert 170, Std 10
 
 Beantworte folgende Fragen:
 
-1. Wie viele Personen sind **größer als 180 cm**?
-2. Wie viele sind **zwischen 165 und 175 cm**?
-3. Was ist das **90. Perzentil**? (Nutze `np.percentile()`)
-4. **Bonus:** Teile die Daten in 10 gleichmäßige Bins von 140 bis 200 cm ein und zähle die Häufigkeiten pro Bin (nutze `np.histogram()`)
+- [ ] Wie viele Personen sind **größer als 180 cm**?
+- [ ] Wie viele sind **zwischen 165 und 175 cm**?
+- [ ] Was ist das **90. Perzentil**? (Nutze `np.percentile()`)
+- [ ] **Bonus:** Teile die Daten in 10 gleichmäßige Bins von 140 bis 200 cm ein und zähle die Häufigkeiten pro Bin (nutze `np.histogram()`)
 
 ---
 
