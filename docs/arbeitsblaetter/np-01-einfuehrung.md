@@ -40,7 +40,7 @@ Als Data Analyst arbeitest du ständig mit großen Datenmengen. NumPy ist die Gr
 
 - [ ] Installiere NumPy mit `pip` (falls noch nicht geschehen)
 - [ ] Importiere NumPy mit der üblichen Konvention `np`
-- [ ] Gib die installierte Version aus
+- [ ] Gib die installierte Version aus (`np.__version__`)
 
 ---
 
