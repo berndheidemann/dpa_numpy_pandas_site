@@ -102,6 +102,12 @@ Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
 - [ ] Welche Formen sind **nicht** möglich? Probiere z.B. (5, 5) – was passiert?
 - [ ] Mache aus einer Matrix wieder ein 1D-Array (zwei Methoden: `flatten()` und `ravel()`)
 
+!!! info "flatten() vs. ravel()"
+    - **`flatten()`** erstellt immer eine **Kopie** – Änderungen wirken sich nicht auf das Original aus
+    - **`ravel()`** erstellt wenn möglich einen **View** – Änderungen können das Original verändern!
+    
+    **Faustregel:** Nimm `flatten()` wenn du sicher sein willst, dass das Original unverändert bleibt. Nimm `ravel()` wenn Performance wichtig ist und du das Original nicht mehr brauchst.
+
 ---
 
 ### Aufgabe 6 – Arithmetische Operationen
