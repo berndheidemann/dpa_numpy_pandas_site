@@ -6,7 +6,7 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 - Daten aus spezifischen Positionen eines Arrays extrahieren
 - 1D- und 2D-Slicing sicher anwenden
-- gezilt Teilbereiche großer Datensätze auswählen
+- gezielt Teilbereiche großer Datensätze auswählen
 - den Unterschied zwischen Views und Copies verstehen
 
 !!! note "Begleitendes Infoblatt"
