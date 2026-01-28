@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 420">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5cb85c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d8b3d;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c5aa0"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3d8b3d"/>
+    </marker>
+  </defs>
+  
+  <rect width="750" height="420" fill="#f8f9fa"/>
+  
+  <text x="375" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">Der axis-Parameter bei NumPy</text>
+  
+  <g filter="url(#shadow)">
+    <rect x="50" y="70" width="280" height="180" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <rect x="50" y="70" width="280" height="30" rx="8" fill="url(#blueGrad)"/>
+    <rect x="50" y="92" width="280" height="8" fill="url(#blueGrad)"/>
+    <text x="190" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">Matrix (3×4)</text>
+    
+    <text x="100" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Sp.0</text>
+    <text x="155" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Sp.1</text>
+    <text x="210" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Sp.2</text>
+    <text x="265" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Sp.3</text>
+    
+    <text x="65" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Z.0</text>
+    <text x="65" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Z.1</text>
+    <text x="65" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">Z.2</text>
+    
+    <rect x="80" y="138" width="40" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="100" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">1</text>
+    <rect x="135" y="138" width="40" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="155" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">2</text>
+    <rect x="190" y="138" width="40" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="210" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">3</text>
+    <rect x="245" y="138" width="40" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="265" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">4</text>
+    
+    <rect x="80" y="168" width="40" height="25" fill="#e8f5e9" rx="3"/>
+    <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32">5</text>
+    <rect x="135" y="168" width="40" height="25" fill="#e8f5e9" rx="3"/>
+    <text x="155" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32">6</text>
+    <rect x="190" y="168" width="40" height="25" fill="#e8f5e9" rx="3"/>
+    <text x="210" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32">7</text>
+    <rect x="245" y="168" width="40" height="25" fill="#e8f5e9" rx="3"/>
+    <text x="265" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#2e7d32">8</text>
+    
+    <rect x="80" y="198" width="40" height="25" fill="#fff3e0" rx="3"/>
+    <text x="100" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#e65100">9</text>
+    <rect x="135" y="198" width="40" height="25" fill="#fff3e0" rx="3"/>
+    <text x="155" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#e65100">10</text>
+    <rect x="190" y="198" width="40" height="25" fill="#fff3e0" rx="3"/>
+    <text x="210" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#e65100">11</text>
+    <rect x="245" y="198" width="40" height="25" fill="#fff3e0" rx="3"/>
+    <text x="265" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#e65100">12</text>
+  </g>
+  
+  <g opacity="0.5">
+    <path d="M 114 130 L 114 232" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+    <path d="M 169 130 L 169 232" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+    <path d="M 224 130 L 224 232" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+    <path d="M 279 130 L 279 232" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  </g>
+  
+  <path d="M 295 150 L 320 150" stroke="#3d8b3d" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 295 180 L 320 180" stroke="#3d8b3d" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 295 210 L 320 210" stroke="#3d8b3d" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  
+  <g filter="url(#shadow)">
+    <rect x="50" y="270" width="280" height="70" rx="8" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+    <rect x="50" y="270" width="280" height="25" rx="8" fill="url(#blueGrad)"/>
+    <rect x="50" y="288" width="280" height="7" fill="url(#blueGrad)"/>
+    <text x="190" y="288" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">axis=0 → Spaltenweise (↓)</text>
+    
+    <text x="100" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c5aa0">15</text>
+    <text x="155" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c5aa0">18</text>
+    <text x="210" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c5aa0">21</text>
+    <text x="265" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c5aa0">24</text>
+  </g>
+  
+  <g filter="url(#shadow)">
+    <rect x="360" y="118" width="150" height="130" rx="8" fill="white" stroke="#3d8b3d" stroke-width="2"/>
+    <rect x="360" y="118" width="150" height="25" rx="8" fill="url(#greenGrad)"/>
+    <rect x="360" y="136" width="150" height="7" fill="url(#greenGrad)"/>
+    <text x="435" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">axis=1 → Zeilenw. (→)</text>
+    
+    <text x="435" y="172" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3d8b3d">10</text>
+    <text x="435" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3d8b3d">26</text>
+    <text x="435" y="232" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#3d8b3d">42</text>
+  </g>
+  
+  <g filter="url(#shadow)">
+    <rect x="360" y="270" width="360" height="150" rx="8" fill="#2d3748"/>
+    
+    <text x="380" y="295" font-family="Consolas, Monaco, monospace" font-size="12" fill="#a0aec0"># Gesamtsumme (ohne axis)</text>
+    <text x="380" y="315" font-family="Consolas, Monaco, monospace" font-size="12" fill="#68d391">np.sum</text>
+    <text x="432" y="315" font-family="Consolas, Monaco, monospace" font-size="12" fill="#fff">(matrix)</text>
+    <text x="520" y="315" font-family="Consolas, Monaco, monospace" font-size="12" fill="#a0aec0"># → 78</text>
+    
+    <text x="380" y="345" font-family="Consolas, Monaco, monospace" font-size="12" fill="#a0aec0"># Pro Spalte (axis=0)</text>
+    <text x="380" y="365" font-family="Consolas, Monaco, monospace" font-size="12" fill="#68d391">np.sum</text>
+    <text x="432" y="365" font-family="Consolas, Monaco, monospace" font-size="12" fill="#fff">(matrix, </text>
+    <text x="498" y="365" font-family="Consolas, Monaco, monospace" font-size="12" fill="#63b3ed">axis=0</text>
+    <text x="552" y="365" font-family="Consolas, Monaco, monospace" font-size="12" fill="#fff">)</text>
+    
+    <text x="380" y="390" font-family="Consolas, Monaco, monospace" font-size="12" fill="#a0aec0"># Pro Zeile (axis=1)</text>
+    <text x="380" y="410" font-family="Consolas, Monaco, monospace" font-size="12" fill="#68d391">np.sum</text>
+    <text x="432" y="410" font-family="Consolas, Monaco, monospace" font-size="12" fill="#fff">(matrix, </text>
+    <text x="498" y="410" font-family="Consolas, Monaco, monospace" font-size="12" fill="#90ee90">axis=1</text>
+    <text x="552" y="410" font-family="Consolas, Monaco, monospace" font-size="12" fill="#fff">)</text>
+  </g>
+  
+  <rect x="540" y="70" width="180" height="80" rx="6" fill="white" stroke="#ddd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="630" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#555">Merkhilfe</text>
+  <rect x="555" y="102" width="15" height="15" fill="#2c5aa0" rx="2"/>
+  <text x="580" y="114" font-family="Arial, sans-serif" font-size="11" fill="#333">axis=0: entlang ↓</text>
+  <rect x="555" y="125" width="15" height="15" fill="#3d8b3d" rx="2"/>
+  <text x="580" y="137" font-family="Arial, sans-serif" font-size="11" fill="#333">axis=1: entlang →</text>
+</svg>

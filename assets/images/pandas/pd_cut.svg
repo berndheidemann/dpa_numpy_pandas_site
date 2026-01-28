@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e8449;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="380" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">pd.cut() - Binning von numerischen Daten</text>
+  
+  <!-- Originale Daten -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="55" width="230" height="200" rx="8" fill="white" stroke="#3498db" stroke-width="2"/>
+    <rect x="30" y="55" width="230" height="30" rx="8" fill="url(#blueGrad)"/>
+    <rect x="30" y="78" width="230" height="7" fill="url(#blueGrad)"/>
+    <text x="145" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Originale Daten (Alter)</text>
+    
+    <!-- Werte -->
+    <text x="60" y="110" font-family="Consolas, monospace" font-size="11" fill="#333">Index  Alter</text>
+    <rect x="55" y="120" width="180" height="1" fill="#ddd"/>
+    <text x="60" y="140" font-family="Consolas, monospace" font-size="11" fill="#333">  0     <tspan fill="#e74c3c">15</tspan></text>
+    <text x="60" y="158" font-family="Consolas, monospace" font-size="11" fill="#333">  1     <tspan fill="#e74c3c">22</tspan></text>
+    <text x="60" y="176" font-family="Consolas, monospace" font-size="11" fill="#333">  2     <tspan fill="#f39c12">35</tspan></text>
+    <text x="60" y="194" font-family="Consolas, monospace" font-size="11" fill="#333">  3     <tspan fill="#27ae60">48</tspan></text>
+    <text x="60" y="212" font-family="Consolas, monospace" font-size="11" fill="#333">  4     <tspan fill="#9b59b6">67</tspan></text>
+    <text x="60" y="230" font-family="Consolas, monospace" font-size="11" fill="#333">  5     <tspan fill="#9b59b6">72</tspan></text>
+  </g>
+  
+  <!-- Pfeil 1 -->
+  <path d="M 270 155 L 320 155" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="295" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">pd.cut()</text>
+  
+  <!-- Bins Definition -->
+  <g filter="url(#shadow)">
+    <rect x="330" y="55" width="180" height="200" rx="8" fill="white" stroke="#27ae60" stroke-width="2"/>
+    <rect x="330" y="55" width="180" height="30" rx="8" fill="url(#greenGrad)"/>
+    <rect x="330" y="78" width="180" height="7" fill="url(#greenGrad)"/>
+    <text x="420" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Bins (Grenzen)</text>
+    
+    <!-- Bins Visualisierung -->
+    <text x="350" y="105" font-family="Consolas, monospace" font-size="10" fill="#333">bins = [0, 30, 50, 100]</text>
+    
+    <!-- Visuelle Bins -->
+    <rect x="350" y="125" width="50" height="30" fill="#fadbd8" stroke="#e74c3c" rx="3"/>
+    <text x="375" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c0392b">0-30</text>
+    <text x="375" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#e74c3c">Jung</text>
+    
+    <rect x="405" y="125" width="50" height="30" fill="#fef9e7" stroke="#f39c12" rx="3"/>
+    <text x="430" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d68910">30-50</text>
+    <text x="430" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#f39c12">Mittel</text>
+    
+    <rect x="460" y="125" width="40" height="30" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="480" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60">50-100</text>
+    <text x="480" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#27ae60">Alt</text>
+    
+    <!-- Code-Beispiel -->
+    <rect x="345" y="180" width="150" height="60" rx="5" fill="#2c3e50"/>
+    <text x="355" y="198" font-family="Consolas, monospace" font-size="8" fill="#f39c12">pd.cut(</text>
+    <text x="355" y="212" font-family="Consolas, monospace" font-size="8" fill="#3498db">  df['Alter'],</text>
+    <text x="355" y="226" font-family="Consolas, monospace" font-size="8" fill="#e74c3c">  bins=[0,30,50,100]</text>
+    <text x="355" y="240" font-family="Consolas, monospace" font-size="8" fill="#f39c12">)</text>
+  </g>
+  
+  <!-- Pfeil 2 -->
+  <path d="M 520 155 L 570 155" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Ergebnis mit Labels -->
+  <g filter="url(#shadow)">
+    <rect x="580" y="55" width="190" height="200" rx="8" fill="white" stroke="#9b59b6" stroke-width="2"/>
+    <rect x="580" y="55" width="190" height="30" rx="8" fill="#9b59b6"/>
+    <rect x="580" y="78" width="190" height="7" fill="#9b59b6"/>
+    <text x="675" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Ergebnis (Kategorien)</text>
+    
+    <!-- Kategorien -->
+    <text x="600" y="110" font-family="Consolas, monospace" font-size="11" fill="#333">Index  Kategorie</text>
+    <rect x="595" y="120" width="160" height="1" fill="#ddd"/>
+    <text x="600" y="140" font-family="Consolas, monospace" font-size="11" fill="#333">  0    <tspan fill="#e74c3c">(0, 30]</tspan></text>
+    <text x="600" y="158" font-family="Consolas, monospace" font-size="11" fill="#333">  1    <tspan fill="#e74c3c">(0, 30]</tspan></text>
+    <text x="600" y="176" font-family="Consolas, monospace" font-size="11" fill="#333">  2    <tspan fill="#f39c12">(30, 50]</tspan></text>
+    <text x="600" y="194" font-family="Consolas, monospace" font-size="11" fill="#333">  3    <tspan fill="#27ae60">(30, 50]</tspan></text>
+    <text x="600" y="212" font-family="Consolas, monospace" font-size="11" fill="#333">  4    <tspan fill="#9b59b6">(50, 100]</tspan></text>
+    <text x="600" y="230" font-family="Consolas, monospace" font-size="11" fill="#333">  5    <tspan fill="#9b59b6">(50, 100]</tspan></text>
+  </g>
+  
+  <!-- Anwendungsfälle unten -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="275" width="740" height="90" rx="8" fill="white" stroke="#ddd"/>
+    <text x="400" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#333">Typische Anwendungsfälle</text>
+    
+    <rect x="50" y="315" width="160" height="40" rx="4" fill="#ebf5fb" stroke="#3498db"/>
+    <text x="130" y="338" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2980b9">🎂 Altersgruppen</text>
+    <text x="130" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#555">[0,18,35,65,100]</text>
+    
+    <rect x="230" y="315" width="160" height="40" rx="4" fill="#d5f5e3" stroke="#27ae60"/>
+    <text x="310" y="338" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60">💰 Einkommensgruppen</text>
+    <text x="310" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#555">[0,30k,60k,100k,∞]</text>
+    
+    <rect x="410" y="315" width="160" height="40" rx="4" fill="#fef9e7" stroke="#f39c12"/>
+    <text x="490" y="338" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d68910">📊 Noten-Bereiche</text>
+    <text x="490" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#555">[0,50,60,70,85,100]</text>
+    
+    <rect x="590" y="315" width="160" height="40" rx="4" fill="#fce4ec" stroke="#e91e63"/>
+    <text x="670" y="338" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">⏱️ Zeitintervalle</text>
+    <text x="670" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#555">[0,6,12,18,24] Uhr</text>
+  </g>
+</svg>

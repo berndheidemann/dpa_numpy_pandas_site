@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="sourceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#42a5f5"/>
+      <stop offset="100%" style="stop-color:#1565c0"/>
+    </linearGradient>
+    <linearGradient id="pivotGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a"/>
+      <stop offset="100%" style="stop-color:#2e7d32"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ab47bc"/>
+      <stop offset="100%" style="stop-color:#7b1fa2"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#546e7a"/>
+    </marker>
+  </defs>
+  
+  <!-- Hintergrund -->
+  <rect width="800" height="450" fill="#fafafa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#263238">pivot_table() – Von Rohdaten zur Kreuztabelle</text>
+  
+  <!-- Quell-DataFrame Titel -->
+  <text x="150" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1565c0">DataFrame (Rohdaten)</text>
+  
+  <!-- Quell-DataFrame -->
+  <g filter="url(#shadow)">
+    <!-- Header -->
+    <rect x="30" y="80" width="60" height="30" fill="url(#sourceGrad)"/>
+    <rect x="90" y="80" width="60" height="30" fill="url(#sourceGrad)"/>
+    <rect x="150" y="80" width="60" height="30" fill="url(#sourceGrad)"/>
+    <rect x="210" y="80" width="60" height="30" fill="url(#sourceGrad)"/>
+    <text x="60" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Produkt</text>
+    <text x="120" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Region</text>
+    <text x="180" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Umsatz</text>
+    <text x="240" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Menge</text>
+    
+    <!-- Zeile 1 -->
+    <rect x="30" y="110" width="60" height="25" fill="#fff3e0" stroke="#ffb74d" stroke-width="1"/>
+    <rect x="90" y="110" width="60" height="25" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <rect x="150" y="110" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="110" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e65100">A</text>
+    <text x="120" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32">Nord</text>
+    <text x="180" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">100</text>
+    <text x="240" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">10</text>
+    
+    <!-- Zeile 2 -->
+    <rect x="30" y="135" width="60" height="25" fill="#e1f5fe" stroke="#4fc3f7" stroke-width="1"/>
+    <rect x="90" y="135" width="60" height="25" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <rect x="150" y="135" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="135" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0277bd">B</text>
+    <text x="120" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32">Nord</text>
+    <text x="180" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">150</text>
+    <text x="240" y="152" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">15</text>
+    
+    <!-- Zeile 3 -->
+    <rect x="30" y="160" width="60" height="25" fill="#fff3e0" stroke="#ffb74d" stroke-width="1"/>
+    <rect x="90" y="160" width="60" height="25" fill="#fce4ec" stroke="#f48fb1" stroke-width="1"/>
+    <rect x="150" y="160" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="160" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e65100">A</text>
+    <text x="120" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">Süd</text>
+    <text x="180" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">200</text>
+    <text x="240" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">20</text>
+    
+    <!-- Zeile 4 -->
+    <rect x="30" y="185" width="60" height="25" fill="#e1f5fe" stroke="#4fc3f7" stroke-width="1"/>
+    <rect x="90" y="185" width="60" height="25" fill="#fce4ec" stroke="#f48fb1" stroke-width="1"/>
+    <rect x="150" y="185" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="185" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0277bd">B</text>
+    <text x="120" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">Süd</text>
+    <text x="180" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">120</text>
+    <text x="240" y="202" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">12</text>
+    
+    <!-- Zeile 5 -->
+    <rect x="30" y="210" width="60" height="25" fill="#fff3e0" stroke="#ffb74d" stroke-width="1"/>
+    <rect x="90" y="210" width="60" height="25" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <rect x="150" y="210" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="210" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#e65100">A</text>
+    <text x="120" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2e7d32">Nord</text>
+    <text x="180" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">180</text>
+    <text x="240" y="227" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">18</text>
+    
+    <!-- Zeile 6 -->
+    <rect x="30" y="235" width="60" height="25" fill="#e1f5fe" stroke="#4fc3f7" stroke-width="1"/>
+    <rect x="90" y="235" width="60" height="25" fill="#fce4ec" stroke="#f48fb1" stroke-width="1"/>
+    <rect x="150" y="235" width="60" height="25" fill="#e3f2fd" stroke="#64b5f6" stroke-width="1"/>
+    <rect x="210" y="235" width="60" height="25" fill="white" stroke="#90a4ae" stroke-width="1"/>
+    <text x="60" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0277bd">B</text>
+    <text x="120" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">Süd</text>
+    <text x="180" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1565c0">90</text>
+    <text x="240" y="252" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#546e7a">9</text>
+  </g>
+  
+  <!-- Pfeil mit Code -->
+  <line x1="285" y1="170" x2="370" y2="170" stroke="#546e7a" stroke-width="3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Code Box -->
+  <rect x="295" y="280" width="210" height="145" rx="6" fill="#263238" filter="url(#shadow)"/>
+  <text x="305" y="302" text-anchor="start" font-family="monospace" font-size="9" fill="#81d4fa">pd.pivot_table(</text>
+  <text x="305" y="318" text-anchor="start" font-family="monospace" font-size="9" fill="#ce93d8">  df,</text>
+  <text x="305" y="334" text-anchor="start" font-family="monospace" font-size="9" fill="#a5d6a7">  values=<tspan fill="#ffcc80">'Umsatz'</tspan>,</text>
+  <text x="305" y="350" text-anchor="start" font-family="monospace" font-size="9" fill="#f48fb1">  index=<tspan fill="#ffcc80">'Produkt'</tspan>,</text>
+  <text x="305" y="366" text-anchor="start" font-family="monospace" font-size="9" fill="#90caf9">  columns=<tspan fill="#ffcc80">'Region'</tspan>,</text>
+  <text x="305" y="382" text-anchor="start" font-family="monospace" font-size="9" fill="#80cbc4">  aggfunc=<tspan fill="#ffcc80">'sum'</tspan></text>
+  <text x="305" y="398" text-anchor="start" font-family="monospace" font-size="9" fill="#81d4fa">)</text>
+  
+  <!-- Ergebnis Pivot-Tabelle Titel -->
+  <text x="600" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">Pivot-Tabelle (Kreuztabelle)</text>
+  
+  <!-- Pivot-Tabelle Ergebnis -->
+  <g filter="url(#shadow)">
+    <!-- Ecke oben links -->
+    <rect x="520" y="80" width="60" height="30" fill="#eceff1" stroke="#90a4ae" stroke-width="1"/>
+    <text x="550" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#78909c">Region →</text>
+    
+    <!-- Spaltenheader -->
+    <rect x="580" y="80" width="70" height="30" fill="#e8f5e9" stroke="#81c784" stroke-width="1"/>
+    <rect x="650" y="80" width="70" height="30" fill="#fce4ec" stroke="#f48fb1" stroke-width="1"/>
+    <text x="615" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2e7d32">Nord</text>
+    <text x="685" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#c2185b">Süd</text>
+    
+    <!-- Zeilenheader -->
+    <rect x="520" y="110" width="60" height="40" fill="#fff3e0" stroke="#ffb74d" stroke-width="1"/>
+    <rect x="520" y="150" width="60" height="40" fill="#e1f5fe" stroke="#4fc3f7" stroke-width="1"/>
+    <text x="550" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#e65100">A</text>
+    <text x="550" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#0277bd">B</text>
+    
+    <!-- Werte -->
+    <rect x="580" y="110" width="70" height="40" fill="#c8e6c9" stroke="#81c784" stroke-width="1"/>
+    <rect x="650" y="110" width="70" height="40" fill="#f8bbd9" stroke="#f48fb1" stroke-width="1"/>
+    <rect x="580" y="150" width="70" height="40" fill="#c8e6c9" stroke="#81c784" stroke-width="1"/>
+    <rect x="650" y="150" width="70" height="40" fill="#f8bbd9" stroke="#f48fb1" stroke-width="1"/>
+    
+    <text x="615" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1b5e20">280</text>
+    <text x="615" y="143" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#388e3c">(100+180)</text>
+    <text x="685" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#880e4f">200</text>
+    <text x="615" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1b5e20">150</text>
+    <text x="685" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#880e4f">210</text>
+    <text x="685" y="183" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#ad1457">(120+90)</text>
+  </g>
+  
+  <!-- Index-Beschriftung -->
+  <text x="505" y="135" text-anchor="end" font-family="Arial, sans-serif" font-size="10" fill="#78909c" transform="rotate(-90 505 135)">Produkt ↓</text>
+  
+  <!-- Parameter-Erklärungen -->
+  <rect x="520" y="215" width="240" height="90" rx="6" fill="#f3e5f5" stroke="#ce93d8" stroke-width="2" filter="url(#shadow)"/>
+  <text x="640" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#7b1fa2">Parameter erklärt:</text>
+  <text x="540" y="255" font-family="monospace" font-size="9" fill="#4a148c">index</text>
+  <text x="595" y="255" font-family="Arial, sans-serif" font-size="9" fill="#4a148c">→ Zeilenbeschriftung</text>
+  <text x="540" y="270" font-family="monospace" font-size="9" fill="#4a148c">columns</text>
+  <text x="595" y="270" font-family="Arial, sans-serif" font-size="9" fill="#4a148c">→ Spaltenbeschriftung</text>
+  <text x="540" y="285" font-family="monospace" font-size="9" fill="#4a148c">values</text>
+  <text x="595" y="285" font-family="Arial, sans-serif" font-size="9" fill="#4a148c">→ Werte aggregieren</text>
+  <text x="540" y="300" font-family="monospace" font-size="9" fill="#4a148c">aggfunc</text>
+  <text x="595" y="300" font-family="Arial, sans-serif" font-size="9" fill="#4a148c">→ sum, mean, count...</text>
+  
+  <!-- Erweiterte Features Box -->
+  <rect x="520" y="320" width="240" height="115" rx="6" fill="#e0f7fa" stroke="#4dd0e1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="640" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#006064">Erweiterte Features:</text>
+  <text x="540" y="360" font-family="monospace" font-size="9" fill="#00838f">margins=True</text>
+  <text x="660" y="360" font-family="Arial, sans-serif" font-size="9" fill="#00838f">→ Summenzeile/-spalte</text>
+  <text x="540" y="378" font-family="monospace" font-size="9" fill="#00838f">fill_value=0</text>
+  <text x="660" y="378" font-family="Arial, sans-serif" font-size="9" fill="#00838f">→ NaN ersetzen</text>
+  <text x="540" y="396" font-family="monospace" font-size="9" fill="#00838f">aggfunc=['sum','mean']</text>
+  <text x="540" y="411" font-family="Arial, sans-serif" font-size="9" fill="#00838f">→ Mehrere Aggregationen</text>
+  <text x="540" y="426" font-family="monospace" font-size="9" fill="#00838f">values=['Umsatz','Menge']</text>
+</svg>

@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+  <defs>
+    <linearGradient id="rawGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef5350"/>
+      <stop offset="100%" style="stop-color:#c62828"/>
+    </linearGradient>
+    <linearGradient id="stepGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#42a5f5"/>
+      <stop offset="100%" style="stop-color:#1565c0"/>
+    </linearGradient>
+    <linearGradient id="cleanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a"/>
+      <stop offset="100%" style="stop-color:#2e7d32"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.2"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#546e7a"/>
+    </marker>
+  </defs>
+  
+  <!-- Hintergrund -->
+  <rect width="800" height="420" fill="#fafafa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#263238">Datenbereinigungspipeline</text>
+  
+  <!-- Rohdaten Box -->
+  <rect x="30" y="60" width="120" height="80" rx="8" fill="url(#rawGrad)" filter="url(#shadow)"/>
+  <text x="90" y="95" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">Rohdaten</text>
+  <text x="90" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">NaN, Duplikate</text>
+  <text x="90" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Ausreißer, Fehler</text>
+  
+  <!-- Pfeil 1 -->
+  <line x1="150" y1="100" x2="185" y2="100" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 1: Fehlende Werte -->
+  <rect x="195" y="55" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="250" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">1. Fehlende</text>
+  <text x="250" y="93" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Werte</text>
+  <text x="250" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">isna()</text>
+  <text x="250" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">dropna()</text>
+  <text x="250" y="141" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">fillna()</text>
+  
+  <!-- Pfeil 2 -->
+  <line x1="305" y1="100" x2="340" y2="100" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 2: Duplikate -->
+  <rect x="350" y="55" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="405" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">2. Duplikate</text>
+  <text x="405" y="93" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">entfernen</text>
+  <text x="405" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">duplicated()</text>
+  <text x="405" y="131" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">drop_duplicates()</text>
+  
+  <!-- Pfeil 3 -->
+  <line x1="460" y1="100" x2="495" y2="100" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 3: Datentypen -->
+  <rect x="505" y="55" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="560" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">3. Datentypen</text>
+  <text x="560" y="93" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">korrigieren</text>
+  <text x="560" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">astype()</text>
+  <text x="560" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">to_datetime()</text>
+  <text x="560" y="141" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">to_numeric()</text>
+  
+  <!-- Pfeil 4 -->
+  <line x1="615" y1="100" x2="650" y2="100" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 4: Ausreißer -->
+  <rect x="660" y="55" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="715" y="78" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">4. Ausreißer</text>
+  <text x="715" y="93" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">behandeln</text>
+  <text x="715" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">IQR-Methode</text>
+  <text x="715" y="128" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">clip()</text>
+  <text x="715" y="141" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">Z-Score</text>
+  
+  <!-- Vertikaler Pfeil -->
+  <line x1="715" y1="145" x2="715" y2="175" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 5: Text standardisieren -->
+  <rect x="660" y="185" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="715" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">5. Text</text>
+  <text x="715" y="223" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">standardisieren</text>
+  <text x="715" y="245" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">.str.strip()</text>
+  <text x="715" y="258" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">.str.lower()</text>
+  <text x="715" y="271" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">replace()</text>
+  
+  <!-- Pfeil zurück -->
+  <line x1="660" y1="230" x2="625" y2="230" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 6: Validierung -->
+  <rect x="505" y="185" width="110" height="90" rx="6" fill="url(#stepGrad)" filter="url(#shadow)"/>
+  <text x="560" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">6. Validierung</text>
+  <text x="560" y="245" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">info()</text>
+  <text x="560" y="258" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">describe()</text>
+  <text x="560" y="271" text-anchor="middle" font-family="monospace" font-size="9" fill="#e3f2fd">value_counts()</text>
+  
+  <!-- Pfeil zu sauberen Daten -->
+  <line x1="505" y1="230" x2="420" y2="230" stroke="#546e7a" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Saubere Daten Box -->
+  <rect x="280" y="190" width="130" height="80" rx="8" fill="url(#cleanGrad)" filter="url(#shadow)"/>
+  <text x="345" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="white">Saubere Daten</text>
+  <text x="345" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">✓ Konsistent</text>
+  <text x="345" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">✓ Vollständig</text>
+  
+  <!-- Legende unten -->
+  <rect x="30" y="310" width="740" height="100" rx="8" fill="#eceff1" stroke="#b0bec5" stroke-width="1"/>
+  <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#37474f">Typische Probleme und Lösungen</text>
+  
+  <!-- Legendeneinträge -->
+  <rect x="50" y="345" width="160" height="50" rx="4" fill="white" stroke="#90a4ae" stroke-width="1"/>
+  <text x="130" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c62828">Fehlende Werte (NaN)</text>
+  <text x="130" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">→ Entfernen oder Ersetzen</text>
+  <text x="130" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">mit Mean/Median/Mode</text>
+  
+  <rect x="230" y="345" width="160" height="50" rx="4" fill="white" stroke="#90a4ae" stroke-width="1"/>
+  <text x="310" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c62828">Duplikate</text>
+  <text x="310" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">→ Erste oder letzte</text>
+  <text x="310" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">Zeile behalten</text>
+  
+  <rect x="410" y="345" width="160" height="50" rx="4" fill="white" stroke="#90a4ae" stroke-width="1"/>
+  <text x="490" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c62828">Falsche Datentypen</text>
+  <text x="490" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">→ Konvertieren mit</text>
+  <text x="490" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">errors='coerce'</text>
+  
+  <rect x="590" y="345" width="160" height="50" rx="4" fill="white" stroke="#90a4ae" stroke-width="1"/>
+  <text x="670" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c62828">Ausreißer</text>
+  <text x="670" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">→ IQR-Methode oder</text>
+  <text x="670" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#546e7a">Domain-Wissen anwenden</text>
+</svg>
