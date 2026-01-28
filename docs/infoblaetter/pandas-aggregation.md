@@ -10,6 +10,8 @@ Das zentrale Prinzip ist **Split-Apply-Combine**:
 2. **Apply**: Funktion auf jede Gruppe anwenden (sum, mean, count, ...)
 3. **Combine**: Ergebnisse zu neuem DataFrame zusammenführen
 
+![Split-Apply-Combine Prinzip](../assets/images/pandas/split_apply_combine.svg)
+
 ---
 
 ## Grundlegende Aggregation
