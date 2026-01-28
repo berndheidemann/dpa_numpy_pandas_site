@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5cb85c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d8b3d;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0ad4e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c87f0a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6c3483;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- Hintergrund -->
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">Split-Apply-Combine Prinzip</text>
+  
+  <!-- SPLIT Bereich -->
+  <text x="120" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c5aa0">1. SPLIT</text>
+  
+  <!-- Original DataFrame -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="85" width="180" height="170" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <rect x="30" y="85" width="180" height="30" rx="8" fill="url(#blueGrad)"/>
+    <rect x="30" y="107" width="180" height="8" fill="url(#blueGrad)"/>
+    <text x="120" y="106" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">DataFrame</text>
+    
+    <!-- Header -->
+    <text x="55" y="135" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Prod</text>
+    <text x="105" y="135" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Region</text>
+    <text x="165" y="135" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Umsatz</text>
+    <line x1="35" y1="142" x2="205" y2="142" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Datenzeilen - Produkt A (grün) -->
+    <rect x="35" y="147" width="170" height="18" fill="#d4edda" rx="3"/>
+    <text x="55" y="160" font-family="Arial, sans-serif" font-size="10" fill="#155724">A</text>
+    <text x="105" y="160" font-family="Arial, sans-serif" font-size="10" fill="#155724">Nord</text>
+    <text x="165" y="160" font-family="Arial, sans-serif" font-size="10" fill="#155724">100</text>
+    
+    <rect x="35" y="168" width="170" height="18" fill="#fff3cd" rx="3"/>
+    <text x="55" y="181" font-family="Arial, sans-serif" font-size="10" fill="#856404">B</text>
+    <text x="105" y="181" font-family="Arial, sans-serif" font-size="10" fill="#856404">Nord</text>
+    <text x="165" y="181" font-family="Arial, sans-serif" font-size="10" fill="#856404">150</text>
+    
+    <rect x="35" y="189" width="170" height="18" fill="#d4edda" rx="3"/>
+    <text x="55" y="202" font-family="Arial, sans-serif" font-size="10" fill="#155724">A</text>
+    <text x="105" y="202" font-family="Arial, sans-serif" font-size="10" fill="#155724">Süd</text>
+    <text x="165" y="202" font-family="Arial, sans-serif" font-size="10" fill="#155724">200</text>
+    
+    <rect x="35" y="210" width="170" height="18" fill="#fff3cd" rx="3"/>
+    <text x="55" y="223" font-family="Arial, sans-serif" font-size="10" fill="#856404">B</text>
+    <text x="105" y="223" font-family="Arial, sans-serif" font-size="10" fill="#856404">Süd</text>
+    <text x="165" y="223" font-family="Arial, sans-serif" font-size="10" fill="#856404">120</text>
+    
+    <rect x="35" y="231" width="170" height="18" fill="#d4edda" rx="3"/>
+    <text x="55" y="244" font-family="Arial, sans-serif" font-size="10" fill="#155724">A</text>
+    <text x="105" y="244" font-family="Arial, sans-serif" font-size="10" fill="#155724">Nord</text>
+    <text x="165" y="244" font-family="Arial, sans-serif" font-size="10" fill="#155724">180</text>
+  </g>
+  
+  <!-- Pfeil 1: Split -->
+  <path d="M 220 170 L 260 130" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 220 170 L 260 210" stroke="#2c5aa0" stroke-width="3" fill="none" marker-end="url(#arrowBlue)"/>
+  <defs>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c5aa0"/>
+    </marker>
+  </defs>
+  
+  <!-- APPLY Bereich -->
+  <text x="380" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3d8b3d">2. APPLY</text>
+  
+  <!-- Gruppe A -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="85" width="130" height="95" rx="6" fill="white" stroke="#5cb85c" stroke-width="2"/>
+    <rect x="275" y="85" width="130" height="25" rx="6" fill="url(#greenGrad)"/>
+    <rect x="275" y="103" width="130" height="7" fill="url(#greenGrad)"/>
+    <text x="340" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Gruppe A</text>
+    
+    <text x="295" y="128" font-family="Arial, sans-serif" font-size="9" fill="#155724">A | Nord | 100</text>
+    <text x="295" y="143" font-family="Arial, sans-serif" font-size="9" fill="#155724">A | Süd  | 200</text>
+    <text x="295" y="158" font-family="Arial, sans-serif" font-size="9" fill="#155724">A | Nord | 180</text>
+    <line x1="280" y1="165" x2="400" y2="165" stroke="#5cb85c" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="340" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#3d8b3d">sum() → 480</text>
+  </g>
+  
+  <!-- Gruppe B -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="195" width="130" height="80" rx="6" fill="white" stroke="#f0ad4e" stroke-width="2"/>
+    <rect x="275" y="195" width="130" height="25" rx="6" fill="url(#orangeGrad)"/>
+    <rect x="275" y="213" width="130" height="7" fill="url(#orangeGrad)"/>
+    <text x="340" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">Gruppe B</text>
+    
+    <text x="295" y="238" font-family="Arial, sans-serif" font-size="9" fill="#856404">B | Nord | 150</text>
+    <text x="295" y="253" font-family="Arial, sans-serif" font-size="9" fill="#856404">B | Süd  | 120</text>
+    <line x1="280" y1="260" x2="400" y2="260" stroke="#f0ad4e" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="340" y="272" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#c87f0a">sum() → 360</text>
+  </g>
+  
+  <!-- Pfeil 2: Combine -->
+  <path d="M 415 135 L 455 170" stroke="#9b59b6" stroke-width="3" fill="none" marker-end="url(#arrowPurple)"/>
+  <path d="M 415 235 L 455 200" stroke="#9b59b6" stroke-width="3" fill="none" marker-end="url(#arrowPurple)"/>
+  <defs>
+    <marker id="arrowPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#9b59b6"/>
+    </marker>
+  </defs>
+  
+  <!-- COMBINE Bereich -->
+  <text x="570" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#6c3483">3. COMBINE</text>
+  
+  <!-- Ergebnis DataFrame -->
+  <g filter="url(#shadow)">
+    <rect x="470" y="115" width="200" height="115" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <rect x="470" y="115" width="200" height="30" rx="8" fill="url(#purpleGrad)"/>
+    <rect x="470" y="137" width="200" height="8" fill="url(#purpleGrad)"/>
+    <text x="570" y="136" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Ergebnis</text>
+    
+    <!-- Header -->
+    <text x="510" y="168" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#555">Produkt</text>
+    <text x="600" y="168" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#555">Umsatz_sum</text>
+    <line x1="475" y1="175" x2="665" y2="175" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Ergebnis-Zeilen -->
+    <rect x="475" y="180" width="190" height="20" fill="#d4edda" rx="3"/>
+    <text x="510" y="194" font-family="Arial, sans-serif" font-size="11" fill="#155724">A</text>
+    <text x="600" y="194" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#155724">480</text>
+    
+    <rect x="475" y="203" width="190" height="20" fill="#fff3cd" rx="3"/>
+    <text x="510" y="217" font-family="Arial, sans-serif" font-size="11" fill="#856404">B</text>
+    <text x="600" y="217" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#856404">360</text>
+  </g>
+  
+  <!-- Code-Beispiel unten -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="300" width="600" height="75" rx="8" fill="#2d3748"/>
+    <text x="120" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#63b3ed">df</text>
+    <text x="137" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#fff">.</text>
+    <text x="143" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#68d391">groupby</text>
+    <text x="203" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#fff">(</text>
+    <text x="210" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#f6ad55">'Produkt'</text>
+    <text x="285" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#fff">)[</text>
+    <text x="298" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#f6ad55">'Umsatz'</text>
+    <text x="358" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#fff">].</text>
+    <text x="372" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#68d391">sum</text>
+    <text x="402" y="325" font-family="Consolas, Monaco, monospace" font-size="13" fill="#fff">()</text>
+    
+    <!-- Beschriftungen unter dem Code -->
+    <text x="175" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0">Split</text>
+    <line x1="175" y1="328" x2="175" y2="345" stroke="#a0aec0" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <text x="328" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0">Spalte wählen</text>
+    <line x1="328" y1="328" x2="328" y2="345" stroke="#a0aec0" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <text x="400" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#a0aec0">Apply</text>
+    <line x1="400" y1="328" x2="400" y2="345" stroke="#a0aec0" stroke-width="1" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Legende -->
+  <rect x="690" y="300" width="95" height="75" rx="5" fill="white" stroke="#ddd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="738" y="318" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Legende</text>
+  <rect x="700" y="328" width="12" height="12" fill="#d4edda" rx="2"/>
+  <text x="718" y="338" font-family="Arial, sans-serif" font-size="9" fill="#555">Produkt A</text>
+  <rect x="700" y="348" width="12" height="12" fill="#fff3cd" rx="2"/>
+  <text x="718" y="358" font-family="Arial, sans-serif" font-size="9" fill="#555">Produkt B</text>
+</svg>
