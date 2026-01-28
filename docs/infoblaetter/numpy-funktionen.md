@@ -162,6 +162,8 @@ print(f"Kumulative Summe: {np.cumsum(arr)}")
 
 Bei mehrdimensionalen Arrays ist der `axis`-Parameter entscheidend:
 
+![Axis-Parameter Visualisierung](../assets/images/numpy/axis_parameter.svg)
+
 ```kroki-plantuml
 @startuml
 !theme plain

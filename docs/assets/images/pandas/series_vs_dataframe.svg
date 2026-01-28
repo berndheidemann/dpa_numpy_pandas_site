@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="seriesGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="dfGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e8449;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">pandas Series vs DataFrame</text>
+  
+  <!-- Series (links) -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="55" width="300" height="320" rx="10" fill="white" stroke="#3498db" stroke-width="2"/>
+    <rect x="50" y="55" width="300" height="35" rx="10" fill="url(#seriesGrad)"/>
+    <rect x="50" y="83" width="300" height="7" fill="url(#seriesGrad)"/>
+    <text x="200" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">Series</text>
+    <text x="200" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">1-dimensionale Datenstruktur</text>
+    
+    <!-- Series Visualisierung -->
+    <text x="90" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Index</text>
+    <text x="170" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Wert</text>
+    
+    <rect x="80" y="155" width="60" height="30" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="110" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">0</text>
+    <rect x="150" y="155" width="120" height="30" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="210" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1e8449">"Alice"</text>
+    
+    <rect x="80" y="190" width="60" height="30" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="110" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">1</text>
+    <rect x="150" y="190" width="120" height="30" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="210" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1e8449">"Bob"</text>
+    
+    <rect x="80" y="225" width="60" height="30" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="110" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">2</text>
+    <rect x="150" y="225" width="120" height="30" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="210" y="245" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1e8449">"Charlie"</text>
+    
+    <!-- Eigenschaften -->
+    <rect x="70" y="275" width="260" height="85" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="200" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Eigenschaften:</text>
+    <text x="80" y="315" font-family="Arial, sans-serif" font-size="9" fill="#333">• Einzelne Spalte/Liste mit Index</text>
+    <text x="80" y="330" font-family="Arial, sans-serif" font-size="9" fill="#333">• Homogener Datentyp (dtype)</text>
+    <text x="80" y="345" font-family="Arial, sans-serif" font-size="9" fill="#333">• Ähnlich zu 1D NumPy Array</text>
+  </g>
+  
+  <!-- DataFrame (rechts) -->
+  <g filter="url(#shadow)">
+    <rect x="450" y="55" width="320" height="320" rx="10" fill="white" stroke="#27ae60" stroke-width="2"/>
+    <rect x="450" y="55" width="320" height="35" rx="10" fill="url(#dfGrad)"/>
+    <rect x="450" y="83" width="320" height="7" fill="url(#dfGrad)"/>
+    <text x="610" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">DataFrame</text>
+    <text x="610" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#666">2-dimensionale tabellarische Datenstruktur</text>
+    
+    <!-- DataFrame Visualisierung - Header -->
+    <text x="485" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Index</text>
+    <text x="545" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Name</text>
+    <text x="625" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Alter</text>
+    <text x="705" y="145" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Stadt</text>
+    
+    <!-- Zeile 1 -->
+    <rect x="470" y="155" width="45" height="28" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="492" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2980b9">0</text>
+    <rect x="520" y="155" width="65" height="28" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="552" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">Alice</text>
+    <rect x="590" y="155" width="55" height="28" fill="#fef9e7" stroke="#f39c12" rx="3"/>
+    <text x="617" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d68910">25</text>
+    <rect x="650" y="155" width="65" height="28" fill="#fce4ec" stroke="#e91e63" rx="3"/>
+    <text x="682" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">Berlin</text>
+    
+    <!-- Zeile 2 -->
+    <rect x="470" y="188" width="45" height="28" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="492" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2980b9">1</text>
+    <rect x="520" y="188" width="65" height="28" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="552" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">Bob</text>
+    <rect x="590" y="188" width="55" height="28" fill="#fef9e7" stroke="#f39c12" rx="3"/>
+    <text x="617" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d68910">30</text>
+    <rect x="650" y="188" width="65" height="28" fill="#fce4ec" stroke="#e91e63" rx="3"/>
+    <text x="682" y="207" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">München</text>
+    
+    <!-- Zeile 3 -->
+    <rect x="470" y="221" width="45" height="28" fill="#ebf5fb" stroke="#3498db" rx="3"/>
+    <text x="492" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#2980b9">2</text>
+    <rect x="520" y="221" width="65" height="28" fill="#d5f5e3" stroke="#27ae60" rx="3"/>
+    <text x="552" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">Charlie</text>
+    <rect x="590" y="221" width="55" height="28" fill="#fef9e7" stroke="#f39c12" rx="3"/>
+    <text x="617" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#d68910">35</text>
+    <rect x="650" y="221" width="65" height="28" fill="#fce4ec" stroke="#e91e63" rx="3"/>
+    <text x="682" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c2185b">Hamburg</text>
+    
+    <!-- Eigenschaften -->
+    <rect x="470" y="275" width="280" height="85" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="610" y="295" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#555">Eigenschaften:</text>
+    <text x="480" y="315" font-family="Arial, sans-serif" font-size="9" fill="#333">• Mehrere Spalten (= mehrere Series)</text>
+    <text x="480" y="330" font-family="Arial, sans-serif" font-size="9" fill="#333">• Heterogene Datentypen pro Spalte</text>
+    <text x="480" y="345" font-family="Arial, sans-serif" font-size="9" fill="#333">• Ähnlich zu Excel-Tabelle / SQL-Tabelle</text>
+  </g>
+  
+  <!-- Verbindung -->
+  <g>
+    <path d="M 350 200 Q 400 200 400 240 Q 400 280 450 280" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+    <text x="400" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#9b59b6">df['Name']</text>
+    <text x="400" y="208" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#9b59b6">= Series</text>
+  </g>
+</svg>

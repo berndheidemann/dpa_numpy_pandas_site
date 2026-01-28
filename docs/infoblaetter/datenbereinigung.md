@@ -4,6 +4,8 @@
 
 Rohdaten sind selten perfekt. Vor jeder Analyse müssen Daten bereinigt werden:
 
+![Datenbereinigungspipeline](../assets/images/pandas/datenbereinigung_pipeline.svg)
+
 **Typische Datenprobleme:**
 
 | Problem | Beschreibung | Lösung |

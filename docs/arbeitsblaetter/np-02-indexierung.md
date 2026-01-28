@@ -115,6 +115,8 @@ Erstelle eine kleine Test-Matrix zum Experimentieren.
 
 ### Aufgabe 6 – Views vs. Copies
 
+![View vs Copy Visualisierung](../assets/images/numpy/view_vs_copy.svg)
+
 Ein wichtiges Konzept verstehen: Slicing erstellt Views, keine Kopien!
 
 - [ ] Erstelle ein Array `original = np.array([1, 2, 3, 4, 5])`.

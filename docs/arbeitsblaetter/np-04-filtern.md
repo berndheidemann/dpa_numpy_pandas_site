@@ -21,6 +21,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Boolean Indexing ist eine der mächtigsten Techniken in NumPy. Statt Schleifen nutzt du Bedingungen direkt auf Arrays.
 
+![Boolean Indexing Visualisierung](../assets/images/numpy/boolean_indexing.svg)
+
 ```kroki-plantuml
 @startuml
 !theme plain

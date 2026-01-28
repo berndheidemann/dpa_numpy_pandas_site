@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e8449;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e67e22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d35400;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">Boolean Indexing – Filterprozess</text>
+  
+  <!-- Schritt 1: Array -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="70" width="200" height="110" rx="8" fill="white" stroke="#3498db" stroke-width="2"/>
+    <rect x="30" y="70" width="200" height="25" rx="8" fill="url(#blueGrad)"/>
+    <rect x="30" y="88" width="200" height="7" fill="url(#blueGrad)"/>
+    <text x="130" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">1. Original-Array</text>
+    
+    <text x="50" y="118" font-family="Consolas, monospace" font-size="10" fill="#666">arr =</text>
+    <rect x="85" y="105" width="28" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="99" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2980b9">10</text>
+    <rect x="117" y="105" width="28" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="131" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2980b9">25</text>
+    <rect x="149" y="105" width="28" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="163" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2980b9">5</text>
+    <rect x="181" y="105" width="28" height="25" fill="#e3f2fd" rx="3"/>
+    <text x="195" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#2980b9">30</text>
+    
+    <text x="130" y="160" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#555">arr > 15</text>
+  </g>
+  
+  <!-- Pfeil 1 -->
+  <path d="M 240 125 L 280 125" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Schritt 2: Boolean Mask -->
+  <g filter="url(#shadow)">
+    <rect x="295" y="70" width="210" height="110" rx="8" fill="white" stroke="#e67e22" stroke-width="2"/>
+    <rect x="295" y="70" width="210" height="25" rx="8" fill="url(#orangeGrad)"/>
+    <rect x="295" y="88" width="210" height="7" fill="url(#orangeGrad)"/>
+    <text x="400" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">2. Boolean-Maske</text>
+    
+    <text x="315" y="118" font-family="Consolas, monospace" font-size="10" fill="#666">mask =</text>
+    <rect x="360" y="105" width="32" height="25" fill="#fdf2e9" rx="3" stroke="#e67e22"/>
+    <text x="376" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c0392b">False</text>
+    <rect x="396" y="105" width="32" height="25" fill="#d5f5e3" rx="3" stroke="#27ae60"/>
+    <text x="412" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60">True</text>
+    <rect x="432" y="105" width="32" height="25" fill="#fdf2e9" rx="3" stroke="#e67e22"/>
+    <text x="448" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#c0392b">False</text>
+    <rect x="468" y="105" width="32" height="25" fill="#d5f5e3" rx="3" stroke="#27ae60"/>
+    <text x="484" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#27ae60">True</text>
+    
+    <text x="400" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">↑ Prüft jeden Wert gegen Bedingung</text>
+  </g>
+  
+  <!-- Pfeil 2 -->
+  <path d="M 515 125 L 555 125" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Schritt 3: Gefiltert -->
+  <g filter="url(#shadow)">
+    <rect x="570" y="70" width="200" height="110" rx="8" fill="white" stroke="#27ae60" stroke-width="2"/>
+    <rect x="570" y="70" width="200" height="25" rx="8" fill="url(#greenGrad)"/>
+    <rect x="570" y="88" width="200" height="7" fill="url(#greenGrad)"/>
+    <text x="670" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">3. Gefiltertes Array</text>
+    
+    <text x="590" y="118" font-family="Consolas, monospace" font-size="10" fill="#666">result =</text>
+    <rect x="650" y="105" width="35" height="25" fill="#d5f5e3" rx="3" stroke="#27ae60" stroke-width="2"/>
+    <text x="667" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27ae60">25</text>
+    <rect x="690" y="105" width="35" height="25" fill="#d5f5e3" rx="3" stroke="#27ae60" stroke-width="2"/>
+    <text x="707" y="122" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#27ae60">30</text>
+    
+    <text x="670" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">↑ Nur True-Positionen</text>
+  </g>
+  
+  <!-- Mehrere Bedingungen unten -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="210" width="740" height="170" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <text x="400" y="235" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333">Mehrere Bedingungen kombinieren</text>
+    
+    <!-- UND -->
+    <rect x="50" y="255" width="210" height="110" rx="6" fill="#ebf5fb" stroke="#3498db" stroke-width="1"/>
+    <text x="155" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#3498db">UND-Verknüpfung (&amp;)</text>
+    <text x="155" y="305" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#333">(arr &gt; 10) &amp; (arr &lt; 30)</text>
+    <text x="155" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">→ Beide müssen True sein</text>
+    <text x="155" y="350" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#27ae60">Ergebnis: [25]</text>
+    
+    <!-- ODER -->
+    <rect x="295" y="255" width="210" height="110" rx="6" fill="#fef9e7" stroke="#f39c12" stroke-width="1"/>
+    <text x="400" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#d68910">ODER-Verknüpfung (|)</text>
+    <text x="400" y="305" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#333">(arr &lt; 10) | (arr &gt; 20)</text>
+    <text x="400" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">→ Mindestens eine True</text>
+    <text x="400" y="350" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#27ae60">Ergebnis: [5, 25, 30]</text>
+    
+    <!-- NICHT -->
+    <rect x="540" y="255" width="210" height="110" rx="6" fill="#fdedec" stroke="#e74c3c" stroke-width="1"/>
+    <text x="645" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b">NICHT-Operator (~)</text>
+    <text x="645" y="305" text-anchor="middle" font-family="Consolas, monospace" font-size="10" fill="#333">~(arr &gt; 15)</text>
+    <text x="645" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#555">→ Invertiert True/False</text>
+    <text x="645" y="350" text-anchor="middle" font-family="Consolas, monospace" font-size="9" fill="#27ae60">Ergebnis: [10, 5]</text>
+  </g>
+</svg>

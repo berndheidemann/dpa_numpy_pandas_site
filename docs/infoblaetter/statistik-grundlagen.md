@@ -211,8 +211,8 @@ Das p-te Perzentil ist der Wert, unter dem p% der Daten liegen.
 
 ### Interquartilsabstand (IQR)
 
-**Was ist das?**  
-Die Differenz zwischen dem 75. und 25. Perzentil.
+![Boxplot und IQR Visualisierung](../assets/images/statistik/boxplot_iqr.svg)
+
 
 $$IQR = Q3 - Q1$$
 

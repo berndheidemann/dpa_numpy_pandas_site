@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e8449;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="380" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">View vs. Copy bei NumPy</text>
+  
+  <!-- VIEW Seite -->
+  <text x="200" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#c0392b">⚠️ View (Slicing)</text>
+  
+  <!-- Original Array VIEW -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="90" width="300" height="55" rx="6" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+    <text x="70" y="110" font-family="Arial, sans-serif" font-size="11" fill="#666">original =</text>
+    <rect x="140" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="157" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">1</text>
+    <rect x="180" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="197" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">2</text>
+    <rect x="220" y="100" width="35" height="30" fill="#ffebee" rx="3" stroke="#e74c3c" stroke-width="2"/>
+    <text x="237" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#c0392b">3</text>
+    <rect x="260" y="100" width="35" height="30" fill="#ffebee" rx="3" stroke="#e74c3c" stroke-width="2"/>
+    <text x="277" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#c0392b">4</text>
+    <rect x="300" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="317" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">5</text>
+  </g>
+  
+  <!-- Pfeil zu View -->
+  <path d="M 257 150 L 257 175" stroke="#c0392b" stroke-width="3" fill="none" marker-end="url(#arrowRed)"/>
+  <text x="285" y="168" font-family="Arial, sans-serif" font-size="10" fill="#c0392b">view = original[2:4]</text>
+  
+  <!-- View Array -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="185" width="175" height="55" rx="6" fill="white" stroke="#e74c3c" stroke-width="2"/>
+    <text x="135" y="205" font-family="Arial, sans-serif" font-size="11" fill="#666">view =</text>
+    <rect x="185" y="195" width="35" height="30" fill="#ffebee" rx="3" stroke="#e74c3c" stroke-width="2"/>
+    <text x="202" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#c0392b">3</text>
+    <rect x="225" y="195" width="35" height="30" fill="#ffebee" rx="3" stroke="#e74c3c" stroke-width="2"/>
+    <text x="242" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#c0392b">4</text>
+  </g>
+  
+  <!-- Zeiger-Linie von View zurück zu Original -->
+  <path d="M 202 195 C 202 160, 237 160, 237 135" stroke="#e74c3c" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  <path d="M 242 195 C 242 160, 277 160, 277 135" stroke="#e74c3c" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  
+  <!-- Warning Box -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="255" width="300" height="110" rx="6" fill="#ffebee" stroke="#e74c3c" stroke-width="2"/>
+    <text x="200" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#c0392b">⚠️ Änderung am View</text>
+    <text x="70" y="300" font-family="Consolas, monospace" font-size="11" fill="#333">view[0] = 99</text>
+    <text x="70" y="320" font-family="Arial, sans-serif" font-size="11" fill="#666">↓ Auch original ändert sich!</text>
+    <text x="70" y="345" font-family="Consolas, monospace" font-size="11" fill="#c0392b">original → [1, 2, 99, 4, 5]</text>
+  </g>
+  
+  <!-- COPY Seite -->
+  <text x="600" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e8449">✓ Copy (.copy())</text>
+  
+  <!-- Original Array COPY -->
+  <g filter="url(#shadow)">
+    <rect x="450" y="90" width="300" height="55" rx="6" fill="white" stroke="#2c5aa0" stroke-width="2"/>
+    <text x="470" y="110" font-family="Arial, sans-serif" font-size="11" fill="#666">original =</text>
+    <rect x="540" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="557" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">1</text>
+    <rect x="580" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="597" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">2</text>
+    <rect x="620" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="637" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">3</text>
+    <rect x="660" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="677" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">4</text>
+    <rect x="700" y="100" width="35" height="30" fill="#e3f2fd" rx="3" stroke="#2c5aa0"/>
+    <text x="717" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1565c0">5</text>
+  </g>
+  
+  <!-- Pfeil zu Copy -->
+  <path d="M 640 150 L 560 175" stroke="#1e8449" stroke-width="3" fill="none" marker-end="url(#arrowGreen)"/>
+  <defs>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1e8449"/>
+    </marker>
+  </defs>
+  <text x="620" y="168" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">kopie = original[2:4].copy()</text>
+  
+  <!-- Copy Array - eigenständig -->
+  <g filter="url(#shadow)">
+    <rect x="450" y="185" width="175" height="55" rx="6" fill="white" stroke="#27ae60" stroke-width="2"/>
+    <text x="470" y="205" font-family="Arial, sans-serif" font-size="11" fill="#666">kopie =</text>
+    <rect x="530" y="195" width="35" height="30" fill="#e8f8f5" rx="3" stroke="#27ae60" stroke-width="2"/>
+    <text x="547" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1e8449">3</text>
+    <rect x="570" y="195" width="35" height="30" fill="#e8f8f5" rx="3" stroke="#27ae60" stroke-width="2"/>
+    <text x="587" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1e8449">4</text>
+  </g>
+  
+  <!-- Separate Memory Symbol -->
+  <text x="560" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">↑ Eigener Speicherbereich</text>
+  
+  <!-- Success Box -->
+  <g filter="url(#shadow)">
+    <rect x="450" y="275" width="300" height="90" rx="6" fill="#e8f8f5" stroke="#27ae60" stroke-width="2"/>
+    <text x="600" y="298" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e8449">✓ Änderung an Kopie</text>
+    <text x="470" y="320" font-family="Consolas, monospace" font-size="11" fill="#333">kopie[0] = 99</text>
+    <text x="470" y="340" font-family="Arial, sans-serif" font-size="11" fill="#666">↓ Original bleibt unverändert!</text>
+    <text x="470" y="358" font-family="Consolas, monospace" font-size="11" fill="#1e8449">original → [1, 2, 3, 4, 5] ✓</text>
+  </g>
+</svg>

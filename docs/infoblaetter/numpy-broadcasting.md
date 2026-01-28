@@ -13,6 +13,8 @@ Broadcasting ist ein mächtiges Konzept, das es ermöglicht, arithmetische Opera
 
 ## Einfaches Beispiel
 
+![Broadcasting Visualisierung](../assets/images/numpy/broadcasting.svg)
+
 ### Skalar + Array
 
 ```python

@@ -21,6 +21,8 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 Pandas bietet verschiedene Wege, auf Daten zuzugreifen. Die wichtigsten sind `loc` (label-basiert) und `iloc` (positions-basiert).
 
+![iloc vs loc Visualisierung](../assets/images/pandas/iloc_vs_loc.svg)
+
 ```mermaid
 flowchart TB
     subgraph main["Datenzugriff"]

@@ -106,6 +106,8 @@ Berechne Summen und zähle gültige Werte.
 
 ### Aufgabe 5 – Der axis-Parameter
 
+![Axis-Parameter Visualisierung](../assets/images/numpy/axis_parameter.svg)
+
 Verstehe die Unterscheidung zwischen zeilen- und spaltenweiser Aggregation.
 
 1. **Erstelle eine Test-Matrix:** 4 Produkte (Zeilen) × 3 Monate (Spalten) mit festen Verkaufszahlen

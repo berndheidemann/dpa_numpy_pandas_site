@@ -116,6 +116,8 @@ Erstelle neue Spalten durch Berechnungen und bedingte Logik.
 
 ### Aufgabe 5 – map() für Wertersetzung
 
+![map vs apply Visualisierung](../assets/images/pandas/map_vs_apply.svg)
+
 Verwende `map()` um Werte systematisch zu ersetzen oder umzukodieren.
 
 - [ ] Erstelle ein Dictionary, das die Decision-Werte ins Deutsche übersetzt: Admit→"Aufgenommen", Deny→"Abgelehnt", Waitlist→"Warteliste"

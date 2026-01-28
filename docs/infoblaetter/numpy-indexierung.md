@@ -222,6 +222,8 @@ print(matrix)
 
 ## Views vs. Copies
 
+![View vs Copy Visualisierung](../assets/images/numpy/view_vs_copy.svg)
+
 !!! danger "Wichtiges Konzept"
     Slicing erstellt einen **View** (Ansicht), keine Kopie! Änderungen am View ändern auch das Original.
 

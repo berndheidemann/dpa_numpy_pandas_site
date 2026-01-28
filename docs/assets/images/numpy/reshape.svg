@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#27ae60;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e8449;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7d3c98;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555"/>
+    </marker>
+  </defs>
+  
+  <rect width="800" height="400" fill="#f8f9fa"/>
+  
+  <!-- Titel -->
+  <text x="400" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333">NumPy reshape() – Dimensionen ändern</text>
+  
+  <!-- 1D Array (Original) -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="70" width="700" height="80" rx="8" fill="white" stroke="#3498db" stroke-width="2"/>
+    <rect x="50" y="70" width="700" height="25" rx="8" fill="url(#blueGrad)"/>
+    <rect x="50" y="88" width="700" height="7" fill="url(#blueGrad)"/>
+    <text x="400" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Original: 1D-Array mit 12 Elementen</text>
+    
+    <text x="70" y="125" font-family="Consolas, monospace" font-size="11" fill="#666">arr = np.arange(1, 13)</text>
+    <text x="250" y="125" font-family="Arial, sans-serif" font-size="11" fill="#555">→</text>
+    
+    <!-- 12 Elemente in einer Reihe -->
+    <rect x="280" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="295" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">1</text>
+    <rect x="314" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="329" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">2</text>
+    <rect x="348" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="363" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">3</text>
+    <rect x="382" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="397" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">4</text>
+    <rect x="416" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="431" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">5</text>
+    <rect x="450" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="465" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">6</text>
+    <rect x="484" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="499" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">7</text>
+    <rect x="518" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="533" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">8</text>
+    <rect x="552" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="567" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">9</text>
+    <rect x="586" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="601" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">10</text>
+    <rect x="620" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="635" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">11</text>
+    <rect x="654" y="107" width="30" height="28" fill="#e3f2fd" rx="3" stroke="#3498db"/>
+    <text x="669" y="126" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#2980b9">12</text>
+    
+    <text x="720" y="125" font-family="Arial, sans-serif" font-size="10" fill="#666">shape: (12,)</text>
+  </g>
+  
+  <!-- Pfeile nach unten -->
+  <path d="M 200 155 L 200 185" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 400 155 L 400 185" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 600 155 L 600 185" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- 3x4 Matrix -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="195" width="220" height="185" rx="8" fill="white" stroke="#27ae60" stroke-width="2"/>
+    <rect x="50" y="195" width="220" height="25" rx="8" fill="url(#greenGrad)"/>
+    <rect x="50" y="213" width="220" height="7" fill="url(#greenGrad)"/>
+    <text x="160" y="213" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">reshape(3, 4)</text>
+    
+    <text x="70" y="245" font-family="Consolas, monospace" font-size="9" fill="#666">arr.reshape(3, 4)</text>
+    
+    <!-- 3x4 Grid -->
+    <rect x="82" y="260" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="96" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">1</text>
+    <rect x="114" y="260" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="128" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">2</text>
+    <rect x="146" y="260" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="160" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">3</text>
+    <rect x="178" y="260" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="192" y="277" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">4</text>
+    
+    <rect x="82" y="288" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="96" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">5</text>
+    <rect x="114" y="288" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="128" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">6</text>
+    <rect x="146" y="288" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="160" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">7</text>
+    <rect x="178" y="288" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="192" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">8</text>
+    
+    <rect x="82" y="316" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="96" y="333" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">9</text>
+    <rect x="114" y="316" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="128" y="333" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">10</text>
+    <rect x="146" y="316" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="160" y="333" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">11</text>
+    <rect x="178" y="316" width="28" height="24" fill="#d5f5e3" rx="2" stroke="#27ae60"/>
+    <text x="192" y="333" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#1e8449">12</text>
+    
+    <text x="235" y="300" font-family="Arial, sans-serif" font-size="9" fill="#666">shape:</text>
+    <text x="235" y="315" font-family="Arial, sans-serif" font-size="9" fill="#27ae60">(3, 4)</text>
+    <text x="160" y="365" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">3 Zeilen × 4 Spalten</text>
+  </g>
+  
+  <!-- 4x3 Matrix -->
+  <g filter="url(#shadow)">
+    <rect x="290" y="195" width="220" height="185" rx="8" fill="white" stroke="#9b59b6" stroke-width="2"/>
+    <rect x="290" y="195" width="220" height="25" rx="8" fill="url(#purpleGrad)"/>
+    <rect x="290" y="213" width="220" height="7" fill="url(#purpleGrad)"/>
+    <text x="400" y="213" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">reshape(4, 3)</text>
+    
+    <text x="310" y="245" font-family="Consolas, monospace" font-size="9" fill="#666">arr.reshape(4, 3)</text>
+    
+    <!-- 4x3 Grid -->
+    <rect x="330" y="260" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="344" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">1</text>
+    <rect x="362" y="260" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="376" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">2</text>
+    <rect x="394" y="260" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="408" y="275" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">3</text>
+    
+    <rect x="330" y="286" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="344" y="301" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">4</text>
+    <rect x="362" y="286" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="376" y="301" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">5</text>
+    <rect x="394" y="286" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="408" y="301" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">6</text>
+    
+    <rect x="330" y="312" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="344" y="327" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">7</text>
+    <rect x="362" y="312" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="376" y="327" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">8</text>
+    <rect x="394" y="312" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="408" y="327" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">9</text>
+    
+    <rect x="330" y="338" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="344" y="353" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">10</text>
+    <rect x="362" y="338" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="376" y="353" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">11</text>
+    <rect x="394" y="338" width="28" height="22" fill="#f5eef8" rx="2" stroke="#9b59b6"/>
+    <text x="408" y="353" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#7d3c98">12</text>
+    
+    <text x="445" y="300" font-family="Arial, sans-serif" font-size="9" fill="#666">shape:</text>
+    <text x="445" y="315" font-family="Arial, sans-serif" font-size="9" fill="#9b59b6">(4, 3)</text>
+    <text x="400" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">4 Zeilen × 3 Spalten</text>
+  </g>
+  
+  <!-- 2x6 Matrix -->
+  <g filter="url(#shadow)">
+    <rect x="530" y="195" width="220" height="185" rx="8" fill="white" stroke="#e67e22" stroke-width="2"/>
+    <rect x="530" y="195" width="220" height="25" rx="8" fill="#e67e22"/>
+    <rect x="530" y="213" width="220" height="7" fill="#e67e22"/>
+    <text x="640" y="213" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white">reshape(2, -1)</text>
+    
+    <text x="550" y="245" font-family="Consolas, monospace" font-size="9" fill="#666">arr.reshape(2, -1)</text>
+    <text x="550" y="260" font-family="Arial, sans-serif" font-size="8" fill="#999">-1 = automatisch berechnet</text>
+    
+    <!-- 2x6 Grid -->
+    <rect x="550" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="563" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">1</text>
+    <rect x="580" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="593" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">2</text>
+    <rect x="610" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="623" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">3</text>
+    <rect x="640" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="653" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">4</text>
+    <rect x="670" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="683" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">5</text>
+    <rect x="700" y="275" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="713" y="290" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">6</text>
+    
+    <rect x="550" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="563" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">7</text>
+    <rect x="580" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="593" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">8</text>
+    <rect x="610" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="623" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">9</text>
+    <rect x="640" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="653" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">10</text>
+    <rect x="670" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="683" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">11</text>
+    <rect x="700" y="301" width="26" height="22" fill="#fef9e7" rx="2" stroke="#e67e22"/>
+    <text x="713" y="316" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#d35400">12</text>
+    
+    <text x="640" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">shape: (2, 6)</text>
+    <text x="640" y="378" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">2 Zeilen × 6 Spalten</text>
+  </g>
+</svg>

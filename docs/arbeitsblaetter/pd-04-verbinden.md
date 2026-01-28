@@ -31,6 +31,8 @@ In der Praxis liegen Daten oft in mehreren Tabellen vor. Um sie zu analysieren, 
 
 ### Aufgabe 1 – Grundlagen concat()
 
+![Concat axis Visualisierung](../assets/images/pandas/concat_axis.svg)
+
 Erstelle zwei einfache DataFrames und verknüpfe sie.
 
 ```python
@@ -108,6 +110,8 @@ details = pd.DataFrame({
 ---
 
 ## Teil 2: Zusammenführen mit merge()
+
+![Join-Typen Visualisierung](../assets/images/pandas/join_types.svg)
 
 ### Aufgabe 4 – Grundlagen merge()
 

@@ -16,6 +16,12 @@ Nach Bearbeitung dieses Arbeitsblatts kannst du:
 
 ---
 
+## Datenbereinigungspipeline
+
+![Datenbereinigungspipeline](../assets/images/pandas/datenbereinigung_pipeline.svg)
+
+---
+
 ## Einführung
 
 Der Global Shark Attack File (GSAF) ist eine Datenbank aller dokumentierten Haiangriffe weltweit. Der Datensatz enthält viele fehlende Werte und unstrukturierte Textdaten – eine realistische Herausforderung!

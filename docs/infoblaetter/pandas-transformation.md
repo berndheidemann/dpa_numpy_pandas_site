@@ -109,6 +109,8 @@ print(numerische_spalten.apply(lambda x: x.max() - x.min()))
 
 ## Vergleich map vs. apply
 
+![map vs apply Visualisierung](../assets/images/pandas/map_vs_apply.svg)
+
 | Eigenschaft | map() | apply() |
 |-------------|-------|---------|
 | Anwendbar auf | Nur Series | Series & DataFrame |
@@ -249,6 +251,8 @@ print(df)
 ```
 
 ### pd.cut() – Numerische Kategorisierung
+
+![pd.cut() Visualisierung](../assets/images/pandas/pd_cut.svg)
 
 ```python
 # Gleichmäßige Bins

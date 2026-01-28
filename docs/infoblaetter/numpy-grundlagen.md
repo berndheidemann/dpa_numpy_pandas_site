@@ -153,6 +153,8 @@ print(arr_int)  # [1 2 3]
 
 ## Reshaping (Form ändern)
 
+![Reshape Visualisierung](../assets/images/numpy/reshape.svg)
+
 ```python
 arr = np.arange(1, 13)  # [1, 2, 3, ..., 12]
 

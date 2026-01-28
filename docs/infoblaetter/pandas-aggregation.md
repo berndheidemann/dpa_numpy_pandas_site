@@ -199,6 +199,8 @@ result = df.groupby('Produkt').agg(
 
 Pivot-Tabellen strukturieren Daten in einer Matrix-Form.
 
+![Pivot Table Visualisierung](../assets/images/pandas/pivot_table.svg)
+
 ```python
 # Pivot-Tabelle erstellen
 pivot = pd.pivot_table(

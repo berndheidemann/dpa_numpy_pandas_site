@@ -89,6 +89,8 @@ Erstelle folgende Arrays und gib sie jeweils mit `print()` aus:
 
 ### Aufgabe 5 – Reshaping
 
+![Reshape Visualisierung](../assets/images/numpy/reshape.svg)
+
 !!! tip "Hilfe"
     `reshape(zeilen, spalten)` – die Gesamtzahl der Elemente muss gleich bleiben!  
     Mit `-1` wird eine Dimension automatisch berechnet.

@@ -23,6 +23,8 @@ import pandas as pd
 
 ## Series – 1D-Datenstruktur
 
+![Series vs DataFrame Visualisierung](../assets/images/pandas/series_vs_dataframe.svg)
+
 Eine **Series** ist wie eine Spalte in einer Tabelle: eine eindimensionale Datenstruktur mit Index.
 
 ```python
